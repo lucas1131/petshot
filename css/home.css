@@ -32,9 +32,11 @@ html, body {
 .dropbtn {
     background-color: var(--logo-pink);
     color: var(--foreground1);
-    padding: 16px;
-    font-size: 16px;
+    padding: 5px 5px;
+    margin: 8px 8px;
     border: none;
+    width: 100px;
+    height: 35px;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -97,8 +99,8 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
-button {
+/* Set a style for login buttons */
+.loginbtn {
     background-color: var(--logo-pink);
     color: var(--foreground1);
     padding: 5px 5px;
@@ -110,7 +112,7 @@ button {
 }
 
 /* Add a hover effect for buttons */
-button:hover {
+.loginbtn:hover {
     opacity: 0.8;
 }
 
