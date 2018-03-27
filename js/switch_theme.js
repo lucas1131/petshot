@@ -1,6 +1,4 @@
 
-
-
 // Toggle
 function SwitchTheme() {
 	// alert("changing theme!");
