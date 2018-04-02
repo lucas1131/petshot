@@ -100,18 +100,17 @@ h4 {
 /* Start image list */
 /* Four image containers (use 33.33% for three, and 50% for two, etc) */
 .img-center {
-    display: block;
-    margin-left: 29%;
-    /*margin-right: auto;*/
-    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .column {
-  float: left;
-  width: 25%;
-  padding: 5px;
-  max-width: 200px;
-  max-height: 200px;
+	float: left;
+	width: 25%;
+	padding: 5px;
+	max-width: 200px;
+	max-height: 200px;
 }
 
 /* Clear floats after image containers */
