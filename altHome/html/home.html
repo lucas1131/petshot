@@ -110,29 +110,29 @@
 <!-- Navbar -->
 <div class="navbar">
 	<img class="logo" src="../resources/logo.png">
-	<a href="#home">Contact</a>
+	<a class="navbar-a" href="#contact">Contact</a>
 	<div class="dropdown">
-		<button class="dropbtn">Services</button>
+		<a href="#services"><button class="dropbtn">Services</button></a>
 		<div class="dropdown-content">
-			<a href="#">Service 1</a>
+			<a class="navbar-a" href="#">Service 1</a>
 			<hr class="style14">
-			<a href="#">Service 2</a>
+			<a class="navbar-a" href="#">Service 2</a>
 			<hr class="style14">
-			<a href="#">Service 3</a>
+			<a class="navbar-a" href="#">Service 3</a>
 		</div>
 	</div>
 	<div class="dropdown">
-		<button class="dropbtn">Products</button>
+		<a href="#products"><button class="dropbtn">Products</button></a>
 		<div class="dropdown-content">
-			<a href="#">Product 1</a>
+			<a class="navbar-a" href="#">Product 1</a>
 			<hr class="style14">
-			<a href="#">Product 2</a>
+			<a class="navbar-a" href="#">Product 2</a>
 			<hr class="style14">
-			<a href="#">Product 3</a>
+			<a class="navbar-a" href="#">Product 3</a>
 		</div>
 	</div>
-	<a href="#news">About</a>
-	<a href="#news">Home</a>
+	<a class="navbar-a" href="#about">About</a>
+	<a class="navbar-a" href="#home">Home</a>
 </div>
 <!-- End Navbar -->
 
@@ -186,16 +186,7 @@
 
 <button onclick="topFunction()" id="myBtn" title="Go to top">&#8593;</button>
 
-<h3 align="center">Our Services</h3>
-<hr class="style0">
-
-<p class="paragrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-
-<br>
-<br>
-<br>
-
-<h3 align="center">Popular Products</h3>
+<h3 align="center" id="services">Our Services</h3>
 <hr class="style0">
 
 <br>
@@ -203,25 +194,113 @@
 
 <div class="row img-center">
 	<div class="column">
-		<img src="../resources/racao.jpg" alt="Dog food" style="width:100%">
-  	</div>
-  	<div class="column">
-		<img src="../resources/collar.jpg" alt="Collar" style="width:100%">
-  	</div>
-  	<div class="column">
-		<img src="../resources/racao2.jpg" alt="Dog food" style="width:100%">
-  	</div>
-  	<div class="column">
-		<img src="../resources/ball.png" alt="Dog toy" style="width:100%">
-  	</div>
+		<div class="card">
+			<img src="../resources/tosa.jpg" alt="Tosa" style="width:100%">
+			<div class="card-container">
+				<h4>Tosa</h4> 
+				<p class="pcard">R$ 50,00</p> 
+			</div>
+		</div>
+	</div>
+
+	<div class="column">
+		<div class="card">
+			<img src="../resources/banho.jpg" alt="Banho" style="width:100%">
+			<div class="card-container">
+				<h4>Banho</h4> 
+				<p class="pcard">R$ 50,00</p> 
+			</div>
+		</div>
+	</div>
+
+	<div class="column">
+		<div class="card">
+			<img src="../resources/tosa.jpg" alt="Tosa" style="width:100%">
+			<div class="card-container">
+				<h4>Tosa</h4> 
+				<p class="pcard">R$ 50,00</p> 
+			</div>
+		</div>
+	</div>
+
+	<div class="column">
+		<div class="card">
+			<img src="../resources/banho.jpg" alt="Banho" style="width:100%">
+			<div class="card-container">
+				<h4>Banho</h4> 
+				<p class="pcard">R$ 50,00</p> 
+			</div>
+		</div>
+	</div>
 </div>
 
 <br>
 <br>
 <br>
 
+<p class="paragrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 
-<h3 align="center">Contact Us</h3>
+<br>
+<br>
+<br>
+
+<h3 id="products" align="center">Popular Products</h3>
+<hr class="style0">
+
+<br>
+<br>
+
+<div class="row img-center">
+	<div class="column">
+		<div class="card">
+			<img src="../resources/racao.jpg" alt="comida" style="width:100%">
+			<div class="card-container">
+				<h4>Ração Purina</h4> 
+				<p class="pcard">R$ 60,00</p> 
+			</div>
+		</div>
+	</div>
+
+	<div class="column">
+		<div class="card">
+			<img src="../resources/collar.jpg" alt="coleira" style="width:100%">
+			<div class="card-container">
+				<h4>Coleira azul</h4> 
+				<p class="pcard">RS 30,00</p> 
+			</div>
+		</div>
+	</div>
+
+	<div class="column">
+		<div class="card">
+			<img src="../resources/racao2.jpg" alt="comida" style="width:100%">
+			<div class="card-container">
+				<h4>Ração fancy</h4> 
+				<p class="pcard">R$ 100,00</p> 
+			</div>
+		</div>
+	</div>
+
+	<div class="column">
+		<div class="card">
+			<img src="../resources/ball.png" alt="Bola" style="width:100%">
+			<div class="card-container">
+				<h4>Bolinha</h4> 
+				<p class="pcard">RS 10,00</p> 
+			</div>
+		</div>
+	</div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<h3 id="contact" align="center">Contact Us</h3>
 <hr class="style0">
 
 <p class="paragrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
