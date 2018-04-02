@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="../css/navbar.css">
 <!-- Login CSS -->
 <link rel="stylesheet" type="text/css" href="../css/login.css">
+<link rel="stylesheet" type="text/css" href="../css/signup_form.css">
 
 <style type="text/css">
     hr.style14 { 
@@ -39,7 +40,7 @@
         margin: 0 0 10px;
     }
 
-    p { 
+    .p1 { 
         color: #4c4a37; 
         font-family: 'Source Sans Pro', sans-serif;
         font-size: 16px;
@@ -74,20 +75,21 @@
 <body>
 
 <!-- Login -->
-<div id="pet shop header" class="header"> 
+<div id="pet_shop_header" class="header"> 
     <!-- <div class="imgcontainer">
         <img src="img_avatar2.png" alt="Avatar" class="avatar">
     </div> -->
     
     <div class="login">
         <!-- <label for="uname"><b>Username</b></label> -->
+        <form>
         <input type="text" placeholder="Username" name="uname" required>
 
         <!-- <label for="psw"><b>Password</b></label> -->
         <input type="password" placeholder="Password" name="psw" required>
 
         <button class="loginbtn" type="submit" onclick="login()">Login</button>
-        <button class="loginbtn" type="submit" onclick="signup_form()">Sign Up</button>
+        <button class="loginbtn" type="button" onclick="signup_form()">Sign Up</button>
         <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
@@ -98,6 +100,48 @@
         <span class="psw">Forgot <a href="#">password?</a></span>
     </div> -->
 </div> 
+</form>
+<!-- End Login -->
+
+<!-- Sign up form -->
+<!-- The Modal (contains the Sign Up form) -->
+<div id="signup_form" class="modal modal_fade">
+    
+    <span onclick="cancel_signup()" class="close" title="Close Modal">&times;</span>
+
+    <form class="modal-content modal_content_fade opaque">
+        <div class="container opaque">
+            <h1>Sign Up</h1>
+            <hr>
+            
+            <label for="email"><b>User name: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
+
+            <label for="email"><b>Email: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
+
+            <label for="psw"><b>Password: </b></label>
+            <input class="modal_input" type="password" name="psw" required><br>
+
+            <label for="psw-repeat"><b>Repeat Password: </b></label>
+            <input class="modal_input" type="password" name="psw-repeat" required><br>
+
+            <label>
+                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+            </label>
+
+            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms &amp; Privacy</a>.</p>
+
+            <div class="clearfix">
+                <button class="loginbtn" type="button" onclick="cancel_signup()" class="cancelbtn">Cancel</button>
+                <button class="loginbtn" type="submit" class="signup">Sign Up</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="../js/login.js"></script>
+
+<!-- End Sign up form -->
 
 <hr class="style14">
 
@@ -138,7 +182,7 @@
     <img src="../resources/dogShower.jpg" style="width:100%">
     <div class="content">
         <h1>Traga seu consagrado para um banho</h1>
-        Seu dog entra fedido e sai supimpa!
+        <p>Seu dog entra fedido e sai supimpa!</p>
     </div>
 </div>
 
@@ -147,7 +191,7 @@
     <img src="../resources/runningDogo.jpg" style="width:100%">
     <div class="content">
         <h1>Agende seu horário!</h1>
-        Confira nossos serviços
+        <p>Confira nossos serviços</p>
     </div>
 </div>
 
@@ -156,12 +200,11 @@
     <img src="../resources/dogShower.jpg" style="width:100%">
     <div class="content">
         <h1>Traga seu consagrado para um banho</h1>
-        Seu dog entra fedido e sai supimpa!
+        <p>Seu dog entra fedido e sai supimpa!</p>
     </div>
 </div>
 
 <script src="../js/slides.js"></script>
-<script src="../js/login.js"></script>
 
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -184,7 +227,7 @@
 <h3 align="center">Our Services</h3>
 <hr class="style0">
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+<p class="p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 
 <br>
 <br>
@@ -193,7 +236,7 @@
 <h3 align="center">Contact Us</h3>
 <hr class="style0">
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+<p class="p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 
 <script>
 // When the user scrolls down 20px from the top of the document, show the button
