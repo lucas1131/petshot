@@ -5,6 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- General CSS -->
+<link rel="stylesheet" type="text/css" href="../css/imageList.css">
 <!-- Slides CSS -->
 <link rel="stylesheet" type="text/css" href="../css/slides.css">
 <!-- Navbar CSS -->
@@ -12,63 +14,8 @@
 <!-- Login CSS -->
 <link rel="stylesheet" type="text/css" href="../css/login.css">
 <link rel="stylesheet" type="text/css" href="../css/signup_form.css">
-
-<style type="text/css">
-    hr.style14 { 
-        border: 0; 
-        height: 1px;
-        width: 95%;
-        opacity: 0.6;
-        background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-        background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-        background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-        background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-    }
-
-    hr.style0 {
-        height: 8px;
-        background: url(../resources/hr.png) no-repeat center;
-        border: none;
-    }
-
-    h3 { 
-        color: #7c795d; 
-        font-family: 'Source Sans Pro', sans-serif;
-        font-size: 28px;
-        font-weight: 400;
-        line-height: 32px;
-        margin: 0 0 10px;
-    }
-
-    .p1 { 
-        color: #4c4a37; 
-        font-family: 'Source Sans Pro', sans-serif;
-        font-size: 16px;
-        line-height: 32px;
-        margin: 0 300px 24px;
-        text-align: center;
-    }
-
-    #myBtn {
-        display: none;
-        position: fixed;
-        bottom: 20px;
-        right: 30px;
-        z-index: 99;
-        font-size: 18px;
-        border: none;
-        outline: none;
-        background-color: #7c795d;
-        color: white;
-        cursor: pointer;
-        padding: 15px;
-        border-radius: 4px;
-    }
-
-    #myBtn:hover {
-        background-color: #e5601d;
-    }
-</style>
+<!-- clock icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -79,6 +26,21 @@
     <!-- <div class="imgcontainer">
         <img src="img_avatar2.png" alt="Avatar" class="avatar">
     </div> -->
+
+    <!-- Clock and phone-->
+    <i class="fa icon">
+        &#xf017;
+        <span style="color: #4c4a37; font-size: 18px">
+            Open - Mon - Fri: 9am to 5pm
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        </span>
+        <span class="fa fa-phone">
+            <span style="color: #4c4a37; font-size: 18px">
+                (16) 1234 - 5678
+            </span>
+        </span>
+    </i>
+
     
     <div class="login">
         <!-- <label for="uname"><b>Username</b></label> -->
@@ -143,34 +105,34 @@
 
 <!-- End Sign up form -->
 
-<hr class="style14">
+<hr style="opacity: 0.5;">
 
 <!-- Navbar -->
 <div class="navbar">
-    <img class="logo" src="../resources/logo.png">
-    <a href="#home">Contact</a>
-    <div class="dropdown">
-        <button class="dropbtn">Services</button>
-        <div class="dropdown-content">
-            <a href="#">Service 1</a>
-            <hr class="style14">
-            <a href="#">Service 2</a>
-            <hr class="style14">
-            <a href="#">Service 3</a>
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn">Products</button>
-        <div class="dropdown-content">
-            <a href="#">Product 1</a>
-            <hr class="style14">
-            <a href="#">Product 2</a>
-            <hr class="style14">
-            <a href="#">Product 3</a>
-        </div>
-    </div>
-    <a href="#news">About</a>
-    <a href="#news">Home</a>
+	<img class="logo" src="../resources/logo.png">
+	<a href="#home">Contact</a>
+	<div class="dropdown">
+		<button class="dropbtn">Services</button>
+		<div class="dropdown-content">
+			<a href="#">Service 1</a>
+			<hr class="style14">
+			<a href="#">Service 2</a>
+			<hr class="style14">
+			<a href="#">Service 3</a>
+		</div>
+	</div>
+	<div class="dropdown">
+		<button class="dropbtn">Products</button>
+		<div class="dropdown-content">
+			<a href="#">Product 1</a>
+			<hr class="style14">
+			<a href="#">Product 2</a>
+			<hr class="style14">
+			<a href="#">Product 3</a>
+		</div>
+	</div>
+	<a href="#news">About</a>
+	<a href="#news">Home</a>
 </div>
 <!-- End Navbar -->
 
@@ -178,30 +140,30 @@
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-    <div class="numbertext">1 / 3</div>
-    <img src="../resources/dogShower.jpg" style="width:100%">
-    <div class="content">
-        <h1>Traga seu consagrado para um banho</h1>
-        <p>Seu dog entra fedido e sai supimpa!</p>
-    </div>
+	<div class="numbertext">2 / 3</div>
+	<img src="../resources/runningDogo.jpg" style="width:100%">
+	<div class="content">
+		<h1>Agende seu horário!</h1>
+		Confira nossos serviços
+	</div>
 </div>
 
 <div class="mySlides fade">
-    <div class="numbertext">2 / 3</div>
-    <img src="../resources/runningDogo.jpg" style="width:100%">
-    <div class="content">
-        <h1>Agende seu horário!</h1>
-        <p>Confira nossos serviços</p>
-    </div>
+	<div class="numbertext">1 / 3</div>
+	<img src="../resources/dogShower.jpg" style="width:100%">
+	<div class="content">
+		<h1>Traga seu consagrado para um banho</h1>
+		Seu dog entra fedido e sai supimpa!
+	</div>
 </div>
 
 <div class="mySlides fade">
-    <div class="numbertext">3 / 3</div>
-    <img src="../resources/dogShower.jpg" style="width:100%">
-    <div class="content">
-        <h1>Traga seu consagrado para um banho</h1>
-        <p>Seu dog entra fedido e sai supimpa!</p>
-    </div>
+	<div class="numbertext">3 / 3</div>
+	<img src="../resources/dogShower.jpg" style="width:100%">
+	<div class="content">
+		<h1>Traga seu consagrado para um banho</h1>
+		Seu dog entra fedido e sai supimpa!
+	</div>
 </div>
 
 <script src="../js/slides.js"></script>
@@ -214,46 +176,72 @@
 <br>
 
 <div style="text-align:center">
-    <span class="dot" onclick="currentSlide(1)"></span> 
-    <span class="dot" onclick="currentSlide(2)"></span> 
-    <span class="dot" onclick="currentSlide(3)"></span> 
+	<span class="dot" onclick="currentSlide(1)"></span> 
+	<span class="dot" onclick="currentSlide(2)"></span> 
+	<span class="dot" onclick="currentSlide(3)"></span> 
 </div>
 <br>
 <br>
 <br>
 
-<button onclick="topFunction()" id="myBtn" title="Go to top">&#8593</button>
+<button onclick="topFunction()" id="myBtn" title="Go to top">&#8593;</button>
 
 <h3 align="center">Our Services</h3>
 <hr class="style0">
 
-<p class="p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+<p class="paragrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 
 <br>
 <br>
 <br>
+
+<h3 align="center">Popular Products</h3>
+<hr class="style0">
+
+<br>
+<br>
+
+<div class="row img-center">
+	<div class="column">
+		<img src="../resources/racao.jpg" alt="Dog food" style="width:100%">
+  	</div>
+  	<div class="column">
+		<img src="../resources/collar.jpg" alt="Collar" style="width:100%">
+  	</div>
+  	<div class="column">
+		<img src="../resources/racao2.jpg" alt="Dog food" style="width:100%">
+  	</div>
+  	<div class="column">
+		<img src="../resources/ball.png" alt="Dog toy" style="width:100%">
+  	</div>
+</div>
+
+<br>
+<br>
+<br>
+
 
 <h3 align="center">Contact Us</h3>
 <hr class="style0">
 
-<p class="p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+<p class="paragrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 
 <script>
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("myBtn").style.display = "block";
-    } else {
-        document.getElementById("myBtn").style.display = "none";
-    }
+	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		document.getElementById("myBtn").style.display = "block";
+	} else {
+		document.getElementById("myBtn").style.display = "none";
+	}
 }
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+	document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
 }
 </script>
 
