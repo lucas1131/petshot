@@ -21,11 +21,8 @@
 
 <body>
 
-<!-- Login -->
+<!-- Header -->
 <div id="pet_shop_header" class="header"> 
-    <!-- <div class="imgcontainer">
-        <img src="img_avatar2.png" alt="Avatar" class="avatar">
-    </div> -->
 
     <!-- Clock and phone-->
     <i class="fa icon">
@@ -40,8 +37,8 @@
             </span>
         </span>
     </i>
-
     
+    <!-- Login for anonymous user -->
     <div class="login anonymous_user">
         <!-- <label for="uname"><b>Username</b></label> -->
         <form>
@@ -58,21 +55,13 @@
         </form>
     </div>
 
+    <!-- Logged users -->
     <div class="login normal_user admin_user">
         <span id="logged_name"><b>Logged as: </b></span>
-
         <button class="loginbtn" type="submit" onclick="logout()">Logout</button>
-        <label>
-            <input id="remember_me" type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
     </div>
-
-    <!-- <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-    </div> -->
 </div> 
-<!-- End Login -->
+<!-- End Header -->
 
 <!-- Sign up form -->
 <!-- The Modal (contains the Sign Up form) -->
@@ -111,7 +100,6 @@
     </form>
 </div>
 <script src="../js/login.js"></script>
-
 <!-- End Sign up form -->
 
 <hr style="opacity: 0.5;">
