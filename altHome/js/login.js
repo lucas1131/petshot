@@ -24,8 +24,12 @@ else if(userGroup == Groups.Normal)
 else if(userGroup == Groups.Admin)
 	userView = document.getElementsByClassName("admin_user");
 
-for(var i = 0; i < anonymousView.length; i++) 
+// Display only the objects for this user's group
+for(var i = 0; i < userView.length; i++) 
 	userView[i].style.display = "block";
+
+// Display username for user
+document.getElementById("logged_name").innerHTML += localStorage.getItem("username")
 
 function login(){
 

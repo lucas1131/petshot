@@ -126,7 +126,7 @@ h4 {
 
 /* Block user views */
 /* Change this via scripting */
-/*.anonymous_user {
+.anonymous_user {
 	display: none;
 }
 
@@ -137,4 +137,3 @@ h4 {
 .admin_user {
 	display: none;
 }
-*/
