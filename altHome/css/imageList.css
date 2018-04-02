@@ -96,3 +96,18 @@ h3 {
   margin-right: 300px;
 }
 /* End image list */
+
+/* Block user views */
+/* Change this via scripting */
+/*.anonymous_user {
+	display: none;
+}
+
+.normal_user {
+	display: none;
+}
+
+.admin_user {
+	display: none;
+}
+*/

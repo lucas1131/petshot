@@ -1,27 +1,62 @@
 
+/* Define groups enum */
 var Groups = {
-	Anonymous: 1,
-	Normal: 2,
-	Admin: 3,
+	Anonymous: 0,
+	Normal: 1,
+	Admin: 2,
 };
 
-var modalBox = document.getElementById("signup_form");
-var userGroup = Groups.Anonymous;
+/* Declare globals */
 
-function login(username, password){
-	if(username == "admin" && password == "admin")
+var modalBox = document.getElementById("signup_form");
+var userGroup = localStorage.getItem("user_group");
+
+if(!userGroup) userGroup = Groups.Anonymous;
+
+alert("Current user is: " + userGroup);
+
+/* Change view depending on user type */
+var userView;
+if(userGroup == Groups.Anonymous)
+	userView = document.getElementsByClassName("anonymous_user");
+else if(userGroup == Groups.Normal)
+	userView = document.getElementsByClassName("normal_user");
+else if(userGroup == Groups.Admin)
+	userView = document.getElementsByClassName("admin_user");
+
+for(var i = 0; i < anonymousView.length; i++) 
+	userView[i].style.display = "block";
+
+function login(){
+
+	var username = document.getElementById("login_uname");
+	var password = document.getElementById("login_psw");
+	var remember = document.getElementById("remember_me");
+
+	alert("Uname: " + username.value + "\tPassword: " + password.value);
+
+	if(username.value == "admin" && password.value == "admin")
 		userGroup = Groups.Admin;
 	else userGroup = Groups.Normal;
 
+	localStorage.setItem("user_group", userGroup);
+	localStorage.setItem("username", username.value);
 	location.reload(); 
 }
 
+function logout(){
+	userGroup = Groups.Anonymous;
+	localStorage.setItem("user_group", userGroup);
+	location.reload();
+}
+
 function signup_form(){
-	modalBox.style.display = 'block';
+	localStorage.setItem("user_group", Groups.Anonymous);
+	modalBox.style.display = "block";
 }
 
 function cancel_signup(){
-	modalBox.style.display = 'none'
+	modalBox.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal content, close it

@@ -42,18 +42,28 @@
     </i>
 
     
-    <div class="login">
+    <div class="login anonymous_user">
         <!-- <label for="uname"><b>Username</b></label> -->
         <form>
-        <input type="text" placeholder="Username" name="uname" required>
+            <input id="login_uname" type="text" placeholder="Username" name="uname" required>
 
-        <!-- <label for="psw"><b>Password</b></label> -->
-        <input type="password" placeholder="Password" name="psw" required>
+            <!-- <label for="psw"><b>Password</b></label> -->
+            <input id="login_psw" type="password" placeholder="Password" name="psw" required>
 
-        <button class="loginbtn" type="submit" onclick="login()">Login</button>
-        <button class="loginbtn" type="button" onclick="signup_form()">Sign Up</button>
+            <button class="loginbtn" type="submit" onclick="login()">Login</button>
+            <button class="loginbtn" type="button" onclick="signup_form()">Sign Up</button>
+            <label>
+                <input id="remember_me" type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </form>
+    </div>
+
+    <div class="login normal_user admin_user">
+        <span id="logged_name"><b>Logged as: </b></span>
+
+        <button class="loginbtn" type="submit" onclick="logout()">Logout</button>
         <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
+            <input id="remember_me" type="checkbox" checked="checked" name="remember"> Remember me
         </label>
     </div>
 
@@ -62,7 +72,6 @@
         <span class="psw">Forgot <a href="#">password?</a></span>
     </div> -->
 </div> 
-</form>
 <!-- End Login -->
 
 <!-- Sign up form -->
