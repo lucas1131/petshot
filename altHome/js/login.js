@@ -13,8 +13,6 @@ var userGroup = localStorage.getItem("user_group");
 
 if(!userGroup) userGroup = Groups.Anonymous;
 
-alert("Current user is: " + userGroup);
-
 /* Change view depending on user type */
 var userView;
 if(userGroup == Groups.Anonymous)
@@ -36,8 +34,6 @@ function login(){
 	var username = document.getElementById("login_uname");
 	var password = document.getElementById("login_psw");
 	var remember = document.getElementById("remember_me");
-
-	alert("Uname: " + username.value + "\tPassword: " + password.value);
 
 	if(username.value == "admin" && password.value == "admin")
 		userGroup = Groups.Admin;
