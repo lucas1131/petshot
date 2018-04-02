@@ -119,8 +119,8 @@ h4 {
   content: "";
   clear: both;
   display: table;
-  margin-left: 300px;
-  margin-right: 300px;
+  /*margin-left: 300px;
+  margin-right: 300px;*/
 }
 /* End image list */
 
