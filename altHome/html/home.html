@@ -5,8 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Begin styles -->
 	<!-- General CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/imageList.css">
+	<link rel="stylesheet" type="text/css" href="../css/general.css">
 	<!-- Slides  CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/slides.css">
 	<!-- Navbar  CSS -->
@@ -15,19 +16,42 @@
 	<link rel="stylesheet" type="text/css" href="../css/login.css">
 	<!-- Sign up CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/signup_form.css">
-	<!-- clock and phone icons -->
+	<!-- Clock and phone icons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Carousel CSS -->
+	<link rel="stylesheet" href="../css/tinycarousel.css" type="text/css" media="screen"/>
+<!-- End styles -->
 
-	<link rel="stylesheet" href="../useless/littleCanser/tinycarousel.css"
-		type="text/css" media="screen"/>
-
+<!-- Begin scripts -->	
+	<!-- Carousel script begin -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="../useless/littleCanser/jquery.tinycarousel.js"></script>
+	<script src="../js/jquery.tinycarousel.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function()
 		{
 			$('#slider1').tinycarousel();
 		});
+	</script>
+	<!-- Carousel script end -->
+
+	<!-- Top button script -->	
+	<script>
+		// When the user scrolls down 20px from the top of the document, show the button
+		window.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+
+		// When the user clicks on the button, scroll to the top of the document
+		function topFunction() {
+			document.body.scrollTop = 0;
+			document.documentElement.scrollTop = 0;
+		}
 	</script>
 </head>
 
@@ -52,11 +76,9 @@
     
     <!-- Login for anonymous user -->
     <div class="login anonymous_user">
-        <!-- <label for="uname"><b>Username</b></label> -->
         <form>
             <input id="login_uname" type="text" placeholder="Username" name="uname" required>
 
-            <!-- <label for="psw"><b>Password</b></label> -->
             <input id="login_psw" type="password" placeholder="Password" name="psw" required>
 
             <button class="loginbtn" type="submit" onclick="login()">Login</button>
@@ -72,7 +94,11 @@
         <span id="logged_name"><b>Logged as: </b></span>
         <button class="loginbtn" type="submit" onclick="logout()">Logout</button>
     </div>
-</div> 
+</div>
+
+<!-- Login script - THIS NEED TO STAY HERE -->
+<script src="../js/login.js"></script>
+
 <!-- End Header -->
 
 <!-- Sign up form -->
@@ -111,10 +137,9 @@
         </div>
     </form>
 </div>
-<script src="../js/login.js"></script>
 <!-- End Sign up form -->
 
-<hr style="opacity: 0.8;">
+<hr class="style14">
 
 <!-- Navbar -->
 <div class="navbar">
@@ -193,13 +218,13 @@
 <br>
 <br>
 
+<!-- Here's the top button -->
 <button onclick="topFunction()" id="myBtn" title="Go to top">&#8593;</button>
 
 <h3 align="center" id="services">Our Services</h3>
 <hr class="style0">
 
-<!-- TESTANDO UM CANSER - INICIO -->
-
+<!-- Here's the services list -->
 <div id="slider1">
 		<a class="buttons prevc" href="#">&#10094;</a>
 		<div class="viewportc">
@@ -257,8 +282,7 @@
 		</div>
 		<a class="buttons nextc" href="#">&#10095;</a>
 	</div>
-
-<!-- TESTANDO UM CANSER - FIM -->
+	<!-- Services list end -->
 
 <p class="paragrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 
@@ -272,6 +296,7 @@
 <br>
 <br>
 
+<!-- Products list begin  -->
 <div class="row img-center">
 	<div class="column">
 		<div class="card">
@@ -313,6 +338,7 @@
 		</div>
 	</div>
 </div>
+<!-- Products list end -->
 
 <br>
 <br>
@@ -326,25 +352,5 @@
 <hr class="style0">
 
 <p class="paragrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-
-<script>
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-		document.getElementById("myBtn").style.display = "block";
-	} else {
-		document.getElementById("myBtn").style.display = "none";
-	}
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
-}
-</script>
-
 </body>
 </html> 
