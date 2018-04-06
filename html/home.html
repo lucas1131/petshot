@@ -1,101 +1,356 @@
 <!DOCTYPE html>
 <html>
+
 <head>
- 	<meta charset="UTF-8"> 
-	<link rel="stylesheet" href="../css/home.css">
-	<title>Pet Scotch</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Handler for dark/light themes -->
-	<script type="text/javascript" src="../js/switch_theme.js"></script>
+<!-- Begin styles -->
+	<!-- General CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/general.css">
+	<!-- Slides  CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/slides.css">
+	<!-- Navbar  CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/navbar.css">
+	<!-- Login   CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/login.css">
+	<!-- Sign up CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/signup_form.css">
+	<!-- Clock and phone icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Carousel CSS -->
+	<link rel="stylesheet" href="../css/tinycarousel.css" type="text/css" media="screen"/>
+<!-- End styles -->
 
+<!-- Begin scripts -->	
+	<!-- Carousel script begin -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="../js/jquery.tinycarousel.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$('#slider1').tinycarousel();
+		});
+	</script>
+	<!-- Carousel script end -->
+
+	<!-- Top button script -->	
+	<script>
+		// When the user scrolls down 20px from the top of the document, show the button
+		window.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+
+		// When the user clicks on the button, scroll to the top of the document
+		function topFunction() {
+			document.body.scrollTop = 0;
+			document.documentElement.scrollTop = 0;
+		}
+	</script>
 </head>
+
 <body>
 
+<!-- Header -->
+<div id="pet_shop_header" class="header"> 
 
+    <!-- Clock and phone-->
+    <i class="fa icon">
+        &#xf017;
+        <span style="color: #4c4a37; font-size: 18px">
+            Open - Mon - Fri: 9am to 5pm
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        </span>
+        <span class="fa fa-phone">
+            <span style="color: #4c4a37; font-size: 18px">
+                (16) 1234 - 5678
+            </span>
+        </span>
+    </i>
+    
+    <!-- Login for anonymous user -->
+    <div class="login anonymous_user">
+        <form>
+            <input id="login_uname" type="text" placeholder="Username" name="uname" required>
 
-<!-- Login -->
-<div id="pet shop header" class="header"> 
-	<!-- <div class="imgcontainer">
-		<img src="img_avatar2.png" alt="Avatar" class="avatar">
-	</div> -->
+            <input id="login_psw" type="password" placeholder="Password" name="psw" required>
 
+            <button class="loginbtn" type="submit" onclick="login()">Login</button>
+            <button class="loginbtn" type="button" onclick="signup_form()">Sign Up</button>
+            <label>
+                <input id="remember_me" type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </form>
+    </div>
 
-	<img src="../resources/logo.png" class="logo">
+    <!-- Logged users -->
+    <div class="login normal_user admin_user">
+        <span id="logged_name"><b>Logged as: </b></span>
+        <button class="loginbtn" type="submit" onclick="logout()">Logout</button>
+    </div>
+</div>
 
-	<div class="login" style="">
-		<label for="uname"><b>Username</b></label>
-		<input type="text" placeholder="Username" name="uname" required>
+<!-- Login script - THIS NEED TO STAY HERE -->
+<script src="../js/login.js"></script>
 
-		<label for="psw"><b>Password</b></label>
-		<input type="password" placeholder="Password" name="psw" required>
+<!-- End Header -->
 
-		<button class="loginbtn" type="submit">Login</button>
-		<label>
-			<input type="checkbox" checked="checked" name="remember"> Remember me
-		</label>
-	</div>
+<!-- Sign up form -->
+<!-- The Modal (contains the Sign Up form) -->
+<div id="signup_form" class="modal modal_fade">
+    
+    <span onclick="cancel_signup()" class="close" title="Close Modal">&times;</span>
 
-	<!-- <div class="container" style="background-color:#f1f1f1">
-		<button type="button" class="cancelbtn">Cancel</button>
-		<span class="psw">Forgot <a href="#">password?</a></span>
-	</div> -->
-</div> 
+    <form class="modal-content modal_content_fade opaque">
+        <div class="container opaque">
+            <h1>Sign Up</h1>
+            <hr>
+            
+            <label for="email"><b>User name: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
 
-<span href="javascript:void(0)" class="switch_theme" onclick="SwitchTheme()" style="border: 2px solid black;">Switch theme</span>
+            <label for="email"><b>Email: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
 
+            <label for="psw"><b>Password: </b></label>
+            <input class="modal_input" type="password" name="psw" required><br>
 
-<!-- Top navigation bar -->
-<div class="topnav"> 
+            <label for="psw-repeat"><b>Repeat Password: </b></label>
+            <input class="modal_input" type="password" name="psw-repeat" required><br>
+
+            <label>
+                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+            </label>
+
+            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms &amp; Privacy</a>.</p>
+
+            <div class="clearfix">
+                <button class="loginbtn" type="button" onclick="cancel_signup()" class="cancelbtn">Cancel</button>
+                <button class="loginbtn" type="submit" class="signup">Sign Up</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- End Sign up form -->
+
+<hr class="style14">
+
+<!-- Navbar -->
+<div class="navbar">
+	<img class="logo" src="../resources/logo.png">
+	<a class="navbar-a" href="#contact">Contact</a>
 	<div class="dropdown">
-		<button class="dropbtn">Home</button>
+		<a href="#services"><button class="dropbtn">Services</button></a>
 		<div class="dropdown-content">
-			<a href="#">Link 1</a>
-			<a href="#">Link 2</a>
-			<a href="#">Link 3</a>
+			<a class="navbar-a" href="#">Service 1</a>
+			<hr class="style14">
+			<a class="navbar-a" href="#">Service 2</a>
+			<hr class="style14">
+			<a class="navbar-a" href="#">Service 3</a>
 		</div>
 	</div>
 	<div class="dropdown">
-		<button class="dropbtn">Serviços</button>
+		<a href="#products"><button class="dropbtn">Products</button></a>
 		<div class="dropdown-content">
-			<a href="#">Link 1</a>
-			<a href="#">Link 2</a>
-			<a href="#">Link 3</a>
-			<a href="#">Link 4</a>
+			<a class="navbar-a" href="#">Product 1</a>
+			<hr class="style14">
+			<a class="navbar-a" href="#">Product 2</a>
+			<hr class="style14">
+			<a class="navbar-a" href="#">Product 3</a>
 		</div>
 	</div>
-	<div class="dropdown">
-		<button class="dropbtn">Agendamento</button>
-		<div class="dropdown-content">
-			<a href="#">Link 1</a>
-			<a href="#">Link 2</a>
-			<a href="#">Link 3</a>
+	<a class="navbar-a" href="#about">About</a>
+	<a class="navbar-a" href="#home">Home</a>
+</div>
+<!-- End Navbar -->
+
+<!-- Slides -->
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+	<div class="numbertext">2 / 3</div>
+	<img src="../resources/runningDogo.jpg" style="width:100%">
+	<div class="content">
+		<h1>Agende seu horário!</h1>
+		Confira nossos serviços
+	</div>
+</div>
+
+<div class="mySlides fade">
+	<div class="numbertext">1 / 3</div>
+	<img src="../resources/catBag.jpg" style="width:100%">
+	<div class="content">
+		<h1>Compra uns trem daora pro seu pet</h1>
+		Deixa de ser muquirana, arrombado!
+	</div>
+</div>
+
+<div class="mySlides fade">
+	<div class="numbertext">3 / 3</div>
+	<img src="../resources/dogShower.jpg" style="width:100%">
+	<div class="content">
+		<h1>Traga seu consagrado para um banho</h1>
+		Seu dog entra fedido e sai supimpa!
+	</div>
+</div>
+
+<script src="../js/slides.js"></script>
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+<!-- End Slides -->
+
+</div>
+<br>
+
+<div style="text-align:center">
+	<span class="dot" onclick="currentSlide(1)"></span> 
+	<span class="dot" onclick="currentSlide(2)"></span> 
+	<span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+<br>
+<br>
+<br>
+
+<!-- Here's the top button -->
+<button onclick="topFunction()" id="myBtn" title="Go to top">&#8593;</button>
+
+<h3 align="center" id="services">Our Services</h3>
+<hr class="style0">
+
+<!-- Here's the services list -->
+<div id="slider1">
+		<a class="buttons prevc" href="#">&#10094;</a>
+		<div class="viewportc">
+			<ul class="overview">
+				<li>
+					<div class="card">
+						<img src="../resources/tosa.jpg" alt="Tosa" style="width:100%">
+						<div class="card-container">
+							<h4>Tosa</h4> 
+							<p class="pcard">R$ 50,00</p> 
+						</div>
+					</div>
+				</li>
+
+
+				<li>
+					<div class="card">
+						<img src="../resources/banho.jpg" alt="Banho" style="width:100%">
+						<div class="card-container">
+							<h4>Tosa</h4> 
+							<p class="pcard">R$ 50,00</p> 
+						</div>
+					</div>
+				</li>
+
+				<li>
+					<div class="card">
+						<img src="../resources/tosa.jpg" alt="Tosa" style="width:100%">
+						<div class="card-container">
+							<h4>Tosa</h4> 
+							<p class="pcard">R$ 50,00</p> 
+						</div>
+					</div>
+				</li>
+
+				<li>
+					<div class="card">
+						<img src="../resources/banho.jpg" alt="Banho" style="width:100%">
+						<div class="card-container">
+							<h4>Tosa</h4> 
+							<p class="pcard">R$ 50,00</p> 
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="card">
+						<img src="../resources/tosa.jpg" alt="Tosa" style="width:100%">
+						<div class="card-container">
+							<h4>Tosa</h4> 
+							<p class="pcard">R$ 50,00</p> 
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<a class="buttons nextc" href="#">&#10095;</a>
+	</div>
+	<!-- Services list end -->
+
+<p class="paragrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+<br>
+<br>
+<br>
+
+<h3 id="products" align="center">Popular Products</h3>
+<hr class="style0">
+
+<br>
+<br>
+
+<!-- Products list begin  -->
+<div class="row img-center">
+	<div class="column">
+		<div class="card">
+			<img src="../resources/racao.jpg" alt="comida" style="width:100%">
+			<div class="card-container">
+				<h4>Ração Purina</h4> 
+				<p class="pcard">R$ 60,00</p> 
+			</div>
 		</div>
 	</div>
 
-	<!-- <a class="active" href="#home">Home</a>
-	<a href="#news">News</a>
-	<a href="#contact">Contact</a>
-	<a href="#about">About</a> -->
-</div> 
-
-<!-- Animated sidebar :) -->
-<!-- <div> 
-	<div id="sidebar" class="sidenav">
-		<script src="../js/home.js"></script>
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="#">About</a>
-		<a href="#">Services</a>
-		<a href="#">Clients</a>
-		<a href="#">Contact</a>
+	<div class="column">
+		<div class="card">
+			<img src="../resources/collar.jpg" alt="coleira" style="width:100%">
+			<div class="card-container">
+				<h4>Coleira azul</h4> 
+				<p class="pcard">RS 30,00</p> 
+			</div>
+		</div>
 	</div>
 
-	<button class="span" onclick="openNav()">open</button>
-</div> -->
+	<div class="column">
+		<div class="card">
+			<img src="../resources/racao2.jpg" alt="comida" style="width:100%">
+			<div class="card-container">
+				<h4>Ração fancy</h4> 
+				<p class="pcard">R$ 100,00</p> 
+			</div>
+		</div>
+	</div>
 
-<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-<div id="main">
-</div> 
- 
+	<div class="column">
+		<div class="card">
+			<img src="../resources/ball.png" alt="Bola" style="width:100%">
+			<div class="card-container">
+				<h4>Bolinha</h4> 
+				<p class="pcard">RS 10,00</p> 
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Products list end -->
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<h3 id="contact" align="center">Contact Us</h3>
+<hr class="style0">
+
+<p class="paragrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 </body>
-</html>
+</html> 
