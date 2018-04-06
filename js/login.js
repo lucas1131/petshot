@@ -8,7 +8,7 @@ var Groups = {
 
 /* Declare globals */
 
-var modalBox = document.getElementById("signup_form");
+var SIGNUP_FORM = "signup_form";
 var userGroup = localStorage.getItem("user_group");
 
 if(!userGroup) userGroup = Groups.Anonymous;
@@ -52,16 +52,16 @@ function logout(){
 
 function signup_form(){
 	localStorage.setItem("user_group", Groups.Anonymous);
-	modalBox.style.display = "block";
+	document.getElementById(SIGNUP_FORM).style.display = "block";
 }
 
 function cancel_signup(){
-	modalBox.style.display = "none";
+	document.getElementById(SIGNUP_FORM).style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal content, close it
 window.onclick = function(event) {
-    if (event.target == modalBox) {
-        modalBox.style.display = "none";
+    if (event.target == document.getElementById(SIGNUP_FORM)) {
+        document.getElementById(SIGNUP_FORM).style.display = "none";
     }
 }
