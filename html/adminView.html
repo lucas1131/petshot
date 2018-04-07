@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin styles -->
+	<!-- General CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/general.css">
+	<!-- Slides  CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/slides.css">
+	<!-- Navbar  CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/navbar.css">
+	<!-- Login   CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/login.css">
+	<!-- Sign up CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/signup_form.css">
+	<!-- Admin   CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/adminView.css">
+	<!-- Clock and phone icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- End styles -->
+</head>
+
+<body>
+
+<!-- Header -->
+<div id="pet_shop_header" class="header"> 
+
+	<!-- Clock and phone-->
+	<i class="fa icon">
+		&#xf017;
+		<span style="color: #4c4a37; font-size: 18px">
+			Open - Mon - Fri: 9am to 5pm
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		</span>
+		<span class="fa fa-phone">
+			<span style="color: #4c4a37; font-size: 18px">
+				(16) 1234 - 5678
+			</span>
+		</span>
+	</i>
+	
+	<!-- Login for anonymous user -->
+	<div class="login anonymous_user">
+		<form onsubmit="login()">
+			<input id="login_uname" type="text" placeholder="Username" name="uname" required>
+
+			<input id="login_psw" type="password" placeholder="Password" name="psw" required>
+
+			<button class="loginbtn" type="submit">Login</button>
+			<button class="loginbtn" type="button" onclick="signup_form()">Sign Up</button>
+			<label>
+				<input id="remember_me" type="checkbox" checked="checked" name="remember"> Remember me
+			</label>
+		</form>
+	</div>
+
+	<!-- Logged users -->
+	<div class="login normal_user admin_user">
+		<span id="logged_name"><b>Logged as: </b></span>
+		<button class="loginbtn" type="submit" onclick="logout()">Logout</button>
+	</div>
+</div>
+
+<!-- Login script - THIS NEED TO STAY HERE -->
+<script src="../js/login.js"></script>
+
+<hr class="style14">
+
+<!-- Table begin -->
+<div style="overflow-x:auto;">
+	<table class="table-custom">
+		<tr>
+			<th class="th-custom">Primeiro Nome</th>
+			<th class="th-custom">Último Nome</th>
+			<th class="th-custom">Username</th>
+			<th class="th-custom">Serviços Agendados</th>
+		</tr>
+		<tr>
+			<td class="td-custom">Giovanna</td>
+			<td class="td-custom">Guimarães</td>
+			<td class="td-custom">Xofana</td>
+			<td class="td-custom">Banho e Tosa</td>
+		</tr>
+		<tr>
+			<td class="td-custom">Eve</td>
+			<td class="td-custom">Jackson</td>
+			<td class="td-custom">94</td>
+			<td class="td-custom">94</td>
+		</tr>
+		<tr>
+			<td class="td-custom">Adam</td>
+			<td class="td-custom">Johnson</td>
+			<td class="td-custom">67</td>
+			<td class="td-custom">67</td>
+		</tr>
+	</table>
+</div>
+<!-- Table end -->
+
+</body>
+</html>
