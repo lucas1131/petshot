@@ -12,7 +12,7 @@ var SIGNUP_FORM = "signup_form";
 var userGroup = localStorage.getItem("user_group");
 
 if(!userGroup) userGroup = Groups.Anonymous;
-alert("usergroup: " + userGroup);
+
 /* Change view depending on user type */
 var userView;
 if(userGroup == Groups.Anonymous)
