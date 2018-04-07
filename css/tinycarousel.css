@@ -12,6 +12,8 @@
 #slider1 .viewportc {
     height: 350px;
     overflow: hidden;
+    overflow-y: show;
+
     position: relative;
 }
 
