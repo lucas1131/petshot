@@ -10,7 +10,7 @@
 }
 
 #slider1 .viewportc {
-    height: 270px;
+    height: 350px;
     overflow: hidden;
     position: relative;
 }
@@ -52,7 +52,7 @@
     position: absolute;
     padding: 0;
     margin: 0;
-    width: 240px;
+    /*width: 240px;*/
     left: 0;
     top: 0;
 }

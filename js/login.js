@@ -31,6 +31,8 @@ document.getElementById("logged_name").innerHTML += localStorage.getItem("userna
 
 function login(){
 
+	// TODO: remember me check
+	
 	var username = document.getElementById("login_uname");
 	var password = document.getElementById("login_psw");
 	var remember = document.getElementById("remember_me");

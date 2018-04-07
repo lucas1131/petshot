@@ -23,18 +23,7 @@
 <!-- End styles -->
 
 <!-- Begin scripts -->	
-	<!-- Carousel script begin -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="../js/jquery.tinycarousel.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function()
-		{
-			$('#slider1').tinycarousel();
-		});
-	</script>
-	<!-- Carousel script end -->
-
-	<!-- Top button script -->	
+	<!-- <script type="text/javascript" src="../js/slides.js"></script> -->
 	<script>
 		// When the user scrolls down 20px from the top of the document, show the button
 		window.onscroll = function() {scrollFunction()};
@@ -81,7 +70,7 @@
 
             <input id="login_psw" type="password" placeholder="Password" name="psw" required>
 
-            <button class="loginbtn" type="submit" onclick="login()">Login</button>
+            <button class="loginbtn" type="submit" onsubmit="login()">Login</button>
             <button class="loginbtn" type="button" onclick="signup_form()">Sign Up</button>
             <label>
                 <input id="remember_me" type="checkbox" checked="checked" name="remember"> Remember me
@@ -132,7 +121,7 @@
 
             <div class="clearfix">
                 <button class="loginbtn" type="button" onclick="cancel_signup()" class="cancelbtn">Cancel</button>
-                <button class="loginbtn" type="submit" class="signup">Sign Up</button>
+                <button class="loginbtn" type="submit" onsubmit="" class="signup">Sign Up</button>
             </div>
         </div>
     </form>
@@ -202,8 +191,10 @@
 
 <script src="../js/slides.js"></script>
 
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
+<!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+<a class="prev" onclick="">&#10094;</a>
+<a class="next" onclick="">&#10095;</a>
 <!-- End Slides -->
 
 </div>
@@ -225,66 +216,30 @@
 <hr class="style0">
 
 <!-- Here's the services list -->
-<div id="slider1">
-		<a class="buttons prevc" href="#">&#10094;</a>
-		<div class="viewportc">
-			<ul class="overview">
-				<li>
-					<div class="card">
-						<img src="../resources/tosa.jpg" alt="Tosa" style="width:100%">
-						<div class="card-container">
-							<h4>Tosa</h4> 
-							<p class="pcard">R$ 50,00</p> 
-						</div>
-					</div>
-				</li>
-
-
-				<li>
-					<div class="card">
-						<img src="../resources/banho.jpg" alt="Banho" style="width:100%">
-						<div class="card-container">
-							<h4>Tosa</h4> 
-							<p class="pcard">R$ 50,00</p> 
-						</div>
-					</div>
-				</li>
-
-				<li>
-					<div class="card">
-						<img src="../resources/tosa.jpg" alt="Tosa" style="width:100%">
-						<div class="card-container">
-							<h4>Tosa</h4> 
-							<p class="pcard">R$ 50,00</p> 
-						</div>
-					</div>
-				</li>
-
-				<li>
-					<div class="card">
-						<img src="../resources/banho.jpg" alt="Banho" style="width:100%">
-						<div class="card-container">
-							<h4>Tosa</h4> 
-							<p class="pcard">R$ 50,00</p> 
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="card">
-						<img src="../resources/tosa.jpg" alt="Tosa" style="width:100%">
-						<div class="card-container">
-							<h4>Tosa</h4> 
-							<p class="pcard">R$ 50,00</p> 
-						</div>
-					</div>
-				</li>
-			</ul>
+<div class="row align-content">
+	<div class="column">
+		<div class="card">
+			<img src="../resources/tosa.jpg" alt="Tosa" style="width:100%">
+			<div class="card-container">
+				<h4>Tosa</h4> 
+				<p class="pcard">R$ 60,00</p> 
+			</div>
 		</div>
-		<a class="buttons nextc" href="#">&#10095;</a>
 	</div>
-	<!-- Services list end -->
 
-<p class="paragrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+	<div class="column">
+		<div class="card">
+			<img src="../resources/banho.jpg" alt="Banho" style="width:100%">
+			<div class="card-container">
+				<h4>Banho</h4> 
+				<p class="pcard">RS 30,00</p> 
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Services list end -->
+
+<p class="paragrafo" style="padding-top: 50px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 
 <br>
 <br>
@@ -296,47 +251,65 @@
 <br>
 <br>
 
-<!-- Products list begin  -->
-<div class="row align-content">
-	<div class="column">
-		<div class="card">
-			<img src="../resources/racao.jpg" alt="comida" style="width:100%">
-			<div class="card-container">
-				<h4>Ração Purina</h4> 
-				<p class="pcard">R$ 60,00</p> 
-			</div>
-		</div>
-	</div>
 
-	<div class="column">
-		<div class="card">
-			<img src="../resources/collar.jpg" alt="coleira" style="width:100%">
-			<div class="card-container">
-				<h4>Coleira azul</h4> 
-				<p class="pcard">RS 30,00</p> 
-			</div>
-		</div>
-	</div>
+<!-- Here's the products list -->
+<div id="slider1">
+	<a class="buttons prevc" href="#">&#10094;</a>
+	<div class="viewportc">
+		<ul class="overview">
+			<li>
+				<div class="card">
+					<img src="../resources/racao.jpg" alt="comida" style="width:100%">
+					<div class="card-container">
+						<h4>Rasçam</h4> 
+						<p class="pcard">R$ 5,00</p> 
+					</div>
+				</div>
+			</li>
 
-	<div class="column">
-		<div class="card">
-			<img src="../resources/racao2.jpg" alt="comida" style="width:100%">
-			<div class="card-container">
-				<h4>Ração fancy</h4> 
-				<p class="pcard">R$ 100,00</p> 
-			</div>
-		</div>
-	</div>
 
-	<div class="column">
-		<div class="card">
-			<img src="../resources/ball.png" alt="Bola" style="width:100%">
-			<div class="card-container">
-				<h4>Bolinha</h4> 
-				<p class="pcard">RS 10,00</p> 
-			</div>
-		</div>
+			<li>
+				<div class="card">
+					<img src="../resources/collar.jpg" alt="coleira" style="width:100%">
+					<div class="card-container">
+						<h4>Colheira</h4> 
+						<p class="pcard">R$ 12,00</p> 
+					</div>
+				</div>
+			</li>
+
+			<li>
+				<div class="card">
+					<img src="../resources/racao2.jpg" alt="comida" style="width:100%">
+					<div class="card-container">
+						<h4>Ração</h4> 
+						<p class="pcard">R$ 50,00</p> 
+					</div>
+				</div>
+			</li>
+
+			<li>
+				<div class="card">
+					<img src="../resources/ball.png" alt="Bola" style="width:100%">
+					<div class="card-container">
+						<h4>Bollha</h4> 
+						<p class="pcard">R$ 100,00</p> 
+					</div>
+				</div>
+			</li>
+
+			<li>
+				<div class="card">
+					<img src="../resources/racao2.jpg" alt="comida" style="width:100%">
+					<div class="card-container">
+						<h4>Comida</h4> 
+						<p class="pcard">R$ 500,00</p> 
+					</div>
+				</div>
+			</li>
+		</ul>
 	</div>
+	<a class="buttons nextc" href="#">&#10095;</a>
 </div>
 <!-- Products list end -->
 
