@@ -3,7 +3,7 @@
 var Groups = {
 	Anonymous: 0,
 	Normal: 1,
-	Admin: 2,
+	Admin: 2
 };
 
 /* Declare globals */
@@ -12,7 +12,7 @@ var SIGNUP_FORM = "signup_form";
 var userGroup = localStorage.getItem("user_group");
 
 if(!userGroup) userGroup = Groups.Anonymous;
-
+alert("usergroup: " + userGroup);
 /* Change view depending on user type */
 var userView;
 if(userGroup == Groups.Anonymous)
@@ -30,7 +30,7 @@ for(var i = 0; i < userView.length; i++)
 document.getElementById("logged_name").innerHTML += localStorage.getItem("username")
 
 function login(){
-	alert("BATATA");
+
 	// TODO: remember me check
 	var username = document.getElementById("login_uname");
 	var password = document.getElementById("login_psw");
@@ -39,7 +39,6 @@ function login(){
 	if(username.value == "admin" && password.value == "admin")
 		userGroup = Groups.Admin;
 	else userGroup = Groups.Normal;
-	alert("loggin in as " + username.value);
 
 	localStorage.setItem("user_group", userGroup);
 	localStorage.setItem("username", username.value);
