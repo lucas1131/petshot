@@ -6,7 +6,6 @@ function plusSlides(n) {
 }
 
 function currentSlide(n) {
-	alert("Current slide(" + n + ")");
 	showSlides(slideIndex = n);
 }
 
@@ -15,7 +14,6 @@ function showSlides(n) {
 	var slides = document.getElementsByClassName("mySlides");
 	var dots = document.getElementsByClassName("dot");
 	
-	alert("Showing slide " + n);
 
 	if (n > slides.length) {
 		slideIndex = 1;

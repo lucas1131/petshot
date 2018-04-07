@@ -65,12 +65,12 @@
     
     <!-- Login for anonymous user -->
     <div class="login anonymous_user">
-        <form>
+        <form onsubmit="login()">
             <input id="login_uname" type="text" placeholder="Username" name="uname" required>
 
             <input id="login_psw" type="password" placeholder="Password" name="psw" required>
 
-            <button class="loginbtn" type="submit" onsubmit="login()">Login</button>
+            <button class="loginbtn" type="submit">Login</button>
             <button class="loginbtn" type="button" onclick="signup_form()">Sign Up</button>
             <label>
                 <input id="remember_me" type="checkbox" checked="checked" name="remember"> Remember me
@@ -87,7 +87,6 @@
 
 <!-- Login script - THIS NEED TO STAY HERE -->
 <script src="../js/login.js"></script>
-
 <!-- End Header -->
 
 <!-- Sign up form -->
@@ -96,7 +95,7 @@
     
     <span onclick="cancel_signup()" class="close" title="Close Modal">&times;</span>
 
-    <form class="modal-content modal_content_fade opaque">
+    <form class="modal-content modal_content_fade opaque" onsubmit="">
         <div class="container opaque">
             <h1>Sign Up</h1>
             <hr>
@@ -121,7 +120,7 @@
 
             <div class="clearfix">
                 <button class="loginbtn" type="button" onclick="cancel_signup()" class="cancelbtn">Cancel</button>
-                <button class="loginbtn" type="submit" onsubmit="" class="signup">Sign Up</button>
+                <button class="loginbtn" type="submit" class="signup">Sign Up</button>
             </div>
         </div>
     </form>
@@ -191,10 +190,8 @@
 
 <script src="../js/slides.js"></script>
 
-<!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-<a class="prev" onclick="">&#10094;</a>
-<a class="next" onclick="">&#10095;</a>
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
 <!-- End Slides -->
 
 </div>
