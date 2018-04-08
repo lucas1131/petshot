@@ -1,9 +1,17 @@
+.edit {
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 10px;
+	cursor: pointer;
+}
 
 .statistics_card {
     box-shadow: 0 4px 8px 0 var(--drop-shadow-color);
     margin: 20px;
     padding: 20px;
     background-color: var(--background-color4);
+    max-height: 60px;
+    max-width: 25%;
 }
 
 .table-custom {
@@ -25,7 +33,7 @@
 	font-size: 40px;
 	font-weight: 400;
 	line-height: 32px;
-	margin: 0 0 10px;
+	margin: 20px 0 10px;
 }
 
 
@@ -37,6 +45,7 @@
 	width: 20%;
 	max-width: 20%;
 	background: #f1f1f1;
+	display: inline-block;
 }
 
 /* Style the submit button */
