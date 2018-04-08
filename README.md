@@ -2,7 +2,9 @@
 
 ## Grupo
 Giovanna Oliveira Guimarães	9293693
+
 Lucas Alexandre Soares		9293265
+
 Rafael Augusto Monteiro		9293095
 
 ## Aviso
