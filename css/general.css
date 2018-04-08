@@ -67,7 +67,7 @@ hr.style0 {
 
 /* h3 style */
 .header3 { 
-	color: var(--color7); 
+	color: var(--foreground-color1); 
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 28px;
 	font-weight: 400;
