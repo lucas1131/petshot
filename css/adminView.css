@@ -30,6 +30,13 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+.th-icon, .td-icon{
+	width: 20px;
+    padding: 8px;
+    font-family: 'Source Sans Pro', sans-serif;
+
+}
+
 .h1-admin {
 	color: #7c795d; 
 	font-family: 'Source Sans Pro', sans-serif;
