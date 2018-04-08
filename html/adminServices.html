@@ -78,6 +78,38 @@
 
 <hr class="style14">
 
+<!-- Register services form -->
+<!-- The Modal (contains the Sign Up form) -->
+<div id="signup_form" class="modal modal_fade">
+    
+    <span onclick="cancel_signup()" class="close" title="Close Modal">&times;</span>
+
+    <form class="modal-content modal_content_fade opaque" onsubmit="">
+        <div class="container opaque">
+            <h1>Cadastrar</h1>
+            <hr class="sign-hr">
+            
+            <label for="email"><b>Nome do serviço: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
+
+            <label for="email"><b>Id: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
+			
+			<label for="email"><b>Preço: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
+
+            <label for="email"><b>Descrição: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
+
+            <div class="clearfix">
+                <button class="loginbtn" type="button" onclick="cancel_signup()" class="cancelbtn">Cancelar</button>
+                <button class="loginbtn" type="submit" class="signup">Cadastrar</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- End register services form -->
+
 <!-- Navbar -->
 <div class="navbar">
 	<img class="logo" src="../resources/logo.png">
@@ -127,31 +159,54 @@
 		<p><b>Consultas veterinárias neste mês: </b>4</p> 
 	</div>
 </div>
+
+<!-- Search field -->
+<form class="search" action="" style="margin-left: 32px; max-width: 50%;">
+	<input class="search search_input" type="text" placeholder="Search..." name="search">
+	<button class="search_button" type="submit">
+		<i class="fa fa-search"></i>
+	</button>
+
+	<!-- Register new client -->
+	<button class="loginbtn" type="button" style="height: 46px; max-width: 150px; margin: 0 0 0 40px" onclick="signup_form()">Cadastrar serviço</button>
+</form>
+<!-- End Search field -->
+
 <!-- Table begin -->
 <div style="overflow-x:auto;">
 	<table class="table-custom">
 		<tr>
 			<th class="th-custom">Serviço</th>
+			<th class="th-custom">Identificador</th>
+			<th class="th-custom">Descrição</th>
 			<th class="th-custom">Preço</th>
 			<th class="th-custom">Compras totais</th>
 		</tr>
 		<tr>
 			<td class="td-custom">Tosa</td>
+			<td class="td-custom">001</td>
+			<td class="td-custom">Cortamos os pelinhos do seu dog</td>
 			<td class="td-custom">R$ 60,00</td>
 			<td class="td-custom">1</td>
 		</tr>
 		<tr>
 			<td class="td-custom">Banho</td>
+			<td class="td-custom">002</td>
+			<td class="td-custom">Seu dog fica sheroso</td>
 			<td class="td-custom">R$ 30,00</td>
 			<td class="td-custom">2</td>
 		</tr>
 		<tr>
 			<td class="td-custom">Castração</td>
+			<td class="td-custom">003</td>
+			<td class="td-custom">Ripipi do seu doge</td>
 			<td class="td-custom">R$ 50,00</td>
 			<td class="td-custom">3</td>
 		</tr>
 		<tr>
 			<td class="td-custom">Veterinário</td>
+			<td class="td-custom">004</td>
+			<td class="td-custom">Deixamos seu doggo saudável</td>
 			<td class="td-custom">R$ 90,00</td>
 			<td class="td-custom">9</td>
 		</tr>

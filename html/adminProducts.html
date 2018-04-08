@@ -78,6 +78,38 @@
 	<script src="../js/login.js"></script>
 
 	<hr class="style14">
+	
+	<!-- Register products form -->
+	<!-- The Modal (contains the Sign Up form) -->
+	<div id="signup_form" class="modal modal_fade">
+	    
+	    <span onclick="cancel_signup()" class="close" title="Close Modal">&times;</span>
+
+	    <form class="modal-content modal_content_fade opaque" onsubmit="">
+	        <div class="container opaque">
+	            <h1>Cadastrar</h1>
+	            <hr class="sign-hr">
+	            
+	            <label for="email"><b>Nome do produto: </b></label>
+	            <input class="modal_input" type="text" name="email" required><br>
+
+	            <label for="email"><b>Id: </b></label>
+	            <input class="modal_input" type="text" name="email" required><br>
+				
+				<label for="email"><b>Preço: </b></label>
+	            <input class="modal_input" type="text" name="email" required><br>
+
+	            <label for="email"><b>Descrição: </b></label>
+	            <input class="modal_input" type="text" name="email" required><br>
+
+	            <div class="clearfix">
+	                <button class="loginbtn" type="button" onclick="cancel_signup()" class="cancelbtn">Cancelar</button>
+	                <button class="loginbtn" type="submit" class="signup">Cadastrar</button>
+	            </div>
+	        </div>
+	    </form>
+	</div>
+	<!-- End register products form -->
 
 	<!-- Navbar -->
 	<div class="navbar">
@@ -143,13 +175,17 @@
 	<!-- End Statistics cards -->
 
 	<!-- Search field -->
-	<form class="search" action="" style="margin-left: 8px; max-width: 25%;">
+	<form class="search" action="" style="max-width: 50%;">
 		<input class="search search_input" type="text" placeholder="Search..." name="search">
 		<button class="search_button" type="submit">
 			<i class="fa fa-search"></i>
 		</button>
+
+		<!-- Register new client -->
+		<button class="loginbtn" type="button" style="height: 46px; max-width: 150px; margin: 0 0 0 40px" onclick="signup_form()">Cadastrar produto</button>
 	</form>
 	<!-- End Search field -->
+
 	<!-- Table begin -->
 	<div style="overflow-x:auto;">
 		<table class="table-custom">
