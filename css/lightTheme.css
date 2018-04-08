@@ -8,19 +8,22 @@
 
 	/* Main */
 	--foreground-color1: #4c4a37;
+	--foreground-color2: #7c795d;
+	
+	--background-color1: #7c795d;
 
 	--slides-hover-color: #717171;
-	--color7: #7c795d;
+
 	--color8: #888888;
 	--color9: #8c8b8b;
 	--color10: #AAAAAA;
-	--color11: #AAAAB1;
-	--color12: #bbbbbb;
 	--color13: #cccccc;
 	--color14: #dcdcdc;
+	
 	--color15: #dddddd;
-	--color16: #e5601d;
 	--color17: #E8E8E8;
+
+	--color16: #e5601d;
 	--color18: #f0f0f0;
 	--color19: #f1f1f1;
 	--color20: #f2f2f2;
