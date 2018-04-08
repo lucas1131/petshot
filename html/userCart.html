@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin styles -->
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/lightTheme.css">
+	<!-- General CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/general.css">
+	<!-- Search CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/search_field.css">
+	<!-- Slides  CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/slides.css">
+	<!-- Navbar  CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/navbar.css">
+	<!-- Login   CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/login.css">
+	<!-- Sign up CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/signup_form.css">
+	<!-- Clock and phone icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Carousel CSS -->
+	<link rel="stylesheet" href="../css/tinycarousel.css" type="text/css" media="screen"/>
+	<!-- Admin CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/adminView.css">
+<!-- End styles -->
+
+<!-- End styles -->
+</head>
+
+<body>
+
+<!-- Header -->
+<div id="pet_shop_header" class="header"> 
+
+    <!-- Clock and phone-->
+    <i class="fa icon">
+        &#xf017;
+        <span style="color: #4c4a37; font-size: 18px">
+            Aberto - Seg - Sex: 9am à 5pm
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        </span>
+        <span class="fa fa-phone">
+            <span style="color: #4c4a37; font-size: 18px">
+                (16) 1234 - 5678
+            </span>
+        </span>
+    </i>
+    
+    <!-- Login for anonymous user -->
+    <div class="login anonymous_user">
+        <form onsubmit="login()">
+            <input id="login_uname" class="login_input" type="text" placeholder="Username" name="uname" required>
+
+            <input id="login_psw" class="login_input" type="password" placeholder="Password" name="psw" required>
+
+            <button class="loginbtn" type="submit">Entrar</button>
+            <button class="loginbtn" type="button" onclick="signup_form()">Cadastrar</button>
+            <label>
+                <input id="remember_me" type="checkbox" checked="checked" name="remember"> Lembrar de mim
+            </label>
+        </form>
+    </div>
+
+    <!-- Logged users -->
+    <div class="login normal_user admin_user">
+        <span id="logged_name"><b>Usuário: </b></span>
+        <a id="logged_name" href="#profile" class="profile"><u>Perfil</u></a>
+        <img src="../resources/avatar.png" style="width: 50px; height: 50px; float:right;">
+        <button class="loginbtn" type="submit" onclick="logout()">Sair</button>
+    </div>
+</div>
+
+
+<hr class="style14">
+
+<!-- Register services form -->
+<!-- The Modal (contains the Sign Up form) -->
+<div id="signup_form" class="modal modal_fade">
+    
+    <span onclick="cancel_signup()" class="close" title="Close Modal">&times;</span>
+
+    <form class="modal-content modal_content_fade opaque" onsubmit="">
+        <div class="container opaque">
+            <h1>Cadastrar</h1>
+            <hr class="sign-hr">
+            
+            <label for="email"><b>Nome do serviço: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
+
+            <label for="email"><b>Id: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
+			
+			<label for="email"><b>Preço: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
+
+            <label for="email"><b>Descrição: </b></label>
+            <input class="modal_input" type="text" name="email" required><br>
+
+            <div class="clearfix">
+                <button class="loginbtn" type="button" onclick="cancel_signup()" class="cancelbtn">Cancelar</button>
+                <button class="loginbtn" type="submit" class="signup">Cadastrar</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- End register services form -->
+
+<!-- Navbar -->
+<div class="navbar">
+
+	<img class="logo" src="../resources/logo.png">
+	
+	<a class="navbar-a normal_user" href="#">Agendamento</a>
+	<div class="dropdown">
+		<a href="#management" class="admin_user"><button class="dropbtn">Gerenciamento</button></a>
+		<div class="dropdown-content align-content">
+			<a class="navbar-a dropdown-padding-fix" href="#">Clientes</a>
+			<hr class="style14 dropdown-line">
+			<a class="navbar-a dropdown-padding-fix" href="#">Produtos</a>
+			<hr class="style14 dropdown-line">
+			<a class="navbar-a dropdown-padding-fix" href="#">Serviços</a>
+		</div>
+	</div>
+
+	<a class="navbar-a" href="#contact">Contato</a>
+	<div class="dropdown">
+		<a href="#services"><button class="dropbtn">Serviços</button></a>
+		<div class="dropdown-content align-content">
+			<a class="navbar-a dropdown-padding-fix" href="#">Serviço 1</a>
+			<hr class="style14 dropdown-line">
+			<a class="navbar-a dropdown-padding-fix" href="#">Serviço 2</a>
+			<hr class="style14 dropdown-line">
+			<a class="navbar-a dropdown-padding-fix" href="#">Serviço 3</a>
+		</div>
+	</div>
+	<div class="dropdown">
+		<a href="#products"><button class="dropbtn">Produtos</button></a>
+		<div class="dropdown-content">
+			<a class="navbar-a dropdown-padding-fix" href="#">Produto 1</a>
+			<hr class="style14 dropdown-line">
+			<a class="navbar-a dropdown-padding-fix" href="#">Produto 2</a>
+			<hr class="style14 dropdown-line">
+			<a class="navbar-a dropdown-padding-fix" href="#">Produto 3</a>
+		</div>
+	</div>
+	<a class="navbar-a" href="#about">Sobre</a>
+	<a class="navbar-a" href="#home">Home</a>
+</div>
+<!-- End Navbar -->
+
+<hr class="style14">
+<h1 class="h1-admin">Carrinho</h1>
+<br>
+
+<!-- Statistics cards -->
+
+<!-- Table begin -->
+<div style="overflow-x:auto;">
+	<table class="table-custom">
+		<tr>
+			<th class="th-thumb"></th>
+			<th class="th-custom">Produto</th>
+			<th class="th-custom" style="text-align: center">Quantidade</th>
+			<th class="th-custom">Valor Un.</th>
+			<th class="th-custom">Valor Total</th>
+		</tr>
+		<tr>
+			<td class="th-thumb"><a><img src="http://via.placeholder.com/100x100"></a></td>
+			<td class="td-custom">Pet Show Ração de Cachorro 1Kg</td>
+			<td class="td-custom" style="text-align: center">10<i class="fa edit">&#xf044;</i></td>
+			<td class="td-custom">R$ 20,00</td>
+			<td class="td-custom">R$ 200,00</td>
+		</tr>
+	</table>
+</div>
+<!-- Table end -->
+
+<!-- Login script - THIS NEED TO STAY HERE -->
+<script src="../js/login.js"></script>
+
+</body>
+</html>

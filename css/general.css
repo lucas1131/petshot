@@ -180,3 +180,11 @@ h4.style4 {
     font-family: 'Source Sans Pro', sans-serif;
 
 }
+
+.th-thumb, .td-thumb{
+	text-align: center;
+	width: 100px;
+    padding: 8px;
+    font-family: 'Source Sans Pro', sans-serif;
+
+}
