@@ -158,3 +158,33 @@ h4.style4 {
 .admin_user {
 	display: none;
 }
+
+.table-custom {
+	padding: 0px 15px;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid var(--border-color);
+}
+
+.th-custom, .td-custom {
+    text-align: left;
+    padding: 8px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.th-icon, .td-icon{
+	text-align: center;
+	width: 20px;
+    padding: 8px;
+    font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+.th-thumb, .td-thumb{
+	text-align: center;
+	width: 100px;
+    padding: 8px;
+    font-family: 'Source Sans Pro', sans-serif;
+
+}

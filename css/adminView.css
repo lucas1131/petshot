@@ -17,27 +17,6 @@
     overflow: auto;
 }
 
-.table-custom {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 1px solid var(--border-color);
-}
-
-.th-custom, .td-custom {
-    text-align: left;
-    padding: 8px;
-    font-family: 'Source Sans Pro', sans-serif;
-}
-
-.th-icon, .td-icon{
-	text-align: center;
-	width: 20px;
-    padding: 8px;
-    font-family: 'Source Sans Pro', sans-serif;
-
-}
-
 .h1-admin {
 	color: #7c795d; 
 	font-family: 'Source Sans Pro', sans-serif;

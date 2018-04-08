@@ -153,84 +153,27 @@
 <!-- End Navbar -->
 
 <hr class="style14">
-<h1 class="h1-admin">Gerenciamento de Clientes</h1>
+<h1 class="h1-admin">Carrinho</h1>
 <br>
 
 <!-- Statistics cards -->
-<div class="row align-content">
-	<div class="statistics_card">
-		<p><b>Tosas neste mês: </b>2</p> 
-	</div>
-	<div class="statistics_card">
-		<p><b>Banhos neste mês: </b>2</p> 
-	</div>
-	<div class="statistics_card">
-		<p><b>Castrações neste mês: </b>2</p> 
-	</div>
-	<div class="statistics_card">
-		<p><b>Consultas veterinárias neste mês: </b>4</p> 
-	</div>
-</div>
-
-<!-- Search field -->
-<form class="search" action="" style="max-width: 50%;">
-	<input class="search search_input" type="text" placeholder="Search..." name="search">
-	<button class="search_button" type="submit">
-		<i class="fa fa-search"></i>
-	</button>
-
-	<!-- Register new client -->
-	<button class="loginbtn" type="button" style="height: 46px; max-width: 150px; margin: 0 0 0 40px" onclick="signup_form()">Cadastrar serviço</button>
-</form>
-<!-- End Search field -->
 
 <!-- Table begin -->
 <div style="overflow-x:auto;">
 	<table class="table-custom">
 		<tr>
-			<th class="th-icon">Editar</th>
-			<th class="th-icon">Excluir</th>
-			<th class="th-custom">ID</th>
-			<th class="th-custom">Serviço</th>
-			<th class="th-custom">Descrição</th>
-			<th class="th-custom">Preço</th>
-			<th class="th-custom">Compras totais</th>
+			<th class="th-thumb"></th>
+			<th class="th-custom">Produto</th>
+			<th class="th-custom" style="text-align: center">Quantidade</th>
+			<th class="th-custom">Valor Un.</th>
+			<th class="th-custom">Valor Total</th>
 		</tr>
 		<tr>
-			<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-			<td class="td-icon"><i class="fa fa-minus"></i></td>
-			<td class="td-custom">1</td>
-			<td class="td-custom">Tosa</td>
-			<td class="td-custom">Cortamos os pelinhos do seu dog</td>
-			<td class="td-custom">R$ 60,00</td>
-			<td class="td-custom">1</td>
-		</tr>
-		<tr>
-			<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-			<td class="td-icon"><i class="fa fa-minus"></i></td>
-			<td class="td-custom">2</td>
-			<td class="td-custom">Banho</td>
-			<td class="td-custom">Seu dog fica sheroso</td>
-			<td class="td-custom">R$ 30,00</td>
-			<td class="td-custom">2</td>
-		</tr>
-		<tr>
-			<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-			<td class="td-icon"><i class="fa fa-minus"></i></td>
-			<td class="td-custom">3</td>
-			<td class="td-custom">Castração</td>
-			<td class="td-custom">Ripipi do seu doge</td>
-			<td class="td-custom">R$ 50,00</td>
-			<td class="td-custom">3</td>
-		</tr>
-		<tr>
-			<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-			<td class="td-icon"><i class="fa fa-minus"></i></td>
-			<td class="td-custom">4</td>
-			<td class="td-custom">Veterinário</td>
-			<td class="td-custom">Deixamos seu doggo saudável</td>
-			<td class="td-custom">R$ 90,00</td>
-			<td class="td-custom">9</td>
+			<td class="th-thumb"><a><img src="http://via.placeholder.com/100x100"></a></td>
+			<td class="td-custom">Pet Show Ração de Cachorro 1Kg</td>
+			<td class="td-custom" style="text-align: center">10<i class="fa edit">&#xf044;</i></td>
+			<td class="td-custom">R$ 20,00</td>
+			<td class="td-custom">R$ 200,00</td>
 		</tr>
 	</table>
 </div>
