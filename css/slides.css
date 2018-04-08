@@ -13,7 +13,7 @@
     position: absolute; /* Position the background text */
     bottom: 0; /* At the bottom. Use top:0 to append it to the top */
     background: rgba(0, 0, 0, 0.1); /* Black background with 0.5 opacity */
-    color: var(--color19); /* Grey text */
+    color: var(--foreground-color4); /* Grey text */
     width: 100%; /* Full width */
     padding: 20px; /* Some padding */
     font-family: 'Source Sans Pro', sans-serif;
@@ -48,7 +48,7 @@
 
 /* Caption text */
 .text {
-    color: var(--color20);
+    color: var(--foreground-color4);
     font-size: 15px;
     padding: 8px 12px;
     position: absolute;
@@ -59,7 +59,7 @@
 
 /* Number text (1/3 etc) */
 .numbertext {
-    color: var(--color20);
+    color: var(--foreground-color4);
     font-size: 12px;
     padding: 8px 12px;
     position: absolute;

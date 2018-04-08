@@ -6,13 +6,13 @@
 	margin: 5px 0 22px 0;
 	display: inline-block;
 	border: none;
-	background: var(--color19);
+	background: var(--background-color4);
     box-sizing: border-box;
 }
 
 /* Add a background color when the inputs get focus */
 .modal_input[type=text]:focus, .modal_input[type=password]:focus {
-	background-color: var(--color15);
+	background-color: var(--border-color);
 	outline: none;
 }
 
@@ -39,17 +39,17 @@
 
 /* Modal Content/Box */
 .modal-content {
-	background-color: var(--color23);
+	background-color: var(--background-color3);
 	margin: 3% auto 5% auto; /* 5% from the top, 15% from the bottom and centered */
 	/*padding: auto;*/
-	border: 1px solid var(--color8);
 	border-radius: 12px;
+	border-color: var(--border-color);
 	width: 40%; /* Could be more or less, depending on screen size */
 }
 
 /* Style the horizontal ruler */
 .sign-hr {
-	border: 1px solid var(--color19);
+	border: 1px solid var(--border-color);
 	margin-bottom: 25px;
 }
 
@@ -60,11 +60,11 @@
 	top: 15px;
 	font-size: 40px;
 	font-weight: bold;
-	color: var(--color19);
+	color: var(--background-color2);
 }
 
 .close:hover, .close:focus {
-	color: var(--color21);
+	color: var(--foreground-color3);
 	cursor: pointer;
 }
 

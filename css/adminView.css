@@ -2,7 +2,7 @@
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
-    border: 1px solid var(--color15);
+    border: 1px solid var(--border-color);
 }
 
 .th-custom, .td-custom {
@@ -11,4 +11,6 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-tr:nth-child(even) {background-color: var(--color20)}
+tr:nth-child(even) {
+	background-color: var(--table-row-even-color);
+}

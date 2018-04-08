@@ -5,32 +5,34 @@
 	--calendar-hover-color: #27e879;
 	--calendar-event-color: #2980B9;
 	--calendar-main-color: #2ECC71;
+	--calendar-unfocused-color: #AAAAAA;
 
 	/* Main */
-	--foreground-color1: #4c4a37;
-	--foreground-color2: #7c795d;
+	--foreground-color1: #4c4a37; /* Text */
+	--foreground-color2: #7c795d; /* Button, links, etc*/
+	--foreground-color3: #e5601d; /* Buttons, links, etc, in hover or focus */
+	--foreground-color4: #dddddd; /* Text 2 */
 	
-	--background-color1: #7c795d;
-
-	--slides-hover-color: #717171;
-
-	--color8: #888888;
-	--color9: #8b8b8b;
-	--color10: #AAAAAA;
-	--color13: #cccccc;
-	--color14: #dcdcdc;
+	--background-color1: #7c795d; 
+	--background-color2: #cccccc; 
+	--background-color3: #ffffff;
+	--background-color4: #f2f2f2;
 	
-	--color15: #dddddd;
-	--color17: #E8E8E8;
+	--background-focused-color1: #cccccc;
 
-	--color16: #e5601d;
-	--color18: #f0f0f0;
-	--color19: #f1f1f1;
-	--color20: #f2f2f2;
-	--color21: #f44336;
-	--color22: #f9f9f9;
-	--color23: #fefefe;
-	--color24: #ffffff;
+	--border-color: #cccccc;
 
 	--drop-shadow-color: rgba(0, 0, 0, 0.2);
+	
+	/* Slides */
+	--slides-hover-color: #717171;
+
+	/* Tables */
+	--table-row-even-color: #f2f2f2;
+}
+
+input {
+	/* Force input text and background color to avoid text blending with bg */
+	color: var(--foreground-color1); 
+	background-color: var(--background-color3);
 }

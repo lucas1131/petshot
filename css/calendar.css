@@ -9,7 +9,7 @@
 }
 
 .year {
-	color: var(--color17);
+	color: var(--calendar-unfocused-color);
 	font-size: 30px;
 	float: right;
 	position: relative;
@@ -22,7 +22,7 @@
 	width: 0;
 	height: 0;
 	border-top: 5px solid transparent;
-	border-right: 10px solid var(--color17);
+	border-right: 10px solid var(--calendar-unfocused-color);
 	border-bottom: 5px solid transparent;
 	float: right;
 	position: relative;
@@ -34,7 +34,7 @@
 	width: 0;
 	height: 0;
 	border-top: 5px solid transparent;
-	border-left: 10px solid var(--color17);
+	border-left: 10px solid var(--calendar-unfocused-color);
 	border-bottom: 5px solid transparent;
 	float: right;
 	position: relative;
@@ -56,7 +56,7 @@
 }
 
 .months {
-	color: var(--color10);
+	color: var(--calendar-unfocused-color);
 	position: relative;
 	left: 350px;
 	top: 90px;
@@ -64,7 +64,7 @@
 }
 
 .month-line {
-	border-color: var(--color17);
+	border-color: var(--calendar-unfocused-color);
 	position: relative;
 	top: 85px;
 	width: 57%;
@@ -72,7 +72,7 @@
 }
 
 .days {
-	color: var(--color10);
+	color: var(--calendar-unfocused-color);
 	position: relative;
 	font-size: 18px;
 	left: 355px;

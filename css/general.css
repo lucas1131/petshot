@@ -17,7 +17,7 @@ body {
 	position: absolute;
 	padding-top: 30px;
 	padding-left: 8px;
-	color: var(--color16);
+	color: var(--foreground-color3);
 }
 
 /* Start card styles */
@@ -68,7 +68,7 @@ hr.style0 {
 }
 
 h4.style4 {
-	color: var(--color16);
+	color: var(--foreground-color3);
 	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
 }
@@ -107,7 +107,7 @@ h4.style4 {
 }
 
 #myBtn:hover {
-	background-color: var(--color16);
+	background-color: var(--foreground-color3);
 }
 /* End top button */
 

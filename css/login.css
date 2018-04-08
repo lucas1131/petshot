@@ -3,14 +3,11 @@
     height: 80px;
     float: left;
     padding: 5px 10px;
-    /*border: 3px solid var(--color13);*/
 }
 
 .header {
     height: 80px;
     position: relative;
-    /*border: 3px solid var(--color13);*/
-    /*background-color: var(--color8);*/
 }
 
 .login {
@@ -18,7 +15,6 @@
     position: relative;
     width: 99%;
     text-align: right;
-    /*border: 3px solid var(--color13);*/
 }
 /* End header style */
 
@@ -30,14 +26,13 @@
     padding: 5px 5px;
     margin: 8px 8px 8px 0px;
     display: inline-block;
-    border: 1px solid var(--color13);
+    border: 1px solid var(--border-color);
     box-sizing: border-box;
 }
 
 /* Set a style for login buttons */
 .loginbtn {
     z-index: 99;
-    /*font-size: 18px;*/
     border: none;
     outline: none;
     width: 100px;
@@ -45,23 +40,19 @@
     background-color: var(--background-color1);
     color: white;
     cursor: pointer;
-    /*padding: 15px;*/
     margin: 8px 8px;
     border-radius: 4px;
 }
 
 /* Add a hover effect for buttons */
 .loginbtn:hover {
-    /*opacity: 0.8;*/
-    
-    background-color: var(--color16);
+    background-color: var(--foreground-color3);
 }
 
 /* Extra style for the cancel button (red) */
 .cancelbtn {
     width: auto;
     padding: 10px 18px;
-    /*background-color: var(--color21);*/
     background-color: var(--background1);
 }
 

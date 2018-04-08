@@ -45,16 +45,16 @@
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-    /*background-color: var(--color16);*/
-    color: var(--color16);
+    /*background-color: var(--foreground-color3);*/
+    color: var(--foreground-color3);
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--color22);
+    background-color: var(--background-color4);
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px var(--drop-shadow-color);
     z-index: 1;
 }
 
@@ -69,7 +69,7 @@
 
 /* O que ta acontecendo aqui, fica laranja */
 .dropdown-content a:hover {
-    /*background-color: var(--color15);*/
+    /*background-color: var(--border-color);*/
 }
 
 .dropdown:hover .dropdown-content {
