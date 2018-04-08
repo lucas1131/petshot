@@ -1,5 +1,6 @@
 .mySlides {
-    display: none
+    display: none;
+    margin: 5px -15px;
 }
 
 /* Slideshow container */

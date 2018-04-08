@@ -9,6 +9,14 @@ body {
     justify-content: center;
 }
 
+.profile {
+	color: var(--foreground-color1);
+}
+
+.profile:hover{
+	color: var(--foreground-color3);
+}
+
 /* Icon style */
 .icon {
 	float: left;
