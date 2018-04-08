@@ -1,3 +1,11 @@
+
+.statistics_card {
+    box-shadow: 0 4px 8px 0 var(--drop-shadow-color);
+    margin: 20px;
+    padding: 20px;
+    background-color: var(--background-color4);
+}
+
 .table-custom {
     width: 100%;
     border-collapse: collapse;
