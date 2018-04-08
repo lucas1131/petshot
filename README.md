@@ -10,10 +10,10 @@ Como já tinhamos começado a fazer uma página com funcionalidades, decidimos d
 
 ## Mockup
 ### Home Page
-A página principal do site é a `home.html`. Nela se encontra opções para um usuário logar ou se cadastrar, informações sobre a loja, produtos, serviços, preços e notícias. Os campos de login são escondidos quando o usuário entra no site. No lugar aparece o nome do usuário e seu avatar, ao lado de um botão de *sair*
+A página principal do site é a `home.html`. Nela se encontra opções para um usuário logar ou se cadastrar, informações sobre a loja, produtos, serviços, preços e notícias. Os campos de login são escondidos quando o usuário entra no site. No lugar aparece o nome do usuário e seu avatar, ao lado de um botão de *sair*. Esta página já suporta login de usuários (sem verificação de cadastro, ou seja, qualquer nome e senha é válido para logar (utilizar nome `admin` e senha `admin` para entrar como administrador)).
 
 ### Administrador
 As visões do administrador permitem que ele gerencie clientes, produtos e serviços.	Estas telas aparecerão quando o administrador clicar em algum botão sob o menu de gerenciamento (apenas visível à usuários com permissões elevadas).
 
 ### Usuário comum
-Um usuário logado pode registrar serviços ou adicionar produtos ao seu carrinho de compras clicando nos respectivos cartões. No caso dos serviços, um calendário será aberto para mostrar ao usuário os seus serviços já agendados e possíveis datas para agendar um serviço. Se o usuário clicar em um dia com serviço já agendado, informações sobre o agendamento serão mostradas.
+Um usuário logado pode registrar serviços ou adicionar produtos ao seu carrinho de compras clicando nos respectivos cartões. No caso dos serviços, um calendário será aberto para mostrar ao usuário os seus serviços já agendados e possíveis datas para agendar um serviço. Se o usuário clicar em um dia com serviço já agendado, informações sobre o agendamento serão mostradas. Se o usuário clicar no botão de Agendamento, o calendário com seus serviços já registrados aparecerá.
