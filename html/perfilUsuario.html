@@ -5,9 +5,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Begin styles -->
+	<!-- Begin styles -->
 	<!-- Theme    CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/lightTheme.css">
+	<!-- Handler for dark/light themes -->
+	<script type="text/javascript" src="../js/switch_theme.js"></script>
 	<!-- General  CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/general.css">
 	<!-- Search   CSS -->
@@ -26,7 +27,7 @@
 	<link rel="stylesheet" href="../css/tinycarousel.css" type="text/css" media="screen"/>
 	<!-- Admin    CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/adminView.css">
-<!-- End   styles -->
+	<!-- End styles -->
 	
 	<style type="text/css">
 		.header4 {
@@ -44,17 +45,18 @@
     <!-- Clock and phone-->
     <i class="fa icon">
         &#xf017;
-        <span style="color: #4c4a37; font-size: 18px">
+        <span style="color: var(--foreground-color1); font-size: 18px">
             Aberto - Seg - Sex: 9am à 5pm
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         </span>
         <span class="fa fa-phone">
-            <span style="color: #4c4a37; font-size: 18px">
+            <span style="color: var(--foreground-color1); font-size: 18px">
                 (16) 1234 - 5678
             </span>
         </span>
     </i>
     
+
     <!-- Login for anonymous user -->
     <div class="login anonymous_user">
         <form onsubmit="login()">
@@ -65,18 +67,20 @@
             <button class="loginbtn" type="submit">Entrar</button>
             <button class="loginbtn" type="button" onclick="signup_form()">Cadastrar</button>
             <label>
-                <input id="remember_me" type="checkbox" checked="checked" name="remember"> Lembrar de mim
+                <input id="remember_me" type="checkbox" checked="checked" name="remember"> <span class="text">Lembrar de mim</span>
             </label>
         </form>
     </div>
 
     <!-- Logged users -->
     <div class="login normal_user admin_user">
-        <span id="logged_name"><b>Usuário: </b></span>
+        <span id="logged_name" class="text" class="text"><b>Usuário: </b></span>
         <a id="logged_name" href="#profile" class="profile"><u>Perfil</u></a>
         <img src="../resources/avatar.png" style="width: 50px; height: 50px; float:right;">
         <button class="loginbtn" type="submit" onclick="logout()">Sair</button>
     </div>
+
+    <a href="javascript:void(0)" class="switch_theme text" onclick="SwitchTheme()" ><u>Switch theme</u></a>
 </div>
 
 <!-- Sign up form -->
@@ -168,7 +172,7 @@
 <br>
 <h3 class="header3">Informações de usuário</h3>
 
-<p> Digite sua senha atual: </p>
+<p class="text"> Digite sua senha atual: </p>
 <form class="search" action="" style="max-width: 50%;">
 	<input class="search search_input" type="text" placeholder="Senha Atual" name="password"><br>
 </form>
@@ -186,19 +190,19 @@
 <div style="overflow-x:auto;">
 	<table class="table-custom">
 		<tr>
-			<th class="th-icon">Editar</th>
-			<th class="th-icon">Excluir</th>
-			<th class="th-custom">Endereços</th>
+			<th class="text th-icon">Editar</th>
+			<th class="text th-icon">Excluir</th>
+			<th class="text th-custom">Endereços</th>
 		</tr>
 		<tr>
-			<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-			<td class="td-icon"><i class="fa fa-minus"></i></td>
-			<td class="td-custom">Rua dos Bobos, Nº 0</td>
+			<td class="text td-icon"><i class="fa edit">&#xf044;</i></td>
+			<td class="text td-icon"><i class="fa fa-minus"></i></td>
+			<td class="text td-custom">Rua dos Bobos, Nº 0</td>
 		</tr>
 		<tr>
-			<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-			<td class="td-icon"><i class="fa fa-minus"></i></td>
-			<td class="td-custom">Rua Casa do Caralho, Nº 1</td>
+			<td class="text td-icon"><i class="fa edit">&#xf044;</i></td>
+			<td class="text td-icon"><i class="fa fa-minus"></i></td>
+			<td class="text td-custom">Rua Casa do Caralho, Nº 1</td>
 		</tr>
 	</table>
 
