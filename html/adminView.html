@@ -14,10 +14,6 @@
 	<link rel="stylesheet" type="text/css" href="../css/slides.css">
 	<!-- Navbar  CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/navbar.css">
-	<!-- Login   CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/login.css">
-	<!-- Sign up CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/signup_form.css">
 	<!-- Admin   CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/adminView.css">
 	<!-- Clock and phone icons -->
@@ -71,12 +67,53 @@
 
 <hr class="style14">
 
+<!-- Navbar -->
+<div class="navbar">
+	<img class="logo" src="../resources/logo.png">
+	<a class="navbar-a admin_user" href="#">Management</a>
+	<a class="navbar-a" href="#contact">Contact</a>
+	<div class="dropdown">
+		<a href="#services"><button class="dropbtn">Services</button></a>
+		<div class="dropdown-content">
+			<a class="navbar-a" href="#">Service 1</a>
+			<hr class="style14">
+			<a class="navbar-a" href="#">Service 2</a>
+			<hr class="style14">
+			<a class="navbar-a" href="#">Service 3</a>
+		</div>
+	</div>
+	<div class="dropdown">
+		<a href="#products"><button class="dropbtn">Products</button></a>
+		<div class="dropdown-content">
+			<a class="navbar-a" href="#">Product 1</a>
+			<hr class="style14">
+			<a class="navbar-a" href="#">Product 2</a>
+			<hr class="style14">
+			<a class="navbar-a" href="#">Product 3</a>
+		</div>
+	</div>
+	<a class="navbar-a" href="#about">About</a>
+	<a class="navbar-a" href="#home">Home</a>
+</div>
+<!-- End Navbar -->
+
+<hr class="style14">
+<h1 class="h1-admin">Gerenciamento de Clientes</h1>
+<br>
+
+<!-- The form -->
+<form class="form-example" action="action_page.php">
+	<input type="text" placeholder="Buscar.." name="search">
+	<button class="button-sc" type="submit"><i class="fa fa-search"></i></button>
+</form>
+<br><br><br><br><br><br>
+
 <!-- Table begin -->
 <div style="overflow-x:auto;">
 	<table class="table-custom">
 		<tr>
 			<th class="th-custom">Primeiro Nome</th>
-			<th class="th-custom">Último Nome</th>
+			<th class="th-custom">Sobrenome</th>
 			<th class="th-custom">Username</th>
 			<th class="th-custom">Serviços Agendados</th>
 		</tr>
@@ -87,16 +124,16 @@
 			<td class="td-custom">Banho e Tosa</td>
 		</tr>
 		<tr>
-			<td class="td-custom">Eve</td>
-			<td class="td-custom">Jackson</td>
-			<td class="td-custom">94</td>
-			<td class="td-custom">94</td>
+			<td class="td-custom">Rafael</td>
+			<td class="td-custom">Juregson</td>
+			<td class="td-custom">Jurg</td>
+			<td class="td-custom">Banho</td>
 		</tr>
 		<tr>
-			<td class="td-custom">Adam</td>
-			<td class="td-custom">Johnson</td>
-			<td class="td-custom">67</td>
-			<td class="td-custom">67</td>
+			<td class="td-custom">Lucas</td>
+			<td class="td-custom">Soares</td>
+			<td class="td-custom">Iron</td>
+			<td class="td-custom">Tosa</td>
 		</tr>
 	</table>
 </div>
