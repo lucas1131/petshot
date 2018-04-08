@@ -1,10 +1,3 @@
-body {
-	width: 50%;
-	margin: 100px auto;
-	background-color: lightgray;
-	font-family: 'Kanit', sans-serif;
-}
-
 .calendar-base {
 	width: 900px;
 	height: 500px;
