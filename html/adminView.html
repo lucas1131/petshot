@@ -8,6 +8,8 @@
 <!-- Begin styles -->
 	<!-- General CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/general.css">
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/lightTheme.css">
 	<!-- Slides  CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/slides.css">
 	<!-- Navbar  CSS -->
@@ -32,7 +34,7 @@
 	<i class="fa icon">
 		&#xf017;
 		<span style="color: #4c4a37; font-size: 18px">
-			Open - Mon - Fri: 9am to 5pm
+			Aberto - Seg - Sex: 9am à 5pm
 			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 		</span>
 		<span class="fa fa-phone">
@@ -50,17 +52,17 @@
 			<input id="login_psw" type="password" placeholder="Password" name="psw" required>
 
 			<button class="loginbtn" type="submit">Login</button>
-			<button class="loginbtn" type="button" onclick="signup_form()">Sign Up</button>
+			<button class="loginbtn" type="button" onclick="signup_form()">Cadastrar</button>
 			<label>
-				<input id="remember_me" type="checkbox" checked="checked" name="remember"> Remember me
+				<input id="remember_me" type="checkbox" checked="checked" name="remember"> Lembrar de mim
 			</label>
 		</form>
 	</div>
 
 	<!-- Logged users -->
 	<div class="login normal_user admin_user">
-		<span id="logged_name"><b>Logged as: </b></span>
-		<button class="loginbtn" type="submit" onclick="logout()">Logout</button>
+		<span id="logged_name"><b>Usuário: </b></span>
+		<button class="loginbtn" type="submit" onclick="logout()">Sair</button>
 	</div>
 </div>
 

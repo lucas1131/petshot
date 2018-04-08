@@ -16,7 +16,7 @@ body {
 }
 
 .year {
-	color: #E8E8E8;
+	color: var(--color17);
 	font-size: 30px;
 	float: right;
 	position: relative;
@@ -29,7 +29,7 @@ body {
 	width: 0;
 	height: 0;
 	border-top: 5px solid transparent;
-	border-right: 10px solid #E8E8E8;
+	border-right: 10px solid var(--color17);
 	border-bottom: 5px solid transparent;
 	float: right;
 	position: relative;
@@ -41,7 +41,7 @@ body {
 	width: 0;
 	height: 0;
 	border-top: 5px solid transparent;
-	border-left: 10px solid #E8E8E8;
+	border-left: 10px solid var(--color17);
 	border-bottom: 5px solid transparent;
 	float: right;
 	position: relative;
@@ -49,21 +49,21 @@ body {
 	top: 36px;
 }
 .triangle-left:hover{
-	border-right: 10px solid#2ECC71;
+	border-right: 10px solid var(--calendar-main-color);
 }
 .triangle-right:hover{
-	border-left: 10px solid#2ECC71;
+	border-left: 10px solid var(--calendar-main-color);
 }
 
 .month-color {
-	color: #27AE60;
+	color: var(--active-month-color);
 }
 .month-hover:hover{
-	color:#27e879 !important;
+	color: var(--calendar-hover-color) !important;
 }
 
 .months {
-	color: #AAAAAA;
+	color: var(--color10);
 	position: relative;
 	left: 350px;
 	top: 90px;
@@ -71,7 +71,7 @@ body {
 }
 
 .month-line {
-	border-color: #E8E8E8;
+	border-color: var(--color17);
 	position: relative;
 	top: 85px;
 	width: 57%;
@@ -79,7 +79,7 @@ body {
 }
 
 .days {
-	color: #AAAAAA;
+	color: var(--color10);
 	position: relative;
 	font-size: 18px;
 	left: 355px;
@@ -131,7 +131,7 @@ body {
 	width: 35px;
 	height: 35px;
 	border-radius: 50%;
-	background-color: #2ECC71;
+	background-color: var(--calendar-main-color);
 	position: relative;
 	top: 295px;
 	left: 661px;
@@ -145,7 +145,7 @@ body {
 	width: 5px;
 	height: 5px;
 	border-radius: 50%;
-	background-color: #2980B9;
+	background-color: var(--calendar-event-color);
 	position: relative;
 	top: 304px;
 	left: 695px;
@@ -158,14 +158,14 @@ body {
 }
 
 .grey {
-	color: #AAAAB1;
+	color: var(--color11);
 }
 
 .calendar-left {
 	width: 300px;
 	height: 500px;
 	border-radius: 20px 0px 0px 20px;
-	background-color: #2ECC71;
+	background-color: var(--calendar-main-color);
 	position: relative;
 	z-index: -1;
 	bottom: 500px;
@@ -179,7 +179,7 @@ body {
 }
 
 .burger-line:hover, .hamburger:hover{
-	background-color:#27e879 !important;
+	background-color: var(--calendar-hover-color) !important;
 }
 
 .burger-line {
@@ -217,7 +217,7 @@ body {
 	text-decoration: underline dotted;
 }
 .posts:hover{
-	color:#27e879 !important;
+	color: var(--calendar-hover-color) !important;
 }
 
 .create-event {
@@ -252,6 +252,6 @@ body {
 }
 
 .add:hover, .create-event:hover, .add-event:hover{
-	color:#27e879 !important;
-	border-color: #27e879 !important;
+	color: var(--calendar-hover-color) !important;
+	border-color: var(--calendar-hover-color) !important;
 }

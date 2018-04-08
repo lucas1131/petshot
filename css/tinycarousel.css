@@ -18,7 +18,7 @@
 }
 
 #slider1 .buttons {
-    background: #e5601d;
+    background: var(--color16);
     border-radius: 35px;
     display: block;
     position: absolute;
@@ -26,7 +26,7 @@
     left: 0;
     width: 35px;
     height: 35px;
-    color: #fff;
+    color: var(--color24);
     font-weight: bold;
     text-align: center;
     line-height: 35px;
@@ -41,8 +41,8 @@
 }
 
 #slider1 .buttons:hover {
-    color: #e5601d;
-    background: #fff;
+    color: var(--color16);
+    background: var(--color24);
 }
 
 #slider1 .disable {
@@ -64,6 +64,6 @@
     margin: 0 20px 0 0;
     /*padding: 1px;*/
     height: 121px;
-    /*border: 1px solid #dcdcdc;*/
+    /*border: 1px solid var(--color14);*/
     width: 236px;
  }

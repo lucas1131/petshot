@@ -18,6 +18,16 @@
     text-decoration: none;
 }
 
+.dropdown-line {
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-padding-fix {
+    padding-top: 25px !important;
+    padding-bottom: 20px !important;
+}
+
 .dropdown {
     float: right;
     overflow: hidden;
@@ -35,14 +45,14 @@
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-    /*background-color: #e5601d;*/
-    color: #e5601d;
+    /*background-color: var(--color16);*/
+    color: var(--color16);
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: var(--color22);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -59,7 +69,7 @@
 
 /* O que ta acontecendo aqui, fica laranja */
 .dropdown-content a:hover {
-    /*background-color: #ddd;*/
+    /*background-color: var(--color15);*/
 }
 
 .dropdown:hover .dropdown-content {
