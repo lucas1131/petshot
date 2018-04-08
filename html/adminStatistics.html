@@ -83,27 +83,6 @@
 	    <span onclick="cancel_signup()" class="close" title="Close Modal">&times;</span>
 
 	    <form class="modal-content modal_content_fade opaque" onsubmit="">
-	        <div class="container opaque">
-	            <h1>Cadastrar</h1>
-	            <hr class="sign-hr">
-	            
-	            <label for="email"><b>Nome do produto: </b></label>
-	            <input class="modal_input" type="text" name="email" required><br>
-
-	            <label for="email"><b>Id: </b></label>
-	            <input class="modal_input" type="text" name="email" required><br>
-				
-				<label for="email"><b>Preço: </b></label>
-	            <input class="modal_input" type="text" name="email" required><br>
-
-	            <label for="email"><b>Descrição: </b></label>
-	            <input class="modal_input" type="text" name="email" required><br>
-
-	            <div class="clearfix">
-	                <button class="loginbtn" type="button" onclick="cancel_signup()" class="cancelbtn">Cancelar</button>
-	                <button class="loginbtn" type="submit" class="signup">Cadastrar</button>
-	            </div>
-	        </div>
 	    </form>
 	</div>
 	<!-- End register products form -->
@@ -152,81 +131,29 @@
 	<!-- End Navbar -->
 
 	<hr class="style14">
-	<h1 class="h1-admin">Gerenciamento de Produtos</h1>
+	<h1 class="h1-admin">Vendas Mensais</h1>
 	<br>
 
 	<!-- Statistics cards -->
 	<div class="row align-content">
 		<div class="statistics_card">
-			<i class="fa fa-users" style="opacity: 0.6;"></i>
-			<p><b>Produtos cadastrados: </b>3</p>
+			<p><b>Produtos vendidos: </b>9</p>
 		</div>
 		<div class="statistics_card">
-			<i class="fa fa-users" style="opacity: 0.6;"></i>
-			<p><b>Produtos em Estoque: </b>40</p>
+			<p><b>Serviços vendidos: </b>4</p>
 		</div>
 		<div class="statistics_card">
-			<i class="fa fa-users" style="opacity: 0.6;"></i>
-			<p><b>Vendas desse mês: </b>10</p>
+			<p><b>Gastos: </b>R$ 1000,00</p>
 		</div>
 		<div class="statistics_card">
-			<i class="fa fa-users" style="opacity: 0.6;"></i>
-			<p><b>Lucro: </b>R$200,00</p>
+			<p><b>Lucro Bruto: </b>R$ 200,00</p>
+		</div>
+		<div class="statistics_card">
+			<p><b>Saldo: </b>-R$ 800,00</p>
 		</div>
 	</div>
 	<!-- End Statistics cards -->
 
-	<!-- Search field -->
-	<form class="search" action="" style="max-width: 50%;">
-		<input class="search search_input" type="text" placeholder="Search..." name="search">
-		<button class="search_button" type="submit">
-			<i class="fa fa-search"></i>
-		</button>
-
-		<!-- Register new client -->
-		<button class="loginbtn" type="button" style="height: 46px; max-width: 150px; margin: 0 0 0 40px" onclick="signup_form()">Cadastrar produto</button>
-	</form>
-	<!-- End Search field -->
-
-	<!-- Table begin -->
-	<div style="overflow-x:auto;">
-		<table class="table-custom">
-			<tr>
-				<th class="th-icon">Editar</th>
-				<th class="th-icon">Excluir</th>
-				<th class="th-custom">ID</th>
-				<th class="th-custom">Nome</th>
-				<th class="th-custom">Preço</th>
-				<th class="th-custom">Descrição</th>
-				<th class="th-custom">Qtd. em Estoque</th>
-				<th class="th-custom">Qtd. Vendida</th>
-				<td class="th-custom">Foto</td>
-			</tr>
-			<tr>
-				<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-				<td class="td-icon"><i class="fa fa-minus"></i></td>
-				<td class="th-custom">1</th>
-				<td class="th-custom">Pet Show Ração de Gato 1Kg</th>
-				<td class="th-custom">R$20,00</th>
-				<td class="th-custom">Ração de cachorro para gatos. Nham nham!</th>
-				<td class="th-custom">20</th>
-				<td class="th-custom">0</th>
-				<td class="th-thumb"><a><img src="http://via.placeholder.com/100x100"></a></td>
-			</tr>
-			<tr>
-				<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-				<td class="td-icon"><i class="fa fa-minus"></i></td>
-				<td class="th-custom">2</th>
-				<td class="th-custom">Pet Show Ração de Cachorro 1Kg</th>
-				<td class="th-custom">R$20,00</th>
-				<td class="th-custom">Ração de gatos para cachorros. Eca!</th>
-				<td class="th-custom">30</th>
-				<td class="th-custom">10</th>
-				<td class="th-thumb"><a><img src="http://via.placeholder.com/100x100"></a></td>
-			</tr>
-		</table>
-	</div>
-	<!-- Table end -->
 	<!-- Login script - THIS NEED TO STAY HERE -->
 	<script src="../js/login.js"></script>
 	

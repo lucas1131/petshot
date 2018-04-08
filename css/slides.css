@@ -1,6 +1,6 @@
 .mySlides {
     display: none;
-    margin: 5px -15px;
+    /*margin: 5px -15px;*/
 }
 
 /* Slideshow container */
@@ -19,6 +19,10 @@
     padding: 20px; /* Some padding */
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 20px;
+}
+
+.content {
+    padding: 0 !important;
 }
 
 /* Next & previous buttons */
