@@ -6,10 +6,11 @@
 }
 
 .statistics_card {
+
     box-shadow: 0 4px 8px 0 var(--drop-shadow-color);
     margin: 20px;
     padding: 20px;
-    background-color: var(--background-color4);
+    background-color: var(--background-color3);
     /*height: 100px;*/
     max-height: 100px;
     width: 15%;
@@ -18,7 +19,7 @@
 }
 
 .h1-admin {
-	color: #7c795d; 
+	color: var(--foreground-color5); 
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 40px;
 	font-weight: 400;
@@ -64,4 +65,8 @@
 
 tr:nth-child(even) {
 	background-color: var(--table-row-even-color);
+}
+
+tr:nth-child(odd) {
+	background-color: var(--table-row-odd-color);
 }

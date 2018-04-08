@@ -7,7 +7,8 @@
 
 	<!-- Begin styles -->
 	<!-- Theme CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/lightTheme.css">
+	<!-- Handler for dark/light themes -->
+	<script type="text/javascript" src="../js/switch_theme.js"></script>
 	<!-- General CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/general.css">
 	<!-- Search CSS -->
@@ -39,17 +40,18 @@
 	    <!-- Clock and phone-->
 	    <i class="fa icon">
 	        &#xf017;
-	        <span style="color: #4c4a37; font-size: 18px">
+	        <span style="color: var(--foreground-color1); font-size: 18px">
 	            Aberto - Seg - Sex: 9am à 5pm
 	            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 	        </span>
 	        <span class="fa fa-phone">
-	            <span style="color: #4c4a37; font-size: 18px">
+	            <span style="color: var(--foreground-color1); font-size: 18px">
 	                (16) 1234 - 5678
 	            </span>
 	        </span>
 	    </i>
 	    
+
 	    <!-- Login for anonymous user -->
 	    <div class="login anonymous_user">
 	        <form onsubmit="login()">
@@ -60,18 +62,20 @@
 	            <button class="loginbtn" type="submit">Entrar</button>
 	            <button class="loginbtn" type="button" onclick="signup_form()">Cadastrar</button>
 	            <label>
-	                <input id="remember_me" type="checkbox" checked="checked" name="remember"> Lembrar de mim
+	                <input id="remember_me" type="checkbox" checked="checked" name="remember"> <span class="text">Lembrar de mim</span>
 	            </label>
 	        </form>
 	    </div>
 
 	    <!-- Logged users -->
 	    <div class="login normal_user admin_user">
-	        <span id="logged_name"><b>Usuário: </b></span>
+	        <span id="logged_name" class="text" class="text"><b>Usuário: </b></span>
 	        <a id="logged_name" href="#profile" class="profile"><u>Perfil</u></a>
 	        <img src="../resources/avatar.png" style="width: 50px; height: 50px; float:right;">
 	        <button class="loginbtn" type="submit" onclick="logout()">Sair</button>
 	    </div>
+
+	    <a href="javascript:void(0)" class="switch_theme text" onclick="SwitchTheme()" ><u>Switch theme</u></a>
 	</div>
 
 	<hr class="style14">
@@ -137,19 +141,19 @@
 	<!-- Statistics cards -->
 	<div class="row align-content">
 		<div class="statistics_card">
-			<p><b>Produtos vendidos: </b>9</p>
+			<p class="text"><b>Produtos vendidos: </b>9</p>
 		</div>
 		<div class="statistics_card">
-			<p><b>Serviços vendidos: </b>4</p>
+			<p class="text"><b>Serviços vendidos: </b>4</p>
 		</div>
 		<div class="statistics_card">
-			<p><b>Gastos: </b>R$ 1000,00</p>
+			<p class="text"><b>Gastos: </b>R$ 1000,00</p>
 		</div>
 		<div class="statistics_card">
-			<p><b>Lucro Bruto: </b>R$ 200,00</p>
+			<p class="text"><b>Lucro Bruto: </b>R$ 200,00</p>
 		</div>
 		<div class="statistics_card">
-			<p><b>Saldo: </b>-R$ 800,00</p>
+			<p class="text"><b>Saldo: </b>-R$ 800,00</p>
 		</div>
 	</div>
 	<!-- End Statistics cards -->

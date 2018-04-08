@@ -5,14 +5,15 @@
 
 .navbar {
     overflow: hidden;
-    background-color: #FFFFFF;
+    background-color: var(--background-color3);
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .navbar-a {
     float: right;
     font-size: 16px;
-    color: black;
+    color: var(--foreground-color1);
+    background-color: var(--background-color3);
     text-align: center;
     padding: 28px 32px;
     text-decoration: none;
@@ -37,7 +38,7 @@
     font-size: 16px;    
     border: none;
     outline: none;
-    color: black;
+    color: var(--foreground-color1);
     padding: 28px 32px;
     background-color: inherit;
     font-family: inherit;
@@ -45,7 +46,6 @@
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-    /*background-color: var(--foreground-color3);*/
     color: var(--foreground-color3);
 }
 
@@ -53,14 +53,15 @@
     display: none;
     position: absolute;
     background-color: var(--background-color4);
+    
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px var(--drop-shadow-color);
     z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content a.navbar-a {
     float: none;
-    color: black;
+    color: var(--foreground-color1);;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -69,7 +70,8 @@
 
 /* O que ta acontecendo aqui, fica laranja */
 .dropdown-content a:hover {
-    /*background-color: var(--border-color);*/
+    color: var(--foreground-color3);
+    background-color: var(--border-color);
 }
 
 .dropdown:hover .dropdown-content {

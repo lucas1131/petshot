@@ -1,3 +1,7 @@
+body {
+	background-color: var(--background-color4);
+}
+
 :root {
 
 	/* Calendar */
@@ -8,21 +12,21 @@
 	--calendar-unfocused-color: #888888;
 
 	/* Main */
-	--foreground-color1: #4c4a37; /* Text */
+	--foreground-color1: #cccccc; /* Text */
 	--foreground-color2: #7c795d; /* Button, links, etc */
 	--foreground-color3: #e5601d; /* Buttons, links, etc, in hover or focus */
 	--foreground-color4: #dddddd; /* Text 2 */
-	--foreground-color5: #7c795d; /* Headers */
+	--foreground-color5: #b7b38d; /* Headers */
 	
 	--background-color1: #7c795d; 
 	--background-color2: #cccccc; 
-	--background-color3: #ffffff;
-	--background-color4: #f2f2f2;
+	--background-color3: #333333;
+	--background-color4: #222222;
 	
 	--background-focused-color1: #cccccc;
 	--background-focused-color2: #e5601d; /* Buttons, links, etc, in hover or focus */
 
-	--border-color: #cccccc;
+	--border-color: #666666;
 
 	--drop-shadow-color: rgba(0, 0, 0, 0.2);
 	
@@ -30,8 +34,8 @@
 	--slides-hover-color: #717171;
 
 	/* Tables */
-	--table-row-even-color: #f2f2f2;
-	--table-row-odd-color: #ffffff;
+	--table-row-even-color: #222222;
+	--table-row-odd-color: #333333;
 }
 
 input {

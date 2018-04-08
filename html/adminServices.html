@@ -7,7 +7,8 @@
 
 <!-- Begin styles -->
 	<!-- Theme CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/lightTheme.css">
+	<!-- Handler for dark/light themes -->
+	<script type="text/javascript" src="../js/switch_theme.js"></script>
 	<!-- General CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/general.css">
 	<!-- Search CSS -->
@@ -39,17 +40,18 @@
     <!-- Clock and phone-->
     <i class="fa icon">
         &#xf017;
-        <span style="color: #4c4a37; font-size: 18px">
+        <span style="color: var(--foreground-color1); font-size: 18px">
             Aberto - Seg - Sex: 9am à 5pm
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         </span>
         <span class="fa fa-phone">
-            <span style="color: #4c4a37; font-size: 18px">
+            <span style="color: var(--foreground-color1); font-size: 18px">
                 (16) 1234 - 5678
             </span>
         </span>
     </i>
     
+
     <!-- Login for anonymous user -->
     <div class="login anonymous_user">
         <form onsubmit="login()">
@@ -60,18 +62,20 @@
             <button class="loginbtn" type="submit">Entrar</button>
             <button class="loginbtn" type="button" onclick="signup_form()">Cadastrar</button>
             <label>
-                <input id="remember_me" type="checkbox" checked="checked" name="remember"> Lembrar de mim
+                <input id="remember_me" type="checkbox" checked="checked" name="remember"> <span class="text">Lembrar de mim</span>
             </label>
         </form>
     </div>
 
     <!-- Logged users -->
     <div class="login normal_user admin_user">
-        <span id="logged_name"><b>Usuário: </b></span>
+        <span id="logged_name" class="text" class="text"><b>Usuário: </b></span>
         <a id="logged_name" href="#profile" class="profile"><u>Perfil</u></a>
         <img src="../resources/avatar.png" style="width: 50px; height: 50px; float:right;">
         <button class="loginbtn" type="submit" onclick="logout()">Sair</button>
     </div>
+
+    <a href="javascript:void(0)" class="switch_theme text" onclick="SwitchTheme()" ><u>Switch theme</u></a>
 </div>
 
 
@@ -85,19 +89,19 @@
 
     <form class="modal-content modal_content_fade opaque" onsubmit="">
         <div class="container opaque">
-            <h1>Cadastrar</h1>
+            <h1 class="text">Cadastrar</h1>
             <hr class="sign-hr">
             
-            <label for="email"><b>Nome do serviço: </b></label>
+            <label class="text" for="email"><b>Nome do serviço: </b></label>
             <input class="modal_input" type="text" name="email" required><br>
 
-            <label for="email"><b>Id: </b></label>
+            <label class="text" for="email"><b>Id: </b></label>
             <input class="modal_input" type="text" name="email" required><br>
 			
-			<label for="email"><b>Preço: </b></label>
+			<label class="text" for="email"><b>Preço: </b></label>
             <input class="modal_input" type="text" name="email" required><br>
 
-            <label for="email"><b>Descrição: </b></label>
+            <label class="text" for="email"><b>Descrição: </b></label>
             <input class="modal_input" type="text" name="email" required><br>
 
             <div class="clearfix">
@@ -159,16 +163,16 @@
 <!-- Statistics cards -->
 <div class="row align-content">
 	<div class="statistics_card">
-		<p><b>Tosas neste mês: </b>2</p> 
+		<p class="text"><b>Tosas neste mês: </b>2</p> 
 	</div>
 	<div class="statistics_card">
-		<p><b>Banhos neste mês: </b>2</p> 
+		<p class="text"><b>Banhos neste mês: </b>2</p> 
 	</div>
 	<div class="statistics_card">
-		<p><b>Castrações neste mês: </b>2</p> 
+		<p class="text"><b>Castrações neste mês: </b>2</p> 
 	</div>
 	<div class="statistics_card">
-		<p><b>Consultas veterinárias neste mês: </b>4</p> 
+		<p class="text"><b>Consultas veterinárias neste mês: </b>4</p> 
 	</div>
 </div>
 
@@ -188,49 +192,49 @@
 <div style="overflow-x:auto;">
 	<table class="table-custom">
 		<tr>
-			<th class="th-icon">Editar</th>
-			<th class="th-icon">Excluir</th>
-			<th class="th-custom">ID</th>
-			<th class="th-custom">Serviço</th>
-			<th class="th-custom">Descrição</th>
-			<th class="th-custom">Preço</th>
-			<th class="th-custom">Compras totais</th>
+			<th class="text th-icon">Editar</th>
+			<th class="text th-icon">Excluir</th>
+			<th class="text th-custom">ID</th>
+			<th class="text th-custom">Serviço</th>
+			<th class="text th-custom">Descrição</th>
+			<th class="text th-custom">Preço</th>
+			<th class="text th-custom">Compras totais</th>
 		</tr>
 		<tr>
-			<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-			<td class="td-icon"><i class="fa fa-minus"></i></td>
-			<td class="td-custom">1</td>
-			<td class="td-custom">Tosa</td>
-			<td class="td-custom">Cortamos os pelinhos do seu dog</td>
-			<td class="td-custom">R$ 60,00</td>
-			<td class="td-custom">1</td>
+			<td class="text td-icon"><i class="fa edit">&#xf044;</i></td>
+			<td class="text td-icon"><i class="fa fa-minus"></i></td>
+			<td class="text td-custom">1</td>
+			<td class="text td-custom">Tosa</td>
+			<td class="text td-custom">Cortamos os pelinhos do seu dog</td>
+			<td class="text td-custom">R$ 60,00</td>
+			<td class="text td-custom">1</td>
 		</tr>
 		<tr>
-			<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-			<td class="td-icon"><i class="fa fa-minus"></i></td>
-			<td class="td-custom">2</td>
-			<td class="td-custom">Banho</td>
-			<td class="td-custom">Seu dog fica sheroso</td>
-			<td class="td-custom">R$ 30,00</td>
-			<td class="td-custom">2</td>
+			<td class="text td-icon"><i class="fa edit">&#xf044;</i></td>
+			<td class="text td-icon"><i class="fa fa-minus"></i></td>
+			<td class="text td-custom">2</td>
+			<td class="text td-custom">Banho</td>
+			<td class="text td-custom">Seu dog fica sheroso</td>
+			<td class="text td-custom">R$ 30,00</td>
+			<td class="text td-custom">2</td>
 		</tr>
 		<tr>
-			<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-			<td class="td-icon"><i class="fa fa-minus"></i></td>
-			<td class="td-custom">3</td>
-			<td class="td-custom">Castração</td>
-			<td class="td-custom">Ripipi do seu doge</td>
-			<td class="td-custom">R$ 50,00</td>
-			<td class="td-custom">3</td>
+			<td class="text td-icon"><i class="fa edit">&#xf044;</i></td>
+			<td class="text td-icon"><i class="fa fa-minus"></i></td>
+			<td class="text td-custom">3</td>
+			<td class="text td-custom">Castração</td>
+			<td class="text td-custom">Ripipi do seu doge</td>
+			<td class="text td-custom">R$ 50,00</td>
+			<td class="text td-custom">3</td>
 		</tr>
 		<tr>
-			<td class="td-icon"><i class="fa edit">&#xf044;</i></td>
-			<td class="td-icon"><i class="fa fa-minus"></i></td>
-			<td class="td-custom">4</td>
-			<td class="td-custom">Veterinário</td>
-			<td class="td-custom">Deixamos seu doggo saudável</td>
-			<td class="td-custom">R$ 90,00</td>
-			<td class="td-custom">9</td>
+			<td class="text td-icon"><i class="fa edit">&#xf044;</i></td>
+			<td class="text td-icon"><i class="fa fa-minus"></i></td>
+			<td class="text td-custom">4</td>
+			<td class="text td-custom">Veterinário</td>
+			<td class="text td-custom">Deixamos seu doggo saudável</td>
+			<td class="text td-custom">R$ 90,00</td>
+			<td class="text td-custom">9</td>
 		</tr>
 	</table>
 </div>
