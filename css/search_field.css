@@ -13,11 +13,13 @@
 .search_button {
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
+    max-width: 68px;
 }
 
 .search {
     padding-bottom: 20px;
     font-size: 17px;
+    max-width: 226px;
 }
 
 .search .search_button {
