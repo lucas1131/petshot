@@ -107,7 +107,7 @@ h4.style4 {
 }
 
 #myBtn:hover {
-	background-color: var(--foreground-color3);
+	background-color: var(--background-focused-color2);
 }
 /* End top button */
 

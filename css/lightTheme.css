@@ -19,6 +19,7 @@
 	--background-color4: #f2f2f2;
 	
 	--background-focused-color1: #cccccc;
+	--background-focused-color2: #e5601d; /* Buttons, links, etc, in hover or focus */
 
 	--border-color: #cccccc;
 

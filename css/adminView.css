@@ -11,6 +11,51 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+.h1-admin {
+	color: #7c795d; 
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 32px;
+	margin: 0 0 10px;
+}
+
+
+/* Style the search field */
+.form-example input[type=text] {
+	padding: 10px;
+	font-size: 17px;
+	float: left;
+	width: 20%;
+	max-width: 20%;
+	background: #f1f1f1;
+}
+
+/* Style the submit button */
+.button-sc {
+	float: left;
+	width: 10%;
+	max-width: 10%;
+	height: 40px;
+	padding: 10px;
+	background: #7c795d;
+	color: white;
+	font-size: 17px;
+	border-left: none; /* Prevent double borders */
+	cursor: pointer;
+}
+
+.form-example .button-sc:hover {
+  background: #e5601d;
+}
+
+/* Clear floats */
+.form-example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 tr:nth-child(even) {
 	background-color: var(--table-row-even-color);
 }

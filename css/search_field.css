@@ -2,36 +2,38 @@
 .search_input[type=text] {
     padding: 10px;
     font-size: 17px;
-    border: 1px solid grey;
+    border: 1px solid var(--border-color);
     float: left;
     width: 60%;
-    background: #f1f1f1;
+    background: var(--background-color4);
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.search_button {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .search {
-    padding: 10px;
+    padding-bottom: 20px;
     font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 80%;
-    background: #f1f1f1;
-    /*max-height: 35px;*/
 }
 
 .search .search_button {
     float: left;
     width: 20%;
     padding: 10px;
-    background: #2196F3;
-    color: white;
+    background: var(--background-color1);
+    color: var(--foreground-color4);
     font-size: 17px;
-    border: 1px solid grey;
+    border: 1px solid var(--border-color);
     border-left: none;
     cursor: pointer;
 }
 
-.search .search_button:hover {
-    background: #0b7dda;
+.search_button:hover {
+    background-color: var(--background-focused-color2);
 }
 
 .search::after {
