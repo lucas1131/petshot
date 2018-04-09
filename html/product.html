@@ -32,50 +32,37 @@
 
 <body>
 <!-- Header -->
-<div id="pet_shop_header" class="header"> 
-
+<header>
     <!-- Clock and phone-->
-    <i class="fa icon">
-        &#xf017;
-        <span style="color: var(--foreground-color1); font-size: 18px">
-            Aberto - Seg - Sex: 9am à 5pm
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        </span>
-        <span class="fa fa-phone">
-            <span style="color: var(--foreground-color1); font-size: 18px">
-                (16) 1234 - 5678
-            </span>
-        </span>
-    </i>
-    
+    <div class="header-left"><i class="fa icon">&#xf017;</i> Aberto - Seg - Sex: 9am à 5pm</div>
 
-    <!-- Login for anonymous user -->
-    <div class="login anonymous_user">
-        <form onsubmit="login()">
-            <input id="login_uname" class="login_input" type="text" placeholder="Username" name="uname" required>
+    <!-- Login button -->
+    <div class="header-right">
+    	<!-- Login for anonymous user -->
+	    <div class="login anonymous_user">
 
-            <input id="login_psw" class="login_input" type="password" placeholder="Password" name="psw" required>
+	        <form onsubmit="login()">
+	            <input id="login_uname" class="login_input" type="text" placeholder="Username" name="uname" required>
+	            <input id="login_psw" class="login_input" type="password" placeholder="Password" name="psw" required>
+	            <button class="loginbtn" type="submit">Entrar</button>
+	            <button class="loginbtn" type="button" onclick="signup_form()">Cadastrar</button>
+	            <input id="remember_me" type="checkbox" checked="checked" name="remember"> <span class="text">Lembrar de mim</span>
+	    		<a href="" class="text" onclick="SwitchTheme()" style="vertical-align: middle; padding-left: 5px;"><u>Trocar Tema</u></a>
+	        </form>
 
-            <button class="loginbtn" type="submit">Entrar</button>
-            <button class="loginbtn" type="button" onclick="signup_form()">Cadastrar</button>
-            <label>
-                <input id="remember_me" type="checkbox" checked="checked" name="remember"> <span class="text">Lembrar de mim</span>
-            </label>
-        </form>
+	    </div>
+
+	    <div class="login normal_user admin_user">
+	        <span id="logged_name" class="text" class="text"><b>Usuário: </b></span>
+	        <img src="../resources/avatar.png" style="max-width: 55px; vertical-align: middle">
+	        <a href="userCart.html" class="text" style="text-decoration: none;"><i class="fa fa-shopping-cart icon" style="padding-right: 5px; font-size: 30px; vertical-align: sub"></i><b>Meu Carrinho</b></button></a>
+	        <a href="perfilUsuario.html"><button class="loginbtn" id="profilebutton">Meu Perfil</button></a>
+	        <button class="loginbtn" type="submit" onclick="logout()">Sair</button>
+			<a href="javascript:void(0)" class="text" onclick="SwitchTheme()" style="vertical-align: middle; padding-left: 5px;"><u>Trocar Tema</u></a>
+	    </div>
+    	
     </div>
-
-    <!-- Logged users -->
-    <div class="login normal_user admin_user">
-    	<i class="fa fa-shopping-cart icon" style="font-size: 18px; margin: 25px 0 0 0;"> <a href="userCart.html" style="color: var(--foreground-color1);">Cart</a></i>
-        
-        <span id="logged_name" class="text" class="text"><b>Usuário: </b></span>
-        <a id="logged_name" href="perfilUsuario.html" class="profile"><u>Perfil</u></a>
-        <img src="../resources/avatar.png" style="width: 50px; height: 50px; float:right;">
-        <button class="loginbtn" type="submit" onclick="logout()">Sair</button>
-    </div>
-
-    <a href="javascript:void(0)" class="switch_theme text" onclick="SwitchTheme()" ><u>Switch theme</u></a>
-</div>
+</header>
 
 <!-- Sign up form -->
 <!-- The Modal (contains the Sign Up form) -->

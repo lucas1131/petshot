@@ -16,13 +16,6 @@ body {
 	color: var(--foreground-color1);
 }
 
-.switch_theme {
-	position: relative;
-	float: right;
-	margin: 0 20px;
-	z-index: 100;
-}
-
 .align-content {
 	display: flex;
 	flex-direction: row;
@@ -44,12 +37,7 @@ body {
 
 /* Icon style */
 .icon {
-	float: left;
-	font-size: 35px;
-	text-align: left;
-	position: absolute;
-	padding-top: 30px;
-	padding-left: 8px;
+	font-size: 20px;
 	color: var(--foreground-color3);
 }
 
