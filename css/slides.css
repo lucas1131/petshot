@@ -13,7 +13,7 @@
 .slideshow-container .content {
     position: absolute; /* Position the background text */
     bottom: 0; /* At the bottom. Use top:0 to append it to the top */
-    background: rgba(0, 0, 0, 0.2); /* Black background with 0.5 opacity */
+    background: rgba(0, 0, 0, 0.4); /* Black background with 0.5 opacity */
     color: var(--foreground-color4); /* Grey text */
     width: 100%; /* Full width */
     font-family: 'Source Sans Pro', sans-serif;

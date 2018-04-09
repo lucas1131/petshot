@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Begin styles -->
+	<!-- Theme CSS -->
+	<!-- Handler for dark/light themes -->
+	<script type="text/javascript" src="../js/switch_theme.js"></script>
+	<!-- General CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/general.css">
+	<!-- Search CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/search_field.css">
+	<!-- Slides  CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/slides.css">
+	<!-- Navbar  CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/navbar.css">
+	<!-- Login   CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/login.css">
+	<!-- Sign up CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/signup_form.css">
+	<!-- Clock and phone icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Carousel CSS -->
+	<link rel="stylesheet" href="../css/tinycarousel.css" type="text/css" media="screen" />
+	<!-- Admin CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/adminView.css">
+	<!-- End styles -->
+
+	<!-- End styles -->
+</head>
+
+<body>
+
+<!-- Header -->
+<div id="pet_shop_header" class="header"> 
+
+    <!-- Clock and phone-->
+    <i class="fa icon">
+        &#xf017;
+        <span style="color: var(--foreground-color1); font-size: 18px">
+            Aberto - Seg - Sex: 9am à 5pm
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        </span>
+        <span class="fa fa-phone">
+            <span style="color: var(--foreground-color1); font-size: 18px">
+                (16) 1234 - 5678
+            </span>
+        </span>
+    </i>
+    
+
+    <!-- Login for anonymous user -->
+    <div class="login anonymous_user">
+        <form onsubmit="login()">
+            <input id="login_uname" class="login_input" type="text" placeholder="Username" name="uname" required>
+
+            <input id="login_psw" class="login_input" type="password" placeholder="Password" name="psw" required>
+
+            <button class="loginbtn" type="submit">Entrar</button>
+            <button class="loginbtn" type="button" onclick="signup_form()">Cadastrar</button>
+            <label>
+                <input id="remember_me" type="checkbox" checked="checked" name="remember"> <span class="text">Lembrar de mim</span>
+            </label>
+        </form>
+    </div>
+
+    <!-- Logged users -->
+    <div class="login normal_user admin_user">
+    	<i class="fa fa-shopping-cart icon" style="font-size: 18px; margin: 25px 0 0 0;"> <a href="userCart.html" style="color: var(--foreground-color1);">Cart</a></i>
+        
+        <span id="logged_name" class="text" class="text"><b>Usuário: </b></span>
+        <a id="logged_name" href="perfilUsuario.html" class="profile"><u>Perfil</u></a>
+        <img src="../resources/avatar.png" style="width: 50px; height: 50px; float:right;">
+        <button class="loginbtn" type="submit" onclick="logout()">Sair</button>
+    </div>
+
+    <a href="javascript:void(0)" class="switch_theme text" onclick="SwitchTheme()" ><u>Switch theme</u></a>
+</div>
+
+<hr class="style14">
+
+<!-- Register products form -->
+<!-- The Modal (contains the Sign Up form) -->
+<div id="signup_form" class="modal modal_fade">
+    
+    <span onclick="cancel_signup()" class="close" title="Close Modal">&times;</span>
+
+    <form class="modal-content modal_content_fade opaque" onsubmit="">
+    </form>
+</div>
+<!-- End register products form -->
+
+<!-- Navbar -->
+<div class="navbar">
+
+	<img class="logo" src="../resources/logo.png">
+	
+	<a class="navbar-a normal_user" href="#">Agendamento</a>
+	<div class="dropdown">
+		<a href="#management" class="admin_user"><button class="dropbtn">Gerenciamento</button></a>
+		<div class="dropdown-content align-content">
+			<a class="navbar-a dropdown-padding-fix" href="./adminClients.html">Clientes</a>
+			<hr class="style14 dropdown-line">
+			<a class="navbar-a dropdown-padding-fix" href="./adminProducts.html">Produtos</a>
+			<hr class="style14 dropdown-line">
+			<a class="navbar-a dropdown-padding-fix" href="./adminServices.html">Serviços</a>
+			<hr class="style14 dropdown-line">
+			<a class="navbar-a dropdown-padding-fix" href="./adminStatistics.html">Estatísticas</a>
+		</div>
+	</div>
+
+	<a class="navbar-a" href="#contact">Contato</a>
+	<div class="dropdown">
+		<a href="#services"><button class="dropbtn">Serviços</button></a>
+		<div class="dropdown-content align-content">
+			<a class="navbar-a dropdown-padding-fix" href="#services">Serviço 1</a>
+			<hr class="style14 dropdown-line">
+			<a class="navbar-a dropdown-padding-fix" href="#services">Serviço 2</a>
+			<hr class="style14 dropdown-line">
+			<a class="navbar-a dropdown-padding-fix" href="#services">Serviço 3</a>
+		</div>
+	</div>
+	<div class="dropdown">
+		<a href="products.html"><button class="dropbtn">Produtos</button></a>
+	</div>
+	<a class="navbar-a" href="#about">Sobre</a>
+	<a class="navbar-a" href="home.html">Home</a>
+</div>
+<!-- End Navbar -->
+
+<hr class="style14">
+
+<div class="row align-content">
+	<h1 class="h1-admin">Produtos</h1>
+</div>
+
+<br>
+
+<!-- Barra de Pesquisa -->
+<div class="row align-content">
+	<form class="search" action="">
+		<input class="search search_input" type="text" placeholder="Search..." name="search">
+		<button class="search_button" type="submit"> <i class="fa fa-search"></i> </button>
+	</form>
+</div>
+
+<!-- Grid de Produtos -->
+<!-- 4 linhas, 6 colunas -->
+<div class="row align-content" style="padding:25px">
+	<div class="row align-content">
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row align-content" style="padding:25px">
+	<div class="row align-content">
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+		<div class="card-products column">
+			<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+			<div class="card-container">
+				<h4 class="style4">Rasçam</h4> 
+				<p class="pcard">R$ 5,00</p> 
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row align-content" style="padding:25px">
+	<div class="card-products column">
+		<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+		<div class="card-container">
+			<h4 class="style4">Rasçam</h4> 
+			<p class="pcard">R$ 5,00</p> 
+		</div>
+	</div>
+	<div class="card-products column">
+		<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+		<div class="card-container">
+			<h4 class="style4">Rasçam</h4> 
+			<p class="pcard">R$ 5,00</p> 
+		</div>
+	</div>
+	<div class="card-products column">
+		<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+		<div class="card-container">
+			<h4 class="style4">Rasçam</h4> 
+			<p class="pcard">R$ 5,00</p> 
+		</div>
+	</div>
+	<div class="card-products column">
+		<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+		<div class="card-container">
+			<h4 class="style4">Rasçam</h4> 
+			<p class="pcard">R$ 5,00</p> 
+		</div>
+	</div>
+	<div class="card-products column">
+		<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+		<div class="card-container">
+			<h4 class="style4">Rasçam</h4> 
+			<p class="pcard">R$ 5,00</p> 
+		</div>
+	</div>
+	<div class="card-products column">
+		<img src="../resources/racao.jpg" alt="comida" style="height:180px; width: auto;">
+		<div class="card-container">
+			<h4 class="style4">Rasçam</h4> 
+			<p class="pcard">R$ 5,00</p> 
+		</div>
+	</div>
+</div>
+
+<!-- Login script - THIS NEED TO STAY HERE -->
+<script src="../js/login.js"></script>
+
+</body>
+</html>
