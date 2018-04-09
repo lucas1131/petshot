@@ -36,7 +36,7 @@ body {
 }
 
 /* Icon style */
-.icon {
+.icon { 
 	font-size: 20px;
 	color: var(--foreground-color3);
 }
