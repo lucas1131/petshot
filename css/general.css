@@ -295,3 +295,17 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
 	background-color: var(--table-row-odd-color);
 }
+
+header{
+    /* Enable flex mode. */
+    display: flex; 
+
+    /* Spread out the elements inside the header. */
+    justify-content: space-between;
+
+    /* Align items vertically in the center. */
+    align-items: center;
+
+    padding: 10px
+}
+

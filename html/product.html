@@ -97,9 +97,8 @@
 <!-- Navbar -->
 <div class="navbar">
 
-	<img class="logo" src="../resources/logo.png">
+	<a href="home.html"><img class="logo" src="../resources/logo.png"></a>
 	
-	<a class="navbar-a normal_user" href="#">Agendamento</a>
 	<div class="dropdown">
 		<a href="#management" class="admin_user"><button class="dropbtn">Gerenciamento</button></a>
 		<div class="dropdown-content align-content">
@@ -113,52 +112,51 @@
 		</div>
 	</div>
 
-	<a class="navbar-a" href="#contact">Contato</a>
+	<a class="navbar-a" href="home.html#contact">Contato</a>
+
 	<div class="dropdown">
-		<a href="#services"><button class="dropbtn">Serviços</button></a>
+		<a><button class="dropbtn">Serviços</button></a>
 		<div class="dropdown-content align-content">
-			<a class="navbar-a dropdown-padding-fix" href="#">Serviço 1</a>
+			<a href="service.html" class="navbar-a dropdown-padding-fix" href="#services">Tosa</a>
 			<hr class="style14 dropdown-line">
-			<a class="navbar-a dropdown-padding-fix" href="#">Serviço 2</a>
+			<a href="service.html" class="navbar-a dropdown-padding-fix" href="#services">Banho</a>
 			<hr class="style14 dropdown-line">
-			<a class="navbar-a dropdown-padding-fix" href="#">Serviço 3</a>
+			<a href="service.html"  class="navbar-a dropdown-padding-fix" href="#services">Castração</a>
+			<hr class="style14 dropdown-line">
+			<a href="service.html"  class="navbar-a dropdown-padding-fix" href="#services">Veterinário</a>
 		</div>
 	</div>
+
 	<div class="dropdown">
 		<a href="#products"><button class="dropbtn">Produtos</button></a>
-		<div class="dropdown-content">
-			<a class="navbar-a dropdown-padding-fix" href="#">Produto 1</a>
-			<hr class="style14 dropdown-line">
-			<a class="navbar-a dropdown-padding-fix" href="#">Produto 2</a>
-			<hr class="style14 dropdown-line">
-			<a class="navbar-a dropdown-padding-fix" href="#">Produto 3</a>
-		</div>
 	</div>
-	<a class="navbar-a" href="#about">Sobre</a>
-	<a class="navbar-a" href="home.html">Home</a>
 </div>
 <!-- End Navbar -->
 
-<script src="../js/login.js"></script>
 <hr class="style14">
-<img src="../resources/racao.jpg" alt="comida" style="
-										margin-left: 20%;
-										margin-top: 30px;
-										border-color: var(--foreground-color3);
-										float: left;
-										height: 450px;
-										width: auto;">
 
-<h1 class="h1-admin" style="margin-top: 70px; display: inline-block;">RASÇAM ESPESSA</h1>
-<h2 style="display: block;">R$ 5,00</h2>
+<div class="row align-content">
+	<div class="col">
+		<img src="../resources/racao.jpg" alt="comida" style="margin-top: 30px;height: 450px;">
+	</div>
 
-<div style="margin: 200px; margin-top: 0px; margin-bottom: 10px;">
-<hr class="style0">
+	<div class="col">
+		<div class="row">
+			<h1 class="h1-admin" style="margin-top: 70px; display: inline-block;">RASÇAM ESPESSA</h1>
+						
+			<hr class="style0">
+
+			<h2 class="text" style="display: block;">R$ 5,00</h2>
+			<button class="loginbtn"><i class="fa fa-shopping-cart"></i> Adicionar</button>
+			<button class="loginbtn">Compre Agora</button>
+		</div>
+	</div>
 </div>
 
-<button class="loginbtn"><i class="fa fa-shopping-cart"></i> Adicionar</button>
-<button class="loginbtn">Compre Agora</button>
+</div>
+
 <br><br>
 
 </body>
+<script src="../js/login.js"></script>
 </html>

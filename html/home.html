@@ -74,10 +74,15 @@
 
 	    <div class="login normal_user admin_user">
 	        <span id="logged_name" class="text" class="text"><b>Usuário: </b></span>
+
 	        <img src="../resources/avatar.png" style="max-width: 55px; vertical-align: middle">
+
 	        <a href="userCart.html" class="text" style="text-decoration: none;"><i class="fa fa-shopping-cart icon" style="padding-right: 5px; font-size: 30px; vertical-align: sub"></i><b>Meu Carrinho</b></button></a>
+
 	        <a href="perfilUsuario.html"><button class="loginbtn" id="profilebutton">Meu Perfil</button></a>
+
 	        <button class="loginbtn" type="submit" onclick="logout()">Sair</button>
+
 			<a href="javascript:void(0)" class="text" onclick="SwitchTheme()" style="vertical-align: middle; padding-left: 5px;"><u>Trocar Tema</u></a>
 	    </div>
     	
@@ -130,9 +135,8 @@
 <!-- Navbar -->
 <div class="navbar">
 
-	<img class="logo" src="../resources/logo.png">
+	<a href="home.html"><img class="logo" src="../resources/logo.png"></a>
 	
-	<a class="navbar-a normal_user" href="#">Agendamento</a>
 	<div class="dropdown">
 		<a href="#management" class="admin_user"><button class="dropbtn">Gerenciamento</button></a>
 		<div class="dropdown-content align-content">
@@ -147,21 +151,23 @@
 	</div>
 
 	<a class="navbar-a" href="#contact">Contato</a>
+
 	<div class="dropdown">
 		<a href="#services"><button class="dropbtn">Serviços</button></a>
 		<div class="dropdown-content align-content">
-			<a class="navbar-a dropdown-padding-fix" href="#services">Serviço 1</a>
+			<a href="service.html" class="navbar-a dropdown-padding-fix" href="#services">Tosa</a>
 			<hr class="style14 dropdown-line">
-			<a class="navbar-a dropdown-padding-fix" href="#services">Serviço 2</a>
+			<a href="service.html" class="navbar-a dropdown-padding-fix" href="#services">Banho</a>
 			<hr class="style14 dropdown-line">
-			<a class="navbar-a dropdown-padding-fix" href="#services">Serviço 3</a>
+			<a href="service.html"  class="navbar-a dropdown-padding-fix" href="#services">Castração</a>
+			<hr class="style14 dropdown-line">
+			<a href="service.html"  class="navbar-a dropdown-padding-fix" href="#services">Veterinário</a>
 		</div>
 	</div>
+
 	<div class="dropdown">
 		<a href="#products"><button class="dropbtn">Produtos</button></a>
 	</div>
-	<a class="navbar-a" href="#about">Sobre</a>
-	<a class="navbar-a" href="home.html">Home</a>
 </div>
 <!-- End Navbar -->
 
@@ -312,7 +318,7 @@
 		</div>
 	</div>
 	<br>
-	<p class="paragrafo" style="margin-top: 30px;"> Conheça toda a linha de produtos <a href="products.html">aqui</a>
+	<p class="paragrafo" style="margin-top: 30px;"> Conheça toda a linha de produtos <a href="products.html" class="text">aqui</a>
 	<!-- <a class="buttons nextc" href="#">&#10095;</a> -->
 <!-- </div> -->
 <!-- Products list end -->
