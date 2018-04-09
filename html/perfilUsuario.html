@@ -168,30 +168,33 @@
 <h1 class="h1-admin">Configurações do perfil</h1>
 <br>
 <br>
+
 <img style="border-radius: 50%;
-			width: 200px;
-			height: auto;" 
+			width: 300px;
+			height: auto;
+			float: left;
+			margin-left: 80px;
+			margin-right: 80px;" 
 	src="https://www.w3schools.com/howto/img_avatar2.png">
-<br>
-<br>
-<h3 class="header3">Informações de usuário</h3>
 
-<p class="text"> Digite sua senha atual: </p>
-<form class="search" action="" style="max-width: 50%;">
-	<input class="search search_input" type="text" placeholder="Senha Atual" name="password"><br>
+<div style="display: inline-block; margin-bottom: 30px;">
+<h4 class="header4">Senha atual</h4>
+<form>
+	<input class="settings_input" type="text" placeholder="Senha Atual" name="password"><br><br>
+	<p class="text" style="font-size: 10px"> Sua senha atual é necessária efetuar qualquer mudança</p>
 </form>
-
 <h4 class="header4">Altere sua Senha</h4>
-<form class="search" action="" style="max-width: 50%;">
-	<input class="search search_input" type="text" placeholder="Nova Senha" name="newpassword"><br>
+<form style="margin-bottom: 40px;">
+	<input class="settings_input" type="text" placeholder="Nova Senha" name="newpassword"><br>
 </form>
-<form class="search" action="" style="max-width: 50%;">	
-	<input class="search search_input" type="text" placeholder="Confirmar Senha" name="confpassword">
+<form>	
+	<input class="settings_input" type="text" placeholder="Confirmar Senha" name="confpassword">
 </form>
+</div>
 
-<h4 class="header4">Endereços</h4>
+<h4 class="header4" style="margin-left: 80px;">Endereços</h4>
 
-<div style="overflow-x:auto;">
+<div style="overflow-x:auto; padding: 0 80px 20px 80px">
 	<table class="table-custom">
 		<tr>
 			<th class="text th-icon">Editar</th>
@@ -206,9 +209,10 @@
 		<tr>
 			<td class="text td-icon"><i class="fa edit">&#xf044;</i></td>
 			<td class="text td-icon"><i class="fa fa-minus"></i></td>
-			<td class="text td-custom">Rua Casa do Caralho, Nº 1</td>
+			<td class="text td-custom">Rua Batatão Grandão, Nº 1</td>
 		</tr>
 	</table>
+</div>
 
 <script src="../js/login.js"></script>
 </body>
