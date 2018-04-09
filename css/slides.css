@@ -13,12 +13,20 @@
 .slideshow-container .content {
     position: absolute; /* Position the background text */
     bottom: 0; /* At the bottom. Use top:0 to append it to the top */
-    background: rgba(0, 0, 0, 0.1); /* Black background with 0.5 opacity */
+    background: rgba(0, 0, 0, 0.2); /* Black background with 0.5 opacity */
     color: var(--foreground-color4); /* Grey text */
     width: 100%; /* Full width */
-    padding: 20px; /* Some padding */
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 20px;
+}
+
+.slideshow-container .content > h1 {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.slideshow-container .content > p {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /*.content {

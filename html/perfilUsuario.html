@@ -165,36 +165,90 @@
 <!-- End Navbar -->
 
 <hr class="style14">
-<h1 class="h1-admin">Configurações do perfil</h1>
-<br>
-<br>
 
-<img style="border-radius: 50%;
-			width: 300px;
-			height: auto;
-			float: left;
-			margin-left: 80px;
-			margin-right: 80px;" 
-	src="https://www.w3schools.com/howto/img_avatar2.png">
-
-<div style="display: inline-block; margin-bottom: 30px;">
-<h4 class="header4">Senha atual</h4>
-<form>
-	<input class="settings_input" type="password" placeholder="Senha Atual" name="oldpassword"><br><br>
-	<p class="text" style="font-size: 10px"> Sua senha atual é necessária efetuar qualquer mudança</p>
-</form>
-<h4 class="header4">Altere sua Senha</h4>
-<form style="margin-bottom: 40px;">
-	<input class="settings_input" type="password" placeholder="Nova Senha" name="newpassword"><br>
-</form>
-<form>	
-	<input class="settings_input" type="password" placeholder="Confirmar Senha" name="confpassword">
-</form>
+<div class="row align-content">
+	<h1 class="h1-admin">Configurações de Perfil</h1>
 </div>
 
-<h4 class="header4" style="margin-left: 80px;">Endereços</h4>
+<br>
 
-<div style="overflow-x:auto; padding: 0 80px 20px 80px">
+<hr class="style0">
+
+<div class="row align-content">
+	<h1 class="h2-admin">Usuário e Senha</h1>
+</div>
+
+
+<div class="row align-content">
+	<img style="border-radius: 50%;
+				width: 300px;
+				height: 300px;
+				float: left;
+				margin-left: 80px;
+				margin-right: 80px;" 
+		src="https://www.w3schools.com/howto/img_avatar2.png">
+
+	<div style="display: inline-block; margin-bottom: 30px;">
+	<h4 class="header4">Senha atual</h4>
+	<form>
+		<input class="settings_input" type="password" placeholder="Senha Atual" name="oldpassword"><br><br>
+		<p class="text" style="font-size: 10px"> Sua senha atual é necessária efetuar qualquer mudança</p>
+	</form>
+	<h4 class="header4">Altere sua Senha</h4>
+	<form style="margin-bottom: 40px;">
+		<input class="settings_input" type="password" placeholder="Nova Senha" name="newpassword"><br>
+	</form>
+	<form>	
+		<input class="settings_input" type="password" placeholder="Confirmar Senha" name="confpassword">
+	</form>
+	</div>
+</div> 
+
+<hr class="style0">
+
+<div class="row align-content">
+	<h1 class="h2-admin">Seus animais</h1>
+</div>
+
+<div class="row align-content">
+	<table class="table-custom">
+		<tr>
+			<th class="text th-icon">Editar</th>
+			<th class="text th-icon">Excluir</th>
+			<th class="text th-custom">Nome do Animal</th>
+			<th class="text th-custom">Raça</th>
+			<th class="text th-custom">Foto</th>
+		</tr>
+		<tr>
+			<td class="text td-icon"><i class="fa edit">&#xf044;</i></td>
+			<td class="text td-icon"><i class="fa fa-minus"></i></td>
+			<td class="text td-custom">Cleberson</td>
+			<td class="text td-custom">Unicórnio</td>
+			<td class="text th-thumb"><a><img src="http://via.placeholder.com/100x100"></a></td>
+		</tr>
+		<tr>
+			<td class="text td-icon"><i class="fa edit">&#xf044;</i></td>
+			<td class="text td-icon"><i class="fa fa-minus"></i></td>
+			<td class="text td-custom">Jureg</td>
+			<td class="text td-custom">Ogro</td>
+			<td class="text th-thumb"><a><img src="http://via.placeholder.com/100x100"></a></td>
+		</tr>
+	</table>
+</div>
+
+<div class="row align-content" style="justify-content: flex-end; align-items: center; padding-right: 13%;">
+	<button class="loginbtn" type="button" style="height: 46px; max-width: 150px; margin: 10px 0 0 40px">Cadastrar Animal</button>
+</div>
+
+<hr class="style0">
+
+<div class="row align-content">
+	<h1 class="h2-admin">Endereços</h1>
+</div>
+
+<br>
+
+<div class="row align-content">
 	<table class="table-custom">
 		<tr>
 			<th class="text th-icon">Editar</th>
@@ -214,6 +268,11 @@
 	</table>
 </div>
 
+<div class="row align-content" style="justify-content: flex-end; align-items: center; padding-right: 13%;">
+	<button class="loginbtn" type="button" style="height: 46px; max-width: 150px; margin: 10px 0 0 40px">Cadastrar Endereço</button>
+</div>
+
+<br>
 <script src="../js/login.js"></script>
 </body>
 </html>
