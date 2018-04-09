@@ -154,17 +154,15 @@
 <!-- End Navbar -->
 
 <hr class="style14">
-<h1 class="h1-admin">Carrinho</h1>
+
+<div class="row align-content">
+	<h1 class="h1-admin">Carrinho</h1>
+</div>
+
 <br>
 
-<!-- Statistics cards -->
-<div class="row align-content" style="margin-left: 75%;">
-	<div class="statistics_card" style="width: 50%;">
-		<p class="text" style="font-size: 20px"><b>Total: </b>R$ 500,00</p>
-	</div>
-</div>
 <!-- Table begin -->
-<div style="overflow-x:auto;">
+<div class="row align-content">
 	<table class="table-custom">
 		<tr>
 			<th class="text th-thumb"></th>
@@ -190,6 +188,14 @@
 	</table>
 </div>
 <!-- Table end -->
+
+<!-- Total card -->
+<div class="row align-content" style="justify-content: flex-end; align-items: center; padding-right: 20%;">
+	<div class="statistics_card">
+		<p class="text" style="font-size: 20px"><b>Total: </b>R$ 500,00</p>
+	</div>
+	<button class="loginbtn" type="button" style="height: 46px; max-width: 150px; margin: 0 0 0 40px">Finalizar Compra</button>
+</div>
 
 <!-- Login script - THIS NEED TO STAY HERE -->
 <script src="../js/login.js"></script>

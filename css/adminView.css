@@ -5,19 +5,6 @@
 	cursor: pointer;
 }
 
-.statistics_card {
-
-    box-shadow: 0 4px 8px 0 var(--drop-shadow-color);
-    margin: 20px;
-    padding: 20px;
-    background-color: var(--background-color3);
-    /*height: 100px;*/
-    max-height: 100px;
-    width: 15%;
-    height: 60px;
-    /*overflow: auto;*/
-}
-
 .h1-admin {
 	color: var(--foreground-color5); 
 	font-family: 'Source Sans Pro', sans-serif;
