@@ -3,6 +3,15 @@ body {
     margin: 0;
 }
 
+.settings_input[type=password] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid var(--border-color);
+    float: left;
+    background: var(--background-color4);
+    border-radius: 5px;
+}
+
 .text {
 	color: var(--foreground-color1);
 }
@@ -136,7 +145,7 @@ h4.style4 {
 	border: none;
 	outline: none;
 	background-color: var(--foreground-color2);
-	color: var(--foreground-color1);
+	color: white;
 	cursor: pointer;
 	padding: 15px;
 	border-radius: 4px;
