@@ -1,13 +1,3 @@
-.settings_input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid var(--border-color);
-    float: left;
-    background: var(--background-color4);
-    border-radius: 5px;
-}
-
-
 .search_input[type=text] {
     padding: 10px;
     font-size: 17px;
