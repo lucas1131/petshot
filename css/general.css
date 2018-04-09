@@ -16,8 +16,13 @@ body {
 
 .align-content {
 	display: flex;
-    align-items: center;
+	flex-direction: row;
     justify-content: center;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
 }
 
 .profile {
@@ -173,7 +178,7 @@ h4.style4 {
 
 .table-custom {
 	padding: 0px 15px;
-    width: 100%;
+	width: 73%;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid var(--border-color);

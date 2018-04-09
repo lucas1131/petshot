@@ -157,7 +157,11 @@
 <!-- End Navbar -->
 
 <hr class="style14">
-<h1 class="h1-admin">Gerenciamento de Clientes</h1>
+
+<div class="row align-content">
+	<h1 class="h1-admin">Gerenciamento de Serviços</h1>
+</div>
+
 <br>
 
 <!-- Statistics cards -->
@@ -177,19 +181,19 @@
 </div>
 
 <!-- Search field -->
-<form class="search" action="" style="max-width: 50%;">
-	<input class="search search_input" type="text" placeholder="Search..." name="search">
-	<button class="search_button" type="submit">
-		<i class="fa fa-search"></i>
-	</button>
+<div class="row align-content">
+	<form class="search" action="">
+		<input class="search search_input" type="text" placeholder="Search..." name="search">
+		<button class="search_button" type="submit"> <i class="fa fa-search"></i> </button>
+	</form>
 
 	<!-- Register new client -->
-	<button class="loginbtn" type="button" style="height: 46px; max-width: 150px; margin: 0 0 0 40px" onclick="signup_form()">Cadastrar serviço</button>
-</form>
+	<button class="loginbtn" type="button" style="height: 46px; max-width: 150px; margin: 0 0 0 40px" onclick="signup_form()">Cadastrar Serviço</button>
+</div>
 <!-- End Search field -->
 
 <!-- Table begin -->
-<div style="overflow-x:auto;">
+<div class="row align-content">
 	<table class="table-custom">
 		<tr>
 			<th class="text th-icon">Editar</th>

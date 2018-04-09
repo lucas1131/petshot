@@ -156,44 +156,44 @@
 <!-- End Navbar -->
 
 <hr class="style14">
-<h1 class="h1-admin">Gerenciamento de Produtos</h1>
+
+<div class="row align-content">
+	<h1 class="h1-admin">Gerenciamento de Produtos</h1>
+</div>
+
 <br>
 
 <!-- Statistics cards -->
 <div class="row align-content">
-	<div class="statistics_card">
-		
+	<div class="statistics_card">	
 		<p class="text"><b>Produtos cadastrados: </b>3</p>
 	</div>
 	<div class="statistics_card">
-		
 		<p class="text"><b>Produtos em Estoque: </b>40</p>
 	</div>
 	<div class="statistics_card">
-		
 		<p class="text"><b>Vendas desse mês: </b>10</p>
 	</div>
 	<div class="statistics_card">
-		
 		<p class="text"><b>Lucro: </b>R$200,00</p>
 	</div>
 </div>
 <!-- End Statistics cards -->
 
 <!-- Search field -->
-<form class="search" action="" style="max-width: 50%;">
-	<input class="search search_input" type="text" placeholder="Search..." name="search">
-	<button class="search_button" type="submit">
-		<i class="fa fa-search"></i>
-	</button>
+<div class="row align-content">
+	<form class="search" action="">
+		<input class="search search_input" type="text" placeholder="Search..." name="search">
+		<button class="search_button" type="submit"> <i class="fa fa-search"></i> </button>
+	</form>
 
 	<!-- Register new client -->
-	<button class="loginbtn" type="button" style="height: 46px; max-width: 150px; margin: 0 0 0 40px" onclick="signup_form()">Cadastrar produto</button>
-</form>
+	<button class="loginbtn" type="button" style="height: 46px; max-width: 150px; margin: 0 0 0 40px" onclick="signup_form()">Cadastrar Produto</button>
+</div>
 <!-- End Search field -->
 
 <!-- Table begin -->
-<div style="overflow-x:auto;">
+<div class="row align-content">
 	<table class="table-custom">
 		<tr>
 			<th class="text th-icon">Editar</th>
@@ -230,6 +230,8 @@
 		</tr>
 	</table>
 </div>
+
+
 <!-- Table end -->
 <!-- Login script - THIS NEED TO STAY HERE -->
 <script src="../js/login.js"></script>
