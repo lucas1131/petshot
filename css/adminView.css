@@ -27,6 +27,15 @@
 	margin: 20px 0 10px;
 }
 
+.h2-admin {
+	color: var(--foreground-color5); 
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 25px;
+	font-weight: 400;
+	line-height: 32px;
+	margin: 20px 0 10px;
+}
+
 
 /* Style the search field */
 .form-example input[type=text] {
