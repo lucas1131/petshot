@@ -1,3 +1,13 @@
+/* Dark theme stylesheet
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
+
 body {
 	background-color: var(--background-color4);
 }

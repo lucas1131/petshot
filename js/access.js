@@ -1,3 +1,14 @@
+/* Petshop Access source file
+ *
+ * This file handles sign up and login information.
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
 
 /* Define groups enum */
 var Groups = {
@@ -42,13 +53,18 @@ function login(){
 
 	localStorage.setItem("user_group", userGroup);
 	localStorage.setItem("username", username.value);
-	location.reload(); 
+	location.reload();
 }
 
 function logout(){
 	userGroup = Groups.Anonymous;
 	localStorage.setItem("user_group", userGroup);
 	location.reload();
+}
+
+function signup(){
+
+	
 }
 
 function signup_form(){
