@@ -8,7 +8,7 @@ import logo from '../resources/logo.png';
 class ResponsiveLogo extends Component {
 	render() {
 		return(
-			<img id='logo' src = {logo} />
+			<img id='logo' src={logo} alt="batata" />
 		);
 	}
 }
@@ -17,7 +17,7 @@ class LoginForm extends Component {
 	render() {
 		return(
 			<Row className='row' style={{marginBottom: "0"}}>
-				<Col l={12} offset="l12">
+				<Col l={12} offset="l11">
 					<Input className='input' l={6} m={5} s={3} label='User Name' validate type='text'>
 					<Icon className='icon'>account_circle</Icon>
 					</Input>
