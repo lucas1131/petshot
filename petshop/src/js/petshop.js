@@ -38,7 +38,7 @@ class PageContent extends Component {
 		}
 	}
 }
-/* EXAMPLE */
+/* END EXAMPLE */
 
 class Petshop extends Component {
 
