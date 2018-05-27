@@ -2,17 +2,12 @@ import React, { Component } from 'react';
 import { Button, Footer, Container } from 'react-materialize';
 
 import Header from './header'
+import Home from './home'
 
 import '../css/general.css';
 import '../css/footer.css';
 
 /* EXAMPLE */
-class Home extends Component {
-	render(){
-		return (<div> Home </div>)
-	}
-}
-
 class Teste extends Component {
 	render(){
 		return (<div> Teste </div>)
@@ -41,7 +36,6 @@ class PageContent extends Component {
 /* END EXAMPLE */
 
 class Petshop extends Component {
-
 	constructor(props){
 		super(props)
 		this.state = {
