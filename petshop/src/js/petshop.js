@@ -6,51 +6,67 @@ import Header from './header'
 import '../css/general.css';
 import '../css/footer.css';
 
-// EXAMPLE
-class TestPage extends Component {
-
+/* EXAMPLE */
+class Home extends Component {
 	render(){
-		if(this.props.page === 1) return (
-			<div className="main wrap"> 
- 				<Container>batata</Container>
- 			</div>
- 		)
-		else if(this.props.page === 2) return (
-			<div className="main wrap"> 
- 				<Container>batataAAAAAAAAAAAAA SKATEEEEEEE</Container>
- 			</div>
- 		)
+		return (<div> Home </div>)
 	}
 }
 
-// var content = <TestPage />
-// var page = 1;
+class Teste extends Component {
+	render(){
+		return (<div> Teste </div>)
+	}
+}
+
+class NotFound extends Component {
+	render(){
+		return (<div> 404 Not Found </div>)
+	}
+}
+
+class PageContent extends Component {
+
+	render(){
+		switch(this.props.page){
+			case 'home':
+				return (<Home />)
+			case 'teste':
+				return (<Teste />)
+			default:
+				return (<NotFound />)
+		}
+	}
+}
+/* EXAMPLE */
+
 class Petshop extends Component {
 
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 1
+			page: 'home'
 		}
 	}
 
 	changePage = () => {
 		this.setState({
-			page: 2
+			page: 'teste'
 		})
 	}
 
 	render() {
-	    return (
-	    	<div className="petshop">
+		return (
+			<div className="petshop">
 	 			<Header />
-	 			<Button onClick={this.changePage} />
-	 			<TestPage page={this.state.page}/>
+	 			<div className="main wrap">
+	 				<Button onClick={this.changePage} />
+	 				<PageContent page={this.state.page}/>
+	 			</div>
 	 			<Footer className="footer"/>
-	    	</div>
-	    );
+			</div>
+		);
 	}
-
 }
 
 export default Petshop;
