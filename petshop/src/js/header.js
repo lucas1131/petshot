@@ -8,7 +8,7 @@ import logo from '../resources/logo.png';
 class ResponsiveLogo extends Component {
 	render() {
 		return(
-			<img id='logo' src = {logo} />
+			<img id='logo' src={logo} alt="batata" />
 		);
 	}
 }
