@@ -1,0 +1,7 @@
+
+
+
+setup FA Icons (Font Awesome Icons) for react:
+	`npm install ajv react react-fa webpack babel-loader style-loader css-loader url-loader file-loader extract-text-webpack-plugin`
+https://github.com/andreypopp/react-fa
+https://gorangajic.github.io/react-icons/fa.html

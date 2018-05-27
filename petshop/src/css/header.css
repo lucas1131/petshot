@@ -1,0 +1,29 @@
+@import 'general.css';
+
+.navbar {
+	background-color: var(--custom-orange);
+}
+
+.icon { 
+	font-size: 20px;
+	color: var(--custom-orange);
+}
+
+.row {
+	width: 30%;
+	max-width: 1000px;
+}
+
+.input {
+	color: var(--custom-green);	
+}
+
+.active {
+	color: var(--custom-green) !important;
+}
+
+#logo {
+	height: 54px;
+	margin-top: 5px;
+	margin-left: 20px;
+}

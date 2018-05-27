@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import Petshop from './js/petshop';
+import registerServiceWorker from './js/registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import './css/general.css';
+
+ReactDOM.render(<Petshop />, document.getElementById('root'));
 registerServiceWorker();

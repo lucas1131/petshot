@@ -1,0 +1,15 @@
+:root {
+	--custom-orange: #e5601d;
+	--custom-light-orange: #e86f33;
+	--custom-green: #7c795d;
+}
+
+.petshop {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.main {
+	flex: 1 0 auto;
+}

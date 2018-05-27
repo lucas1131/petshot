@@ -1,0 +1,11 @@
+.page-footer {
+	background-color: var(--custom-light-orange) !important;
+}
+
+.footer-copyright {
+	background-color: var(--custom-orange) !important;
+}
+
+.wrap {
+	min-height: 100%;
+}
