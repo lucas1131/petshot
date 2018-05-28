@@ -1,7 +1,32 @@
+input::-webkit-input-placeholder, 
+input:-moz-placeholder, /* Firefox 18- */
+input::-moz-placeholder,  /* Firefox 19+ */
+input:-ms-input-placeholder {  
+	color: black !important;
+}
+
 :root {
 	--custom-orange: #e5601d;
 	--custom-light-orange: #e86f33;
 	--custom-green: #7c795d;
+	--custom-green2: #4c4a37;
+	--custom-light-gray: #e0e0e0;
+	--custom-gray: #bcbaba;
+
+	/* From light theme */
+	--foreground-color1: #4c4a37; /* Text */
+	--foreground-color2: #7c795d; /* Button, links, etc */
+	--foreground-color3: #e5601d; /* Buttons, links, etc, in hover or focus */
+	--foreground-color4: #dddddd; /* Text 2 */
+	--foreground-color5: #7c795d; /* Headers */
+	
+	--background-color1: #7c795d; 
+	--background-color2: #cccccc; 
+	--background-color3: #ffffff;
+	--background-color4: #eeeeee;
+
+	--border-color: #cccccc;
+
 }
 
 .petshop {
@@ -12,6 +37,66 @@
 
 .main {
 	flex: 1 0 auto;
+}
+
+.text {
+	color: var(--custom-green2) !important;
+	/*background-color: var(--background-color2) !important;*/
+}
+
+.margin {
+	margin-bottom: 10px !important;
+	padding-bottom: 10px !important;
+}
+
+
+/* Input fields */
+
+
+/* label color */
+.input-field label {
+	color: var(--custom-green);
+}
+
+/* label focus color */
+.input-field input:focus + label {
+	color: var(--custom-green);
+}
+
+/* label underline focus color */
+.box-shadow input:focus {
+	border-bottom: 1px solid var(--custom-green);
+	box-shadow: 0 1px 0 0 var(--custom-green);
+}
+
+/* valid color */
+.input-field input.valid {
+	border-bottom: 1px solid var(--custom-green);
+	box-shadow: 0 1px 0 0 var(--custom-green);
+}
+
+/* invalid color */
+.input-field input.invalid {
+	border-bottom: 1px solid var(--custom-green);
+	box-shadow: 0 1px 0 0 var(--custom-green);
+}
+
+/* icon prefix focus color */
+.input-field .prefix.active {
+	color: var(--custom-green);
+}
+
+
+.menstruacao-gigante {
+    box-shadow: red 3px 10px 7px 30px !important;
+}
+
+.box-shadow {
+	border-bottom-color: var(--custom-orange) !important;
+}
+
+.box-shadow:focus {
+    box-shadow: var(--custom-orange) 0px 1px 0px 0px !important;
 }
 
 .btn {
@@ -33,4 +118,28 @@
 [type="checkbox"]:checked+label:before{
      border-right: 2px solid var(--custom-orange);
      border-bottom: 2px solid var(--custom-orange);
+}
+
+hr.awesome {
+	height: 8px;
+	background: url(../resources/hr.png) no-repeat center;
+	border: none;
+}
+
+.header0 { 
+	color: var(--custom-green2); 
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 28px;
+	font-weight: 400;
+	line-height: 32px;
+	margin: 0 0 10px;
+	text-align: center;
+}
+
+p.default { 
+	color: var(--custom-green2) !important; 
+	font-family: 'Source Sans Pro', sans-serif !important;
+	font-size: 14px !important;
+	line-height: 32px !important;
+	text-align: center !important;
 }

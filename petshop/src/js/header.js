@@ -33,11 +33,11 @@ class LoginForm extends Component {
 	render () { 
 		return (
 			<Row className={"topHeader valign-wrapper"} style={{float: "right"}}>
-				<Col ><Input className='input' label='Usuário' validate type='text' /></Col>
-				<Col ><Input className='input' label='Senha' validate type='password' /></Col>
-				<Col ><Button waves="light" className="btn">Entrar</Button></Col>
-				<Col ><Button waves="light" className="btn">Registrar</Button></Col>
-				<Col l={3}><Input className='input' label='Lembrar de Mim'type='checkbox'/></Col>
+				<Col><Input className='input box-shadow' label='Usuário' validate type='text' /></Col>
+				<Col><Input className='input box-shadow' label='Senha' validate type='password' /></Col>
+				<Col><Button waves="light" className="btn">Entrar</Button></Col>
+				<Col><Button waves="light" className="btn">Registrar</Button></Col>
+				<Col l={3}><Input className='input box-shadow' label='Lembrar de mim'type='checkbox'/></Col>
 			</Row>
 		);
 	}

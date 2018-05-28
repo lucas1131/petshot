@@ -9,12 +9,17 @@
 	color: var(--custom-orange);
 }
 
+/* Login input */
 .input {
 	color: var(--custom-green);	
 }
 
-.active {
-	color: var(--custom-green) !important;
+label.active {
+	color: var(--custom-orange) !important;
+}
+
+i.active {
+	color: var(--custom-orange) !important;
 }
 
 .responsiveLogo {
