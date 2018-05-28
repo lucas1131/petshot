@@ -2,6 +2,9 @@
 	--custom-orange: #e5601d;
 	--custom-light-orange: #e86f33;
 	--custom-green: #7c795d;
+	--custom-green2: #4c4a37;
+	--custom-light-gray: #e0e0e0;
+	--custom-gray: #bcbaba;
 }
 
 .petshop {
@@ -12,4 +15,29 @@
 
 .main {
 	flex: 1 0 auto;
+}
+
+hr.awesome {
+	height: 8px;
+	background: url(../resources/hr.png) no-repeat center;
+	border: none;
+}
+
+.header0 { 
+	color: var(--custom-green2); 
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 28px;
+	font-weight: 400;
+	line-height: 32px;
+	margin: 0 0 10px;
+	text-align: center;
+}
+
+p.default { 
+	color: var(--foreground-color1); 
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 16px;
+	line-height: 32px;
+	margin: 0 300px 24px;
+	text-align: center;
 }

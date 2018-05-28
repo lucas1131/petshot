@@ -54,7 +54,6 @@ class Petshop extends Component {
 			<div className="petshop">
 	 			<Header />
 	 			<div className="main wrap">
-	 				<Button onClick={this.changePage} />
 	 				<PageContent page={this.state.page}/>
 	 			</div>
 	 			<Footer className="footer"/>
