@@ -19,7 +19,7 @@ class UserInfo extends Component {
 	render () { 
 		return (
 			<Row className={"topHeader valign-wrapper"} style={{float: "right"}}>
-				<Col > <b>Usuário:</b> {this.props.user.name} </Col>
+				<Col > <b>Usuário:</b> {this.props.user.name}</Col>
 				<Col ><img class="circle" src={this.props.user.image} style={{height: "55px"}}/> </Col>
 				<Col ><Button waves="light" className="btn">Meu Carrinho<Icon left>shopping_cart</Icon></Button></Col>
 				<Col ><Button waves="light" className="btn">Meu Perfil<Icon left>account_circle</Icon></Button></Col>
@@ -49,8 +49,7 @@ class TopHeader extends Component {
 	constructor(props) {
 		super(props)
 		this.props = {
-			user: props.user,
-			logged: props.userIsLogged
+			user: props.user
 		};
 	}
 
@@ -59,10 +58,10 @@ class TopHeader extends Component {
 			return(	
 				<Row className={"topHeader valign-wrapper hide-on-med-and-down"} style={{topMargin: "10px"}}>
 					{/*Horário de Funcionamento*/}
-					<Col l={3} m={4} s={4}><Icon tiny className="fa icon">access_time</Icon> Aberto - Seg - Sex: 9am à 5pm</Col>
-					{/*Login*/}
-					<Col l={8} m={8} s={8} offset="l1" >
-						{/*password e username*/}
+					<Col l={3} m={3} s={3}><Icon tiny className="fa icon">access_time</Icon> Aberto - Seg - Sex: 9am à 5pm</Col>
+					{/*User info*/}
+					<Col l={9} m={9} s={9} >
+						{/**/}
 						<UserInfo user={this.props.user}/>
 					</Col>
 				</Row>
@@ -71,7 +70,7 @@ class TopHeader extends Component {
 			return(	
 				<Row className={"topHeader valign-wrapper hide-on-med-and-down"} style={{topMargin: "10px"}}>
 					{/*Horário de Funcionamento*/}
-					<Col l={3} m={4} s={4}><Icon tiny className="fa icon">access_time</Icon> Aberto - Seg - Sex: 9am à 5pm</Col>
+					<Col l={3} m={3} s={3}><Icon tiny className="fa icon">access_time</Icon> Aberto - Seg - Sex: 9am à 5pm</Col>
 					{/*Login*/}
 					<Col l={8} m={8} s={8} offset="l1" >
 						{/*password e username*/}
