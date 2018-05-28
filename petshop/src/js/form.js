@@ -1,19 +1,37 @@
+/* Light Theme stylesheet
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
 import React from "react";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
+import { Button, Input } from 'react-materialize';
 
+/*
+<TextField
+          name="name"
+          hintText="Nome"
+          value={this.state.name}
+          onChange={e => this.change(e)}
+          errorText={this.state.nameError}
+          floatingLabelFixed
+        />
+        */
 export default class Form extends React.Component {
   state = {
-    firstName: "",
-    firstNameError: "",
-    lastName: "",
-    lastNameError: "",
-    username: "",
-    usernameError: "",
-    email: "",
-    emailError: "",
-    password: "",
-    passwordError: ""
+    name: "",
+    nameError: "",
+    race: "",
+    raceError: "",
+    scheduled: "",
+    scheduledError: "",
+    cost: "",
+    costError: ""
   };
 
   change = e => {
@@ -26,22 +44,25 @@ export default class Form extends React.Component {
   validate = () => {
     let isError = false;
     const errors = {
-      firstNameError: "",
-      lastNameError: "",
-      usernameError: "",
-      emailError: "",
-      passwordError: ""
+      nameError: "",
+      raceError: "",
+      scheduledError: "",
+      costError: ""
     };
 
-    if (this.state.username.length < 5) {
-      isError = true;
-      errors.usernameError = "Username needs to be atleast 5 characters long";
+    for(let prop in this.state){
+      console.log(prop)
     }
 
-    if (this.state.email.indexOf("@") === -1) {
-      isError = true;
-      errors.emailError = "Requires valid email";
-    }
+    // if (this.state.scheduled.length < 5) {
+    //   isError = true;
+    //   errors.scheduledError = "Username needs to be atleast 5 characters long";
+    // }
+
+    // if (this.state.cost.indexOf("@") === -1) {
+    //   isError = true;
+    //   errors.costError = "Requires valid cost";
+    // }
 
     this.setState({
       ...this.state,
@@ -58,75 +79,30 @@ export default class Form extends React.Component {
       this.props.onSubmit(this.state);
       // clear form
       this.setState({
-        firstName: "",
-        firstNameError: "",
-        lastName: "",
-        lastNameError: "",
-        username: "",
-        usernameError: "",
-        email: "",
-        emailError: "",
-        password: "",
-        passwordError: ""
+        name: "",
+        nameError: "",
+        race: "",
+        raceError: "",
+        scheduled: "",
+        scheduledError: "",
+        cost: "",
+        costError: ""
       });
     }
   };
 
   render() {
     return (
-      <form>
-        <TextField
-          name="firstName"
-          hintText="First name"
-          floatingLabelText="First name"
-          value={this.state.firstName}
-          onChange={e => this.change(e)}
-          errorText={this.state.firstNameError}
-          floatingLabelFixed
-        />
-        <br />
-        <TextField
-          name="lastName"
-          hintText="Last Name"
-          floatingLabelText="Last Name"
-          value={this.state.lastName}
-          onChange={e => this.change(e)}
-          errorText={this.state.lastNameError}
-          floatingLabelFixed
-        />
-        <br />
-        <TextField
-          name="username"
-          hintText="Username"
-          floatingLabelText="Username"
-          value={this.state.username}
-          onChange={e => this.change(e)}
-          errorText={this.state.usernameError}
-          floatingLabelFixed
-        />
-        <br />
-        <TextField
-          name="email"
-          hintText="Email"
-          floatingLabelText="Email"
-          value={this.state.email}
-          onChange={e => this.change(e)}
-          errorText={this.state.emailError}
-          floatingLabelFixed
-        />
-        <br />
-        <TextField
-          name="password"
-          hintText="Password"
-          floatingLabelText="Password"
-          value={this.state.password}
-          onChange={e => this.change(e)}
-          errorText={this.state.passwordError}
-          type="password"
-          floatingLabelFixed
-        />
-        <br />
-        <RaisedButton label="Submit" onClick={e => this.onSubmit(e)} primary />
+      <form style={{marginTop: "10px"}}>
+        <Input name="name" className='input box-shadow' label='Nome'  value={this.state.name}
+          onChange={e => this.change(e)} validate type='text' />
+        <Input name="race" className='input box-shadow' label='Raça' value={this.state.race}
+          onChange={e => this.change(e)} validate type='text' />
+        <Input name="scheduled" className='input box-shadow' label='Agendamentos' value={this.state.scheduled}
+          onChange={e => this.change(e)} validate type='date' />
+        <Input name="cost" className='input box-shadow' label='Custo' value={this.state.cost}
+          onChange={e => this.change(e)} validate type='text' />
+        <Button className="btn" onClick={e => this.onSubmit(e)} waves="light" primary>Enviar</Button>
       </form>
     );
   }

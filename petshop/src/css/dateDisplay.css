@@ -1,0 +1,47 @@
+/* Light Theme stylesheet
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
+.picker__date-display {
+    background-color: var(--custom-orange);
+}
+
+.picker__weekday-display, 
+.picker__day--selected, 
+.picker__day--selected:hover, 
+.picker--focused .picker__day--selected {
+	background-color: var(--custom-light-orange);
+}
+
+.picker__holder, .picker__day--infocus {
+	color: var(--custom-green2);
+}
+
+@media only screen and (max-width: 400px){
+	.picker__frame{
+		-ms-transform: scale(0.8, 0.8); /* IE 9 */
+	    -webkit-transform: scale(0.8, 0.8); /* Safari */
+	    transform: scale(0.8, 0.8);
+	}
+}
+
+.picker__day.picker__day--today {
+	color: var(--custom-orange);
+}
+
+.picker__weekday {
+	color: var(--custom-green);
+}
+
+.picker__close, .picker__today {
+	color: var(--custom-orange);
+}
+
+.picker__nav--prev:hover, .picker__nav--next:hover {
+	background-color: #fff;
+}

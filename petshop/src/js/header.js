@@ -1,3 +1,12 @@
+/* Light Theme stylesheet
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
 import React, { Component } from 'react'
 import { Navbar, NavItem, Button } from 'react-materialize';
 import { Col, Row, Icon, Input } from 'react-materialize';

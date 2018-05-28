@@ -1,3 +1,11 @@
+/* 
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
 import React, { Component } from 'react'
 import { Tabs, Tab } from 'react-materialize';
 // import { Table } from 'react-materialize';
@@ -49,7 +57,12 @@ class Animals extends Component {
   render() {
     return (
       <div>
-        <EditableTable />
+        <EditableTable header={[
+					{ name: "Nome", prop: "name", type: "text" },
+					{ name: "Raça", prop: "race", type: "text" },
+					{ name: "Agendamentos", prop: "scheduled", type: "date" },
+					{ name: "Custo", prop: "cost", type: "number" }
+				]}/>
       </div>
     );
   }

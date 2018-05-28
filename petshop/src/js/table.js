@@ -1,4 +1,14 @@
+/* Light Theme stylesheet
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
 import React from "react";
+import { Input } from 'react-materialize';
 import {
   Table,
   TableBody,
@@ -7,10 +17,13 @@ import {
   TableRow,
   TableRowColumn
 } from "material-ui/Table";
+
 import EditIcon from "material-ui/svg-icons/image/edit";
 import TrashIcon from "material-ui/svg-icons/action/delete";
 import CheckIcon from "material-ui/svg-icons/navigation/check";
 import TextField from "material-ui/TextField";
+
+import "../css/general.css"
 
 const row = (
   x,
@@ -28,10 +41,14 @@ const row = (
       {header.map((y, k) => (
         <TableRowColumn key={`trc-${k}`}>
           {currentlyEditing ? (
-            <TextField
+            <Input
               name={y.prop}
+              className='input box-shadow'
+              label={y.name}
               onChange={e => handleChange(e, y.prop, i)}
               value={x[y.prop]}
+              validate
+              type={y.type}
             />
           ) : (
             x[y.prop]
@@ -40,7 +57,7 @@ const row = (
       ))}
       <TableRowColumn>
         {currentlyEditing ? (
-          <CheckIcon onClick={() => stopEditing()} />
+          <CheckIcon className="text" onClick={() => stopEditing()} />
         ) : (
           <EditIcon onClick={() => startEditing(i)} />
         )}
