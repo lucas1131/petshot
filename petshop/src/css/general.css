@@ -9,6 +9,9 @@ input:-ms-input-placeholder {
 	--custom-orange: #e5601d;
 	--custom-light-orange: #e86f33;
 	--custom-green: #7c795d;
+	--custom-green2: #4c4a37;
+	--custom-light-gray: #e0e0e0;
+	--custom-gray: #bcbaba;
 
 	/* From light theme */
 	--foreground-color1: #4c4a37; /* Text */
@@ -37,7 +40,7 @@ input:-ms-input-placeholder {
 }
 
 .text {
-	color: var(--custom-green) !important;
+	color: var(--custom-green2) !important;
 	/*background-color: var(--background-color2) !important;*/
 }
 
@@ -52,36 +55,37 @@ input:-ms-input-placeholder {
 
 /* label color */
 .input-field label {
-	color: #000;
+	color: var(--custom-green);
 }
 
 /* label focus color */
 .input-field input:focus + label {
-	color: #000;
+	color: var(--custom-green);
 }
 
 /* label underline focus color */
-/*.box-shadow input:focus {
-	border-bottom: 1px solid #000;
-	box-shadow: 0 1px 0 0 #000;
-}*/
+.box-shadow input:focus {
+	border-bottom: 1px solid var(--custom-green);
+	box-shadow: 0 1px 0 0 var(--custom-green);
+}
 
 /* valid color */
 .input-field input.valid {
-	border-bottom: 1px solid #000;
-	box-shadow: 0 1px 0 0 #000;
+	border-bottom: 1px solid var(--custom-green);
+	box-shadow: 0 1px 0 0 var(--custom-green);
 }
 
 /* invalid color */
 .input-field input.invalid {
-	border-bottom: 1px solid #000;
-	box-shadow: 0 1px 0 0 #000;
+	border-bottom: 1px solid var(--custom-green);
+	box-shadow: 0 1px 0 0 var(--custom-green);
 }
 
 /* icon prefix focus color */
 .input-field .prefix.active {
-	color: #000;
+	color: var(--custom-green);
 }
+
 
 .menstruacao-gigante {
     box-shadow: red 3px 10px 7px 30px !important;
@@ -114,4 +118,28 @@ input:-ms-input-placeholder {
 [type="checkbox"]:checked+label:before{
      border-right: 2px solid var(--custom-orange);
      border-bottom: 2px solid var(--custom-orange);
+}
+
+hr.awesome {
+	height: 8px;
+	background: url(../resources/hr.png) no-repeat center;
+	border: none;
+}
+
+.header0 { 
+	color: var(--custom-green2); 
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 28px;
+	font-weight: 400;
+	line-height: 32px;
+	margin: 0 0 10px;
+	text-align: center;
+}
+
+p.default { 
+	color: var(--custom-green2) !important; 
+	font-family: 'Source Sans Pro', sans-serif !important;
+	font-size: 14px !important;
+	line-height: 32px !important;
+	text-align: center !important;
 }

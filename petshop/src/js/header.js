@@ -17,11 +17,11 @@ class LoginForm extends Component {
 	render () { 
 		return (
 			<Row className={"topHeader valign-wrapper"} style={{float: "right"}}>
-				<Col ><Input className='input' label='Usuário' validate type='text' /></Col>
-				<Col ><Input className='input' label='Senha' validate type='password' /></Col>
-				<Col ><Button waves="light" className="btn">Entrar</Button></Col>
-				<Col ><Button waves="light" className="btn">Registrar</Button></Col>
-				<Col l={3}><Input className='input' label='Lembrar de Mim'type='checkbox'/></Col>
+				<Col><Input className='input box-shadow' label='Usuário' validate type='text' /></Col>
+				<Col><Input className='input box-shadow' label='Senha' validate type='password' /></Col>
+				<Col><Button waves="light" className="btn">Entrar</Button></Col>
+				<Col><Button waves="light" className="btn">Registrar</Button></Col>
+				<Col l={3}><Input className='input box-shadow' label='Lembrar de mim'type='checkbox'/></Col>
 			</Row>
 		);
 	}
@@ -32,7 +32,10 @@ class TopHeader extends Component {
 		return(	
 			<Row className={"topHeader valign-wrapper hide-on-med-and-down"} style={{topMargin: "10px"}}>
 				{/*Horário de Funcionamento*/}
-				<Col l={3} m={4} s={4}><Icon tiny className="fa icon">access_time</Icon> Aberto - Seg - Sex: 9am à 5pm</Col>
+				<Col l={3} m={4} s={4}>
+					<Icon tiny className="fa icon">access_time</Icon>
+					<span class="text"> Aberto - Seg - Sex: 9am à 5pm</span>
+				</Col>
 				{/*Login*/}
 				<Col l={8} m={8} s={8} offset="l1" >
 					{/*password e username*/}
