@@ -6,11 +6,7 @@ class Home extends Component {
 	render() {
 		return(
 			<Carousel options={{ fullWidth: true }} images={[
-			  <img src = {im1} alt="Loading"/>,
-			  'https://lorempixel.com/800/400/food/2',
-			  'https://lorempixel.com/800/400/food/3',
-			  'https://lorempixel.com/800/400/food/4',
-			  'https://lorempixel.com/800/400/food/5'
+			  <img src = {im1} alt="Loading"/>
 			]} />
 		);
 	}

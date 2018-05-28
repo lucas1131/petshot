@@ -1,7 +1,29 @@
+input::-webkit-input-placeholder, 
+input:-moz-placeholder, /* Firefox 18- */
+input::-moz-placeholder,  /* Firefox 19+ */
+input:-ms-input-placeholder {  
+	color: black !important;
+}
+
 :root {
 	--custom-orange: #e5601d;
 	--custom-light-orange: #e86f33;
 	--custom-green: #7c795d;
+
+	/* From light theme */
+	--foreground-color1: #4c4a37; /* Text */
+	--foreground-color2: #7c795d; /* Button, links, etc */
+	--foreground-color3: #e5601d; /* Buttons, links, etc, in hover or focus */
+	--foreground-color4: #dddddd; /* Text 2 */
+	--foreground-color5: #7c795d; /* Headers */
+	
+	--background-color1: #7c795d; 
+	--background-color2: #cccccc; 
+	--background-color3: #ffffff;
+	--background-color4: #eeeeee;
+
+	--border-color: #cccccc;
+
 }
 
 .petshop {
@@ -12,4 +34,63 @@
 
 .main {
 	flex: 1 0 auto;
+}
+
+.text {
+	color: var(--custom-green) !important;
+	/*background-color: var(--background-color2) !important;*/
+}
+
+.margin {
+	margin-bottom: 10px !important;
+	padding-bottom: 10px !important;
+}
+
+
+/* Input fields */
+
+
+/* label color */
+.input-field label {
+	color: #000;
+}
+
+/* label focus color */
+.input-field input:focus + label {
+	color: #000;
+}
+
+/* label underline focus color */
+/*.box-shadow input:focus {
+	border-bottom: 1px solid #000;
+	box-shadow: 0 1px 0 0 #000;
+}*/
+
+/* valid color */
+.input-field input.valid {
+	border-bottom: 1px solid #000;
+	box-shadow: 0 1px 0 0 #000;
+}
+
+/* invalid color */
+.input-field input.invalid {
+	border-bottom: 1px solid #000;
+	box-shadow: 0 1px 0 0 #000;
+}
+
+/* icon prefix focus color */
+.input-field .prefix.active {
+	color: #000;
+}
+
+.menstruacao-gigante {
+    box-shadow: red 3px 10px 7px 30px !important;
+}
+
+.box-shadow {
+	border-bottom-color: var(--custom-orange) !important;
+}
+
+.box-shadow:focus {
+    box-shadow: var(--custom-orange) 0px 1px 0px 0px !important;
 }

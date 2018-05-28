@@ -3,6 +3,7 @@ import { Footer } from 'react-materialize';
 
 import Header from './header'
 import Home from './home'
+import PerfilUsuario from './perfilUsuario'
 
 import '../css/general.css';
 import '../css/footer.css';
@@ -16,10 +17,9 @@ class NotFound extends Component {
 class PageContent extends Component {
 	render(){
 		switch(this.props.page){
-			case 'home':
-				return (<Home />)
-			default:
-				return (<NotFound />)
+			case 'home': return (<Home />)
+			case 'perfilUsuario': return (<PerfilUsuario />)
+			default: return (<NotFound />)
 		}
 	}
 }
@@ -28,7 +28,7 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'home'
+			page: 'perfilUsuario'
 		}
 	}
 

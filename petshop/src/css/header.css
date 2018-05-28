@@ -9,19 +9,20 @@
 	color: var(--custom-orange);
 }
 
-.row {
-	width: 30%;
-	max-width: 1000px;
-}
-
+/* Login input */
 .input {
 	color: var(--custom-green);	
 }
 
-.active {
-	color: var(--custom-green) !important;
+label.active {
+	color: var(--custom-orange) !important;
 }
 
+i.active {
+	color: var(--custom-orange) !important;
+}
+
+/* Logo */
 #logo {
 	height: 54px;
 	margin-top: 5px;

@@ -16,12 +16,12 @@ class ResponsiveLogo extends Component {
 class LoginForm extends Component {
 	render() {
 		return(
-			<Row className='row' style={{marginBottom: "0"}}>
+			<Row style={{marginBottom: "0"}}>
 				<Col l={12} offset="l10">
-					<Input className='input' l={6} m={4} s={3} label='User Name' validate type='text'>
+					<Input className='input box-shadow' l={6} m={4} s={3} label='User Name' validate type='text'>
 					<Icon className='icon'>account_circle</Icon>
 					</Input>
-					<Input className='input' l={6} m={4} s={3} label='Password' validate type='password' />
+					<Input className='input box-shadow' l={6} m={4} s={3} label='Password' validate type='password' />
 				</Col>
 			</Row>
 		);
