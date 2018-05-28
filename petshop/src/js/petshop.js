@@ -44,7 +44,12 @@ class Petshop extends Component {
 	render() {
 		return (
 			<div className="petshop">
-	 			<Header />
+	 			<Header user={{
+      background: 'resources/Dog-with-goggles-in-car.jpg',
+      image: 'resources/avatar.png',
+      name: 'Relâmpago Marquinhos',
+      email: 'Catchau@gmail.com'
+    }} />
 	 			<div className="main wrap">
 	 				<PageContent page={this.state.page}/>
 	 			</div>

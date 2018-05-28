@@ -48,8 +48,15 @@ i.active {
 
 .topHeader {
 	margin-bottom: 0px;
+	height: 80px;
 }
 
 .topHeaderInput {
 	margin: 0px;
+}
+
+.background>img {
+	max-height: 100%;
+	width: auto;
+	float: right;
 }
