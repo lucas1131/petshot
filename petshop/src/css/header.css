@@ -9,11 +9,6 @@
 	color: var(--custom-orange);
 }
 
-.row {
-	width: 30%;
-	max-width: 1000px;
-}
-
 .input {
 	color: var(--custom-green);	
 }
@@ -22,8 +17,25 @@
 	color: var(--custom-green) !important;
 }
 
-#logo {
-	height: 54px;
-	margin-top: 5px;
-	margin-left: 20px;
+.responsiveLogo {
+	margin: 5px;
+	margin-left: 10px;
+	height: 56px;
+	max-width: auto;
+}
+
+@media only screen and (max-width: 600px)  {
+	.responsiveLogo {
+		margin: 3px;
+		height: 49px;
+		max-width: auto;
+	}
+}
+
+.topHeader {
+	margin-bottom: 0px;
+}
+
+.topHeaderInput {
+	margin: 0px;
 }

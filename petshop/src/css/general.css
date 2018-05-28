@@ -13,3 +13,24 @@
 .main {
 	flex: 1 0 auto;
 }
+
+.btn {
+	padding: 0 1rem;
+	margin: 0; 
+	background-color: var(--custom-orange);
+	overflow: hidden;
+}
+
+.btn:focus, .btn-large:focus, .btn-floating:focus {
+	background-color: var(--custom-orange);	
+}
+
+.btn:hover, .btn-large:hover, .btn-floating:hover {
+	background-color: var(--custom-light-orange);	
+}
+
+
+[type="checkbox"]:checked+label:before{
+     border-right: 2px solid var(--custom-orange);
+     border-bottom: 2px solid var(--custom-orange);
+}
