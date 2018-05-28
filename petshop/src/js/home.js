@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Carousel } from 'react-materialize';
+import { Carousel , Container} from 'react-materialize';
 import im1 from '../resources/runningDogo.jpg';
 
 class Home extends Component {

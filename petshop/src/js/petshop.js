@@ -28,7 +28,7 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'perfilUsuario'
+			page: 'home'
 		}
 	}
 

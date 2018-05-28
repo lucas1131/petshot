@@ -9,7 +9,10 @@
 	color: var(--custom-orange);
 }
 
+<<<<<<< HEAD
 /* Login input */
+=======
+>>>>>>> master
 .input {
 	color: var(--custom-green);	
 }
@@ -22,9 +25,25 @@ i.active {
 	color: var(--custom-orange) !important;
 }
 
-/* Logo */
-#logo {
-	height: 54px;
-	margin-top: 5px;
-	margin-left: 20px;
+.responsiveLogo {
+	margin: 5px;
+	margin-left: 10px;
+	height: 56px;
+	max-width: auto;
+}
+
+@media only screen and (max-width: 600px)  {
+	.responsiveLogo {
+		margin: 3px;
+		height: 49px;
+		max-width: auto;
+	}
+}
+
+.topHeader {
+	margin-bottom: 0px;
+}
+
+.topHeaderInput {
+	margin: 0px;
 }

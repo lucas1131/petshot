@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Navbar, NavItem } from 'react-materialize';
+import { Navbar, NavItem, Button } from 'react-materialize';
 import { Col, Row, Icon, Input } from 'react-materialize';
 import '../css/header.css';
 import logo from '../resources/logo.png';
@@ -8,20 +8,35 @@ import logo from '../resources/logo.png';
 class ResponsiveLogo extends Component {
 	render() {
 		return(
-			<img id='logo' src={logo} alt="Loading"/>
+			<img id='logo' src={logo} alt="Loading" className="responsiveLogo"/>
 		);
 	}
 }
 
 class LoginForm extends Component {
+	render () { 
+		return (
+			<Row className={"topHeader valign-wrapper"} style={{float: "right"}}>
+				<Col ><Input className='input' label='Usuário' validate type='text' /></Col>
+				<Col ><Input className='input' label='Senha' validate type='password' /></Col>
+				<Col ><Button waves="light" className="btn">Entrar</Button></Col>
+				<Col ><Button waves="light" className="btn">Registrar</Button></Col>
+				<Col l={3}><Input className='input' label='Lembrar de Mim'type='checkbox'/></Col>
+			</Row>
+		);
+	}
+}
+
+class TopHeader extends Component {
 	render() {
-		return(
-			<Row style={{marginBottom: "0"}}>
-				<Col l={12} offset="l10">
-					<Input className='input box-shadow' l={6} m={4} s={3} label='User Name' validate type='text'>
-					<Icon className='icon'>account_circle</Icon>
-					</Input>
-					<Input className='input box-shadow' l={6} m={4} s={3} label='Password' validate type='password' />
+		return(	
+			<Row className={"topHeader valign-wrapper hide-on-med-and-down"} style={{topMargin: "10px"}}>
+				{/*Horário de Funcionamento*/}
+				<Col l={3} m={4} s={4}><Icon tiny className="fa icon">access_time</Icon> Aberto - Seg - Sex: 9am à 5pm</Col>
+				{/*Login*/}
+				<Col l={8} m={8} s={8} offset="l1" >
+					{/*password e username*/}
+					<LoginForm/>
 				</Col>
 			</Row>
 		);
@@ -48,10 +63,7 @@ class Header extends Component {
 	render() {
 		return(
 			<div id="header">
-				<div className="valign-wrapper" style={{marginLeft: "20px"}}>
-					<Icon tiny className="fa icon">access_time</Icon> Aberto - Seg - Sex: 9am à 5pm
-					<LoginForm />
-				</div>
+				<TopHeader />
 				<TopNavbar />
 			</div>
 		);
