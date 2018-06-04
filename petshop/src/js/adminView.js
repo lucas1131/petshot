@@ -112,32 +112,32 @@ class AdminStatisticsView extends Component {
 				{/*<div className="row-admin-card align-content">*/}
 				<Row>
 					
-					<Col>	
-						<Card className="statistics_card-admin">
+					<Col l={4} m={6} s={12}>
+						<Card className="statistics_card-admin center">
 							<p className='text'> Transformar isso aqui em props </p>
 						</Card>
 					</Col>	
 
-					<Col>	
-						<Card className="statistics_card-admin">
+					<Col l={4} m={6} s={12}>
+						<Card className="statistics_card-admin center">
 							<p className='text'> Produtos vendidos: 5 </p>
 						</Card>
 					</Col>	
 
-					<Col>	
-						<Card className="statistics_card-admin">
+					<Col l={4} m={6} s={12}>
+						<Card className="statistics_card-admin center">
 							<p className='text'> Gastos: R$100,00 </p>
 						</Card>
 					</Col>	
 
-					<Col>	
-						<Card className="statistics_card-admin">
+					<Col l={4} m={6} s={12}>
+						<Card className="statistics_card-admin center">
 							<p className='text'> Lucro: R$800,00 </p>
 						</Card>
 					</Col>	
 
-					<Col>	
-						<Card className="statistics_card-admin">
+					<Col l={4} m={6} s={12}>
+						<Card className="statistics_card-admin center">
 							<p className='text'> Saldo: R$700,00 </p>
 						</Card>
 					</Col>	
@@ -153,32 +153,32 @@ class AdminStatisticsView extends Component {
 
 				{/*<div className="row-admin-card align-content">*/}
 				<Row>
-					<Col>
-						<Card className="statistics_card-admin">
+					<Col l={4} m={6} s={12}>
+						<Card className="statistics_card-admin center">
 							<p className='text'> Transformar isso aqui em props </p>
 						</Card>
 					</Col>
 
-					<Col>
-						<Card className="statistics_card-admin">
+					<Col l={4} m={6} s={12}>
+						<Card className="statistics_card-admin center">
 							<p className='text'> Serviços vendidos: 5 </p>
 						</Card>
 					</Col>
 
-					<Col>
-						<Card className="statistics_card-admin">
+					<Col l={4} m={6} s={12}>
+						<Card className="statistics_card-admin center">
 							<p className='text'> Gastos: R$100,00 </p>
 						</Card>
 					</Col>
 
-					<Col>
-						<Card className="statistics_card-admin">
+					<Col l={4} m={6} s={12}>
+						<Card className="statistics_card-admin center">
 							<p className='text'> Lucro: R$800,00 </p>
 						</Card>
 					</Col>
 
-					<Col>
-						<Card className="statistics_card-admin">
+					<Col l={4} m={6} s={12}>
+						<Card className="statistics_card-admin center">
 							<p className='text'> Saldo: R$700,00 </p>
 						</Card>
 					</Col>
@@ -195,7 +195,7 @@ export default class AdminView extends Component {
 		return(
 			<div className="container" style={{marginTop: "15px"}}>
 				<Tabs className='z-depth-1'>
-					<Tab title="Clientes" className="tab admin-tab" active>
+					<Tab title="Clientes" className="tab admin-tab">
 						<AdminClientsView />
 					</Tab>
 
@@ -207,7 +207,7 @@ export default class AdminView extends Component {
 						<AdminServicesView />
 					</Tab>
 
-					<Tab title="Estatísticas" className="tab admin-tab">
+					<Tab title="Estatísticas" className="tab admin-tab" active>
 						<AdminStatisticsView />
 					</Tab>
 				</Tabs>
