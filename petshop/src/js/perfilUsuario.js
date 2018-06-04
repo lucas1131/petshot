@@ -97,7 +97,7 @@ class PerfilUsuario extends Component {
 		return(
 			<div className="container" style={{marginTop: "15px"}}>
 				<Tabs className='z-depth-1'>
-					<Tab title="Configurações" className="tab">
+					<Tab title="Configurações" className="tab" active>
 						<Configs />
 					</Tab>
 
@@ -105,7 +105,7 @@ class PerfilUsuario extends Component {
 						<Animals />
 					</Tab>
 
-					<Tab title="Endereços" className="tab" active>
+					<Tab title="Endereços" className="tab">
 						<Addressess />
 					</Tab>
 				</Tabs>

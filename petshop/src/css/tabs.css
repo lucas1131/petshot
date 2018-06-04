@@ -34,6 +34,10 @@
 	width: 33.33% !important;
 }
 
+.admin-tab {
+	width: 24.99% !important;
+}
+
 .indicator {
 	background-color: var(--custom-orange) !important;
 }

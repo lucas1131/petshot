@@ -1,5 +1,4 @@
-/* Light Theme stylesheet
- *
+/* 
  * Giovanna Oliveira Guimarães 9293693
  * Lucas Alexandre Soares 9293265
  * Luca Gomes Urssi 10425396
@@ -13,6 +12,7 @@ import { Footer } from 'react-materialize';
 import Header from './header'
 import Home from './home'
 import PerfilUsuario from './perfilUsuario'
+import AdminView from './adminView'
 
 import '../css/general.css';
 import '../css/footer.css';
@@ -28,6 +28,7 @@ class PageContent extends Component {
 		switch(this.props.page){
 			case 'home': return (<Home />)
 			case 'perfilUsuario': return (<PerfilUsuario />)
+			case 'adminClients': return (<AdminView />)
 			default: return (<NotFound />)
 		}
 	}
@@ -37,7 +38,7 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'perfilUsuario'
+			page: 'adminClients'
 		}
 	}
 
@@ -45,11 +46,11 @@ class Petshop extends Component {
 		return (
 			<div className="petshop">
 	 			<Header user={{
-      background: 'resources/Dog-with-goggles-in-car.jpg',
-      image: 'resources/avatar.png',
-      name: 'Relâmpago Marquinhos',
-      email: 'Catchau@gmail.com'
-    }} />
+					background: 'resources/Dog-with-goggles-in-car.jpg',
+					image: 'resources/avatar.png',
+					name: 'Relâmpago Marquinhos',
+					email: 'Catchau@gmail.com'
+				}} />
 	 			<div className="main wrap">
 	 				<PageContent page={this.state.page}/>
 	 			</div>

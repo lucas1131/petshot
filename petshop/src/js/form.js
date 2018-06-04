@@ -165,3 +165,140 @@ export class AddressessForm extends Form {
     );
   }
 }
+
+export class AdminClientsForm extends Form {
+  render() {
+    return (
+      <form style={{marginTop: "10px"}}>
+        
+        <Input name="name" 
+          className='input box-shadow' 
+          label='Nome' 
+          value={this.state.name}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+        
+        <Input name="surname" 
+          className='input box-shadow' 
+          label='Sobrenome' 
+          value={this.state.surname}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+        
+        <Input name="services" 
+          className='input box-shadow' 
+          label='Serviços Agendados' 
+          value={this.state.services}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+        
+        <Input name="animals" 
+          className='input box-shadow' 
+          label='Animais Registrados' 
+          value={this.state.animals}
+          onChange={e => this.change(e)}
+          validate
+          type="text" />
+
+        <Input name="address" 
+          className='input box-shadow' 
+          label='Endereço' 
+          value={this.state.address}
+          onChange={e => this.change(e)}
+          validate
+          type="text" />
+        
+        <Button className="btn form-btn" onClick={e => this.onSubmit(e)} waves="light" primary>Enviar</Button>
+      </form>
+    );
+  }
+}
+
+export class AdminProductsForm extends Form {
+  render() {
+    return (
+      <form style={{marginTop: "10px"}}>
+        
+        <Input name="nickname" 
+          className='input box-shadow' 
+          label='Nome' 
+          value={this.state.nickname}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+        
+        <Input name="street" 
+          className='input box-shadow' 
+          label='Rua' 
+          value={this.state.street}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+        
+        <Input name="number" 
+          className='input box-shadow' 
+          label='N°' 
+          value={this.state.number}
+          onChange={e => this.change(e)} 
+          validate 
+          type="number" />
+        
+        <Input name="compl" 
+          className='input box-shadow' 
+          label='Complemento' 
+          value={this.state.compl}
+          onChange={e => this.change(e)}
+          validate
+          type="text" />
+        
+        <Button className="btn form-btn" onClick={e => this.onSubmit(e)} waves="light" primary>Enviar</Button>
+      </form>
+    );
+  }
+}
+
+export class AdminServicesForm extends Form {
+  render() {
+    return (
+      <form style={{marginTop: "10px"}}>
+        
+        <Input name="nickname" 
+          className='input box-shadow' 
+          label='Nome' 
+          value={this.state.nickname}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+        
+        <Input name="street" 
+          className='input box-shadow' 
+          label='Rua' 
+          value={this.state.street}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+        
+        <Input name="number" 
+          className='input box-shadow' 
+          label='N°' 
+          value={this.state.number}
+          onChange={e => this.change(e)} 
+          validate 
+          type="number" />
+        
+        <Input name="compl" 
+          className='input box-shadow' 
+          label='Complemento' 
+          value={this.state.compl}
+          onChange={e => this.change(e)}
+          validate
+          type="text" />
+        
+        <Button className="btn form-btn" onClick={e => this.onSubmit(e)} waves="light" primary>Enviar</Button>
+      </form>
+    );
+  }
+}

@@ -12,7 +12,13 @@ import { Row, Col } from 'react-materialize';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import injectTapEventPlugin from "react-tap-event-plugin";
 
-import Form, { AnimalForm, AddressessForm } from "./form";
+import Form from "./form";
+import {  AnimalForm,
+          AddressessForm,
+          AdminClientsForm,
+          AdminProductsForm,
+          AdminServicesForm } from "./form";
+
 import Table from "./table";
 
 import "../css/dateDisplay.css";
@@ -163,5 +169,106 @@ export class AddressessTable extends EditableTable {
   }
 }
 
+export class AdminClientsTable extends EditableTable {
+  render() {
+    return (
+      <MuiThemeProvider>
+        <div>
+          <Col>
+            <Row>
+              <AdminClientsForm onSubmit={submission => this.setState({
+                    data: [...this.state.data, submission]
+                  })}
+                style={{height: "100px", width: "100%"}}
+              />
+            </Row>
+            <Row>
+              <div>
+                <Table
+                  handleRemove={this.handleRemove}
+                  startEditing={this.startEditing}
+                  editIdx={this.state.editIdx}
+                  stopEditing={this.stopEditing}
+                  handleChange={this.handleChange}
+                  data={this.state.data}
+                  header={this.header}
+                  style={{overflowX: "scroll"}}
+                />
+              </div>
+            </Row>
+          </Col>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}
+
+export class AdminProductsTable extends EditableTable {
+  render() {
+    return (
+      <MuiThemeProvider>
+        <div>
+          <Col>
+            <Row>
+              <AdminProductsForm onSubmit={submission => this.setState({
+                    data: [...this.state.data, submission]
+                  })}
+                style={{height: "100px", width: "100%"}}
+              />
+            </Row>
+            <Row>
+              <div>
+                <Table
+                  handleRemove={this.handleRemove}
+                  startEditing={this.startEditing}
+                  editIdx={this.state.editIdx}
+                  stopEditing={this.stopEditing}
+                  handleChange={this.handleChange}
+                  data={this.state.data}
+                  header={this.header}
+                  style={{overflowX: "scroll"}}
+                />
+              </div>
+            </Row>
+          </Col>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}
+
+export class AdminServicesTable extends EditableTable {
+  render() {
+    return (
+      <MuiThemeProvider>
+        <div>
+          <Col>
+            <Row>
+              <AdminServicesForm onSubmit={submission => this.setState({
+                    data: [...this.state.data, submission]
+                  })}
+                style={{height: "100px", width: "100%"}}
+              />
+            </Row>
+            <Row>
+              <div>
+                <Table
+                  handleRemove={this.handleRemove}
+                  startEditing={this.startEditing}
+                  editIdx={this.state.editIdx}
+                  stopEditing={this.stopEditing}
+                  handleChange={this.handleChange}
+                  data={this.state.data}
+                  header={this.header}
+                  style={{overflowX: "scroll"}}
+                />
+              </div>
+            </Row>
+          </Col>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}
 
 export default EditableTable;
