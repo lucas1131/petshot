@@ -1,0 +1,28 @@
+@import 'general.css';
+
+.slick-next::before, .slick-prev::before {
+
+    /*font-size: 22px;*/
+    /*line-height: 1;*/
+    /*opacity: .75;*/
+    color: black;
+
+}
+
+.slick-list {
+	max-height: 500px;
+}
+
+.slick-slide {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+/*
+.slick-next::before{
+    padding-left: 10px;
+} 
+
+.slick-prev::before {
+    padding-right: 100px;
+}*/

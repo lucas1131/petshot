@@ -104,9 +104,7 @@ class Home extends Component {
 						<hr class='awesome'/>
 						
 						<Row>
-							<Col m={8} s={12} l={8}>
-								<SlickSlider />
-							</Col>
+							<SlickSlider />
 						</Row>
 
 						<p class='default'>
