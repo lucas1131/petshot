@@ -25,9 +25,6 @@ import shower from '../resources/banho.jpg';
 import shear from '../resources/tosa.jpg';
 import vet from '../resources/veterinario.png';
 import castration from '../resources/castracao.png';
-import collar from '../resources/collar.jpg';
-import food from '../resources/racao2.jpg';
-import ball from '../resources/ball.png';
 
 class Home extends Component {
 	render() {
@@ -65,7 +62,7 @@ class Home extends Component {
 						<Col m={6} s={12} l={3}>
 	  					<Card header={<CardTitle image={shear}></CardTitle>}
 	  						actions={[<a href='#'>Agendar</a>]}>
-	      				<h6>Tosa</h6>
+	      				<h6 className='customGreen'>Tosa</h6>
 	      				<p class='default'>
 	      					A partir de R$ 40,00
 	      				</p>
@@ -74,7 +71,7 @@ class Home extends Component {
 						<Col m={6} s={12} l={3}>
 	  					<Card header={<CardTitle image={castration}></CardTitle>}
 	  						actions={[<a href='#'>Agendar</a>]}>
-	      				<h6>Castração</h6>
+	      				<h6 className='customGreen'>Castração</h6>
 	      				<p class='default'>
 	      					A partir de R$ 40,00
 	      				</p>
@@ -83,7 +80,7 @@ class Home extends Component {
 						<Col m={6} s={12} l={3}>
 	  					<Card header={<CardTitle image={vet}></CardTitle>}
 	  						actions={[<a href='#'>Agendar</a>]}>
-	      				<h6>Veterinário</h6>
+	      				<h6 className='customGreen'>Veterinário</h6>
 	      				<p class='default'>
 	      					A partir de R$ 40,00
 	      				</p>
@@ -92,7 +89,7 @@ class Home extends Component {
 						<Col m={6} s={12} l={3}>
 	  					<Card header={<CardTitle image={shower}></CardTitle>}
 	  						actions={[<a href='#'>Agendar</a>]}>
-	      				<h6>Banho</h6>
+	      				<h6 className='customGreen'>Banho</h6>
 	      				<p class='default'>
 	      					A partir de R$ 40,00
 	      				</p>

@@ -9,10 +9,12 @@
 import React, { Component } from 'react';
 import { Footer } from 'react-materialize';
 
-import Header from './header'
-import Home from './home'
-import PerfilUsuario from './perfilUsuario'
-import AdminView from './adminView'
+import Header from './header';
+import Home from './home';
+import PerfilUsuario from './perfilUsuario';
+import AdminView from './adminView';
+import ProductList from './productList';
+import ServiceList from './serviceList';
 
 import '../css/general.css';
 import '../css/footer.css';
@@ -29,6 +31,8 @@ class PageContent extends Component {
 			case 'home': return (<Home />)
 			case 'perfilUsuario': return (<PerfilUsuario />)
 			case 'adminView': return (<AdminView />)
+			case 'productList': return (<ProductList />)
+			case 'serviceList': return (<ServiceList />)
 			default: return (<NotFound />)
 		}
 	}
@@ -38,7 +42,7 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'home'
+			page: 'serviceList'
 			// page: 'adminView'
 		}
 	}
