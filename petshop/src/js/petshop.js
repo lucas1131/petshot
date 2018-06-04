@@ -38,8 +38,8 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'home'
-			// page: 'adminView'
+			// page: 'home'
+			page: 'adminView'
 		}
 	}
 
