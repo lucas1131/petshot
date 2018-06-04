@@ -28,7 +28,7 @@ class PageContent extends Component {
 		switch(this.props.page){
 			case 'home': return (<Home />)
 			case 'perfilUsuario': return (<PerfilUsuario />)
-			case 'adminClients': return (<AdminView />)
+			case 'adminView': return (<AdminView />)
 			default: return (<NotFound />)
 		}
 	}
@@ -38,7 +38,8 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'adminClients'
+			page: 'home'
+			// page: 'adminView'
 		}
 	}
 
