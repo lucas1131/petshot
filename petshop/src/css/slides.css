@@ -10,12 +10,40 @@
 }
 
 .slick-list {
-	max-height: 500px;
+	margin: 10px 0 20px 0;
+	height: 450px;
 }
 
 .slick-slide {
 	margin-right: 10px;
 	margin-left: 10px;
+	width: 400px !important;
+}
+
+@media only screen and (max-width: 992px) {
+
+	.slick-slide {
+		margin-right: 10px;
+		margin-left: 10px;
+		width: 300px !important;
+	}
+
+	.slick-list {
+		height: 390px;
+	}
+
+	@media only screen and (max-width: 600px) {
+	
+		.slick-slide {
+			margin-right: 10px;
+			margin-left: 10px;
+			width: 200px !important;
+		}
+
+		.slick-list {
+			height: 330px;
+		}
+	}
 }
 
 /*
