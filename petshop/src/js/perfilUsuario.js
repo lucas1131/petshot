@@ -8,11 +8,9 @@
 
 import React, { Component } from 'react'
 import { Tabs, Tab } from 'react-materialize';
-// import { Table } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 
-import EditableTable from './editableTable'
-import Form from './form'
-import Table from './table'
+import EditableTable, { AnimalTable, AddressessTable } from './editableTable'
 
 import '../css/general.css';
 import '../css/tabs.css';
@@ -34,15 +32,26 @@ class Configs extends Component {
 						<div style={{display: "inline-block", marginBottom: "30px"}}>
 						<h4 className="label">Senha atual</h4>
 						<form>
-							<input className="settings_input box-shadow" type="password" placeholder="Senha Atual" name="oldpassword" /><br/><br/>
-							<p className="text" style={{fontSize: "10px"}}> Sua senha atual é necessária efetuar qualquer mudança</p>
-						</form>
-						<h4 className="label">Altere sua Senha</h4>
-						<form style={{marginBottom: "40px"}}>
-							<input className="settings_input box-shadow" type="password" placeholder="Nova Senha" name="newpassword" /><br/>
-						</form>
-						<form>	
-							<input className="settings_input box-shadow" type="password" placeholder="Confirmar Senha" name="confpassword" />
+							<Col>
+								<Row>
+									<input className="settings_input box-shadow" type="password" 
+										placeholder="Senha Atual" name="oldpassword" />
+								</Row>
+								<Row>
+									<p className="text" style={{fontSize: "10px"}}> Sua senha atual é necessária efetuar qualquer mudança</p>
+								</Row>
+								<Row>
+									<h4 className="label">Altere sua Senha</h4>
+								</Row>
+								<Row>
+									<input className="settings_input box-shadow" type="password" 
+										placeholder="Nova Senha" name="newpassword" />
+								</Row>
+								<Row>
+									<input className="settings_input box-shadow" type="password" 
+										placeholder="Confirmar Senha" name="confpassword" />
+								</Row>
+							</Col>
 						</form>
 						</div>
 					</div>
@@ -57,11 +66,26 @@ class Animals extends Component {
   render() {
     return (
       <div>
-        <EditableTable header={[
+        <AnimalTable header={[
 					{ name: "Nome", prop: "name", type: "text" },
 					{ name: "Raça", prop: "race", type: "text" },
-					{ name: "Agendamentos", prop: "scheduled", type: "date" },
+					{ name: "Agendamentos", prop: "scheduled", type: "text" },
 					{ name: "Custo", prop: "cost", type: "number" }
+				]}/>
+      </div>
+    );
+  }
+}
+
+class Addressess extends Component {
+	render() {
+    return (
+      <div>
+        <AddressessTable header={[
+					{ name: "Nome", prop: "nickname", type: "text" },
+					{ name: "Rua", prop: "street", type: "text" },
+					{ name: "N°", prop: "number", type: "number" },
+					{ name: "Complemento", prop: "compl", type: "text" }
 				]}/>
       </div>
     );
@@ -77,12 +101,13 @@ class PerfilUsuario extends Component {
 						<Configs />
 					</Tab>
 
-					<Tab title="Animais" className="tab" active>
+					<Tab title="Animais" className="tab">
 						<Animals />
 					</Tab>
 
-					<Tab title="Serviços" className="tab">Serviços</Tab>
-					<Tab title="Endereços" className="tab">Endereços</Tab>
+					<Tab title="Endereços" className="tab" active>
+						<Addressess />
+					</Tab>
 				</Tabs>
 			</div>
 		);

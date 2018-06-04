@@ -1,4 +1,4 @@
-/* Light Theme stylesheet
+/* General petshop app stylesheet
  *
  * Giovanna Oliveira Guimarães 9293693
  * Lucas Alexandre Soares 9293265
@@ -11,7 +11,7 @@ input::-webkit-input-placeholder,
 input:-moz-placeholder, /* Firefox 18- */
 input::-moz-placeholder,  /* Firefox 19+ */
 input:-ms-input-placeholder {  
-	color: black !important;
+	color: var(--custom-green) !important;
 }
 
 :root {
@@ -35,6 +35,7 @@ input:-ms-input-placeholder {
 	--background-color4: #eeeeee;
 
 	--border-color: #cccccc;
+	/********************/
 
 }
 
@@ -151,4 +152,19 @@ p.default {
 	font-size: 14px !important;
 	line-height: 32px !important;
 	text-align: center !important;
+}
+/*
+.fit-content {
+	white-space: nowrap;
+	display: inline-flex;
+}*/
+
+/* Adaptative container for smaller screens */
+.container { width: 70%; }
+@media only screen and (max-width: 992px){
+	.container { width: 85%; }
+
+	@media only screen and (max-width: 600px){
+		.container { width: 90%; }
+	}
 }

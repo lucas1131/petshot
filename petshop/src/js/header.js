@@ -29,7 +29,7 @@ class UserInfo extends Component {
 		return (
 			<Row className={"topHeader valign-wrapper"} style={{float: "right"}}>
 				<Col > <b>Usuário:</b> {this.props.user.name}</Col>
-				<Col ><img class="circle" src={this.props.user.image} style={{height: "55px"}}/> </Col>
+				<Col ><img className="circle" src={this.props.user.image} style={{height: "55px"}}/> </Col>
 				<Col ><Button waves="light" className="btn">Meu Carrinho<Icon left>shopping_cart</Icon></Button></Col>
 				<Col ><Button waves="light" className="btn">Meu Perfil<Icon left>account_circle</Icon></Button></Col>
 				<Col ><Button waves="light" className="btn">Sair<Icon left>exit_to_app</Icon></Button></Col>

@@ -1,4 +1,4 @@
-/* Light Theme stylesheet
+/* Stylesheet for date picker - input of type "date" (calendar)
  *
  * Giovanna Oliveira Guimarães 9293693
  * Lucas Alexandre Soares 9293265
@@ -9,6 +9,9 @@
 
 .picker__date-display {
     background-color: var(--custom-orange);
+}
+.picker__day-display {
+	font-size: 55px; 
 }
 
 .picker__weekday-display, 
@@ -22,7 +25,7 @@
 	color: var(--custom-green2);
 }
 
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 600px){
 	.picker__frame{
 		-ms-transform: scale(0.8, 0.8); /* IE 9 */
 	    -webkit-transform: scale(0.8, 0.8); /* Safari */

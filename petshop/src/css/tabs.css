@@ -8,37 +8,36 @@
  */
 
 .tabs .tab a {
-		color: var(--custom-green) !important;
-	}
+	color: var(--custom-green) !important;
+}
 
-	.tabs .tab a:hover {
-		color: var(--custom-orange) !important;
-	}
+.tabs .tab a:hover {
+	color: var(--custom-orange) !important;
+}
 
-	.tabs .tab .active {
-		color: var(--custom-orange) !important;
-	}
+.tabs .tab .active {
+	color: var(--custom-orange) !important;
+}
 
 /* For screens smaller than 600px */
 @media only screen and (max-width: 600px) {
-	.tabs .tab a {
-		background-color: black !important;
-	}
 
-	.tabs .tab a:hover {
-		background-color: black !important;
-	}
-
+	.tabs .tab a,
+	.tabs .tab a:hover,
 	.tabs .tab .active {
-		background-color: black !important;
+		font-size: 11px;
 	}
+
 }
 
 .tab {
-	width: 25% !important;
+	width: 33.33% !important;
 }
 
 .indicator {
 	background-color: var(--custom-orange) !important;
 }
 
+.form-btn {
+	margin-top: 1%;
+}

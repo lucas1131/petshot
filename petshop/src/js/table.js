@@ -21,9 +21,9 @@ import {
 import EditIcon from "material-ui/svg-icons/image/edit";
 import TrashIcon from "material-ui/svg-icons/action/delete";
 import CheckIcon from "material-ui/svg-icons/navigation/check";
-import TextField from "material-ui/TextField";
 
 import "../css/general.css"
+import "../css/table.css"
 
 const row = (
   x,
@@ -37,9 +37,9 @@ const row = (
 ) => {
   const currentlyEditing = editIdx === i;
   return (
-    <TableRow key={`tr-${i}`} selectable={false}>
+    <TableRow key={`tr-${i}`} selectable={false} className="scroll-x">
       {header.map((y, k) => (
-        <TableRowColumn key={`trc-${k}`}>
+        <TableRowColumn key={`trc-${k}`} className="table-col">
           {currentlyEditing ? (
             <Input
               name={y.prop}
@@ -55,14 +55,14 @@ const row = (
           )}
         </TableRowColumn>
       ))}
-      <TableRowColumn>
+      <TableRowColumn className="table-col">
         {currentlyEditing ? (
           <CheckIcon className="text" onClick={() => stopEditing()} />
         ) : (
           <EditIcon onClick={() => startEditing(i)} />
         )}
       </TableRowColumn>
-      <TableRowColumn>
+      <TableRowColumn className="table-col">
         <TrashIcon onClick={() => handleRemove(i)} />
       </TableRowColumn>
     </TableRow>
@@ -82,10 +82,10 @@ export default ({
     <TableHeader>
       <TableRow>
         {header.map((x, i) => (
-          <TableHeaderColumn key={`thc-${i}`}>{x.name}</TableHeaderColumn>
+          <TableHeaderColumn key={`thc-${i}`} className="table-col fit-content">{x.name}</TableHeaderColumn>
         ))}
-        <TableHeaderColumn />
-        <TableHeaderColumn />
+        <TableHeaderColumn className="table-col fit-content">Editar</TableHeaderColumn>
+        <TableHeaderColumn className="table-col fit-content">Excluir</TableHeaderColumn>
       </TableRow>
     </TableHeader>
     <TableBody>

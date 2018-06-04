@@ -8,24 +8,17 @@
  */
 
 import React, { Component } from "react";
+import { Row, Col } from 'react-materialize';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import injectTapEventPlugin from "react-tap-event-plugin";
 
-import Form from "./form";
+import Form, { AnimalForm, AddressessForm } from "./form";
 import Table from "./table";
 
 import "../css/dateDisplay.css";
 import "../css/general.css";
 
 injectTapEventPlugin();
-
-class AnimalTable extends Component {
-  render() {
-    return (
-      <div/>
-    )
-  }
-}
 
 class EditableTable extends Component {
 
@@ -73,24 +66,102 @@ class EditableTable extends Component {
     return (
       <MuiThemeProvider>
         <div>
-          <Form onSubmit={submission => this.setState({
-                data: [...this.state.data, submission]
-              })}
-            style={{height: "100px"}}
-          />
-          <Table
-            handleRemove={this.handleRemove}
-            startEditing={this.startEditing}
-            editIdx={this.state.editIdx}
-            stopEditing={this.stopEditing}
-            handleChange={this.handleChange}
-            data={this.state.data}
-            header={this.header}
-          />
+          <Col>
+            <Row>
+              <Form onSubmit={submission => this.setState({
+                    data: [...this.state.data, submission]
+                  })}
+                style={{height: "100px", width: "100%"}}
+              />
+            </Row>
+            <Row>
+              <div>
+                <Table
+                  handleRemove={this.handleRemove}
+                  startEditing={this.startEditing}
+                  editIdx={this.state.editIdx}
+                  stopEditing={this.stopEditing}
+                  handleChange={this.handleChange}
+                  data={this.state.data}
+                  header={this.header}
+                  style={{overflowX: "scroll"}}
+                />
+              </div>
+            </Row>
+          </Col>
         </div>
       </MuiThemeProvider>
     );
   }
 }
+
+export class AnimalTable extends EditableTable {
+  render() {
+    return (
+      <MuiThemeProvider>
+        <div>
+          <Col>
+            <Row>
+              <AnimalForm onSubmit={submission => this.setState({
+                    data: [...this.state.data, submission]
+                  })}
+                style={{height: "100px", width: "100%"}}
+              />
+            </Row>
+            <Row>
+              <div>
+                <Table
+                  handleRemove={this.handleRemove}
+                  startEditing={this.startEditing}
+                  editIdx={this.state.editIdx}
+                  stopEditing={this.stopEditing}
+                  handleChange={this.handleChange}
+                  data={this.state.data}
+                  header={this.header}
+                  style={{overflowX: "scroll"}}
+                />
+              </div>
+            </Row>
+          </Col>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}
+
+export class AddressessTable extends EditableTable {
+  render() {
+    return (
+      <MuiThemeProvider>
+        <div>
+          <Col>
+            <Row>
+              <AddressessForm onSubmit={submission => this.setState({
+                    data: [...this.state.data, submission]
+                  })}
+                style={{height: "100px", width: "100%"}}
+              />
+            </Row>
+            <Row>
+              <div>
+                <Table
+                  handleRemove={this.handleRemove}
+                  startEditing={this.startEditing}
+                  editIdx={this.state.editIdx}
+                  stopEditing={this.stopEditing}
+                  handleChange={this.handleChange}
+                  data={this.state.data}
+                  header={this.header}
+                  style={{overflowX: "scroll"}}
+                />
+              </div>
+            </Row>
+          </Col>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}
+
 
 export default EditableTable;

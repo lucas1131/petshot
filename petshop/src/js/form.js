@@ -8,8 +8,6 @@
  */
 
 import React from "react";
-import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
 import { Button, Input } from 'react-materialize';
 
 /*
@@ -23,6 +21,7 @@ import { Button, Input } from 'react-materialize';
         />
         */
 export default class Form extends React.Component {
+
   state = {
     name: "",
     nameError: "",
@@ -50,9 +49,6 @@ export default class Form extends React.Component {
       costError: ""
     };
 
-    for(let prop in this.state){
-      console.log(prop)
-    }
 
     // if (this.state.scheduled.length < 5) {
     //   isError = true;
@@ -90,19 +86,81 @@ export default class Form extends React.Component {
       });
     }
   };
+}
 
+export class AnimalForm extends Form {
   render() {
     return (
       <form style={{marginTop: "10px"}}>
-        <Input name="name" className='input box-shadow' label='Nome'  value={this.state.name}
-          onChange={e => this.change(e)} validate type='text' />
-        <Input name="race" className='input box-shadow' label='Raça' value={this.state.race}
-          onChange={e => this.change(e)} validate type='text' />
-        <Input name="scheduled" className='input box-shadow' label='Agendamentos' value={this.state.scheduled}
-          onChange={e => this.change(e)} validate type='date' />
-        <Input name="cost" className='input box-shadow' label='Custo' value={this.state.cost}
-          onChange={e => this.change(e)} validate type='text' />
-        <Button className="btn" onClick={e => this.onSubmit(e)} waves="light" primary>Enviar</Button>
+        
+        <Input name="name" 
+          className='input box-shadow' 
+          label='Nome'
+          value={this.state.name}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+
+        <Input name="race" 
+          className='input box-shadow' 
+          label='Raça'
+          value={this.state.race}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+
+        <Input name="scheduled" 
+          className='input box-shadow' 
+          label='Agendamentos'
+          value={this.state.scheduled}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+
+        <Button className="btn form-btn" onClick={e => this.onSubmit(e)} waves="light">Enviar</Button>
+      </form>
+    );
+  }
+}
+
+export class AddressessForm extends Form {
+  render() {
+    return (
+      <form style={{marginTop: "10px"}}>
+        
+        <Input name="nickname" 
+          className='input box-shadow' 
+          label='Nome' 
+          value={this.state.nickname}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+        
+        <Input name="street" 
+          className='input box-shadow' 
+          label='Rua' 
+          value={this.state.street}
+          onChange={e => this.change(e)} 
+          validate 
+          type="text" />
+        
+        <Input name="number" 
+          className='input box-shadow' 
+          label='N°' 
+          value={this.state.number}
+          onChange={e => this.change(e)} 
+          validate 
+          type="number" />
+        
+        <Input name="compl" 
+          className='input box-shadow' 
+          label='Complemento' 
+          value={this.state.compl}
+          onChange={e => this.change(e)}
+          validate
+          type="text" />
+        
+        <Button className="btn form-btn" onClick={e => this.onSubmit(e)} waves="light" primary>Enviar</Button>
       </form>
     );
   }
