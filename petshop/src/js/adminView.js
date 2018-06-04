@@ -9,6 +9,7 @@
 import React, { Component } from 'react'
 import { Tabs, Tab } from 'react-materialize';
 import { Row, Col } from 'react-materialize';
+import { Card, CardTitle } from 'react-materialize';
 
 import { 	AnimalTable,
 					AddressessTable,
@@ -98,35 +99,92 @@ class AdminStatisticsView extends Component {
 	render() {
     return (
     	<div name="statistics">
-				<Row class="center">
-					<h1 class="h1-admin">Estatísticas</h1>
+				<Row className="center">
+					<h1 className="h1-admin">Estatísticas</h1>
 				</Row>
 
-				{/*<hr class="style0" />
-				Placeholder hr*/}
-				<hr/>
+				<hr className="awesome" />
 
-				<Row class="center">
-					<h2 class="h2-admin">Vendas</h2>
+				<Row className="center">
+					<h2 className="h2-admin">Vendas</h2>
 				</Row>
 
-				<div class="row-admin-card align-content">
-					<div class="statistics_card-admin">
-						<p class="text"><b>TODO: </b>Transformar isso aqui em props</p>
-					</div>
-					<div class="statistics_card-admin">
-						<p class="text"><b>Produtos vendidos: </b>9</p>
-					</div>
-					<div class="statistics_card-admin">
-						<p class="text"><b>Gastos: </b>R$ 1000,00</p>
-					</div>
-					<div class="statistics_card-admin">
-						<p class="text"><b>Lucros: </b>R$ 200,00</p>
-					</div>
-					<div class="statistics_card-admin">
-						<p class="text"><b>Saldo: </b>-R$ 800,00</p>
-					</div>
-				</div>
+				{/*<div className="row-admin-card align-content">*/}
+				<Row>
+					
+					<Col>	
+						<Card className="statistics_card-admin">
+							<p className='text'> Transformar isso aqui em props </p>
+						</Card>
+					</Col>	
+
+					<Col>	
+						<Card className="statistics_card-admin">
+							<p className='text'> Produtos vendidos: 5 </p>
+						</Card>
+					</Col>	
+
+					<Col>	
+						<Card className="statistics_card-admin">
+							<p className='text'> Gastos: R$100,00 </p>
+						</Card>
+					</Col>	
+
+					<Col>	
+						<Card className="statistics_card-admin">
+							<p className='text'> Lucro: R$800,00 </p>
+						</Card>
+					</Col>	
+
+					<Col>	
+						<Card className="statistics_card-admin">
+							<p className='text'> Saldo: R$700,00 </p>
+						</Card>
+					</Col>	
+
+				</Row>
+				{/*</div>*/}
+
+				<Row className="center">
+					<h2 className="h2-admin">Serviços</h2>
+				</Row>
+
+				<hr className="awesome" />
+
+				{/*<div className="row-admin-card align-content">*/}
+				<Row>
+					<Col>
+						<Card className="statistics_card-admin">
+							<p className='text'> Transformar isso aqui em props </p>
+						</Card>
+					</Col>
+
+					<Col>
+						<Card className="statistics_card-admin">
+							<p className='text'> Serviços vendidos: 5 </p>
+						</Card>
+					</Col>
+
+					<Col>
+						<Card className="statistics_card-admin">
+							<p className='text'> Gastos: R$100,00 </p>
+						</Card>
+					</Col>
+
+					<Col>
+						<Card className="statistics_card-admin">
+							<p className='text'> Lucro: R$800,00 </p>
+						</Card>
+					</Col>
+
+					<Col>
+						<Card className="statistics_card-admin">
+							<p className='text'> Saldo: R$700,00 </p>
+						</Card>
+					</Col>
+				</Row>
+				{/*</div>*/}
+
     	</div>
     );
   }
