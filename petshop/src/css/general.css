@@ -1,3 +1,6 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css';
+
 :root {
 	--custom-orange: #e5601d;
 	--custom-light-orange: #e86f33;

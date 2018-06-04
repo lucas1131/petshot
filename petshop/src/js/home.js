@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Slider, Slide } from 'react-materialize';
 import { Row, Container } from 'react-materialize';
 import { Col, Card, CardTitle } from 'react-materialize';
+import SlickSlider from './slickSlider';
+
+/* Styles */
 import '../css/home.css';
-import '../css/carousel.css';
-import Carousel from './carousel';
-import { carouselContainer } from './carousel'
-// import carouselSlidesData from './carousel'
+
+/* Resources */
 import im1 from '../resources/runningDogo.jpg';
 import im2 from '../resources/catBag.jpg';
 import im3 from '../resources/dogShower.jpg';
@@ -17,47 +18,6 @@ import castration from '../resources/castracao.png';
 import collar from '../resources/collar.jpg';
 import food from '../resources/racao2.jpg';
 import ball from '../resources/ball.png';
-
-// Data for carousel
-const carouselSlidesData = [
-  {
-    content:
-      "Tomorrow, you will be released. If you are bored of brawling with thieves and want to achieve something there is a rare blue flower that grows on the eastern slopes. Pick one of these flowers. If you can carry it to the top of the mountain, you may find what you were looking for in the first place.",
-    author: "Bane",
-    source: "facebook"
-  }, {
-    content:
-      "You have learn to bury your guilt with anger. I will teach you to confront it and to face the truth.",
-    author: "Ra's Al Ghul",
-    source: "Snapchat"
-  }, {
-    content:
-      "Introduce a little anarchy, upset the established order and everything becomes chaos. I'm an agent of chaos. Oh, and you know the thing about chaos? It's fair.",
-    author: "Joker",
-    source: "facebook"
-  }, {
-    content:
-      "I can't do that as Bruce Wayne... as a man. I'm flesh and blood. I can be ignored, destroyed. But as a symbol, I can be incorruptible, I can be everlasting.",
-    author: "Bruce Wayne",
-    source: "facebook"
-  }, {
-    content:
-      "But it's not who you are underneath... it's what you do that defines you.",
-    author: "Rachel Dawes",
-    source: "twitter"
-  }, {
-    content:
-      "When their enemies were at the gates the Romans would suspend democracy and appoint one man to protect the city. It wasn't considered an honor, it was a public service.",
-    author: "John Blake",
-    source: "Google+"
-  }, {
-    content:
-      "Master Wayne, you've been gone a long time. You look very fashionable. Apart from the mud.",
-    author: "Alfred Pennyworth",
-    source: "twitter"
-  }
-];
-
 
 class Home extends Component {
 	render() {
@@ -94,7 +54,8 @@ class Home extends Component {
 						<Row>
 						<Col m={6} s={12} l={3}>
 	  					<Card header={<CardTitle image={shear}></CardTitle>}
-	  						actions={[<a href='#'>Tosa</a>]}>
+	  						actions={[<a href='#'>Agendar</a>]}>
+	      				<h6>Tosa</h6>
 	      				<p class='default'>
 	      					A partir de R$ 40,00
 	      				</p>
@@ -102,7 +63,8 @@ class Home extends Component {
 						</Col>
 						<Col m={6} s={12} l={3}>
 	  					<Card header={<CardTitle image={castration}></CardTitle>}
-	  						actions={[<a href='#'>Castração</a>]}>
+	  						actions={[<a href='#'>Agendar</a>]}>
+	      				<h6>Castração</h6>
 	      				<p class='default'>
 	      					A partir de R$ 40,00
 	      				</p>
@@ -110,7 +72,8 @@ class Home extends Component {
 						</Col>
 						<Col m={6} s={12} l={3}>
 	  					<Card header={<CardTitle image={vet}></CardTitle>}
-	  						actions={[<a href='#'>Veterinário</a>]}>
+	  						actions={[<a href='#'>Agendar</a>]}>
+	      				<h6>Veterinário</h6>
 	      				<p class='default'>
 	      					A partir de R$ 40,00
 	      				</p>
@@ -118,7 +81,8 @@ class Home extends Component {
 						</Col>
 						<Col m={6} s={12} l={3}>
 	  					<Card header={<CardTitle image={shower}></CardTitle>}
-	  						actions={[<a href='#'>Banho</a>]}>
+	  						actions={[<a href='#'>Agendar</a>]}>
+	      				<h6>Banho</h6>
 	      				<p class='default'>
 	      					A partir de R$ 40,00
 	      				</p>
@@ -138,9 +102,14 @@ class Home extends Component {
 
 						<h3 class='header0'> Nossos Produtos </h3>
 						<hr class='awesome'/>
-						<p class='default'>
-						<div class="carousel-container"><Carousel slides={carouselSlidesData} />, {carouselContainer}</div>
+						
+						<Row>
+							<Col m={8} s={12} l={8}>
+								<SlickSlider />
+							</Col>
+						</Row>
 
+						<p class='default'>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
