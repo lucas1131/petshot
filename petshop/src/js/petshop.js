@@ -38,19 +38,15 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'adminClients'
+			page: 'adminClients',
+			user: null
 		}
 	}
 
 	render() {
 		return (
 			<div className="petshop">
-	 			<Header user={{
-					background: 'resources/Dog-with-goggles-in-car.jpg',
-					image: 'resources/avatar.png',
-					name: 'Relâmpago Marquinhos',
-					email: 'Catchau@gmail.com'
-				}} />
+	 			<Header user={this.state.user} />
 	 			<div className="main wrap">
 	 				<PageContent page={this.state.page}/>
 	 			</div>
