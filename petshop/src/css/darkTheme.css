@@ -1,0 +1,64 @@
+/* Light Theme stylesheet
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
+/* Dark theme stylesheet
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
+
+body {
+	background-color: var(--background-color4);
+}
+
+:root {
+
+	/* Calendar */
+	--calendar-active-month-color: #27AE60;
+	--calendar-hover-color: #27e879;
+	--calendar-event-color: #2980B9;
+	--calendar-main-color: #e5601d;
+	--calendar-unfocused-color: #888888;
+
+	/* Main */
+	--foreground-color1: #cccccc; /* Text */
+	--foreground-color2: #7c795d; /* Button, links, etc */
+	--foreground-color3: #e5601d; /* Buttons, links, etc, in hover or focus */
+	--foreground-color4: #dddddd; /* Text 2 */
+	--foreground-color5: #b7b38d; /* Headers */
+	
+	--background-color1: #7c795d; 
+	--background-color2: #cccccc; 
+	--background-color3: #333333;
+	--background-color4: #222222;
+	
+	--background-focused-color1: #cccccc;
+	--background-focused-color2: #e5601d; /* Buttons, links, etc, in hover or focus */
+
+	--border-color: #666666;
+
+	--drop-shadow-color: rgba(0, 0, 0, 0.2);
+	
+	/* Slides */
+	--slides-hover-color: #717171;
+
+	/* Tables */
+	--table-row-even-color: #222222;
+	--table-row-odd-color: #333333;
+}
+
+input {
+	/* Force input text and background color to avoid text blending with bg */
+	color: var(--foreground-color1); 
+	background-color: var(--background-color3);
+}

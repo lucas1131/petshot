@@ -1,3 +1,12 @@
+/* Light Theme stylesheet
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
 @import 'general.css';
 
 .navbar {
@@ -9,16 +18,45 @@
 	color: var(--custom-orange);
 }
 
+/* Login input */
 .input {
 	color: var(--custom-green);	
 }
 
-.active {
-	color: var(--custom-green) !important;
+label.active {
+	color: var(--custom-orange) !important;
 }
 
-#logo {
-	height: 54px;
-	margin-top: 5px;
-	margin-left: 20px;
+i.active {
+	color: var(--custom-orange) !important;
+}
+
+.responsiveLogo {
+	margin: 5px;
+	margin-left: 10px;
+	height: 56px;
+	max-width: auto;
+}
+
+@media only screen and (max-width: 600px)  {
+	.responsiveLogo {
+		margin: 3px;
+		height: 49px;
+		max-width: auto;
+	}
+}
+
+.topHeader {
+	margin-bottom: 0px;
+	height: 80px;
+}
+
+.topHeaderInput {
+	margin: 0px;
+}
+
+.background>img {
+	max-height: 100%;
+	width: auto;
+	float: right;
 }

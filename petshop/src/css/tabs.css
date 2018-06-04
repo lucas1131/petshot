@@ -1,0 +1,47 @@
+/* Light Theme stylesheet
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
+.tabs .tab a {
+	color: var(--custom-green) !important;
+}
+
+.tabs .tab a:hover {
+	color: var(--custom-orange) !important;
+}
+
+.tabs .tab .active {
+	color: var(--custom-orange) !important;
+}
+
+/* For screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+
+	.tabs .tab a,
+	.tabs .tab a:hover,
+	.tabs .tab .active {
+		font-size: 11px;
+	}
+
+}
+
+.tab {
+	width: 33.33% !important;
+}
+
+.admin-tab {
+	width: 24.99% !important;
+}
+
+.indicator {
+	background-color: var(--custom-orange) !important;
+}
+
+.form-btn {
+	margin-top: 1%;
+}

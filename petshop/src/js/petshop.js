@@ -1,18 +1,21 @@
+/* 
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
 import React, { Component } from 'react';
-import { Button, Footer, Container } from 'react-materialize';
+import { Footer } from 'react-materialize';
 
 import Header from './header'
 import Home from './home'
+import PerfilUsuario from './perfilUsuario'
+import AdminView from './adminView'
 
 import '../css/general.css';
 import '../css/footer.css';
-
-/* EXAMPLE */
-class Teste extends Component {
-	render(){
-		return (<div> Teste </div>)
-	}
-}
 
 class NotFound extends Component {
 	render(){
@@ -21,19 +24,15 @@ class NotFound extends Component {
 }
 
 class PageContent extends Component {
-
 	render(){
 		switch(this.props.page){
-			case 'home':
-				return (<Home />)
-			case 'teste':
-				return (<Teste />)
-			default:
-				return (<NotFound />)
+			case 'home': return (<Home />)
+			case 'perfilUsuario': return (<PerfilUsuario />)
+			case 'adminClients': return (<AdminView />)
+			default: return (<NotFound />)
 		}
 	}
 }
-/* EXAMPLE */
 
 class Petshop extends Component {
 	constructor(props){
@@ -43,16 +42,15 @@ class Petshop extends Component {
 		}
 	}
 
-	changePage = () => {
-		this.setState({
-			page: 'teste'
-		})
-	}
-
 	render() {
 		return (
 			<div className="petshop">
-	 			<Header />
+	 			<Header user={{
+					background: 'resources/Dog-with-goggles-in-car.jpg',
+					image: 'resources/avatar.png',
+					name: 'Relâmpago Marquinhos',
+					email: 'Catchau@gmail.com'
+				}} />
 	 			<div className="main wrap">
 	 				<PageContent page={this.state.page}/>
 	 			</div>
