@@ -16,6 +16,9 @@ class ServiceList extends Component {
 
 	render() {
 		let services = ServiceInfo.map((service, index) => {
+
+			let str = service.name.toLowerCase();
+			str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 			
 			if(this.state.query === '') {
 				return (
@@ -47,8 +50,12 @@ class ServiceList extends Component {
 				<h3 class='header0'> Serviços </h3>
 				<hr class='awesome'/>
 				<div className="center align-content">
-					<Input className='input box-shadow' style={{width: "317px"}} label='Busque um produto'
-						onChange = { (e) => { this.setState( {query: e.target.value} ) } }/>
+					<Input className='input box-shadow' style={{width: "317px"}} label='Busque um serviço'
+						onChange = { (e) => { 
+							let str = e.target.value.toLowerCase();
+							this.setState( {
+								query: str.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+							} ) } }/>
 				</div>
 				<Row style={{marginTop: '50px'}}>
 					{services}

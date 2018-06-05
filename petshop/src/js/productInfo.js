@@ -28,55 +28,7 @@ const ProductInfo = [
 		image: collar,
 		name: 'Coleira',
 		price: '40.00'
-	},
-	
-	{
-		image: food,
-		name: 'Ração',
-		price: '40.00'
-	},
-
-	{
-		image: ball,
-		name: 'Bolinha',
-		price: '40.00'
-	},
-
-	{
-		image: collar,
-		name: 'Coleira',
-		price: '40.00'
-	},
-	
-	{
-		image: food,
-		name: 'Ração',
-		price: '40.00'
-	},
-
-	{
-		image: ball,
-		name: 'Bolinha',
-		price: '40.00'
-	},
-
-	{
-		image: collar,
-		name: 'Coleira',
-		price: '40.00'
-	},
-	
-	{
-		image: food,
-		name: 'Ração',
-		price: '40.00'
-	},
-
-	{
-		image: ball,
-		name: 'Bolinha',
-		price: '40.00'
-	},
+	}
 ];
 
 export default ProductInfo;

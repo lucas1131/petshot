@@ -12,11 +12,12 @@ import { Col, Row, Icon, Input } from 'react-materialize';
 import '../css/header.css';
 import logo from '../resources/logo.png';
 
+import {Link, NavLink} from "react-router-dom"
 
 class ResponsiveLogo extends Component {
 	render() {
 		return(
-			<img id='logo' src={logo} alt="Loading" className="responsiveLogo"/>
+			<NavLink to='/'> <img id='logo' src={logo} alt="Loading" className="responsiveLogo"/> </NavLink>
 		);
 	}
 }
@@ -31,21 +32,33 @@ class UserInfo extends Component {
 				<Col ><img className="circle" src={this.props.user.image} style={{height: "55px"}}/> </Col>
 				<Col ><Button waves="light" className="btn">Meu Carrinho<Icon left>shopping_cart</Icon></Button></Col>
 				<Col ><Button waves="light" className="btn">Meu Perfil<Icon left>account_circle</Icon></Button></Col>
-				<Col ><Button waves="light" className="btn">Sair<Icon left>exit_to_app</Icon></Button></Col>
+				<Col ><Button waves="light" className="btn" onClick={ () => {this.props.handleLogin(null, null, true)} }>Sair<Icon left>exit_to_app</Icon></Button></Col>
 			</Row>
 		);
 	}
 }
 
 class LoginForm extends Component {
+	constructor(props) {
+		super(props)
+		this.props = {
+			handleLogin: props.handleLogin
+		}
+
+		this.state = {
+			username: '',
+			password: ''
+		}
+	}
+
 	render () { 
 		return (
 			<Row className={"topHeader valign-wrapper"} style={{float: "right"}}>
-				<Col><Input className='input box-shadow' label='Usuário' validate type='text' /></Col>
-				<Col><Input className='input box-shadow' label='Senha' validate type='password' /></Col>
-				<Col><Button waves="light" className="btn">Entrar</Button></Col>
-				<Col><Button waves="light" className="btn">Registrar</Button></Col>
-				<Col l={3}><Input className='input box-shadow' label='Lembrar de mim'type='checkbox'/></Col>
+					<Col><Input className='input box-shadow' label='Usuário' validate type='text' onChange={ (e) => {this.setState({username: e.target.value})} }/></Col>
+					<Col><Input className='input box-shadow' label='Senha' validate type='password' onChange={ (e) => {this.setState({password: e.target.value})} }/></Col>
+					<Col><Button waves="light" className="btn" onClick={ (e) => {this.props.handleLogin(this.state.username, this.state.password, false)} }>Entrar</Button></Col>
+					<Col><Button waves="light" className="btn">Registrar</Button></Col>
+					<Col l={3}><Input className='input box-shadow' label='Lembrar de mim'type='checkbox'/></Col>
 			</Row>
 		);
 	}
@@ -57,7 +70,8 @@ class TopHeader extends Component {
 	constructor(props) {
 		super(props)
 		this.props = {
-			user: props.user
+			user: props.user,
+			handleLogin: props.handleLogin
 		};
 	}
 
@@ -70,7 +84,7 @@ class TopHeader extends Component {
 					{/*User info*/}
 					<Col l={9} m={9} s={9} >
 						{/**/}
-						<UserInfo user={this.props.user}/>
+						<UserInfo user={this.props.user} handleLogin={this.props.handleLogin}/>
 					</Col>
 				</Row>
 			);
@@ -82,7 +96,7 @@ class TopHeader extends Component {
 					{/*Login*/}
 					<Col l={8} m={8} s={8} offset="l1" >
 						{/*password e username*/}
-						<LoginForm/>
+						<LoginForm handleLogin={this.props.handleLogin}/>
 					</Col>
 				</Row>
 			);
@@ -101,15 +115,38 @@ class TopNavbar extends Component {
 	}
 
 	render() {
-		return(
-			<div>
-				<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
-					<SideNavItem className='hide-on-large-only' userView user={this.props.user}/>
-					<NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
-					<NavItem href='components.html'>Components</NavItem>
-				</Navbar>
-			</div>
-		);
+		if(this.props.user){
+			return(
+				<div>
+					<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
+						<SideNavItem className='hide-on-large-only' userView user={this.props.user}/>
+						<li className='hide-on-large-only'><NavLink to='/perfil'>Meu Carrinho</NavLink></li>
+						<li className='hide-on-large-only'><NavLink to='/perfil'>Meu Perfil</NavLink></li>
+						<li className='hide-on-large-only'><NavLink to='/perfil'>Sair</NavLink></li>
+						<NavItem className='hide-on-large-only' divider/>
+						<li><NavLink to='/'>Página Inicial</NavLink></li>
+						<li><NavLink to='/perfil'>Produtos</NavLink></li>
+						<li><NavLink to='/perfil'>Serviços</NavLink></li>
+					</Navbar>
+				</div>
+			);
+		} else {
+			return(
+				<div>
+					<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
+						<SideNavItem className='hide-on-large-only'>Fazer Login</SideNavItem>
+						<NavItem className='hide-on-large-only' divider/>
+						<li><NavLink to='/' >Página Inicial</NavLink></li>
+						<li><NavLink to='/' >Produtos</NavLink></li>
+						<li><NavLink to='/' >Serviços</NavLink></li>
+					</Navbar>
+				</div>
+			);
+
+		}
+
+
+		
 	}
 }
 
@@ -118,14 +155,15 @@ class Header extends Component {
 	constructor(props) {
 		super(props)
 		this.props = {
-			user: props.user
+			user: props.user,
+			handleLogin: props.handleLogin
 		};
 	}
 
 	render() {
 		return(
 			<div id="header">
-				<TopHeader user={this.props.user}/>
+				<TopHeader user={this.props.user} handleLogin={this.props.handleLogin}/>
 				<TopNavbar user={this.props.user}/>
 			</div>
 		);

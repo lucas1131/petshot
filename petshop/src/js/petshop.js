@@ -8,6 +8,7 @@
 
 import React, { Component } from 'react';
 import { Footer } from 'react-materialize';
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 import Header from './header'
 import Home from './home'
@@ -20,55 +21,6 @@ import Login from './login';
 
 import '../css/general.css';
 import '../css/footer.css';
-
-export function storeInLocalStorage(key, obj){ 
-	localStorage.setItem(key, JSON.stringify(obj)) 
-}
-
-export function getFromLocalStorage(key){ 
-	return JSON.parse(localStorage.getItem(key)) 
-}
-
-export function storeInSessionStorage(key, obj){ 
-	sessionStorage.setItem(key, JSON.stringify(obj)) 
-}
-
-export function getFromSessionStorage(key){ 
-	return JSON.parse(sessionStorage.getItem(key)) 
-}
-
-function populateDB(){
-
-	let productList = []
-	let product1 = { name: "Rassaum", cost: 20 }
-	let product2 = { name: "Raçã", cost: 40 }
-
-	let list = []
-	let item1 = {
-    product: "Rassaum",
-		quantity: 1,
-		cost: 20,
-		totalCost: 0
-  }
-  item1.totalCost = item1.cost*item1.quantity;
-
-  let item2 = {
-    product: "Raçã sabor maçã",
-		quantity: 2,
-		cost: 40,
-		totalCost: 0
-  }
-  item2.totalCost = item2.cost*item2.quantity;
-
-  productList.push(product1)
-  productList.push(product2)
-  list.push(item1)
-  list.push(item2)
-	storeInSessionStorage("Cart", list)
-	storeInSessionStorage("Cart", list)
-}
-
-populateDB()
 
 class NotFound extends Component {
 	render(){
@@ -95,20 +47,42 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'shoppingCart',
+			page: 'home',
 			user: null
+		}
+
+		this.handleLogin = this.handleLogin.bind(this)
+	}
+
+	handleLogin(Username, Password, Exit) {
+		if(Exit){
+			this.setState({user: null})
+			return
+		}
+		if(Username == "user1"){
+			this.setState({user:
+			{
+				name: 'Relampago Marquinhos',
+				image: 'resources/avatar.png',
+				background: 'resources/Dog-with-goggles-in-car.jpg',
+				email: 'relampago@marquinhos.com'
+			}})
 		}
 	}
 
 	render() {
 		return (
-			<div className="petshop">
-	 			<Header user={this.state.user} />
-	 			<div className="main wrap">
-	 				<PageContent page={this.state.page}/>
-	 			</div>
-	 			<Footer className="footer"/>
-			</div>
+			<BrowserRouter>
+				<div className="petshop">
+		 			<Header user={this.state.user} handleLogin={this.handleLogin}/>
+		 			<div className="main">
+		 				<Route exact path="/" component={Home} />
+		 				<Route path="/admin" component={AdminView} />
+		 				<Route path="/perfil" component={PerfilUsuario} />
+		 			</div>
+		 			<Footer className="footer"/>
+				</div>
+			</BrowserRouter>
 		);
 	}
 }

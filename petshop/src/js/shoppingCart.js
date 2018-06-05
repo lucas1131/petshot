@@ -11,11 +11,9 @@ import { Card } from 'react-materialize';
 import { Row, Col } from 'react-materialize';
 import { ShoppingCartTable } from './editableTable'
 
-import { storeInSessionStorage, getFromSessionStorage } from './petshop'
-
+import { storeInSessionStorage, getFromSessionStorage } from './mockDB'
 
 import '../css/general.css';
-
 
 export default class ShoppingCart extends Component {
 
