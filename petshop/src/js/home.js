@@ -26,7 +26,26 @@ import im3 from '../resources/dogShower.jpg';
 
 class Home extends Component {
 	render() {
-		let services;
+		let services = ServiceInfo.map((service, index) => {
+					return (
+						<Col s={12} m={6} l={3} >
+							<Card header={<CardTitle image={service.image}/>}
+								actions={[<a href='#'>Agendar</a>]}>
+								<h6 className='customGreen'>{service.name}</h6>
+								<p className='default'>{service.price}</p>
+							</Card>
+						</Col> ) } )
+
+		let products = ProductInfo.map((product, index) => {
+					return (
+						<Col s={12} m={6} l={3} >
+							<Card header={<CardTitle image={product.image}/>}
+								actions={[<a href='#'>Comprar</a>]}>
+								<h6 className='customGreen'>{product.name}</h6>
+								<p className='default'>{product.price}</p>
+							</Card>
+						</Col> ) } )
+
 
 		return(
 			<div>	
@@ -58,19 +77,7 @@ class Home extends Component {
 						<h3 class='header0'> Nossos Serviços </h3>
 						<hr class='awesome'/>
 
-						{ services = ServiceInfo.map((service, index) => {
-									return (
-										<Col s={12} m={6} l={3} >
-											<Card header={<CardTitle image={service.image}/>}
-												actions={[<a href='#'>Agendar</a>]}>
-												<h6 className='customGreen'>{service.name}</h6>
-												<p className='default'>{service.price}</p>
-											</Card>
-										</Col>
-									)
-								}
-							)
-						}
+						{services}
 
 						<p class='default'>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -84,10 +91,8 @@ class Home extends Component {
 
 						<h3 class='header0'> Nossos Produtos </h3>
 						<hr class='awesome'/>
-						
-						<Row>
-							<SlickSlider />
-						</Row>
+
+						{products}
 
 						<p class='default'>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
