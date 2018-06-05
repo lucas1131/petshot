@@ -9,6 +9,8 @@
 import React, { Component } from 'react';
 import { Footer } from 'react-materialize';
 
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+
 import Header from './header'
 import Home from './home'
 import PerfilUsuario from './perfilUsuario'
@@ -16,23 +18,6 @@ import AdminView from './adminView'
 
 import '../css/general.css';
 import '../css/footer.css';
-
-class NotFound extends Component {
-	render(){
-		return (<div> 404 Not Found </div>)
-	}
-}
-
-class PageContent extends Component {
-	render(){
-		switch(this.props.page){
-			case 'home': return (<Home />)
-			case 'perfilUsuario': return (<PerfilUsuario />)
-			case 'adminView': return (<AdminView />)
-			default: return (<NotFound />)
-		}
-	}
-}
 
 class Petshop extends Component {
 	constructor(props){
@@ -63,13 +48,17 @@ class Petshop extends Component {
 
 	render() {
 		return (
-			<div className="petshop">
-	 			<Header user={this.state.user} handleLogin={this.handleLogin}/>
-	 			<div className="main wrap">
-	 				<PageContent page={this.state.page}/>
-	 			</div>
-	 			<Footer className="footer"/>
-			</div>
+			<BrowserRouter>
+				<div className="petshop">
+		 			<Header user={this.state.user} handleLogin={this.handleLogin}/>
+		 			<div className="main">
+		 				<Route exact path="/" component={Home} />
+		 				<Route path="/admin" component={AdminView} />
+		 				<Route path="/perfil" component={PerfilUsuario} />
+		 			</div>
+		 			<Footer className="footer"/>
+				</div>
+			</BrowserRouter>
 		);
 	}
 }

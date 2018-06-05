@@ -13,11 +13,12 @@ import { Col, Row, Icon, Input } from 'react-materialize';
 import '../css/header.css';
 import logo from '../resources/logo.png';
 
+import {Link, NavLink} from "react-router-dom"
 
 class ResponsiveLogo extends Component {
 	render() {
 		return(
-			<img id='logo' src={logo} alt="Loading" className="responsiveLogo"/>
+			<NavLink to='/'> <img id='logo' src={logo} alt="Loading" className="responsiveLogo"/> </NavLink>
 		);
 	}
 }
@@ -120,13 +121,13 @@ class TopNavbar extends Component {
 				<div>
 					<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
 						<SideNavItem className='hide-on-large-only' userView user={this.props.user}/>
-						<NavItem >Meu Carrinho</NavItem>
-						<NavItem >Meu Perfil</NavItem>
-						<NavItem >Sair</NavItem>
+						<li className='hide-on-large-only'><NavLink to='/perfil'>Meu Carrinho</NavLink></li>
+						<li className='hide-on-large-only'><NavLink to='/perfil'>Meu Perfil</NavLink></li>
+						<li className='hide-on-large-only'><NavLink to='/perfil'>Sair</NavLink></li>
 						<NavItem className='hide-on-large-only' divider/>
-						<NavItem >Página Inicial</NavItem>
-						<NavItem >Produtos</NavItem>
-						<NavItem >Serviços</NavItem>
+						<li><NavLink to='/'>Página Inicial</NavLink></li>
+						<li><NavLink to='/perfil'>Produtos</NavLink></li>
+						<li><NavLink to='/perfil'>Serviços</NavLink></li>
 					</Navbar>
 				</div>
 			);
@@ -136,9 +137,9 @@ class TopNavbar extends Component {
 					<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
 						<SideNavItem className='hide-on-large-only'>Fazer Login</SideNavItem>
 						<NavItem className='hide-on-large-only' divider/>
-						<NavItem >Página Inicial</NavItem>
-						<NavItem >Produtos</NavItem>
-						<NavItem >Serviços</NavItem>
+						<li><NavLink to='/' >Página Inicial</NavLink></li>
+						<li><NavLink to='/' >Produtos</NavLink></li>
+						<li><NavLink to='/' >Serviços</NavLink></li>
 					</Navbar>
 				</div>
 			);
