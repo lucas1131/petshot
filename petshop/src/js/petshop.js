@@ -45,7 +45,11 @@ class Petshop extends Component {
 		this.handleLogin = this.handleLogin.bind(this)
 	}
 
-	handleLogin(Username, Password) {
+	handleLogin(Username, Password, Exit) {
+		if(Exit){
+			this.setState({user: null})
+			return
+		}
 		if(Username == "user1"){
 			this.setState({user:
 			{

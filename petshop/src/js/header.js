@@ -32,7 +32,7 @@ class UserInfo extends Component {
 				<Col ><img className="circle" src={this.props.user.image} style={{height: "55px"}}/> </Col>
 				<Col ><Button waves="light" className="btn">Meu Carrinho<Icon left>shopping_cart</Icon></Button></Col>
 				<Col ><Button waves="light" className="btn">Meu Perfil<Icon left>account_circle</Icon></Button></Col>
-				<Col ><Button waves="light" className="btn">Sair<Icon left>exit_to_app</Icon></Button></Col>
+				<Col ><Button waves="light" className="btn" onClick={ () => {this.props.handleLogin(null, null, true)} }>Sair<Icon left>exit_to_app</Icon></Button></Col>
 			</Row>
 		);
 	}
@@ -56,7 +56,7 @@ class LoginForm extends Component {
 			<Row className={"topHeader valign-wrapper"} style={{float: "right"}}>
 					<Col><Input className='input box-shadow' label='Usuário' validate type='text' onChange={ (e) => {this.setState({username: e.target.value})} }/></Col>
 					<Col><Input className='input box-shadow' label='Senha' validate type='password' onChange={ (e) => {this.setState({password: e.target.value})} }/></Col>
-					<Col><Button waves="light" className="btn" onClick={ (e) => {this.props.handleLogin(this.state.username, this.state.password)} }>Entrar</Button></Col>
+					<Col><Button waves="light" className="btn" onClick={ (e) => {this.props.handleLogin(this.state.username, this.state.password, false)} }>Entrar</Button></Col>
 					<Col><Button waves="light" className="btn">Registrar</Button></Col>
 					<Col l={3}><Input className='input box-shadow' label='Lembrar de mim'type='checkbox'/></Col>
 			</Row>
@@ -84,7 +84,7 @@ class TopHeader extends Component {
 					{/*User info*/}
 					<Col l={9} m={9} s={9} >
 						{/**/}
-						<UserInfo user={this.props.user}/>
+						<UserInfo user={this.props.user} handleLogin={this.props.handleLogin}/>
 					</Col>
 				</Row>
 			);
@@ -122,6 +122,7 @@ class TopNavbar extends Component {
 						<SideNavItem className='hide-on-large-only' userView user={this.props.user}/>
 						<NavItem >Meu Carrinho</NavItem>
 						<NavItem >Meu Perfil</NavItem>
+						<NavItem >Sair</NavItem>
 						<NavItem className='hide-on-large-only' divider/>
 						<NavItem >Página Inicial</NavItem>
 						<NavItem >Produtos</NavItem>
