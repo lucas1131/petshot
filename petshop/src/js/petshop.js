@@ -20,6 +20,9 @@ import ProductList from './productList';
 import ServiceList from './serviceList';
 import Login from './login';
 
+import { getFromLocalStorage, getFromSessionStorage } from './mockDB'
+import { storeInLocalStorage, storeInSessionStorage } from './mockDB'
+
 import '../css/general.css';
 import '../css/footer.css';
 
@@ -48,12 +51,16 @@ class PageContent extends Component {
 class Petshop extends Component {
 	constructor(props){
 		super(props)
-		this.state = {
-			page: 'home',
-			user: null
-		}
 
 		this.handleLogin = this.handleLogin.bind(this)
+
+		let users = getFromSessionStorage("user")
+		let user = users ? users[0] : null
+
+		this.state = {
+			page: 'home',
+			user: user
+		}
 	}
 
 	handleLogin(Username, Password, Exit) {
@@ -61,14 +68,14 @@ class Petshop extends Component {
 			this.setState({user: null})
 			return
 		}
-		if(Username == "user1"){
-			this.setState({user:
-			{
-				name: 'Relampago Marquinhos',
-				image: 'resources/avatar.png',
-				background: 'resources/Dog-with-goggles-in-car.jpg',
-				email: 'relampago@marquinhos.com'
-			}})
+
+		let users = getFromLocalStorage("user-info")
+
+		for(let i in users){
+			if(Username === users[i].username && Password === users[i].password){
+					this.setState({user: users[i]})
+					storeInSessionStorage("user", users[i])
+			}
 		}
 	}
 
