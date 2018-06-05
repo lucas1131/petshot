@@ -3,6 +3,7 @@ import { Row, Col } from 'react-materialize';
 import { Input } from 'react-materialize';
 import { Icon, Button } from 'react-materialize';
 import { Card, CardTitle } from 'react-materialize';
+import { Link } from 'react-router-dom';
 import ServiceInfo from './serviceInfo';
 
 /* Styles */
@@ -24,7 +25,7 @@ class ServiceList extends Component {
 				return (
 					<Col s={12} m={6} l={3} >
 						<Card header={<CardTitle image={service.image}></CardTitle>}
-							actions={[<a href='#'>Agendar</a>]}>
+							actions={[<Link to='/servicos/serviceId'>Agendar</Link>]}>
 							<h6 className='customGreen'>{service.name}</h6>
 							<p className='default'>{service.price}</p>
 						</Card>
@@ -32,11 +33,11 @@ class ServiceList extends Component {
 				)
 			}
 
-			else if(this.state.query === service.name) {
+			else if(this.state.query === str) {
 				return (
 					<Col s={12} m={6} l={3} >
 						<Card header={<CardTitle image={service.image}></CardTitle>}
-							actions={[<a href='#'>Agendar</a>]}>
+							actions={[<Link to='/servicos/serviceId'>Agendar</Link>]}>
 							<h6 className='customGreen'>{service.name}</h6>
 							<p className='default'>{service.price}</p>
 						</Card>
