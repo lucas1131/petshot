@@ -29,7 +29,7 @@ class Product extends Component {
 						<p id='desc'>Nham nham, tem gosto de terra suja.</p>
 						<hr class='awesome'/>
 						<h4><strong>R$ 10,00</strong></h4>
-						<Button waves='light' id='butt'>Add no carrinho</Button>
+						<Button waves='light' id='butt' onClick="">Adicionar ao carrinho</Button>
 					</Col>
 				</Row>
 			</div>
