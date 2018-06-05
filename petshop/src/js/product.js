@@ -7,7 +7,7 @@
  */
  
 import React, { Component } from 'react';
-import {Row, Col} from 'react-materialize';
+import {Row, Col, Button} from 'react-materialize';
 
 import '../css/general.css';
 import '../css/product.css';
@@ -29,6 +29,7 @@ class Product extends Component {
 						<p id='desc'>Nham nham, tem gosto de terra suja.</p>
 						<hr class='awesome'/>
 						<h4><strong>R$ 10,00</strong></h4>
+						<Button waves='light' id='butt'>Add no carrinho</Button>
 					</Col>
 				</Row>
 			</div>
