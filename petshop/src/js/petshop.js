@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import { Footer } from 'react-materialize';
 
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Link, Switch, withRouter } from 'react-router-dom'
 
 import Header from './header'
 import Home from './home'
@@ -32,7 +32,6 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'home',
 			user: null
 		}
 
@@ -42,6 +41,7 @@ class Petshop extends Component {
 	handleLogin(Username, Password, Exit) {
 		if(Exit){
 			this.setState({user: null})
+			withRouter.history.
 			return
 		}
 		if(Username == "user1"){
@@ -63,12 +63,13 @@ class Petshop extends Component {
 		 			<div className="main">
 		 			<Switch>
 		 				<Route exact path="/" component={Home} />
-		 				<Route path="/admin" component={AdminView} />
-		 				<Route path="/perfil" component={PerfilUsuario} />
-		 				<Route path="/carrinho" component={ShoppingCart} />
-		 				<Route path="/produtos" component={ProductList} />
-		 				<Route path="/servicos" component={ServiceList} />
-		 				<Route path="/login" component={Login} />
+		 				<Route exact path="/admin" component={AdminView} />
+		 				<Route exact path="/perfil" component={PerfilUsuario} />
+		 				<Route exact path="/carrinho" component={ShoppingCart} />
+		 				<Route exact path="/produtos" component={ProductList} />
+		 				<Route exact path="/produtos/:productId" component={Product} />
+		 				<Route exact path="/servicos" component={ServiceList} />
+		 				<Route exact path="/login" component={Login} />
 		 				<Route component={NoMatch} />
 		 			</Switch>
 		 			</div>

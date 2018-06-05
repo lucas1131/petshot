@@ -30,8 +30,8 @@ class UserInfo extends Component {
 			<Row className={"topHeader valign-wrapper"} style={{float: "right"}}>
 				<Col > <b>Usuário:</b> {this.props.user.name}</Col>
 				<Col ><img className="circle" src={this.props.user.image} style={{height: "55px"}}/> </Col>
-				<Col ><Button waves="light" className="btn">Meu Carrinho<Icon left>shopping_cart</Icon></Button></Col>
-				<Col ><Button waves="light" className="btn">Meu Perfil<Icon left>account_circle</Icon></Button></Col>
+				<Col ><Link to='/carrinho'><Button waves="light" className="btn">Meu Carrinho<Icon left>shopping_cart</Icon></Button></Link></Col>
+				<Col ><Link to='/perfil'><Button waves="light" className="btn">Meu Perfil<Icon left>account_circle</Icon></Button></Link></Col>
 				<Col ><Button waves="light" className="btn" onClick={ () => {this.props.handleLogin(null, null, true)} }>Sair<Icon left>exit_to_app</Icon></Button></Col>
 			</Row>
 		);
@@ -57,7 +57,6 @@ class LoginForm extends Component {
 					<Col><Input className='input box-shadow' label='Usuário' validate type='text' onChange={ (e) => {this.setState({username: e.target.value})} }/></Col>
 					<Col><Input className='input box-shadow' label='Senha' validate type='password' onChange={ (e) => {this.setState({password: e.target.value})} }/></Col>
 					<Col><Button waves="light" className="btn" onClick={ (e) => {this.props.handleLogin(this.state.username, this.state.password, false)} }>Entrar</Button></Col>
-					<Col><Button waves="light" className="btn">Registrar</Button></Col>
 					<Col l={3}><Input className='input box-shadow' label='Lembrar de mim'type='checkbox'/></Col>
 			</Row>
 		);
@@ -110,7 +109,8 @@ class TopNavbar extends Component {
 	constructor(props) {
 		super(props)
 		this.props = {
-			user: props.user
+			user: props.user,
+			handleLogin: props.handleLogin
 		};
 	}
 
@@ -120,13 +120,13 @@ class TopNavbar extends Component {
 				<div>
 					<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
 						<SideNavItem className='hide-on-large-only' userView user={this.props.user}/>
-						<li className='hide-on-large-only'><NavLink to='/perfil'>Meu Carrinho</NavLink></li>
+						<li className='hide-on-large-only'><NavLink to='/carrinho'>Meu Carrinho</NavLink></li>
 						<li className='hide-on-large-only'><NavLink to='/perfil'>Meu Perfil</NavLink></li>
-						<li className='hide-on-large-only'><NavLink to='/perfil'>Sair</NavLink></li>
+						<NavItem className='hide-on-large-only' onClick={ (e) => { this.props.handleLogin(null,null,true) } } >Sair</NavItem>
 						<NavItem className='hide-on-large-only' divider/>
 						<li><NavLink to='/'>Página Inicial</NavLink></li>
-						<li><NavLink to='/perfil'>Produtos</NavLink></li>
-						<li><NavLink to='/perfil'>Serviços</NavLink></li>
+						<li><NavLink to='/produtos'>Produtos</NavLink></li>
+						<li><NavLink to='/servicos'>Serviços</NavLink></li>
 					</Navbar>
 				</div>
 			);
@@ -137,8 +137,8 @@ class TopNavbar extends Component {
 						<SideNavItem className='hide-on-large-only'>Fazer Login</SideNavItem>
 						<NavItem className='hide-on-large-only' divider/>
 						<li><NavLink to='/' >Página Inicial</NavLink></li>
-						<li><NavLink to='/' >Produtos</NavLink></li>
-						<li><NavLink to='/' >Serviços</NavLink></li>
+						<li><NavLink to='/produtos' >Produtos</NavLink></li>
+						<li><NavLink to='/servicos' >Serviços</NavLink></li>
 					</Navbar>
 				</div>
 			);
@@ -164,7 +164,7 @@ class Header extends Component {
 		return(
 			<div id="header">
 				<TopHeader user={this.props.user} handleLogin={this.props.handleLogin}/>
-				<TopNavbar user={this.props.user}/>
+				<TopNavbar user={this.props.user} handleLogin={this.props.handleLogin}/>
 			</div>
 		);
 	}
