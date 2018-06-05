@@ -17,6 +17,9 @@ class ProductList extends Component {
 	render() {
 		let products = ProductInfo.map((product, index) => {
 			
+			let str = product.name.toLowerCase();
+			str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+			
 			if(this.state.query === '') {
 				return (
 					<Col s={12} m={6} l={3} >
@@ -29,7 +32,7 @@ class ProductList extends Component {
 				)
 			}
 
-			else if(this.state.query === product.name) {
+			else if(this.state.query === str) {
 				return (
 					<Col s={12} m={6} l={3} >
 						<Card header={<CardTitle image={product.image}></CardTitle>}
@@ -48,7 +51,11 @@ class ProductList extends Component {
 				<hr class='awesome'/>
 				<div className="center align-content">
 					<Input className='input box-shadow' style={{width: "317px"}} label='Busque um produto'
-						onChange = { (e) => { this.setState( {query: e.target.value} ) } }/>
+						onChange = { (e) => { 
+							let str = e.target.value.toLowerCase();
+							this.setState( {
+								query: str.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+							} ) } }/>
 				</div>
 				<Row style={{marginTop: '50px'}}>
 					{products}

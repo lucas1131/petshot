@@ -28,30 +28,6 @@ const ServiceInfo = [
 		image: castration,
 		name: 'Castração',
 		price: 'A partir de 40.00'
-	},
-
-	{
-		image: shower,
-		name: 'Banho',
-		price: 'A partir de 40.00'
-	},
-	
-	{
-		image: shear,
-		name: 'Tosa',
-		price: 'A partir de 40.00'
-	},
-
-	{
-		image: vet,
-		name: 'Veterinário',
-		price: 'A partir de 40.00'
-	},
-
-	{
-		image: castration,
-		name: 'Castração',
-		price: 'A partir de 40.00'
 	}
 
 ];

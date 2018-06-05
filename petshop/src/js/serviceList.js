@@ -21,7 +21,7 @@ class ServiceList extends Component {
 				return (
 					<Col s={12} m={6} l={3} >
 						<Card header={<CardTitle image={service.image}></CardTitle>}
-							actions={[<a href='#'>Comprar</a>]}>
+							actions={[<a href='#'>Agendar</a>]}>
 							<h6 className='customGreen'>{service.name}</h6>
 							<p className='default'>{service.price}</p>
 						</Card>
@@ -33,7 +33,7 @@ class ServiceList extends Component {
 				return (
 					<Col s={12} m={6} l={3} >
 						<Card header={<CardTitle image={service.image}></CardTitle>}
-							actions={[<a href='#'>Comprar</a>]}>
+							actions={[<a href='#'>Agendar</a>]}>
 							<h6 className='customGreen'>{service.name}</h6>
 							<p className='default'>{service.price}</p>
 						</Card>
@@ -44,7 +44,7 @@ class ServiceList extends Component {
 
 		return(
 			<div className='container' style={{marginTop: '50px'}}>
-				<h3 class='header0'> Produtos </h3>
+				<h3 class='header0'> Serviços </h3>
 				<hr class='awesome'/>
 				<div className="center align-content">
 					<Input className='input box-shadow' style={{width: "317px"}} label='Busque um produto'
