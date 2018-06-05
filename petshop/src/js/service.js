@@ -7,7 +7,7 @@
  */
  
 import React, { Component } from 'react';
-import {Row, Col, Button, MediaBox, Icon} from 'react-materialize';
+import {Row, Col, Button, MediaBox, Icon, Input} from 'react-materialize';
 
 import { getFromLocalStorage, getFromSessionStorage } from './mockDB'
 import { storeInLocalStorage, storeInSessionStorage } from './mockDB'
@@ -38,7 +38,7 @@ class Service extends Component {
 		let serviceId = this.props.match.params.serviceId;
 
 		return(
-			<div className='center' style={{margin: '50px 0 50px 0'}}>
+			<div className='center container' style={{marginTop: '50px'}}>
 				<div>
 					<h3 className='header0'>{this.service.name}</h3>
 					<hr className='awesome'/>
@@ -48,13 +48,18 @@ class Service extends Component {
 						<MediaBox src={this.service.image} id='productPhoto' alt='food for doggos here'/>
 					</Col>
 				</Row>
-					<p className='default'>{this.service.desc}</p>
-					<hr class='awesome'/>
-					<h3 className='header0'><strong>R$ {this.service.price}</strong></h3>
+				<Row> <p className='default'>{this.service.desc}</p> </Row>
+				<Row> <hr class='awesome'/> </Row>
+				<Row> <h3 className='header0'><strong>R$ {this.service.price}</strong></h3> </Row>
+				<Row>
+					<Col offset='l5 m4 s3' s={12} l={4} m={4} > <Input label='Data' type='date'/></Col>
+				</Row>
+				<Row>
 					<Button waves='light' className='btn'>
 						<Icon left>class</Icon>
 						Agendar
 					</Button>
+				</Row>
 			</div>
 		);
 	}
