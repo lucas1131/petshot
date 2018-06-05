@@ -52,7 +52,7 @@ class Service extends Component {
 				<Row> <hr class='awesome'/> </Row>
 				<Row> <h3 className='header0'><strong>R$ {this.service.price}</strong></h3> </Row>
 				<Row>
-					<Col offset='l5 m4 s3' s={12} l={4} m={4} > <Input label='Data' type='date'/></Col>
+					<Col offset='l5 m4 s3' s={12} l={4} m={4} > <Input label='Data' type='date'/> </Col>
 				</Row>
 				<Row>
 					<Button waves='light' className='btn'>

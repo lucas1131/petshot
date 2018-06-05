@@ -17,6 +17,7 @@ class Login extends Component {
 	render() {
 		return(
 			<div className="container">
+				<h1 className='header1 center'>Login</h1>
 				<form>
 					<Col>
 						<Input name="username" 
