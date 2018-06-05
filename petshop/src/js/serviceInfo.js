@@ -7,27 +7,35 @@ import castration from '../resources/castracao.png';
 const ServiceInfo = [
 
 	{
+		type: 'service',
+		id: 0,
 		image: shower,
 		name: 'Banho',
-		price: 'A partir de 40.00'
+		price: '40.00'
 	},
 	
 	{
+		type: 'service',
+		id: 1,
 		image: shear,
 		name: 'Tosa',
-		price: 'A partir de 40.00'
+		price: '40.00'
 	},
 
 	{
+		type: 'service',
+		id: 2,
 		image: vet,
 		name: 'Veterinário',
-		price: 'A partir de 40.00'
+		price: '40.00'
 	},
 
 	{
+		type: 'service',
+		id: 3,
 		image: castration,
 		name: 'Castração',
-		price: 'A partir de 40.00'
+		price: '40.00'
 	}
 
 ];

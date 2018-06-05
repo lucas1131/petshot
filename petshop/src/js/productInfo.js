@@ -7,27 +7,35 @@ import ball from '../resources/ball.png';
 const ProductInfo = [
 
 	{
+		type: 'product',
+		id: 0,
 		image: collar,
 		name: 'Coleira',
-		price: '40.00'
+		price: 40.00
 	},
 	
 	{
+		type: 'product',
+		id: 1,
 		image: food,
 		name: 'Ração',
-		price: '40.00'
+		price: 40.00
 	},
 
 	{
+		type: 'product',
+		id: 2,
 		image: ball,
 		name: 'Bolinha',
-		price: '40.00'
+		price: 40.00
 	},
 
-		{
+	{
+		type: 'product',
+		id: 3,
 		image: collar,
 		name: 'Coleira',
-		price: '40.00'
+		price: 40.00
 	}
 ];
 

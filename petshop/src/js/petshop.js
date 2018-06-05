@@ -56,7 +56,7 @@ class Petshop extends Component {
 		let users = getFromLocalStorage("user-info")
 
 		for(let i in users){
-			if(Username === users[i].username && Password === users[i].password){
+			if(users[i].type == 'user' && Username === users[i].username && Password === users[i].password){
 					this.setState({user: users[i]})
 					storeInSessionStorage("user", users[i])
 			}
