@@ -5,8 +5,11 @@
  * Rafael do Fake News 9293095
  *
  */
+import ServiceInfo from './serviceInfo';
+import ProductInfo from './productInfo';
 
  var deepEqual = require('deep-equal')
+
 
 function uniq(a) {
     return a.sort().filter(function(item, pos, ary) {
@@ -83,6 +86,7 @@ export default function populateDB(){
 
 	let cart = []
 	let cartItem1 = {
+		type: 'cart',
 	    product: "Rassaum",
 		quantity: 1,
 		cost: 20,
@@ -91,6 +95,7 @@ export default function populateDB(){
 	cartItem1.totalCost = cartItem1.cost*cartItem1.quantity;
 
 	let cartItem2 = {
+		type: 'cart',
 		product: "Raçã sabor maçã",
 		quantity: 2,
 		cost: 40,
@@ -108,6 +113,7 @@ export default function populateDB(){
 	/* Users */
 	let usersList = []
 	let user1 = {
+		type: 'user',
 		username: 'jureg',
 		password: 'lorotabraba',
 		name: 'Rafael do Fake News',
@@ -116,6 +122,7 @@ export default function populateDB(){
 		email: 'jureg@fake.nilc.usp.br'
 	}
 	let user2 = {
+		type: 'user',
 		username: 'xofanna',
 		password: 'col s={12}',
 		name: 'GiGi',
@@ -124,6 +131,7 @@ export default function populateDB(){
 		email: 'giovanna@trevas.com'
 	}
 	let user3 = {
+		type: 'user',
 		username: 'airo',
 		password: 'omedefero',
 		name: 'Airo',
@@ -132,6 +140,7 @@ export default function populateDB(){
 		email: 'airo@usp.br'
 	}
 	let admin = {
+		type: 'user',
 		username: 'admin',
 		password: 'admin',
 		name: 'Ade Ministrador',
@@ -148,6 +157,8 @@ export default function populateDB(){
 	// usersList.push(2)
 	// usersList.push(3)
 	storeInLocalStorage('user-info', usersList)
+	storeInLocalStorage('products-info', ProductInfo)
+	storeInLocalStorage('services-info', ServiceInfo)
 }
 
 populateDB()

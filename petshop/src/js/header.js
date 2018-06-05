@@ -127,7 +127,6 @@ class TopNavbar extends Component {
 						<li><NavLink to='/'>Página Inicial</NavLink></li>
 						<li><NavLink to='/produtos'>Produtos</NavLink></li>
 						<li><NavLink to='/servicos'>Serviços</NavLink></li>
-						<li><a href ='#about'>Sobre Nós</a></li>
 					</Navbar>
 				</div>
 			);
@@ -135,7 +134,7 @@ class TopNavbar extends Component {
 			return(
 				<div>
 					<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
-						<SideNavItem className='hide-on-large-only'>Fazer Login</SideNavItem>
+						<li><NavLink to='/login' className='hide-on-large-only'>Fazer Login</NavLink></li>
 						<NavItem className='hide-on-large-only' divider/>
 						<li><NavLink to='/' >Página Inicial</NavLink></li>
 						<li><NavLink to='/produtos' >Produtos</NavLink></li>

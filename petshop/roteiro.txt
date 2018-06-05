@@ -1,0 +1,33 @@
+Abra a pasta raíz do projeto, rode os comandos
+
+npm install
+npm start
+
+Após iniciar o servidor, abra o navegador na página localhost:3000
+
+Você estará na página inicial. Verifique que a página inicial é responsiva. Caso a navbar colapse, um botão menu aparecerá na navbar. Clique nesse botão e uma sidenav com as opções  disponíveis anteriores aparecerá.
+
+Clique no botão Produtos. Verifique que a página Produtos é responsiva. Teste a barra de busca. 
+
+Clique em algum dos links “Comprar” de algum dos cards. As informações do produto serão carregadas de acordo com o seu id, verificável na URL da página. Clique na imagem do produto para ampliar a visualização
+
+Clique no link “serviços” da navbar. Verifique que a página é responsiva. Teste a barra de busca. 
+
+Clique em algum dos links “agendar” de algum dos cards. As informações do serviço serão carregadas de acordo com seu id, verificável na URL da página. Selecione uma data para o serviço. Clique na imagem para ampliar a visualização
+
+Preencha o usuário com ‘jureg’ e a senha com ‘lorotabraba’. Verifique as opções novas disponíveis para clientes. Verifique que, quando a navbar colapsa, a sidenav possui as informações disponíveis anteriormente.
+
+Clique no botão “meu carrinho”. Verifique que é possível alterar as quantidades dos itens presentes. Verifique que é possível excluir um item presente no carrinho. Verifique que os preços se alteram conforme os items são modificados. Verifique que a página é responsiva
+Clique no botão “Meu Perfil.”. 
+
+Verifique a aba de configurações. Veja que a página é responsiva.
+Clique na aba de animais. Verifique que é possível incluir ou excluir novos animais. Verifique que a tabela é responsiva. 
+
+Clique na aba de endereços. Verifique que a tabela é responsiva. Verifique que é possível alterar e incluir valores.
+
+Clique no botão sair. Verifique que as informações da navbar e da sidenav se alteram. 
+Preencha o usuário com ‘admin’ e a senha com ‘admin’. Verifique que a opção “gerenciar” está disponível.
+
+Clique no botão gerenciar. Verifique que as abas são responsivas. Verifique que é possível incluir, alterar e excluir cadastros. Verifique que a aba de estatísticas é responsiva.
+Por fim, acesse a URL localhost:3000/404, para verificar URLs não planejadas.
+

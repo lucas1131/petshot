@@ -25,7 +25,7 @@ class ProductList extends Component {
 				return (
 					<Col s={12} m={6} l={3} >
 						<Card header={<CardTitle image={product.image}></CardTitle>}
-							actions={[<Link to='/produtos/productId'>Comprar</Link>]}>
+							actions={[<Link to={'/produtos/'+index}>Comprar</Link>]}>
 							<h6 className='customGreen'>{product.name}</h6>
 							<p className='default'>{product.price}</p>
 						</Card>
