@@ -69,7 +69,6 @@ class Petshop extends Component {
 		 				<Route exact path="/produtos" component={ProductList} />
 		 				<Route exact path="/produtos/:productId" component={Product} />
 		 				<Route exact path="/servicos" component={ServiceList} />
-		 				<Route exact path="/servicos/:serviceId" component={ServiceInfo} />
 		 				<Route exact path="/login" component={Login} />
 		 				<Route component={NoMatch} />
 		 			</Switch>
