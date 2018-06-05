@@ -9,6 +9,7 @@
 import React, { Component } from 'react'
 import { Tabs, Tab } from 'react-materialize';
 import { Row, Col } from 'react-materialize';
+import { Button } from 'react-materialize';
 
 import EditableTable, { AnimalTable, AddressessTable } from './editableTable'
 
@@ -35,21 +36,24 @@ class Configs extends Component {
 							<Col>
 								<Row>
 									<input className="settings_input box-shadow" type="password" 
-										placeholder="Senha Atual" name="oldpassword" />
+										placeholder="Senha Atual" name="oldpassword"/>
 								</Row>
 								<Row>
-									<p className="text" style={{fontSize: "10px"}}> Sua senha atual é necessária efetuar qualquer mudança</p>
+									<p className="text" style={{fontSize: "10px"}}> Sua senha atual é necessária para efetuar qualquer mudança</p>
 								</Row>
 								<Row>
 									<h4 className="label">Altere sua Senha</h4>
 								</Row>
 								<Row>
 									<input className="settings_input box-shadow" type="password" 
-										placeholder="Nova Senha" name="newpassword" />
+										placeholder="Nova Senha" name="newpassword"/>
 								</Row>
 								<Row>
 									<input className="settings_input box-shadow" type="password" 
-										placeholder="Confirmar Senha" name="confpassword" />
+										placeholder="Confirmar Senha" name="confpassword"/>
+								</Row>
+								<Row>
+									<Button waves='light' className='btn'>Confirmar Alterações</Button>
 								</Row>
 							</Col>
 						</form>

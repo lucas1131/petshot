@@ -115,23 +115,7 @@ class TopNavbar extends Component {
 	}
 
 	render() {
-		if(this.props.user && this.props.user.username == "admin"){
-			return(
-				<div>
-					<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
-						<SideNavItem className='hide-on-large-only' userView user={this.props.user}/>
-						<li><NavLink to='/admin'>Gerenciar</NavLink></li>
-						<li className='hide-on-large-only'><NavLink to='/carrinho'>Meu Carrinho</NavLink></li>
-						<li className='hide-on-large-only'><NavLink to='/perfil'>Meu Perfil</NavLink></li>
-						<NavItem className='hide-on-large-only' onClick={ (e) => { this.props.handleLogin(null,null,true) } } >Sair</NavItem>
-						<NavItem className='hide-on-large-only' divider/>
-						<li><NavLink to='/'>Página Inicial</NavLink></li>
-						<li><NavLink to='/produtos'>Produtos</NavLink></li>
-						<li><NavLink to='/servicos'>Serviços</NavLink></li>
-					</Navbar>
-				</div>
-			);
-		} else if(this.props.user){
+		if(this.props.user){
 			return(
 				<div>
 					<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
@@ -159,6 +143,7 @@ class TopNavbar extends Component {
 					</Navbar>
 				</div>
 			);
+
 		}
 
 
