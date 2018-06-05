@@ -10,16 +10,6 @@
 import React from "react";
 import { Button, Input } from 'react-materialize';
 
-/*
-<TextField
-          name="name"
-          hintText="Nome"
-          value={this.state.name}
-          onChange={e => this.change(e)}
-          errorText={this.state.nameError}
-          floatingLabelFixed
-        />
-        */
 export default class Form extends React.Component {
 
   state = {

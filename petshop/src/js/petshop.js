@@ -15,6 +15,7 @@ import PerfilUsuario from './perfilUsuario';
 import AdminView from './adminView';
 import ProductList from './productList';
 import ServiceList from './serviceList';
+import Login from './login';
 
 import '../css/general.css';
 import '../css/footer.css';
@@ -33,6 +34,7 @@ class PageContent extends Component {
 			case 'adminView': return (<AdminView />)
 			case 'productList': return (<ProductList />)
 			case 'serviceList': return (<ServiceList />)
+			case 'login': return (<Login />)
 			default: return (<NotFound />)
 		}
 	}
@@ -42,7 +44,7 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'home'
+			page: 'login'
 			// page: 'adminView'
 		}
 	}
