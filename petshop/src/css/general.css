@@ -119,6 +119,14 @@ input:-ms-input-placeholder {
 	justify-content: center;
 }
 
+.white-text {
+	font-size: 20px !important;
+}
+
+.grey-text {
+	font-size: 12px !important;
+}
+
 .box-shadow {
 	border-bottom-color: var(--custom-orange) !important;
 }

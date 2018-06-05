@@ -127,6 +127,7 @@ class TopNavbar extends Component {
 						<li><NavLink to='/'>Página Inicial</NavLink></li>
 						<li><NavLink to='/produtos'>Produtos</NavLink></li>
 						<li><NavLink to='/servicos'>Serviços</NavLink></li>
+						<li><a href ='#about'>Sobre Nós</a></li>
 					</Navbar>
 				</div>
 			);
