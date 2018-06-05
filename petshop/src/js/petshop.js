@@ -14,6 +14,7 @@ import Header from './header'
 import Home from './home'
 import PerfilUsuario from './perfilUsuario'
 import AdminView from './adminView'
+import Product from './product'
 import ShoppingCart from './shoppingCart'
 import ProductList from './productList';
 import ServiceList from './serviceList';
@@ -34,6 +35,7 @@ class PageContent extends Component {
 			case 'home': return (<Home />)
 			case 'perfilUsuario': return (<PerfilUsuario />)
 			case 'adminView': return (<AdminView />)
+			case 'product': return (<Product />)
 			case 'shoppingCart': return (<ShoppingCart />)
 			case 'productList': return (<ProductList />)
 			case 'serviceList': return (<ServiceList />)
