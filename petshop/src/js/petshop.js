@@ -65,9 +65,10 @@ class Petshop extends Component {
 		 				<Route exact path="/" component={Home} />
 		 				<Route path="/admin" component={AdminView} />
 		 				<Route path="/perfil" component={PerfilUsuario} />
-		 				<Route path="/carrinho" />
-		 				<Route path="/produtos" />
-		 				<Route path="/servicos" />
+		 				<Route path="/carrinho" component={ShoppingCart} />
+		 				<Route path="/produtos" component={ProductList} />
+		 				<Route path="/servicos" component={ServiceList} />
+		 				<Route path="/login" component={Login} />
 		 				<Route component={NoMatch} />
 		 			</Switch>
 		 			</div>
