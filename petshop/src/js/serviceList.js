@@ -21,23 +21,11 @@ class ServiceList extends Component {
 			let str = service.name.toLowerCase();
 			str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 			
-			if(this.state.query === '') {
-				return (
-					<Col s={12} m={6} l={3} >
-						<Card header={<CardTitle image={service.image}></CardTitle>}
-							actions={[<Link to='/servicos/serviceId'>Agendar</Link>]}>
-							<h6 className='customGreen'>{service.name}</h6>
-							<p className='default'>{service.price}</p>
-						</Card>
-					</Col>
-				)
-			}
-
 			if(str.indexOf(this.state.query) > -1) {
 				return (
 					<Col s={12} m={6} l={3} >
 						<Card header={<CardTitle image={service.image}></CardTitle>}
-							actions={[<Link to='/servicos/serviceId'>Agendar</Link>]}>
+							actions={[<Link to={'/servicos/' + index}>Agendar</Link>]}>
 							<h6 className='customGreen'>{service.name}</h6>
 							<p className='default'>{service.price}</p>
 						</Card>

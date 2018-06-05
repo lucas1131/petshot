@@ -20,6 +20,7 @@ import ShoppingCart from './shoppingCart'
 import ProductList from './productList';
 import ServiceList from './serviceList';
 import Login from './login';
+import Service from './service';
 
 import { getFromLocalStorage, getFromSessionStorage } from './mockDB'
 import { storeInLocalStorage, storeInSessionStorage } from './mockDB'
@@ -49,7 +50,6 @@ class Petshop extends Component {
 	handleLogin(Username, Password, Exit) {
 		if(Exit){
 			this.setState({user: null})
-			withRouter.history.
 			return
 		}
 
@@ -77,6 +77,7 @@ class Petshop extends Component {
 		 				<Route exact path="/produtos" component={ProductList} />
 		 				<Route exact path="/produtos/:productId" component={Product} />
 		 				<Route exact path="/servicos" component={ServiceList} />
+		 				<Route exact path="/servicos/:serviceId" component={Service} />
 		 				<Route exact path="/login" component={Login} />
 		 				<Route component={NoMatch} />
 		 			</Switch>

@@ -20,18 +20,6 @@ class ProductList extends Component {
 			
 			let str = product.name.toLowerCase();
 			str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-	
-			if(this.state.query === '') {
-				return (
-					<Col s={12} m={6} l={3} >
-						<Card header={<CardTitle image={product.image}></CardTitle>}
-							actions={[<Link to='/produtos/productId'>Comprar</Link>]}>
-							<h6 className='customGreen'>{product.name}</h6>
-							<p className='default'>{product.price}</p>
-						</Card>
-					</Col>
-				)
-			}
 
 			if(str.indexOf(this.state.query) > -1) {
 				return (
