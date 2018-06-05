@@ -3,100 +3,55 @@ import { Row, Col } from 'react-materialize';
 import { Input } from 'react-materialize';
 import { Icon, Button } from 'react-materialize';
 import { Card, CardTitle } from 'react-materialize';
-
-/* Resources */
-import collar from '../resources/collar.jpg';
-import food from '../resources/racao2.jpg';
-import ball from '../resources/ball.png';
+import ProductInfo from './productInfo';
 
 /* Styles */
 import '../css/general.css'
 
 class ProductList extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {query: ''};
+	}
+
 	render() {
+		let products = ProductInfo.map((product, index) => {
+			
+			if(this.state.query === '') {
+				return (
+					<Col s={12} m={6} l={3} >
+						<Card header={<CardTitle image={product.image}></CardTitle>}
+							actions={[<a href='#'>Comprar</a>]}>
+							<h6 className='customGreen'>{product.name}</h6>
+							<p className='default'>{product.price}</p>
+						</Card>
+					</Col>
+				)
+			}
+
+			else if(this.state.query === product.name) {
+				return (
+					<Col s={12} m={6} l={3} >
+						<Card header={<CardTitle image={product.image}></CardTitle>}
+							actions={[<a href='#'>Comprar</a>]}>
+							<h6 className='customGreen'>{product.name}</h6>
+							<p className='default'>{product.price}</p>
+						</Card>
+					</Col>
+				)
+			}
+		});
+
 		return(
 			<div className='container' style={{marginTop: '50px'}}>
 				<h3 class='header0'> Produtos </h3>
 				<hr class='awesome'/>
+				<div className="center align-content">
+					<Input className='input box-shadow' style={{width: "317px"}} label='Busque um produto'
+						onChange = { (e) => { this.setState( {query: e.target.value} ) } }/>
+				</div>
 				<Row style={{marginTop: '50px'}}>
-					<Col m={6} s={12} l={4} offset={'m3','l4'}>
-							<Input className='input box-shadow' label='Busque um produto' />
-							<Button waves="light" className="btn"><Icon>search</Icon></Button>
-					</Col>
-				</Row>
-				<Row style={{marginTop: '50px'}}>
-					<Col m={6} s={12} l={3}>
-						<Card header={<CardTitle image={food}></CardTitle>}
-							actions={[<a href='#'>Comprar</a>]}>
-	    				<h6 className='customGreen'>Ração Gourmet</h6>
-	    				<p class='default'>
-	    					R$ 40,00
-	    				</p>
-	  				</Card>
-					</Col>
-					<Col m={6} s={12} l={3}>
-						<Card header={<CardTitle image={collar}></CardTitle>}
-							actions={[<a href='#'>Comprar</a>]}>
-	    				<h6 className='customGreen'>Coleira</h6>
-	    				<p class='default'>
-	    					R$ 40,00
-	    				</p>
-	  				</Card>
-					</Col>
-					<Col m={6} s={12} l={3}>
-						<Card header={<CardTitle image={food}></CardTitle>}
-							actions={[<a href='#'>Comprar</a>]}>
-	    				<h6 className='customGreen'>Ração Gourmet</h6>
-	    				<p class='default'>
-	    					R$ 40,00
-	    				</p>
-	  				</Card>
-					</Col>
-					<Col m={6} s={12} l={3}>
-						<Card header={<CardTitle image={ball}></CardTitle>}
-							actions={[<a href='#'>Comprar</a>]}>
-	    				<h6 className='customGreen'>Bolinha</h6>
-	    				<p class='default'>
-	    					R$ 40,00
-	    				</p>
-	  				</Card>
-					</Col>
-					<Col m={6} s={12} l={3}>
-						<Card header={<CardTitle image={ball}></CardTitle>}
-							actions={[<a href='#'>Comprar</a>]}>
-	    				<h6 className='customGreen'>Bolinha</h6>
-	    				<p class='default'>
-	    					R$ 40,00
-	    				</p>
-	  				</Card>
-					</Col>
-					<Col m={6} s={12} l={3}>
-						<Card header={<CardTitle image={ball}></CardTitle>}
-							actions={[<a href='#'>Comprar</a>]}>
-	    				<h6 className='customGreen'>Bolinha</h6>
-	    				<p class='default'>
-	    					R$ 40,00
-	    				</p>
-	  				</Card>
-					</Col>
-					<Col m={6} s={12} l={3}>
-						<Card header={<CardTitle image={collar}></CardTitle>}
-							actions={[<a href='#'>Comprar</a>]}>
-	    				<h6 className='customGreen'>Coleira</h6>
-	    				<p class='default'>
-	    					R$ 40,00
-	    				</p>
-	  				</Card>
-					</Col>
-					<Col m={6} s={12} l={3}>
-						<Card header={<CardTitle image={collar}></CardTitle>}
-							actions={[<a href='#'>Comprar</a>]}>
-	    				<h6 className='customGreen'>Coleira</h6>
-	    				<p class='default'>
-	    					R$ 40,00
-	    				</p>
-	  				</Card>
-					</Col>
+					{products}
 				</Row>
 			</div>
 		);
