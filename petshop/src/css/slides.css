@@ -14,7 +14,7 @@
     /*font-size: 22px;*/
     /*line-height: 1;*/
     /*opacity: .75;*/
-    color: black;
+    color: var(--custom-orange);
 
 }
 
@@ -54,12 +54,3 @@
 		}
 	}
 }
-
-/*
-.slick-next::before{
-    padding-left: 10px;
-} 
-
-.slick-prev::before {
-    padding-right: 100px;
-}*/

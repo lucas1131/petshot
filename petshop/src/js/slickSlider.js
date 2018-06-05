@@ -10,7 +10,6 @@ class SlickSlider extends Component {
   render() {
     var settings = {
       dots: true,
-      autoplay: true,
       infinite: true,
       speed: 500,
       slidesToShow: 3,
@@ -20,42 +19,42 @@ class SlickSlider extends Component {
       <Slider {...settings}>
         <Card header={<CardTitle image={shear}></CardTitle>}
           actions={[<a href='#'>Agendar</a>]}>
-          <h6>Tosa</h6>
+          <h6 className='customGreen'>Tosa</h6>
           <p class='default'>
             A partir de R$ 40,00
           </p>
         </Card>
         <Card header={<CardTitle image={shear}></CardTitle>}
           actions={[<a href='#'>Agendar</a>]}>
-          <h6>Tosa</h6>
+          <h6 className='customGreen'>Tosa</h6>
           <p class='default'>
             A partir de R$ 40,00
           </p>
         </Card>
         <Card header={<CardTitle image={shear}></CardTitle>}
           actions={[<a href='#'>Agendar</a>]}>
-          <h6>Tosa</h6>
+          <h6 className='customGreen'>Tosa</h6>
           <p class='default'>
             A partir de R$ 40,00
           </p>
         </Card>
         <Card header={<CardTitle image={shear}></CardTitle>}
           actions={[<a href='#'>Agendar</a>]}>
-          <h6>Tosa</h6>
+          <h6 className='customGreen'>Tosa</h6>
           <p class='default'>
             A partir de R$ 40,00
           </p>
         </Card>
         <Card header={<CardTitle image={shear}></CardTitle>}
           actions={[<a href='#'>Agendar</a>]}>
-          <h6>Tosa</h6>
+          <h6 className='customGreen'>Tosa</h6>
           <p class='default'>
             A partir de R$ 40,00
           </p>
         </Card>
         <Card header={<CardTitle image={shear}></CardTitle>}
           actions={[<a href='#'>Agendar</a>]}>
-          <h6>Tosa</h6>
+          <h6 className='customGreen'>Tosa</h6>
           <p class='default'>
             A partir de R$ 40,00
           </p>

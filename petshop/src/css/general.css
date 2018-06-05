@@ -155,6 +155,11 @@ hr.awesome {
 	text-align: center;
 }
 
+.customGreen {
+	color: var(--custom-green2);
+	text-align: center;
+}
+
 p.default { 
 	color: var(--custom-green2) !important; 
 	font-family: 'Source Sans Pro', sans-serif !important;

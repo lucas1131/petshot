@@ -8,13 +8,13 @@
 
 import React, { Component } from 'react';
 import { Footer } from 'react-materialize';
-
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-
-import Header from './header'
-import Home from './home'
-import PerfilUsuario from './perfilUsuario'
-import AdminView from './adminView'
+import Header from './header';
+import Home from './home';
+import PerfilUsuario from './perfilUsuario';
+import AdminView from './adminView';
+import ProductList from './productList';
+import ServiceList from './serviceList';
 
 import '../css/general.css';
 import '../css/footer.css';

@@ -13,6 +13,8 @@ import { Container } from 'react-materialize';
 import { Row, Col } from 'react-materialize';
 import { Card, CardTitle } from 'react-materialize';
 import SlickSlider from './slickSlider';
+import ProductInfo from './productInfo';
+import ServiceInfo from './serviceInfo';
 
 /* Styles */
 import '../css/home.css';
@@ -21,16 +23,30 @@ import '../css/home.css';
 import im1 from '../resources/runningDogo.jpg';
 import im2 from '../resources/catBag.jpg';
 import im3 from '../resources/dogShower.jpg';
-import shower from '../resources/banho.jpg';
-import shear from '../resources/tosa.jpg';
-import vet from '../resources/veterinario.png';
-import castration from '../resources/castracao.png';
-import collar from '../resources/collar.jpg';
-import food from '../resources/racao2.jpg';
-import ball from '../resources/ball.png';
 
 class Home extends Component {
 	render() {
+		let services = ServiceInfo.map((service, index) => {
+					return (
+						<Col s={12} m={6} l={3} >
+							<Card header={<CardTitle image={service.image}/>}
+								actions={[<a href='#'>Agendar</a>]}>
+								<h6 className='customGreen'>{service.name}</h6>
+								<p className='default'>{service.price}</p>
+							</Card>
+						</Col> ) } )
+
+		let products = ProductInfo.map((product, index) => {
+					return (
+						<Col s={12} m={6} l={3} >
+							<Card header={<CardTitle image={product.image}/>}
+								actions={[<a href='#'>Comprar</a>]}>
+								<h6 className='customGreen'>{product.name}</h6>
+								<p className='default'>{product.price}</p>
+							</Card>
+						</Col> ) } )
+
+
 		return(
 			<div>	
 				<Row>
@@ -61,44 +77,7 @@ class Home extends Component {
 						<h3 class='header0'> Nossos Serviços </h3>
 						<hr class='awesome'/>
 
-						<Row>
-						<Col m={6} s={12} l={3}>
-	  					<Card header={<CardTitle image={shear}></CardTitle>}
-	  						actions={[<a href='#'>Agendar</a>]}>
-	      				<h6>Tosa</h6>
-	      				<p class='default'>
-	      					A partir de R$ 40,00
-	      				</p>
-	    				</Card>
-						</Col>
-						<Col m={6} s={12} l={3}>
-	  					<Card header={<CardTitle image={castration}></CardTitle>}
-	  						actions={[<a href='#'>Agendar</a>]}>
-	      				<h6>Castração</h6>
-	      				<p class='default'>
-	      					A partir de R$ 40,00
-	      				</p>
-	    				</Card>
-						</Col>
-						<Col m={6} s={12} l={3}>
-	  					<Card header={<CardTitle image={vet}></CardTitle>}
-	  						actions={[<a href='#'>Agendar</a>]}>
-	      				<h6>Veterinário</h6>
-	      				<p class='default'>
-	      					A partir de R$ 40,00
-	      				</p>
-	    				</Card>
-						</Col>
-						<Col m={6} s={12} l={3}>
-	  					<Card header={<CardTitle image={shower}></CardTitle>}
-	  						actions={[<a href='#'>Agendar</a>]}>
-	      				<h6>Banho</h6>
-	      				<p class='default'>
-	      					A partir de R$ 40,00
-	      				</p>
-	    				</Card>
-						</Col>
-						</Row>
+						{services}
 
 						<p class='default'>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -112,10 +91,8 @@ class Home extends Component {
 
 						<h3 class='header0'> Nossos Produtos </h3>
 						<hr class='awesome'/>
-						
-						<Row>
-							<SlickSlider />
-						</Row>
+
+						{products}
 
 						<p class='default'>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
