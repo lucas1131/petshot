@@ -14,6 +14,9 @@ import Home from './home'
 import PerfilUsuario from './perfilUsuario'
 import AdminView from './adminView'
 import ShoppingCart from './shoppingCart'
+import ProductList from './productList';
+import ServiceList from './serviceList';
+import Login from './login';
 
 import '../css/general.css';
 import '../css/footer.css';
@@ -80,6 +83,9 @@ class PageContent extends Component {
 			case 'perfilUsuario': return (<PerfilUsuario />)
 			case 'adminView': return (<AdminView />)
 			case 'shoppingCart': return (<ShoppingCart />)
+			case 'productList': return (<ProductList />)
+			case 'serviceList': return (<ServiceList />)
+			case 'login': return (<Login />)
 			default: return (<NotFound />)
 		}
 	}
