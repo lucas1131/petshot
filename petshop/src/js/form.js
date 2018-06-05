@@ -7,30 +7,20 @@
  *
  */
 
-import React from "react";
+import React from 'react';
 import { Button, Input } from 'react-materialize';
 
-/*
-<TextField
-          name="name"
-          hintText="Nome"
-          value={this.state.name}
-          onChange={e => this.change(e)}
-          errorText={this.state.nameError}
-          floatingLabelFixed
-        />
-        */
 export default class Form extends React.Component {
 
   state = {
-    name: "",
-    nameError: "",
-    race: "",
-    raceError: "",
-    scheduled: "",
-    scheduledError: "",
-    cost: "",
-    costError: ""
+    name: '',
+    nameError: '',
+    race: '',
+    raceError: '',
+    scheduled: '',
+    scheduledError: '',
+    cost: '',
+    costError: ''
   };
 
   change = e => {
@@ -40,24 +30,25 @@ export default class Form extends React.Component {
     });
   };
 
+  /* TODO: valide input in subclasses - OVERRIDE THIS */
   validate = () => {
     let isError = false;
     const errors = {
-      nameError: "",
-      raceError: "",
-      scheduledError: "",
-      costError: ""
+      nameError: '',
+      raceError: '',
+      scheduledError: '',
+      costError: ''
     };
 
 
     // if (this.state.scheduled.length < 5) {
     //   isError = true;
-    //   errors.scheduledError = "Username needs to be atleast 5 characters long";
+    //   errors.scheduledError = 'Username needs to be atleast 5 characters long';
     // }
 
-    // if (this.state.cost.indexOf("@") === -1) {
+    // if (this.state.cost.indexOf('@') === -1) {
     //   isError = true;
-    //   errors.costError = "Requires valid cost";
+    //   errors.costError = 'Requires valid cost';
     // }
 
     this.setState({
@@ -75,14 +66,14 @@ export default class Form extends React.Component {
       this.props.onSubmit(this.state);
       // clear form
       this.setState({
-        name: "",
-        nameError: "",
-        race: "",
-        raceError: "",
-        scheduled: "",
-        scheduledError: "",
-        cost: "",
-        costError: ""
+        name: '',
+        nameError: '',
+        race: '',
+        raceError: '',
+        scheduled: '',
+        scheduledError: '',
+        cost: '',
+        costError: ''
       });
     }
   };
@@ -91,33 +82,33 @@ export default class Form extends React.Component {
 export class AnimalForm extends Form {
   render() {
     return (
-      <form style={{marginTop: "10px"}}>
+      <form style={{marginTop: '10px'}}>
         
-        <Input name="name" 
+        <Input name='name' 
           className='input box-shadow' 
           label='Nome'
           value={this.state.name}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
 
-        <Input name="race" 
+        <Input name='race' 
           className='input box-shadow' 
           label='Raça'
           value={this.state.race}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
 
-        <Input name="scheduled" 
+        <Input name='scheduled' 
           className='input box-shadow' 
           label='Agendamentos'
           value={this.state.scheduled}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
 
-        <Button className="btn form-btn" onClick={e => this.onSubmit(e)} waves="light">Enviar</Button>
+        <Button className='btn form-btn' onClick={e => this.onSubmit(e)} waves='light'>Enviar</Button>
       </form>
     );
   }
@@ -126,41 +117,41 @@ export class AnimalForm extends Form {
 export class AddressessForm extends Form {
   render() {
     return (
-      <form style={{marginTop: "10px"}}>
+      <form style={{marginTop: '10px'}}>
         
-        <Input name="nickname" 
+        <Input name='nickname' 
           className='input box-shadow' 
           label='Nome' 
           value={this.state.nickname}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
         
-        <Input name="street" 
+        <Input name='street' 
           className='input box-shadow' 
           label='Rua' 
           value={this.state.street}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
         
-        <Input name="number" 
+        <Input name='number' 
           className='input box-shadow' 
           label='N°' 
           value={this.state.number}
           onChange={e => this.change(e)} 
           validate 
-          type="number" />
+          type='number' />
         
-        <Input name="compl" 
+        <Input name='compl' 
           className='input box-shadow' 
           label='Complemento' 
           value={this.state.compl}
           onChange={e => this.change(e)}
           validate
-          type="text" />
+          type='text' />
         
-        <Button className="btn form-btn" onClick={e => this.onSubmit(e)} waves="light" primary>Enviar</Button>
+        <Button className='btn form-btn' onClick={e => this.onSubmit(e)} waves='light' primary>Enviar</Button>
       </form>
     );
   }
@@ -169,49 +160,49 @@ export class AddressessForm extends Form {
 export class AdminClientsForm extends Form {
   render() {
     return (
-      <form style={{marginTop: "10px"}}>
+      <form style={{marginTop: '10px'}}>
         
-        <Input name="name" 
+        <Input name='name' 
           className='input box-shadow' 
           label='Nome' 
           value={this.state.name}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
         
-        <Input name="surname" 
+        <Input name='surname' 
           className='input box-shadow' 
           label='Sobrenome' 
           value={this.state.surname}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
         
-        <Input name="services" 
+        <Input name='services' 
           className='input box-shadow' 
           label='Serviços Agendados' 
           value={this.state.services}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
         
-        <Input name="animals" 
+        <Input name='animals' 
           className='input box-shadow' 
           label='Animais Registrados' 
           value={this.state.animals}
           onChange={e => this.change(e)}
           validate
-          type="text" />
+          type='text' />
 
-        <Input name="address" 
+        <Input name='address' 
           className='input box-shadow' 
           label='Endereço' 
           value={this.state.address}
           onChange={e => this.change(e)}
           validate
-          type="text" />
+          type='text' />
         
-        <Button className="btn form-btn" onClick={e => this.onSubmit(e)} waves="light" primary>Enviar</Button>
+        <Button className='btn form-btn' onClick={e => this.onSubmit(e)} waves='light' primary>Enviar</Button>
       </form>
     );
   }
@@ -220,41 +211,57 @@ export class AdminClientsForm extends Form {
 export class AdminProductsForm extends Form {
   render() {
     return (
-      <form style={{marginTop: "10px"}}>
+      <form style={{marginTop: '10px'}}>
         
-        <Input name="nickname" 
+        <Input name='id' 
+          className='input box-shadow' 
+          label='ID' 
+          value={this.state.id}
+          onChange={e => this.change(e)} 
+          validate 
+          type='number' />
+        
+        <Input name='name' 
           className='input box-shadow' 
           label='Nome' 
-          value={this.state.nickname}
+          value={this.state.name}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
         
-        <Input name="street" 
+        <Input name='description' 
           className='input box-shadow' 
-          label='Rua' 
-          value={this.state.street}
+          label='Descrição' 
+          value={this.state.description}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
         
-        <Input name="number" 
+        <Input name='price' 
           className='input box-shadow' 
-          label='N°' 
-          value={this.state.number}
-          onChange={e => this.change(e)} 
-          validate 
-          type="number" />
-        
-        <Input name="compl" 
-          className='input box-shadow' 
-          label='Complemento' 
-          value={this.state.compl}
+          label='Preço' 
+          value={this.state.price}
           onChange={e => this.change(e)}
           validate
-          type="text" />
-        
-        <Button className="btn form-btn" onClick={e => this.onSubmit(e)} waves="light" primary>Enviar</Button>
+          type='number' />
+
+        <Input name='stock' 
+          className='input box-shadow' 
+          label='Estoque' 
+          value={this.state.stock}
+          onChange={e => this.change(e)}
+          validate
+          type='number' />
+
+        <Input name='sold' 
+          className='input box-shadow' 
+          label='Vendas' 
+          value={this.state.sold}
+          onChange={e => this.change(e)}
+          validate
+          type='number' />
+
+        <Button className='btn form-btn' onClick={e => this.onSubmit(e)} waves='light' primary>Enviar</Button>
       </form>
     );
   }
@@ -263,41 +270,49 @@ export class AdminProductsForm extends Form {
 export class AdminServicesForm extends Form {
   render() {
     return (
-      <form style={{marginTop: "10px"}}>
+      <form style={{marginTop: '10px'}}>
         
-        <Input name="nickname" 
+        <Input name='id' 
+          className='input box-shadow' 
+          label='ID' 
+          value={this.state.id}
+          onChange={e => this.change(e)} 
+          validate 
+          type='number' />
+        
+        <Input name='name' 
           className='input box-shadow' 
           label='Nome' 
-          value={this.state.nickname}
+          value={this.state.name}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
         
-        <Input name="street" 
+        <Input name='description' 
           className='input box-shadow' 
-          label='Rua' 
-          value={this.state.street}
+          label='Descrição' 
+          value={this.state.description}
           onChange={e => this.change(e)} 
           validate 
-          type="text" />
+          type='text' />
         
-        <Input name="number" 
+        <Input name='price' 
           className='input box-shadow' 
-          label='N°' 
-          value={this.state.number}
-          onChange={e => this.change(e)} 
-          validate 
-          type="number" />
-        
-        <Input name="compl" 
-          className='input box-shadow' 
-          label='Complemento' 
-          value={this.state.compl}
+          label='Preço' 
+          value={this.state.price}
           onChange={e => this.change(e)}
           validate
-          type="text" />
-        
-        <Button className="btn form-btn" onClick={e => this.onSubmit(e)} waves="light" primary>Enviar</Button>
+          type='number' />
+
+        <Input name='sold' 
+          className='input box-shadow' 
+          label='Vendas' 
+          value={this.state.sold}
+          onChange={e => this.change(e)}
+          validate
+          type='number' />
+
+        <Button className='btn form-btn' onClick={e => this.onSubmit(e)} waves='light' primary>Enviar</Button>
       </form>
     );
   }

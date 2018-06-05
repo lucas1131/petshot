@@ -14,6 +14,15 @@ import '../css/product.css';
 import item from '../resources/racao2.jpg';
 
 class Product extends Component {
+
+	constructor(props){
+		super(props)
+
+		this.state = {
+			
+		}
+	}
+
 	render(){
 		return(
 			<div id='info'>

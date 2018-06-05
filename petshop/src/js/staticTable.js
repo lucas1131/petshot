@@ -40,28 +40,21 @@ const row = (
     <TableRow key={`tr-${i}`} selectable={false} className="scroll-x">
       {header.map((y, k) => (
         <TableRowColumn key={`trc-${k}`} className="table-col">
-          {currentlyEditing && y.editable ? (
+          { y.editable ? (
             <Input
               name={y.prop}
               className='input box-shadow'
               label={y.name}
               onChange={e => handleChange(e, y.prop, i)}
               value={x[y.prop]}
-              validate
               type={y.type}
+              min={0}
+              step={1}
+              validate
             />
-          ) : (
-            x[y.prop]
-          )}
+          ) : ( x[y.prop] )}
         </TableRowColumn>
       ))}
-      <TableRowColumn className="table-col">
-        {currentlyEditing ? (
-          <CheckIcon className="text" onClick={() => stopEditing()} />
-        ) : (
-          <EditIcon onClick={() => startEditing(i)} />
-        )}
-      </TableRowColumn>
       <TableRowColumn className="table-col">
         <TrashIcon onClick={() => handleRemove(i)} />
       </TableRowColumn>
@@ -84,7 +77,6 @@ export default ({
         {header.map((x, i) => (
           <TableHeaderColumn key={`thc-${i}`} className="table-col fit-content">{x.name}</TableHeaderColumn>
         ))}
-        <TableHeaderColumn className="table-col fit-content">Editar</TableHeaderColumn>
         <TableHeaderColumn className="table-col fit-content">Excluir</TableHeaderColumn>
       </TableRow>
     </TableHeader>
