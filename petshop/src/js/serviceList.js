@@ -33,7 +33,7 @@ class ServiceList extends Component {
 				)
 			}
 
-			else if(this.state.query === str) {
+			if(str.indexOf(this.state.query) > -1) {
 				return (
 					<Col s={12} m={6} l={3} >
 						<Card header={<CardTitle image={service.image}></CardTitle>}

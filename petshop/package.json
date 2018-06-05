@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "ajv": "^6.5.0",
+    "deep-equal": "^1.0.1",
+    "deepequal": "0.0.1",
     "eslint-plugin-flowtype": "^2.35.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
