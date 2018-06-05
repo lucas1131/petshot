@@ -39,14 +39,26 @@ class UserInfo extends Component {
 }
 
 class LoginForm extends Component {
+	constructor(props) {
+		super(props)
+		this.props = {
+			handleLogin: props.handleLogin
+		}
+
+		this.state = {
+			username: '',
+			password: ''
+		}
+	}
+
 	render () { 
 		return (
 			<Row className={"topHeader valign-wrapper"} style={{float: "right"}}>
-				<Col><Input className='input box-shadow' label='Usuário' validate type='text' /></Col>
-				<Col><Input className='input box-shadow' label='Senha' validate type='password' /></Col>
-				<Col><Button waves="light" className="btn">Entrar</Button></Col>
-				<Col><Button waves="light" className="btn">Registrar</Button></Col>
-				<Col l={3}><Input className='input box-shadow' label='Lembrar de mim'type='checkbox'/></Col>
+					<Col><Input className='input box-shadow' label='Usuário' validate type='text' onChange={ (e) => {this.setState({username: e.target.value})} }/></Col>
+					<Col><Input className='input box-shadow' label='Senha' validate type='password' onChange={ (e) => {this.setState({password: e.target.value})} }/></Col>
+					<Col><Button waves="light" className="btn" onClick={ (e) => {this.props.handleLogin(this.state.username, this.state.password)} }>Entrar</Button></Col>
+					<Col><Button waves="light" className="btn">Registrar</Button></Col>
+					<Col l={3}><Input className='input box-shadow' label='Lembrar de mim'type='checkbox'/></Col>
 			</Row>
 		);
 	}
@@ -58,7 +70,8 @@ class TopHeader extends Component {
 	constructor(props) {
 		super(props)
 		this.props = {
-			user: props.user
+			user: props.user,
+			handleLogin: props.handleLogin
 		};
 	}
 
@@ -83,7 +96,7 @@ class TopHeader extends Component {
 					{/*Login*/}
 					<Col l={8} m={8} s={8} offset="l1" >
 						{/*password e username*/}
-						<LoginForm/>
+						<LoginForm handleLogin={this.props.handleLogin}/>
 					</Col>
 				</Row>
 			);
@@ -102,15 +115,37 @@ class TopNavbar extends Component {
 	}
 
 	render() {
-		return(
-			<div>
-				<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
-					<SideNavItem className='hide-on-large-only' userView user={this.props.user}/>
-					<NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
-					<NavItem href='components.html'>Components</NavItem>
-				</Navbar>
-			</div>
-		);
+		if(this.props.user){
+			return(
+				<div>
+					<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
+						<SideNavItem className='hide-on-large-only' userView user={this.props.user}/>
+						<NavItem >Meu Carrinho</NavItem>
+						<NavItem >Meu Perfil</NavItem>
+						<NavItem className='hide-on-large-only' divider/>
+						<NavItem >Página Inicial</NavItem>
+						<NavItem >Produtos</NavItem>
+						<NavItem >Serviços</NavItem>
+					</Navbar>
+				</div>
+			);
+		} else {
+			return(
+				<div>
+					<Navbar className='navbar' brand={<ResponsiveLogo/>} right>
+						<SideNavItem className='hide-on-large-only'>Fazer Login</SideNavItem>
+						<NavItem className='hide-on-large-only' divider/>
+						<NavItem >Página Inicial</NavItem>
+						<NavItem >Produtos</NavItem>
+						<NavItem >Serviços</NavItem>
+					</Navbar>
+				</div>
+			);
+
+		}
+
+
+		
 	}
 }
 
@@ -119,14 +154,15 @@ class Header extends Component {
 	constructor(props) {
 		super(props)
 		this.props = {
-			user: props.user
+			user: props.user,
+			handleLogin: props.handleLogin
 		};
 	}
 
 	render() {
 		return(
 			<div id="header">
-				<TopHeader user={this.props.user}/>
+				<TopHeader user={this.props.user} handleLogin={this.props.handleLogin}/>
 				<TopNavbar user={this.props.user}/>
 			</div>
 		);

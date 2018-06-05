@@ -38,15 +38,29 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'adminView',
-			user: null
+			page: 'home',
+			user: null 
+		}
+
+		this.handleLogin = this.handleLogin.bind(this)
+	}
+
+	handleLogin(Username, Password) {
+		if(Username == "user1"){
+			this.setState({user:
+			{
+				name: 'Relampago Marquinhos',
+				image: 'resources/avatar.png',
+				background: 'resources/Dog-with-goggles-in-car.jpg',
+				email: 'relampago@marquinhos.com'
+			}})
 		}
 	}
 
 	render() {
 		return (
 			<div className="petshop">
-	 			<Header user={this.state.user} />
+	 			<Header user={this.state.user} handleLogin={this.handleLogin}/>
 	 			<div className="main wrap">
 	 				<PageContent page={this.state.page}/>
 	 			</div>
