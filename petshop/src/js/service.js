@@ -45,15 +45,13 @@ class Service extends Component {
 				</div>
 				<Row>
 					<Col s={12} l={12} m={12} className='center align-content'>
-						<MediaBox src={this.service.image} id='productPhoto' alt='food for doggos here'/>
+						<MediaBox src={this.service.image} id='productPhoto' alt='service'/>
 					</Col>
 				</Row>
 				<Row> <p className='default'>{this.service.desc}</p> </Row>
 				<Row> <hr class='awesome'/> </Row>
 				<Row> <h3 className='header0'><strong>R$ {this.service.price}</strong></h3> </Row>
-				<Row>
-					<Col offset='l5 m4 s3' s={12} l={4} m={4} > <Input label='Data' type='date'/> </Col>
-				</Row>
+				<div  className="center align-content"><Input label='Data' type='date'/></div>
 				<Row>
 					<Button waves='light' className='btn'>
 						<Icon left>class</Icon>
