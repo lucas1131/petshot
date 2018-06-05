@@ -9,30 +9,47 @@ import ServiceInfo from './serviceInfo';
 import '../css/general.css'
 
 class ServiceList extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {query: ''};
+	}
+
 	render() {
 		let services = ServiceInfo.map((service, index) => {
-			return (
-				// sets the size of the card for each type of screen
-				<Col s={12} m={6} l={3} >
-					<Card header={<CardTitle image={service.image}></CardTitle>}
-						actions={[<a href='#'>Agendar </a>]}>
-						<h6 className='customGreen'>{service.name}</h6>
-						<p className='default'>{service.price}</p>
-					</Card>
-				</Col>
-			)
+			
+			if(this.state.query === '') {
+				return (
+					<Col s={12} m={6} l={3} >
+						<Card header={<CardTitle image={service.image}></CardTitle>}
+							actions={[<a href='#'>Comprar</a>]}>
+							<h6 className='customGreen'>{service.name}</h6>
+							<p className='default'>{service.price}</p>
+						</Card>
+					</Col>
+				)
+			}
+
+			else if(this.state.query === service.name) {
+				return (
+					<Col s={12} m={6} l={3} >
+						<Card header={<CardTitle image={service.image}></CardTitle>}
+							actions={[<a href='#'>Comprar</a>]}>
+							<h6 className='customGreen'>{service.name}</h6>
+							<p className='default'>{service.price}</p>
+						</Card>
+					</Col>
+				)
+			}
 		});
 
 		return(
 			<div className='container' style={{marginTop: '50px'}}>
-				<h3 class='header0'> Serviços </h3>
+				<h3 class='header0'> Produtos </h3>
 				<hr class='awesome'/>
-				<Row style={{marginTop: '50px'}}>
-					<Col m={6} s={12} l={4} offset={'m3 l4'}>
-							<Input className='input box-shadow' label='Busque um serviço' />
-							<Button waves='light' className='btn'><Icon>search</Icon></Button>
-					</Col>
-				</Row>
+				<div className="center align-content">
+					<Input className='input box-shadow' style={{width: "317px"}} label='Busque um produto'
+						onChange = { (e) => { this.setState( {query: e.target.value} ) } }/>
+				</div>
 				<Row style={{marginTop: '50px'}}>
 					{services}
 				</Row>
