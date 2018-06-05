@@ -3,6 +3,7 @@ import { Row, Col } from 'react-materialize';
 import { Input } from 'react-materialize';
 import { Icon, Button } from 'react-materialize';
 import { Card, CardTitle } from 'react-materialize';
+import { Link } from 'react-router-dom';
 import ProductInfo from './productInfo';
 
 /* Styles */
@@ -19,12 +20,24 @@ class ProductList extends Component {
 			
 			let str = product.name.toLowerCase();
 			str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+	
+			if(this.state.query === '') {
+				return (
+					<Col s={12} m={6} l={3} >
+						<Card header={<CardTitle image={product.image}></CardTitle>}
+							actions={[<Link to='/produtos/productId'>Comprar</Link>]}>
+							<h6 className='customGreen'>{product.name}</h6>
+							<p className='default'>{product.price}</p>
+						</Card>
+					</Col>
+				)
+			}
 
 			if(str.indexOf(this.state.query) > -1) {
 				return (
 					<Col s={12} m={6} l={3} >
 						<Card header={<CardTitle image={product.image}></CardTitle>}
-							actions={[<a href='#'>Comprar</a>]}>
+							actions={[<Link to='/produtos/productId'>Comprar</Link>]}>
 							<h6 className='customGreen'>{product.name}</h6>
 							<p className='default'>{product.price}</p>
 						</Card>

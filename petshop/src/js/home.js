@@ -15,6 +15,7 @@ import { Card, CardTitle } from 'react-materialize';
 import SlickSlider from './slickSlider';
 import ProductInfo from './productInfo';
 import ServiceInfo from './serviceInfo';
+import { Link } from 'react-router-dom';
 
 /* Styles */
 import '../css/home.css';
@@ -30,7 +31,7 @@ class Home extends Component {
 					return (
 						<Col s={12} m={6} l={3} >
 							<Card header={<CardTitle image={service.image}/>}
-								actions={[<a href='#'>Agendar</a>]}>
+								actions={[<Link to='/servicos/serviceId'>Agendar</Link>]}>
 								<h6 className='customGreen'>{service.name}</h6>
 								<p className='default'>{service.price}</p>
 							</Card>
@@ -40,12 +41,11 @@ class Home extends Component {
 					return (
 						<Col s={12} m={6} l={3} >
 							<Card header={<CardTitle image={product.image}/>}
-								actions={[<a href='#'>Comprar</a>]}>
+								actions={[<Link to='/produtos/productId'>Comprar</Link>]}>
 								<h6 className='customGreen'>{product.name}</h6>
 								<p className='default'>{product.price}</p>
 							</Card>
 						</Col> ) } )
-
 
 		return(
 			<div>	
