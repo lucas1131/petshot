@@ -82,7 +82,16 @@ class Petshop extends Component {
 		 				<Route component={NoMatch} />
 		 			</Switch>
 		 			</div>
-		 			<Footer className="footer"/>
+		 			<Footer id='about' className="footer" copyrights="© 2018 Copyright All Batatas Reserved">
+		 				<h5 className="white-text">Sobre Nós</h5>
+		 				<h6 className="grey-text text-lighten-4"> Grupo 5 </h6>
+    					<p className="grey-text text-lighten-4">
+    						Giovanna Oliveira Guimarães - 9293693 <br/>
+							Lucas Alexandre Soares - 9293265 <br/>
+							Luca Gomes Urssi - 10425396 <br/>
+							Rafael Augusto Monteiro - 9293095 <br/>
+    					</p>
+		 			</Footer>
 				</div>
 			</BrowserRouter>
 		);
