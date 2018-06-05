@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import { Footer } from 'react-materialize';
 
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 
 import Header from './header'
 import Home from './home'
@@ -18,6 +18,10 @@ import AdminView from './adminView'
 
 import '../css/general.css';
 import '../css/footer.css';
+
+class NoMatch extends Component {
+	render(){ return ( <div className="container"> <h1 className='header1'> 404 - Not Found </h1> <img src='https://i.ytimg.com/vi/EVn87e53MAw/hqdefault.jpg'/></div> )}
+}
 
 class Petshop extends Component {
 	constructor(props){
@@ -52,9 +56,15 @@ class Petshop extends Component {
 				<div className="petshop">
 		 			<Header user={this.state.user} handleLogin={this.handleLogin}/>
 		 			<div className="main">
+		 			<Switch>
 		 				<Route exact path="/" component={Home} />
 		 				<Route path="/admin" component={AdminView} />
 		 				<Route path="/perfil" component={PerfilUsuario} />
+		 				<Route path="/carrinho" />
+		 				<Route path="/produtos" />
+		 				<Route path="/servicos" />
+		 				<Route component={NoMatch} />
+		 			</Switch>
 		 			</div>
 		 			<Footer className="footer"/>
 				</div>
