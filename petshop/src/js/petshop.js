@@ -8,7 +8,8 @@
 
 import React, { Component } from 'react';
 import { Footer } from 'react-materialize';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+
+import { BrowserRouter, Route, Link, Switch, withRouter } from 'react-router-dom'
 
 import Header from './header'
 import Home from './home'
@@ -23,33 +24,14 @@ import Login from './login';
 import '../css/general.css';
 import '../css/footer.css';
 
-class NotFound extends Component {
-	render(){
-		return (<div> 404 Not Found </div>)
-	}
-}
-
-class PageContent extends Component {
-	render(){
-		switch(this.props.page){
-			case 'home': return (<Home />)
-			case 'perfilUsuario': return (<PerfilUsuario />)
-			case 'adminView': return (<AdminView />)
-			case 'product': return (<Product />)
-			case 'shoppingCart': return (<ShoppingCart />)
-			case 'productList': return (<ProductList />)
-			case 'serviceList': return (<ServiceList />)
-			case 'login': return (<Login />)
-			default: return (<NotFound />)
-		}
-	}
+class NoMatch extends Component {
+	render(){ return ( <div className="container"> <h1 className='header1'> 404 - Not Found </h1> <img src='https://i.ytimg.com/vi/EVn87e53MAw/hqdefault.jpg'/></div> )}
 }
 
 class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'product',
 			user: null
 		}
 
@@ -59,6 +41,7 @@ class Petshop extends Component {
 	handleLogin(Username, Password, Exit) {
 		if(Exit){
 			this.setState({user: null})
+			withRouter.history.
 			return
 		}
 		if(Username == "user1"){
@@ -78,10 +61,18 @@ class Petshop extends Component {
 				<div className="petshop">
 		 			<Header user={this.state.user} handleLogin={this.handleLogin}/>
 		 			<div className="main">
+		 			<Switch>
 		 				<Route exact path="/" component={Home} />
-		 				<Route path="/admin" component={AdminView} />
-		 				<Route path="/perfil" component={PerfilUsuario} />
-		 				<Route path="/product" component={Product} />
+		 				<Route exact path="/admin" component={AdminView} />
+		 				<Route exact path="/perfil" component={PerfilUsuario} />
+		 				<Route exact path="/carrinho" component={ShoppingCart} />
+		 				<Route exact path="/produtos" component={ProductList} />
+		 				<Route exact path="/produtos/:productId" component={Product} />
+		 				<Route exact path="/servicos" component={ServiceList} />
+		 				<Route exact path="/servicos/:serviceId" component={ServiceList} />
+		 				<Route exact path="/login" component={Login} />
+		 				<Route component={NoMatch} />
+		 			</Switch>
 		 			</div>
 		 			<Footer className="footer"/>
 				</div>
