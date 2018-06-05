@@ -1,0 +1,19 @@
+#productPhoto {
+	width: 300px;
+	height: 300px;
+	
+}
+
+#info{
+	font-size: 24px;
+	text-align: center;
+}
+
+#imgEdesc{
+	align: center;
+	width: 100%;
+}
+
+#desc{
+	font-size: 16px;
+}
