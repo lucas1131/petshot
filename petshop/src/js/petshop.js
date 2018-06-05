@@ -13,9 +13,59 @@ import Header from './header'
 import Home from './home'
 import PerfilUsuario from './perfilUsuario'
 import AdminView from './adminView'
+import ShoppingCart from './shoppingCart'
 
 import '../css/general.css';
 import '../css/footer.css';
+
+export function storeInLocalStorage(key, obj){ 
+	localStorage.setItem(key, JSON.stringify(obj)) 
+}
+
+export function getFromLocalStorage(key){ 
+	return JSON.parse(localStorage.getItem(key)) 
+}
+
+export function storeInSessionStorage(key, obj){ 
+	sessionStorage.setItem(key, JSON.stringify(obj)) 
+}
+
+export function getFromSessionStorage(key){ 
+	return JSON.parse(sessionStorage.getItem(key)) 
+}
+
+function populateDB(){
+
+	let productList = []
+	let product1 = { name: "Rassaum", cost: 20 }
+	let product2 = { name: "Raçã", cost: 40 }
+
+	let list = []
+	let item1 = {
+    product: "Rassaum",
+		quantity: 1,
+		cost: 20,
+		totalCost: 0
+  }
+  item1.totalCost = item1.cost*item1.quantity;
+
+  let item2 = {
+    product: "Raçã sabor maçã",
+		quantity: 2,
+		cost: 40,
+		totalCost: 0
+  }
+  item2.totalCost = item2.cost*item2.quantity;
+
+  productList.push(product1)
+  productList.push(product2)
+  list.push(item1)
+  list.push(item2)
+	storeInSessionStorage("Cart", list)
+	storeInSessionStorage("Cart", list)
+}
+
+populateDB()
 
 class NotFound extends Component {
 	render(){
@@ -29,6 +79,7 @@ class PageContent extends Component {
 			case 'home': return (<Home />)
 			case 'perfilUsuario': return (<PerfilUsuario />)
 			case 'adminView': return (<AdminView />)
+			case 'shoppingCart': return (<ShoppingCart />)
 			default: return (<NotFound />)
 		}
 	}
@@ -38,7 +89,7 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'adminView',
+			page: 'shoppingCart',
 			user: null
 		}
 	}

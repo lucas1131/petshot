@@ -10,7 +10,7 @@
 @import 'general.css';
 @import 'lightTheme.css';
 
- .h1-admin {
+.h1-admin {
 	color: var(--foreground-color5); 
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 40px;

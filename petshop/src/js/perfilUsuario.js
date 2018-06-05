@@ -67,10 +67,10 @@ class Animals extends Component {
     return (
       <div>
         <AnimalTable header={[
-					{ name: "Nome", prop: "name", type: "text" },
-					{ name: "Raça", prop: "race", type: "text" },
-					{ name: "Agendamentos", prop: "scheduled", type: "text" },
-					{ name: "Custo", prop: "cost", type: "number" }
+					{ name: "Nome", prop: "name", type: "text", editable: true },
+					{ name: "Raça", prop: "race", type: "text", editable: true },
+					{ name: "Agendamentos", prop: "scheduled", type: "text", editable: true },
+					{ name: "Custo", prop: "cost", type: "number", editable: false }
 				]}/>
       </div>
     );
@@ -82,10 +82,10 @@ class Addressess extends Component {
     return (
       <div>
         <AddressessTable header={[
-					{ name: "Nome", prop: "nickname", type: "text" },
-					{ name: "Rua", prop: "street", type: "text" },
-					{ name: "N°", prop: "number", type: "number" },
-					{ name: "Complemento", prop: "compl", type: "text" }
+					{ name: "Nome", prop: "nickname", type: "text", editable: true },
+					{ name: "Rua", prop: "street", type: "text", editable: true },
+					{ name: "N°", prop: "number", type: "number", editable: true },
+					{ name: "Complemento", prop: "compl", type: "text", editable: true }
 				]}/>
       </div>
     );
