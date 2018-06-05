@@ -15,6 +15,11 @@ import Header from './header'
 import Home from './home'
 import PerfilUsuario from './perfilUsuario'
 import AdminView from './adminView'
+import Product from './product'
+import ShoppingCart from './shoppingCart'
+import ProductList from './productList';
+import ServiceList from './serviceList';
+import Login from './login';
 
 import '../css/general.css';
 import '../css/footer.css';
@@ -28,7 +33,7 @@ class Petshop extends Component {
 		super(props)
 		this.state = {
 			page: 'home',
-			user: null 
+			user: null
 		}
 
 		this.handleLogin = this.handleLogin.bind(this)

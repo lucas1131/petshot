@@ -66,7 +66,7 @@ class AdminProductsView extends Component {
 	render() {
     return (
       <div>
-        <AddressessTable header={[
+        <AdminProductsTable header={[
 					{ name: "ID", prop: "id", type: "number" },
 					{ name: "Nome", prop: "name", type: "text" },
 					{ name: "Descrição", prop: "description", type: "text" },
@@ -83,7 +83,7 @@ class AdminServicesView extends Component {
 	render() {
     return (
       <div>
-        <AddressessTable header={[
+        <AdminServicesTable header={[
 					{ name: "ID", prop: "id", type: "number" },
 					{ name: "Nome", prop: "name", type: "text" },
 					{ name: "Descrição", prop: "description", type: "text" },
@@ -195,7 +195,7 @@ export default class AdminView extends Component {
 		return(
 			<div className="container" style={{marginTop: "15px"}}>
 				<Tabs className='z-depth-1'>
-					<Tab title="Clientes" className="tab admin-tab">
+					<Tab title="Clientes" className="tab admin-tab" active>
 						<AdminClientsView />
 					</Tab>
 
@@ -207,7 +207,7 @@ export default class AdminView extends Component {
 						<AdminServicesView />
 					</Tab>
 
-					<Tab title="Estatísticas" className="tab admin-tab" active>
+					<Tab title="Estatísticas" className="tab admin-tab">
 						<AdminStatisticsView />
 					</Tab>
 				</Tabs>

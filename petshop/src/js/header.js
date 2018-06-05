@@ -1,5 +1,4 @@
-/* Light Theme stylesheet
- *
+/* 
  * Giovanna Oliveira Guimarães 9293693
  * Lucas Alexandre Soares 9293265
  * Luca Gomes Urssi 10425396

@@ -1,0 +1,20 @@
+/* Shopping cart stylesheet
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
+@import 'general.css';
+
+
+.header1 {
+	color: var(--foreground-color5); 
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 32px;
+	margin: 20px 0 10px;
+}

@@ -20,6 +20,7 @@ import {  AnimalForm,
           AdminServicesForm } from "./form";
 
 import Table from "./table";
+import StaticTable from "./staticTable";
 
 import "../css/dateDisplay.css";
 import "../css/general.css";
@@ -270,5 +271,86 @@ export class AdminServicesTable extends EditableTable {
     );
   }
 }
+
+
+export class ShoppingCartTable extends Component {
+
+  constructor(props) {
+
+    super(props)
+    
+    if(this.props.header){
+      this.header = props.header
+    } else {
+      this.header = []
+    }
+
+    this.onInit = props.onInit;
+    this.onChange = props.onChange;
+    this.onRemove = props.onRemove;
+
+    let value = props.data ? props.data : [];
+
+    this.state = {
+      data: value,
+      editIdx: -1
+    }
+
+    this.setState(state => ({
+      children: value,
+      batata: 5
+    }))
+    this.onInit(value)
+  }
+
+  /* Handlers for edit & remove*/
+  handleRemove = i => {
+    this.setState(state => ({
+      data: state.data.filter((row, j) => j !== i)
+    }));
+
+    this.onRemove(i)
+  };
+
+  handleChange = (e, name, i) => {
+    const value = e.target.value;
+    const cost = this.state.data[i].cost;
+    const qtd = value;
+    let total = cost*qtd;
+
+    this.setState(state => ({
+      data: state.data.map(
+        (row, j) => (j === i ? { ...row, [name]: value, ['totalCost']: total } : row)
+      )
+    }));
+
+    this.onChange(i, name, parseInt(value), total)
+  };
+
+  /* Render table */
+  render() {
+    return (
+      <MuiThemeProvider>
+        <div>
+          <Col>
+            <Row>
+              <div>
+                <StaticTable
+                  handleRemove={this.handleRemove}
+                  editIdx={this.state.editIdx}
+                  handleChange={this.handleChange}
+                  data={this.state.data}
+                  header={this.header}
+                  style={{overflowX: "scroll"}}
+                />
+              </div>
+            </Row>
+          </Col>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}
+
 
 export default EditableTable;
