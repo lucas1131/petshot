@@ -49,7 +49,7 @@ class Petshop extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			page: 'home',
+			page: 'product',
 			user: null
 		}
 
@@ -81,6 +81,7 @@ class Petshop extends Component {
 		 				<Route exact path="/" component={Home} />
 		 				<Route path="/admin" component={AdminView} />
 		 				<Route path="/perfil" component={PerfilUsuario} />
+		 				<Route path="/product" component={Product} />
 		 			</div>
 		 			<Footer className="footer"/>
 				</div>
