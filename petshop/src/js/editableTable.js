@@ -289,8 +289,20 @@ export class ShoppingCartTable extends Component {
     this.onChange = props.onChange;
     this.onRemove = props.onRemove;
 
-    let value = props.data ? props.data : [];
+    let value_factory = props.data ? props.data : [];
+    let value = []
 
+    for(let i = 0; i < value_factory.length; i++){
+      let tmp = {}
+      
+      tmp.product = value_factory[i].product.name
+      tmp.quantity = value_factory[i].quantity
+      tmp.cost = value_factory[i].product.price
+      tmp.totalCost = value_factory[i].totalCost
+
+      value.push(tmp)
+    }
+    console.log(value)
     this.state = {
       data: value,
       editIdx: -1
