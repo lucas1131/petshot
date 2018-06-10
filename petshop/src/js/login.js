@@ -14,6 +14,28 @@ import '../css/general.css';
 import '../css/login.css';
 
 class Login extends Component {
+
+	// Function to check if inputs are correct
+	validate = (e) => {
+		return true
+	}
+
+	// Used primarily for ENTER press submission
+	handleKeyPress = (e) => {
+    if(e.key === 'Enter') {
+      if(this.validate(e)) {
+      	console.log("validated input")
+      	this.submit(e)
+      }
+      else { console.log("pressed key " + e.key)}
+    }
+  }
+
+  submit = (e) => {
+  	console.log("submitting")
+  	if(this.validate(e)) this.submit(e)
+  }
+
 	render() {
 		return(
 			<div className="container">
@@ -23,6 +45,7 @@ class Login extends Component {
 						<Input name="username" 
 								className='input box-shadow' 
 								label='Usuário'
+								onChange={this.handleKeyPress}
 								validate 
 								type="text" />
 					</Col>
@@ -30,12 +53,13 @@ class Login extends Component {
 						<Input name="pswd" 
 								className='input box-shadow' 
 								label='Senha'
+								onChange={this.handleKeyPress}
 								validate 
 								type="password" />
 					</Col>
 					<Col>
 						<Button className="btn form-btn" 
-										onClick={e => this.onSubmit(e)} 
+										onClick={this.submit}
 										waves="light">
 						
 							Enviar

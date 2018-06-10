@@ -28,11 +28,11 @@ class UserInfo extends Component {
 	render () { 
 		return (
 			<Row className={"topHeader valign-wrapper"} style={{float: "right"}}>
-				<Col > <b>Usuário:</b> {this.props.user.name}</Col>
-				<Col ><img className="circle" src={this.props.user.image} style={{height: "55px"}}/> </Col>
-				<Col ><Link to='/carrinho'><Button waves="light" className="btn">Meu Carrinho<Icon left>shopping_cart</Icon></Button></Link></Col>
-				<Col ><Link to='/perfil'><Button waves="light" className="btn">Meu Perfil<Icon left>account_circle</Icon></Button></Link></Col>
-				<Col ><Button waves="light" className="btn" onClick={ () => {this.props.handleLogin(null, null, true)} }>Sair<Icon left>exit_to_app</Icon></Button></Col>
+				<Col> <b>Usuário:</b> {this.props.user.name}</Col>
+				<Col><img className="circle" src={this.props.user.image} style={{height: "55px"}}/> </Col>
+				<Col><Link to='/carrinho'><Button waves="light" className="btn">Meu Carrinho<Icon left>shopping_cart</Icon></Button></Link></Col>
+				<Col><Link to='/perfil'><Button waves="light" className="btn">Meu Perfil<Icon left>account_circle</Icon></Button></Link></Col>
+				<Col><Button waves="light" className="btn" onClick={ () => {this.props.handleLogin(null, null, true)} }>Sair<Icon left>exit_to_app</Icon></Button></Col>
 			</Row>
 		);
 	}
@@ -51,13 +51,59 @@ class LoginForm extends Component {
 		}
 	}
 
+	// Function to check if inputs are correct
+	validate = (e) => {
+		return true
+	}
+
+	// Update props value
+	handleChange = (e) => {
+	  this.setState({ 
+	  	username: e.target.value, 
+			password: e.target.value
+	  })
+  }
+
+	// Used primarily for ENTER press submission
+  handleKeyPress = (e) => {
+
+    if(e.key === 'Enter') {
+      if(this.validate(e)) {
+      	this.submit(e)
+      }
+    }
+  }
+
+  submit = (e) => {
+  	console.log("submitting")
+  	if(this.validate(e)) 
+  		this.props.handleLogin(this.state.username, this.state.password, false)
+  }
+ 
 	render () { 
 		return (
 			<Row className={"topHeader valign-wrapper"} style={{float: "right"}}>
-					<Col><Input className='input box-shadow' label='Usuário' validate type='text' onChange={ (e) => {this.setState({username: e.target.value})} }/></Col>
-					<Col><Input className='input box-shadow' label='Senha' validate type='password' onChange={ (e) => {this.setState({password: e.target.value})} }/></Col>
-					<Col><Button waves="light" className="btn" onClick={ (e) => {this.props.handleLogin(this.state.username, this.state.password, false)} }>Entrar</Button></Col>
-					<Col l={3}><Input className='input box-shadow' label='Lembrar de mim'type='checkbox'/></Col>
+				
+				<Col>
+					<Input className='input box-shadow' 
+								label='Usuário' 
+								validate 
+								type='text' 
+								onChange={this.handleChange}
+								onKeyDown={this.handleKeyPress}/>
+				</Col>
+				
+				<Col>
+					<Input className='input box-shadow' 
+								label='Senha' 
+								validate 
+								type='password' 
+								onChange={this.handleChange}
+								onKeyDown={this.handleKeyPress}/>
+				</Col>
+
+				<Col><Button waves="light" className="btn" onClick={ (e) => {this.props.handleLogin(this.state.username, this.state.password, false)} }>Entrar</Button></Col>
+				<Col l={3}><Input className='input box-shadow' label='Lembrar de mim'type='checkbox'/></Col>
 			</Row>
 		);
 	}

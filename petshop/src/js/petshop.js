@@ -13,7 +13,7 @@ import { BrowserRouter, Route, Link, Switch, withRouter } from 'react-router-dom
 
 import Header from './header'
 import Home from './home'
-import PerfilUsuario from './perfilUsuario'
+import PerfilUsuario from './userProfile'
 import AdminView from './adminView'
 import Product from './product'
 import ShoppingCart from './shoppingCart'
@@ -50,6 +50,7 @@ class Petshop extends Component {
 	handleLogin(Username, Password, Exit) {
 		if(Exit){
 			this.setState({user: null})
+			sessionStorage.clear()
 			return
 		}
 
