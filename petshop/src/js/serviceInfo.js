@@ -7,8 +7,8 @@ import castration from '../resources/castracao.png';
 const ServiceInfo = [
 
 	{
-		type: 'service',
 		id: 0,
+		type: 'service',
 		desc: 'Vamos deixar seu pet cheirosinho!',
 		image: shower,
 		name: 'Banho',
@@ -16,17 +16,17 @@ const ServiceInfo = [
 	},
 	
 	{
-		type: 'service',
 		id: 1,
-		desc: 'ütil quando seu dog tá parecendo uma ovelha',
+		type: 'service',
+		desc: 'Útil quando seu doggo tá parecendo uma ovelha',
 		image: shear,
 		name: 'Tosa',
 		price: '40.00'
 	},
 
 	{
-		type: 'service',
 		id: 2,
+		type: 'service',
 		desc: 'É só uma virose mesmo',
 		image: vet,
 		name: 'Veterinário',
@@ -34,8 +34,8 @@ const ServiceInfo = [
 	},
 
 	{
-		type: 'service',
 		id: 3,
+		type: 'service',
 		desc: 'Corta a sarchicha fora',
 		image: castration,
 		name: 'Castração',

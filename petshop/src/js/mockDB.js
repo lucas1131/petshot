@@ -8,9 +8,6 @@
 import ServiceInfo from './serviceInfo';
 import ProductInfo from './productInfo';
 
- var deepEqual = require('deep-equal')
-
-
 function uniq(a) {
     return a.sort().filter(function(item, pos, ary) {
         return !pos || item != ary[pos - 1];
@@ -19,10 +16,19 @@ function uniq(a) {
 
 function insert(key, obj, tmp, storage){
 	
+	if(!("id" in obj)){ // If id variable has not been defined
+		console.error(`No primary key defined for object ${JSON.stringify(obj)}. Please, define \"object.id\".`)
+		throw { 
+			code: 1,
+			name: 'UNDEFINED_PRIMARY_KEY',
+			desc: `No primary key defined for object ${JSON.stringify(obj)}. Please, define \"object.id\".`
+		}
+	} 
+
 	// If object already exists, update its value
 	let found = false;
 	for (var index = 0; index < tmp.length; index++){
-		if(deepEqual(tmp[index], obj)) {
+		if(tmp[index].id == obj.id) {
 			found = true;
 			break;
 		}
@@ -35,11 +41,10 @@ function insert(key, obj, tmp, storage){
 }
 
 function store(key, obj, storage){
+
 	let isArray = Array.isArray(obj);
-
-	key = key.toLowerCase()
-
 	let tmp = getFromLocalStorage(key);
+	key = key.toLowerCase()
 	
 	// If key exists in database
 	if(tmp){
@@ -80,82 +85,93 @@ export function getFromSessionStorage(key){
 
 export default function populateDB(){
 
-	let productList = []
-	let product1 = { name: "Rassaum", cost: 20 }
-	let product2 = { name: "Raçã", cost: 40 }
-
 	let cart = []
+	let id = 0
+	let qtd = 2
+
 	let cartItem1 = {
+		id: id,
+		product_id: id,
 		type: 'cart',
-	    product: "Rassaum",
-		quantity: 1,
-		cost: 20,
-		totalCost: 0
+	    product: ProductInfo[id],
+		quantity: qtd,
+		totalCost: ProductInfo[id].price*qtd
 	}
-	cartItem1.totalCost = cartItem1.cost*cartItem1.quantity;
 
+	id = 1
+	qtd = 1
 	let cartItem2 = {
+		id: id,
+		product_id: id,
 		type: 'cart',
-		product: "Raçã sabor maçã",
-		quantity: 2,
-		cost: 40,
-		totalCost: 0
+	    product: ProductInfo[id],
+		quantity: qtd,
+		totalCost: ProductInfo[id].price*qtd
 	}
-	cartItem2.totalCost = cartItem2.cost*cartItem2.quantity;
-
-	productList.push(product1)
-	productList.push(product2)
-	cart.push(cartItem1)
-	cart.push(cartItem2)
-	storeInSessionStorage("Cart", cart)
-	storeInSessionStorage("Cart", cart)
 
 	/* Users */
 	let usersList = []
+
+	id = 'jureg'
 	let user1 = {
-		type: 'user',
-		username: 'jureg',
+		id: id,
+		username: id,
 		password: 'lorotabraba',
+		type: 'user',
 		name: 'Rafael do Fake News',
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',
 		email: 'jureg@fake.nilc.usp.br'
 	}
+
+	id = 'xofanna'
 	let user2 = {
-		type: 'user',
-		username: 'xofanna',
+		id: id,
+		username: id,
 		password: 'col s={12}',
+		type: 'user',
 		name: 'GiGi',
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',
 		email: 'giovanna@trevas.com'
 	}
+
+	id = 'airo'
 	let user3 = {
-		type: 'user',
-		username: 'airo',
+		id: id,
+		username: id,
 		password: 'omedefero',
+		type: 'user',
 		name: 'Airo',
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',
 		email: 'airo@usp.br'
 	}
+
+	id = 'admin'
 	let admin = {
-		type: 'user',
-		username: 'admin',
+		id: id,
+		username: id,
 		password: 'admin',
+		type: 'user',
 		name: 'Ade Ministrador',
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',
-		email: 'Ade.Ministrador@admin.petshop.com'
+		email: 'ade.ministrador@admin.petshop.com'
 	}
 
+	/* Populate list */
 	usersList.push(user1)
 	usersList.push(user2)
 	usersList.push(user3)
 	usersList.push(admin)
-	// usersList.push(1)
-	// usersList.push(2)
-	// usersList.push(3)
+	
+	cart.push(cartItem1)
+	cart.push(cartItem2)
+
+	/* Insert them in db */
+	storeInSessionStorage("cart", cart)
+	storeInSessionStorage("cart", cart)
 	storeInLocalStorage('user-info', usersList)
 	storeInLocalStorage('products-info', ProductInfo)
 	storeInLocalStorage('services-info', ServiceInfo)
