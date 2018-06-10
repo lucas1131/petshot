@@ -294,24 +294,25 @@ export class ShoppingCartTable extends Component {
 
     for(let i = 0; i < value_factory.length; i++){
       let tmp = {}
-      
-      tmp.product = value_factory[i].product.name
+      console.log(i)
+      console.log(value_factory[i])
+      tmp.id = value_factory[i].id
+      tmp.product_id = value_factory[i].product_id
+      tmp.type = value_factory[i].type
+      tmp.product = value_factory[i].product
       tmp.quantity = value_factory[i].quantity
-      tmp.cost = value_factory[i].product.price
+      tmp.cost = value_factory[i].cost
       tmp.totalCost = value_factory[i].totalCost
 
       value.push(tmp)
     }
-    console.log(value)
+
     this.state = {
       data: value,
+      children: value,
       editIdx: -1
     }
 
-    this.setState(state => ({
-      children: value,
-      batata: 5
-    }))
     this.onInit(value)
   }
 

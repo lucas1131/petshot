@@ -46,7 +46,7 @@ const row = (
               className='input box-shadow'
               label={y.name}
               onChange={e => handleChange(e, y.prop, i)}
-              value={x[y.prop]}
+              defaultValue={x[y.prop]}
               type={y.type}
               min={0}
               step={1}

@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-materialize';
 import { Icon, Button, MediaBox } from 'react-materialize';
+import { Input } from 'react-materialize';
 
 import { getFromLocalStorage, getFromSessionStorage } from './mockDB'
 import { storeInLocalStorage, storeInSessionStorage } from './mockDB'
@@ -30,6 +31,29 @@ class Product extends Component {
 			}
 		}
 
+		this.state = {
+			qtd: 1
+		}
+	}
+
+	handleChange = (e) => {
+		this.setState({qtd: e.target.value})
+	}	
+
+	addToCart = (e) => {
+		
+		let qtd = parseInt(this.state.qtd)
+		let cartItem = {
+			id: this.product.id,
+			product_id: this.product.id,
+			type: 'cart',
+    	product: this.product.name,
+			quantity: qtd,
+    	cost: this.product.price,
+    	totalCost: qtd*this.product.price
+		}
+
+		storeInSessionStorage("cart", cartItem)
 	}
 
 	render() {
@@ -47,8 +71,19 @@ class Product extends Component {
 				</Row>
 					<p className='default'>{this.product.desc}</p>
 					<hr class='awesome'/>
-					<h3 className='header0'><strong>R$ {this.product.price}</strong></h3>
-					<Button waves='light' className='btn'>
+					<Row className="center align-content valign-wrapper">
+						
+						<Input className="settings_input box-shadow" 
+									type="number" 
+									onChange={this.handleChange} 
+									defaultValue={1} 
+									min={1} 
+									step={1} 
+									style={{width: "50px"}}/>
+
+						<span className='header0 valign'><strong>R$ {this.product.price*this.state.qtd}</strong></span>
+					</Row>
+					<Button waves='light' className='btn' onClick={this.addToCart}>
 						<Icon left>shopping_cart</Icon>
 						Adicionar ao carrinho
 					</Button>

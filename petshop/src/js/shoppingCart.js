@@ -9,6 +9,8 @@
 import React, { Component } from 'react'
 import { Card } from 'react-materialize';
 import { Row, Col } from 'react-materialize';
+import { Button } from 'react-materialize';
+
 import { ShoppingCartTable } from './editableTable'
 
 import { storeInSessionStorage, getFromSessionStorage } from './mockDB'
@@ -39,6 +41,8 @@ export default class ShoppingCart extends Component {
 	}
 
 	onInit = (value) => {
+		console.log("Init cart")
+		console.log(value)
 		this.setState(state => ({
 			children: value
 		}))
@@ -47,13 +51,25 @@ export default class ShoppingCart extends Component {
 	
 	onRemove = (i) => {
 		let ar = this.state.children;
-		ar.splice(i, 1);
+		let newAr = [];
+		for(let index = 0; index < ar.length; index++){
+			if(index !== i) newAr.push(ar[index])
+		}
+
+		console.log("this.state.children")
+		console.log(this.state.children)
+		console.log("removed line " + i)
+		console.log(newAr)
 		
 		this.setState(state => ({
-			children: ar
+			children: newAr
 		}));
-
-		this.updateCost(ar)
+		
+		
+		this.updateCost(newAr)
+		sessionStorage.setItem("cart", JSON.stringify(newAr))
+		// sessionStorage.removeItem("cart")
+		// storeInSessionStorage("cart", newAr)
 	}
 
 	onChange = (i, name, qtd, total) => {
@@ -65,7 +81,13 @@ export default class ShoppingCart extends Component {
 			children: ar
 		}));
 
+		console.log("this.state.children")
+		console.log(this.state.children)
+		console.log("changeling line " + i)
+		console.log(ar)
+		
 		this.updateCost(this.state.children);
+		storeInSessionStorage("cart", ar)
 	}
 
 	render() {
@@ -88,11 +110,14 @@ export default class ShoppingCart extends Component {
 					/>
 
 				</Row>
-				<Row>
+				<Row className="valign-wrapper">
 					<Col offset={'l9', 'm7', 's5'}>
 						<Card className="center text">
 							Valor total da compra: <b>R$ {this.state.totalCost}</b>
 						</Card>
+					</Col>
+					<Col className="valign">
+						<Button className="">Comprar</Button>
 					</Col>
 				</Row>
 			</div>

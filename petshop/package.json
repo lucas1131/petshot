@@ -8,11 +8,13 @@
   "dependencies": {
     "ajv": "^6.5.0",
     "deep-equal": "^1.0.1",
+    "deepcopy": "^1.0.0",
     "deepequal": "0.0.1",
     "eslint-plugin-flowtype": "^2.35.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.1.0",
+    "jquery": "^3.3.1",
     "material-ui": "^0.20.1",
     "react": "^16.4.0",
     "react-center-component": "^3.0.0",

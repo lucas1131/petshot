@@ -50,17 +50,28 @@ class Petshop extends Component {
 	handleLogin(Username, Password, Exit) {
 		if(Exit){
 			this.setState({user: null})
-			sessionStorage.clear()
+			storeInSessionStorage("user", null)
 			return
 		}
 
 		let users = getFromLocalStorage("user-info")
 
 		for(let i in users){
-			console.log(`${users[i].type} == 'user' && ${Username} === ${users[i].username} && ${Password} === ${users[i].password}`)
-			if(users[i].type == 'user' && Username === users[i].username && Password === users[i].password){
-					this.setState({user: users[i]})
-					storeInSessionStorage("user", users[i])
+			if(users[i].type == 'user' && 
+				Username === users[i].username && 
+				Password === users[i].password){
+				
+					this.setState({user: users[i]});
+					storeInSessionStorage("user", {
+						id: "logged", 
+						username: users[i].username,
+						type: 'user',
+						name: users[i].name,
+						image: users[i].image,
+						background: users[i].background,
+						email: users[i].email
+					}
+				);
 			}
 		}
 	}

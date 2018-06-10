@@ -8,6 +8,8 @@
 import ServiceInfo from './serviceInfo';
 import ProductInfo from './productInfo';
 
+import deepcopy from 'deepcopy';
+
 function uniq(a) {
     return a.sort().filter(function(item, pos, ary) {
         return !pos || item != ary[pos - 1];
@@ -16,6 +18,13 @@ function uniq(a) {
 
 function insert(key, obj, tmp, storage){
 	
+	console.log()
+	console.log("inserting into " + key)
+	console.log("object: ") 
+	console.log(obj)
+	console.log("tmp: ") 
+	console.log(tmp)
+
 	if(!("id" in obj)){ // If id variable has not been defined
 		console.error(`No primary key defined for object ${JSON.stringify(obj)}. Please, define \"object.id\".`)
 		throw { 
@@ -23,7 +32,7 @@ function insert(key, obj, tmp, storage){
 			name: 'UNDEFINED_PRIMARY_KEY',
 			desc: `No primary key defined for object ${JSON.stringify(obj)}. Please, define \"object.id\".`
 		}
-	} 
+	}
 
 	// If object already exists, update its value
 	let found = false;
@@ -33,22 +42,23 @@ function insert(key, obj, tmp, storage){
 			break;
 		}
 	}
+	console.log(found)
 
-	if(found) tmp[index] = obj; // Object exists, update value
+	if(found) tmp[index] = deepcopy(obj); // Object exists, update value
 	else tmp.push(obj) // Object does not exists, create it
 
 	storage.setItem(key, JSON.stringify(tmp)) 
 }
 
-function store(key, obj, storage, singleton=false){
+function store(key, obj, storage){
 
 	let isArray = Array.isArray(obj);
-	let tmp = getFromLocalStorage(key);
+	let tmp = JSON.parse(storage.getItem(key));
 	key = key.toLowerCase()
 	
 	// If key exists in database
 	if(tmp){
-		if(isArray && !singleton){
+		if(isArray){
 			for(let i = 0; i < obj.length; i++){
 				insert(key, obj[i], tmp, storage)
 			}
@@ -56,17 +66,22 @@ function store(key, obj, storage, singleton=false){
 		
 	// Key doesnt exists
 	} else {
-		
+		console.log()
+		console.log("key not found, creating it")
+		console.log("inserting into " + key)
+		console.log("object: ")
+		console.log(obj)
+
 		let finalObj;
-		if(isArray) finalObj = obj
+		if(isArray) finalObj = deepcopy(obj);
 		else finalObj = [obj]
 
 		storage.setItem(key, JSON.stringify(finalObj)) 
 	}
 }
 
-export function storeInLocalStorage(key, obj, singleton=false){ 
-	store(key, obj, localStorage, singleton)
+export function storeInLocalStorage(key, obj){ 
+	store(key, obj, localStorage)
 }
 
 export function getFromLocalStorage(key){ 
@@ -74,8 +89,8 @@ export function getFromLocalStorage(key){
 	return JSON.parse(localStorage.getItem(key)) 
 }
 
-export function storeInSessionStorage(key, obj, singleton=false){ 
-	store(key, obj, sessionStorage, singleton)
+export function storeInSessionStorage(key, obj){ 
+	store(key, obj, sessionStorage)
 }
 
 export function getFromSessionStorage(key){ 
@@ -89,12 +104,14 @@ export default function populateDB(){
 	let id = 0
 	let qtd = 2
 
+
 	let cartItem1 = {
 		id: id,
 		product_id: id,
 		type: 'cart',
-	    product: ProductInfo[id],
+	  product: ProductInfo[id].name,
 		quantity: qtd,
+		cost: ProductInfo[id].price,
 		totalCost: ProductInfo[id].price*qtd
 	}
 
@@ -104,8 +121,9 @@ export default function populateDB(){
 		id: id,
 		product_id: id,
 		type: 'cart',
-	    product: ProductInfo[id],
+	  product: ProductInfo[id].name,
 		quantity: qtd,
+		cost: ProductInfo[id].price,
 		totalCost: ProductInfo[id].price*qtd
 	}
 
@@ -169,12 +187,18 @@ export default function populateDB(){
 	cart.push(cartItem1)
 	cart.push(cartItem2)
 
+	console.log("Cart")
+	console.log(cart)
+
 	/* Insert them in db */
-	storeInSessionStorage("cart", cart)
-	storeInSessionStorage("cart", cart)
-	storeInLocalStorage('user-info', usersList)
-	storeInLocalStorage('products-info', ProductInfo)
-	storeInLocalStorage('services-info', ServiceInfo)
+	if(!getFromSessionStorage("cart"))
+		storeInSessionStorage("cart", cart)
+	if(!getFromLocalStorage('user-info')) 
+		storeInLocalStorage('user-info', usersList)
+	if(!getFromLocalStorage('products-info')) 
+		storeInLocalStorage('products-info', ProductInfo)
+	if(!getFromLocalStorage('services-info')) 
+		storeInLocalStorage('services-info', ServiceInfo)
 }
 
 populateDB()
