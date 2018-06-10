@@ -40,7 +40,7 @@ function insert(key, obj, tmp, storage){
 	storage.setItem(key, JSON.stringify(tmp)) 
 }
 
-function store(key, obj, storage){
+function store(key, obj, storage, singleton=false){
 
 	let isArray = Array.isArray(obj);
 	let tmp = getFromLocalStorage(key);
@@ -48,7 +48,7 @@ function store(key, obj, storage){
 	
 	// If key exists in database
 	if(tmp){
-		if(isArray){
+		if(isArray && !singleton){
 			for(let i = 0; i < obj.length; i++){
 				insert(key, obj[i], tmp, storage)
 			}
@@ -65,8 +65,8 @@ function store(key, obj, storage){
 	}
 }
 
-export function storeInLocalStorage(key, obj){ 
-	store(key, obj, localStorage)
+export function storeInLocalStorage(key, obj, singleton=false){ 
+	store(key, obj, localStorage, singleton)
 }
 
 export function getFromLocalStorage(key){ 
@@ -74,8 +74,8 @@ export function getFromLocalStorage(key){
 	return JSON.parse(localStorage.getItem(key)) 
 }
 
-export function storeInSessionStorage(key, obj){ 
-	store(key, obj, sessionStorage)
+export function storeInSessionStorage(key, obj, singleton=false){ 
+	store(key, obj, sessionStorage, singleton)
 }
 
 export function getFromSessionStorage(key){ 

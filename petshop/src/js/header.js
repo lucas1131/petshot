@@ -57,11 +57,10 @@ class LoginForm extends Component {
 	}
 
 	// Update props value
-	handleChange = (e) => {
-	  this.setState({ 
-	  	username: e.target.value, 
-			password: e.target.value
-	  })
+	handleChange = (e, stateToChange) => {
+		let newState = {}
+		newState[stateToChange] = e.target.value
+	  this.setState(newState)
   }
 
 	// Used primarily for ENTER press submission
@@ -88,7 +87,7 @@ class LoginForm extends Component {
 								label='Usuário' 
 								validate 
 								type='text' 
-								onChange={this.handleChange}
+								onChange={ e => {this.handleChange(e, "username")} }
 								onKeyDown={this.handleKeyPress}/>
 				</Col>
 				
@@ -97,14 +96,14 @@ class LoginForm extends Component {
 								label='Senha' 
 								validate 
 								type='password' 
-								onChange={this.handleChange}
+								onChange={ e => {this.handleChange(e, "password")} }
 								onKeyDown={this.handleKeyPress}/>
 				</Col>
 
 				<Col>
 					<Button waves="light" 
 									className="btn" 
-									onClick={(e) => {
+									onClick={	(e) => {
 											this.props.handleLogin(this.state.username, this.state.password, false)
 										} 
 									}> Entrar </Button>

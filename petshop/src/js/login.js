@@ -9,6 +9,15 @@
 import React, { Component } from 'react';
 import { Input, Button } from 'react-materialize';
 import { Row, Col } from 'react-materialize';
+import { Link } from 'react-router-dom';
+// import Form from 'react-router-form';
+
+
+/*
+ eslint-plugin-jsx-a11y
+ react-router react-dom react
+*/
+
 
 import '../css/general.css';
 import '../css/login.css';
@@ -30,11 +39,10 @@ class Login extends Component {
 	}
 
 	// Update props value
-	handleChange = (e) => {
-	  this.setState({ 
-	  	username: e.target.value, 
-			password: e.target.value
-	  })
+	handleChange = (e, stateToChange) => {
+		let newState = {}
+		newState[stateToChange] = e.target.value
+	  this.setState(newState)
   }
 
 	// Used primarily for ENTER press submission
@@ -48,8 +56,10 @@ class Login extends Component {
   }
 
   submit = (e) => {
-  	if(this.validate(e)) 
+  	if(this.validate(e)){
   		this.props.handleLogin(this.state.username, this.state.password, false)
+  		return (<Link to={'/'}/>)
+  	}
   }
 
 	render() {
@@ -61,7 +71,7 @@ class Login extends Component {
 						<Input name="username" 
 								className='input box-shadow' 
 								label='Usuário'
-								onChange={this.handleChange}
+								onChange={ e => {this.handleChange(e, "username")} }
 								onKeyDown={this.handleKeyPress}
 								validate 
 								type="text" />
@@ -70,7 +80,7 @@ class Login extends Component {
 						<Input name="pswd" 
 								className='input box-shadow' 
 								label='Senha'
-								onChange={this.handleChange}
+								onChange={ e => {this.handleChange(e, "password")} }
 								onKeyDown={this.handleKeyPress}
 								validate 
 								type="password" />
