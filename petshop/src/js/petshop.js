@@ -79,7 +79,7 @@ class Petshop extends Component {
 		 				<Route exact path="/produtos/:productId" component={Product} />
 		 				<Route exact path="/servicos" component={ServiceList} />
 		 				<Route exact path="/servicos/:serviceId" component={Service} />
-		 				<Route exact path="/login" component={Login} />
+		 				<Route exact path="/login" component={() => {return (<Login handleLogin={this.handleLogin}/>)} } />
 		 				<Route component={NoMatch} />
 		 			</Switch>
 		 			</div>

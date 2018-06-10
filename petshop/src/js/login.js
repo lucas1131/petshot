@@ -15,25 +15,41 @@ import '../css/login.css';
 
 class Login extends Component {
 
+	constructor(props){
+		super(props)
+
+		this.state = {
+			username: "", 
+			password: ""
+		}
+	}
+
 	// Function to check if inputs are correct
 	validate = (e) => {
 		return true
 	}
 
+	// Update props value
+	handleChange = (e) => {
+	  this.setState({ 
+	  	username: e.target.value, 
+			password: e.target.value
+	  })
+  }
+
 	// Used primarily for ENTER press submission
-	handleKeyPress = (e) => {
+  handleKeyPress = (e) => {
+
     if(e.key === 'Enter') {
       if(this.validate(e)) {
-      	console.log("validated input")
       	this.submit(e)
       }
-      else { console.log("pressed key " + e.key)}
     }
   }
 
   submit = (e) => {
-  	console.log("submitting")
-  	if(this.validate(e)) this.submit(e)
+  	if(this.validate(e)) 
+  		this.props.handleLogin(this.state.username, this.state.password, false)
   }
 
 	render() {
@@ -45,7 +61,8 @@ class Login extends Component {
 						<Input name="username" 
 								className='input box-shadow' 
 								label='Usuário'
-								onChange={this.handleKeyPress}
+								onChange={this.handleChange}
+								onKeyDown={this.handleKeyPress}
 								validate 
 								type="text" />
 					</Col>
@@ -53,14 +70,18 @@ class Login extends Component {
 						<Input name="pswd" 
 								className='input box-shadow' 
 								label='Senha'
-								onChange={this.handleKeyPress}
+								onChange={this.handleChange}
+								onKeyDown={this.handleKeyPress}
 								validate 
 								type="password" />
 					</Col>
 					<Col>
 						<Button className="btn form-btn" 
-										onClick={this.submit}
-										waves="light">
+									onClick={(e) => {
+											this.props.handleLogin(this.state.username, this.state.password, false)
+										} 
+									}
+									waves="light">
 						
 							Enviar
 						</Button>

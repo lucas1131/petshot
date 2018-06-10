@@ -75,7 +75,6 @@ class LoginForm extends Component {
   }
 
   submit = (e) => {
-  	console.log("submitting")
   	if(this.validate(e)) 
   		this.props.handleLogin(this.state.username, this.state.password, false)
   }
@@ -102,7 +101,15 @@ class LoginForm extends Component {
 								onKeyDown={this.handleKeyPress}/>
 				</Col>
 
-				<Col><Button waves="light" className="btn" onClick={ (e) => {this.props.handleLogin(this.state.username, this.state.password, false)} }>Entrar</Button></Col>
+				<Col>
+					<Button waves="light" 
+									className="btn" 
+									onClick={(e) => {
+											this.props.handleLogin(this.state.username, this.state.password, false)
+										} 
+									}> Entrar </Button>
+				</Col>
+
 				<Col l={3}><Input className='input box-shadow' label='Lembrar de mim'type='checkbox'/></Col>
 			</Row>
 		);
@@ -175,7 +182,7 @@ class TopNavbar extends Component {
 						<li><NavLink to='/produtos'>Produtos</NavLink></li>
 						<li><NavLink to='/servicos'>Serviços</NavLink></li>
 					</Navbar>
-				</div>
+				</div> 
 			);
 		} else if(this.props.user) {
 			return(
