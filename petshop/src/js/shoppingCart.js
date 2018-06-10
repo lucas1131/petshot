@@ -81,7 +81,7 @@ export default class ShoppingCart extends Component {
 							{ name: "Valor Un.", prop: "cost", type: "number" },
 							{ name: "Valor Total", prop: "totalCost", type: "number" }
 						]}
-						data={getFromSessionStorage("Cart")}
+						data={getFromSessionStorage("cart")}
 						onInit={this.onInit}
 						onChange={this.onChange}
 						onRemove={this.onRemove}
