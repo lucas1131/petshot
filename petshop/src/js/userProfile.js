@@ -15,28 +15,36 @@ import EditableTable, { AnimalTable, AddressessTable } from './editableTable'
 
 import '../css/general.css';
 import '../css/tabs.css';
-import '../css/perfilUsuario.css'
+import '../css/userProfile.css'
 
 class Configs extends Component {
+
+	validateForm = () => {
+		console.log("submitting")
+		return true
+	}
+
 	render() {
 		return(
-			<div>
+			<div class="container">
 				<div className="align-content">
 					<h1 className="label">Usuário e Senha</h1>
 				</div>
 
-				<div className="scaler">
-					<div className="align-content">
-						<img src="https://www.w3schools.com/howto/img_avatar2.png"
-							className="profile-pic" />
+				<div className="scaler align-content">
+					<img src="https://www.w3schools.com/howto/img_avatar2.png"
+						className="profile-pic" />
 
-						<div style={{display: "inline-block", marginBottom: "30px"}}>
+					<div style={{display: "inline-block", marginBottom: "30px"}}>
 						<h4 className="label">Senha atual</h4>
 						<form>
 							<Col>
 								<Row>
-									<input className="settings_input box-shadow" type="password" 
-										placeholder="Senha Atual" name="oldpassword"/>
+									<input className="settings_input box-shadow" 
+												type="password" 
+												placeholder="Senha Atual" 
+												name="oldpassword"
+												required/>
 								</Row>
 								<Row>
 									<p className="text" style={{fontSize: "10px"}}> Sua senha atual é necessária para efetuar qualquer mudança</p>
@@ -45,19 +53,24 @@ class Configs extends Component {
 									<h4 className="label">Altere sua Senha</h4>
 								</Row>
 								<Row>
-									<input className="settings_input box-shadow" type="password" 
-										placeholder="Nova Senha" name="newpassword"/>
+									<input className="settings_input box-shadow" 
+												type="password" 
+												placeholder="Nova Senha" 
+												name="newpassword"
+												required/>
 								</Row>
 								<Row>
-									<input className="settings_input box-shadow" type="password" 
-										placeholder="Confirmar Senha" name="confpassword"/>
+									<input className="settings_input box-shadow" 
+												type="password" 
+												placeholder="Confirmar Senha" 
+												name="confpassword"
+												required/>
 								</Row>
 								<Row>
 									<Button waves='light' className='btn'>Confirmar Alterações</Button>
 								</Row>
 							</Col>
 						</form>
-						</div>
 					</div>
 				</div>
 			</div>
