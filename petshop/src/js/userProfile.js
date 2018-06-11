@@ -13,33 +13,90 @@ import { Input, Button } from 'react-materialize';
 
 import EditableTable, { AnimalTable, AddressessTable } from './editableTable'
 import { getFromSessionStorage, getFromLocalStorage } from './mockDB'
+import { storeInSessionStorage, storeInLocalStorage } from './mockDB'
 
 import '../css/general.css';
 import '../css/tabs.css';
 import '../css/userProfile.css'
 
-class Configs extends Component {
+var isUserLogged = true;
+export default class PerfilUsuario extends Component {
 
   constructor(props) {
+    
     super(props)
-    this.props = {
-      handleLogin: props.handleLogin
+    let currentUser = getFromSessionStorage("user")[0]
+    let userInfo = getFromLocalStorage("user-info")
+
+    console.log(userInfo)
+    console.log(currentUser)
+    for(var i = 0; i < userInfo.length; i++){
+      console.log(`${userInfo[i].username} === ${currentUser.username}`)
+      if(userInfo[i].username === currentUser.username){
+        console.log(i)
+        console.log(userInfo[i])
+        currentUser = userInfo[i];
+        break;
+      }
     }
 
-    let currentUser = getFromSessionStorage("user")
+    // Set flag for no user logged so we can hide this page
+    if(!currentUser){
+      isUserLogged = false;
+    }
 
+    console.log(currentUser)
     this.state = {
-      username: currentUser.username,
-      old_pswd: currentUser.password,
-      new_pswd: '',
-      conf_pswd: ''
+      user: currentUser
     }
   }
 
-  // Function to check if inputs are correct
-  validate = (e) => {
-    console.log('submitting')
-    return true
+  render() {
+    // If user is not logged, hide configs page
+    if(!isUserLogged) {
+      return(
+        <div className="container valign-wrapper center align-content" style={{paddingTop: "100px"}}>
+          <h3 className="header0">É necessário logar para fazer mudanças</h3>
+        </div>
+      )
+    }
+
+    return(
+      <div className='container' style={{marginTop: '15px'}}>
+        <Tabs className='z-depth-1'>
+          <Tab title='Configurações' className='tab' active>
+            <Configs user={this.state.user}/>
+          </Tab>
+
+          <Tab title='Animais' className='tab'>
+            <Animals user={this.state.user}/>
+          </Tab>
+
+          <Tab title='Endereços' className='tab'>
+            <Addressess user={this.state.user}/>
+          </Tab>
+        </Tabs>
+      </div>
+    );
+  }
+}
+
+class Configs extends Component {
+
+  constructor(props) {
+
+    super(props)
+    this.state = {
+      user: props.user,
+      username: props.user.username,
+      old_pswd: '',
+      new_pswd: '',
+      conf_pswd: '',
+      wrong_psd: "none",
+      psd_no_match: "none",
+      form_not_filled: "none",
+      form_ok: "none"
+    }
   }
 
   // Update props value
@@ -47,23 +104,89 @@ class Configs extends Component {
     let newState = {}
     newState[stateToChange] = e.target.value
     this.setState(newState)
+    console.log(`Changing '${stateToChange}' to '${e.target.value}'`)
   }
 
   // Used primarily for ENTER press submission
   handleKeyPress = (e) => {
 
     if(e.key === 'Enter') {
+      console.log("Enter pressed")
       if(this.validate(e)) {
-        this.submit(e)
+        this.changePassword(e)
       }
     }
   }
 
-  submit = (e) => {
-    if(this.validate(e)) 
-      this.props.handleLogin(this.state.username, this.state.password, false)
+  // Function to check if inputs are correct
+  validate = (e) => {
+    
+    let userPassword = this.state.user.password
+    let old_pswd = this.state.old_pswd
+    let new_pswd = this.state.new_pswd
+    let conf_pswd = this.state.conf_pswd
+
+    let display = {
+      wrong_psd: "none",
+      psd_no_match: "none",
+      form_not_filled: "none",
+      form_ok: "none"
+    }
+
+    // If a field is empty
+    if(!old_pswd || !new_pswd || !conf_pswd){
+      display.form_not_filled = "block"
+      this.setState(display)
+      return false
+    }
+    
+    // Wrong password
+    if(old_pswd !== userPassword){
+      display.wrong_psd = "block"
+      this.setState(display)
+      return false
+    }
+
+    // New password and confirm password does not match
+    if(new_pswd !== conf_pswd){
+      display.psd_no_match = "block"
+      this.setState(display)
+      return false
+    }
+
+    // Everything is ok, show success text and update password
+    display.form_ok = "block"
+    this.setState(display)
+    return true
   }
 
+  changePassword = (e) => {
+
+    // if(!this.validate(e)) 
+    //   return false
+  
+    let currentUser = this.state.user;
+    currentUser.password = this.state.new_pswd;
+
+    storeInLocalStorage("user-info", currentUser)
+
+    console.log(this.state)
+
+    // let newState = {
+    //   user: currentUser.user,
+    //   username: currentUser.user.username,
+    //   old_pswd: '',
+    //   new_pswd: '',
+    //   conf_pswd: '',
+    //   wrong_psd: "none",
+    //   psd_no_match: "none",
+    //   form_not_filled: "none",
+    //   form_ok: "none"
+    // }
+
+    return true;
+  }
+  
   render() {
     return(
       <div class='container'>
@@ -78,12 +201,13 @@ class Configs extends Component {
           <div style={{display: 'inline-block', marginBottom: '30px'}}>
             <h4 className='label'>Senha atual</h4>
             <Col>
-              <Row>
+              <Row style={{marginBottom: "-10px"}}>
                 <Input className='settings_input box-shadow' 
                       type='password' 
-                      placeholder='Senha Atual' 
+                      label='Senha Atual' 
                       name='oldpassword'
                       onChange={e => this.handleChange(e, "old_pswd")}
+                      onKeyDown={this.handleKeyPress}
                       required/>
               </Row>
               <Row>
@@ -95,19 +219,30 @@ class Configs extends Component {
               <Row>
                 <Input className='settings_input box-shadow' 
                       type='password' 
-                      placeholder='Nova Senha' 
+                      label='Nova Senha' 
                       name='newpassword'
                       onChange={e => this.handleChange(e, "new_pswd")}
+                      onKeyDown={this.handleKeyPress}
                       required/>
               </Row>
               <Row>
                 <Input className='settings_input box-shadow' 
                       type='password' 
-                      placeholder='Confirmar Senha' 
+                      label='Confirmar Senha' 
                       name='confpassword'
                       onChange={e => this.handleChange(e, "conf_pswd")}
+                      onKeyDown={this.handleKeyPress}
                       required/>
               </Row>
+
+              <div className="text" style={{marginTop: "-20px", marginBottom: "20px"}}>
+                <span className="h1" style={{display: this.state.wrong_psd}}>Senha atual errada</span>
+                <span className="h1" style={{display: this.state.psd_no_match}}>Novas senhas não são iguais</span>
+                <span className="h1" style={{display: this.state.form_not_filled}}>Todos os campos precisam ser preenchidos</span>
+                <span className="h1" style={{display: this.state.form_ok}}>Senha alterada com sucesso!</span>
+                <br/>
+              </div>
+
               <Row>
                 <Button waves='light' 
                       className='btn'
@@ -151,28 +286,3 @@ class Addressess extends Component {
     );
   }
 }
-
-class PerfilUsuario extends Component {
-  render() {
-    return(
-      <div className='container' style={{marginTop: '15px'}}>
-        <Tabs className='z-depth-1'>
-          <Tab title='Configurações' className='tab' active>
-            <Configs />
-          </Tab>
-
-          <Tab title='Animais' className='tab'>
-            <Animals />
-          </Tab>
-
-          <Tab title='Endereços' className='tab'>
-            <Addressess />
-          </Tab>
-        </Tabs>
-      </div>
-    );
-  }
-}
-      
-
-export default PerfilUsuario;
