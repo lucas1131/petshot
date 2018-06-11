@@ -67,7 +67,7 @@ class Service extends Component {
 				<Row> <hr className='awesome'/> </Row>
 				<Row> <h3 className='header0'> <strong>R$ {this.service.price}</strong> </h3> </Row>
 				<div className='center align-content'> 
-					<Input type='select'>
+					<Input label='Animal' type='select'>
             { this.animolz.map((name) => <option key={name}>{name}</option>) }
 					</Input>
 				</div>
