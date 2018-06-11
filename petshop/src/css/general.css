@@ -76,6 +76,11 @@ input:-ms-input-placeholder {
 	/*background-color: var(--background-color2) !important;*/
 }
 
+.error-text {
+	color: #A00;
+	text-shadow: 0.1px 0.1px #0008;
+}
+
 .margin {
 	margin-bottom: 10px !important;
 	padding-bottom: 10px !important;
