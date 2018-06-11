@@ -52,6 +52,16 @@ input:-ms-input-placeholder {
 	flex: 1 0 auto;
 }
 
+.header0 { 
+	color: var(--custom-green2); 
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 28px;
+	font-weight: 400;
+	line-height: 32px;
+	margin: 0 0 10px;
+	text-align: center;
+}
+
 .header1 {
 	color: var(--foreground-color5); 
 	font-family: 'Source Sans Pro', sans-serif;
@@ -160,16 +170,6 @@ hr.awesome {
 	height: 8px;
 	background: url(../resources/hr.png) no-repeat center;
 	border: none;
-}
-
-.header0 { 
-	color: var(--custom-green2); 
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 28px;
-	font-weight: 400;
-	line-height: 32px;
-	margin: 0 0 10px;
-	text-align: center;
 }
 
 .customGreen {
