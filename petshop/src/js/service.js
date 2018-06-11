@@ -24,7 +24,7 @@ class Service extends Component {
 	constructor(props) {
 		super(props)
 
-		let products = getFromLocalStorage("services-info")
+		let products = getFromLocalStorage('services-info')
 		for(let i in products) {
 			if(products[i].type === 'service' && products[i].id == this.props.match.params.serviceId){
 				this.service = products[i];
@@ -51,7 +51,7 @@ class Service extends Component {
 				<Row> <p className='default'>{this.service.desc}</p> </Row>
 				<Row> <hr class='awesome'/> </Row>
 				<Row> <h3 className='header0'><strong>R$ {this.service.price}</strong></h3> </Row>
-				<div  className="center align-content"><Input label='Data' type='date'/></div>
+				<div  className='center align-content'><Input label='Data' type='date'/></div>
 				<Row>
 					<Button waves='light' className='btn'>
 						<Icon left>class</Icon>

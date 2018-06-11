@@ -43,7 +43,7 @@
 }
 
 .row-admin-card {
-	content: "";
+	content: '';
 	clear: both;
 	/*display: table;*/
 }

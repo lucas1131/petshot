@@ -29,7 +29,7 @@ import '../css/general.css';
 import '../css/footer.css';
 
 class NoMatch extends Component {
-	render(){ return ( <div className="container"> <h1 className='header1'> 404 - Not Found </h1> <img src='https://i.ytimg.com/vi/EVn87e53MAw/hqdefault.jpg'/></div> )}
+	render(){ return ( <div className='container'> <h1 className='header1'> 404 - Not Found </h1> <img src='https://i.ytimg.com/vi/EVn87e53MAw/hqdefault.jpg'/></div> )}
 }
 
 class Petshop extends Component {
@@ -38,7 +38,7 @@ class Petshop extends Component {
 
 		this.handleLogin = this.handleLogin.bind(this)
 
-		let users = getFromSessionStorage("user")
+		let users = getFromSessionStorage('user')
 		let user = users ? users[0] : null
 
 		this.state = {
@@ -50,11 +50,12 @@ class Petshop extends Component {
 	handleLogin(Username, Password, Exit) {
 		if(Exit){
 			this.setState({user: null})
-			storeInSessionStorage("user", null)
+			// storeInSessionStorage('user', null)
+			sessionStorage.removeItem('user')
 			return
 		}
 
-		let users = getFromLocalStorage("user-info")
+		let users = getFromLocalStorage('user-info')
 
 		for(let i in users){
 			if(users[i].type == 'user' && 
@@ -62,8 +63,8 @@ class Petshop extends Component {
 				Password === users[i].password){
 				
 					this.setState({user: users[i]});
-					storeInSessionStorage("user", {
-						id: "logged", 
+					storeInSessionStorage('user', {
+						id: 'logged', 
 						username: users[i].username,
 						type: 'user',
 						name: users[i].name,
@@ -79,26 +80,26 @@ class Petshop extends Component {
 	render() {
 		return (
 			<BrowserRouter>
-				<div className="petshop">
+				<div className='petshop'>
 		 			<Header user={this.state.user} handleLogin={this.handleLogin}/>
-		 			<div className="main">
+		 			<div className='main'>
 		 			<Switch>
-		 				<Route exact path="/" component={Home} />
-		 				<Route exact path="/admin" component={AdminView} />
-		 				<Route exact path="/perfil" component={PerfilUsuario} />
-		 				<Route exact path="/carrinho" component={ShoppingCart} />
-		 				<Route exact path="/produtos" component={ProductList} />
-		 				<Route exact path="/produtos/:productId" component={Product} />
-		 				<Route exact path="/servicos" component={ServiceList} />
-		 				<Route exact path="/servicos/:serviceId" component={Service} />
-		 				<Route exact path="/login" component={() => {return (<Login handleLogin={this.handleLogin}/>)} } />
+		 				<Route exact path='/' component={Home} />
+		 				<Route exact path='/admin' component={AdminView} />
+		 				<Route exact path='/perfil' component={PerfilUsuario} />
+		 				<Route exact path='/carrinho' component={ShoppingCart} />
+		 				<Route exact path='/produtos' component={ProductList} />
+		 				<Route exact path='/produtos/:productId' component={Product} />
+		 				<Route exact path='/servicos' component={ServiceList} />
+		 				<Route exact path='/servicos/:serviceId' component={Service} />
+		 				<Route exact path='/login' component={() => {return (<Login handleLogin={this.handleLogin}/>)} } />
 		 				<Route component={NoMatch} />
 		 			</Switch>
 		 			</div>
-		 			<Footer id='about' className="footer" copyrights="© 2018 Copyright All Batatas Reserved">
-		 				<h5 className="white-text">Sobre Nós</h5>
-		 				<h6 className="grey-text text-lighten-4"> Grupo 5 </h6>
-    					<p className="grey-text text-lighten-4">
+		 			<Footer id='about' className='footer' copyrights='© 2018 Copyright All Batatas Reserved'>
+		 				<h5 className='white-text'>Sobre Nós</h5>
+		 				<h6 className='grey-text text-lighten-4'> Grupo 5 </h6>
+    					<p className='grey-text text-lighten-4'>
     						Giovanna Oliveira Guimarães - 9293693 <br/>
 							Lucas Alexandre Soares - 9293265 <br/>
 							Luca Gomes Urssi - 10425396 <br/>

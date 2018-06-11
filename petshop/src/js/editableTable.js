@@ -7,23 +7,23 @@
  *
  */
 
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { Row, Col } from 'react-materialize';
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import injectTapEventPlugin from "react-tap-event-plugin";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import Form from "./form";
+import Form from './form';
 import {  AnimalForm,
           AddressessForm,
           AdminClientsForm,
           AdminProductsForm,
-          AdminServicesForm } from "./form";
+          AdminServicesForm } from './form';
 
-import Table from "./table";
-import StaticTable from "./staticTable";
+import Table from './table';
+import StaticTable from './staticTable';
 
-import "../css/dateDisplay.css";
-import "../css/general.css";
+import '../css/dateDisplay.css';
+import '../css/general.css';
 
 injectTapEventPlugin();
 
@@ -78,7 +78,7 @@ class EditableTable extends Component {
               <Form onSubmit={submission => this.setState({
                     data: [...this.state.data, submission]
                   })}
-                style={{height: "100px", width: "100%"}}
+                style={{height: '100px', width: '100%'}}
               />
             </Row>
             <Row>
@@ -91,7 +91,7 @@ class EditableTable extends Component {
                   handleChange={this.handleChange}
                   data={this.state.data}
                   header={this.header}
-                  style={{overflowX: "scroll"}}
+                  style={{overflowX: 'scroll'}}
                 />
               </div>
             </Row>
@@ -112,7 +112,7 @@ export class AnimalTable extends EditableTable {
               <AnimalForm onSubmit={submission => this.setState({
                     data: [...this.state.data, submission]
                   })}
-                style={{height: "100px", width: "100%"}}
+                style={{height: '100px', width: '100%'}}
               />
             </Row>
             <Row>
@@ -125,7 +125,7 @@ export class AnimalTable extends EditableTable {
                   handleChange={this.handleChange}
                   data={this.state.data}
                   header={this.header}
-                  style={{overflowX: "scroll"}}
+                  style={{overflowX: 'scroll'}}
                 />
               </div>
             </Row>
@@ -146,7 +146,7 @@ export class AddressessTable extends EditableTable {
               <AddressessForm onSubmit={submission => this.setState({
                     data: [...this.state.data, submission]
                   })}
-                style={{height: "100px", width: "100%"}}
+                style={{height: '100px', width: '100%'}}
               />
             </Row>
             <Row>
@@ -159,7 +159,7 @@ export class AddressessTable extends EditableTable {
                   handleChange={this.handleChange}
                   data={this.state.data}
                   header={this.header}
-                  style={{overflowX: "scroll"}}
+                  style={{overflowX: 'scroll'}}
                 />
               </div>
             </Row>
@@ -171,6 +171,19 @@ export class AddressessTable extends EditableTable {
 }
 
 export class AdminClientsTable extends EditableTable {
+
+  // constructor(props){
+  //   super(props)
+
+  //   console.log(props.data)
+
+  //   if(props.data){
+  //     this.state = {
+  //       data: props.data
+  //     }
+  //   }
+  // }
+
   render() {
     return (
       <MuiThemeProvider>
@@ -180,7 +193,7 @@ export class AdminClientsTable extends EditableTable {
               <AdminClientsForm onSubmit={submission => this.setState({
                     data: [...this.state.data, submission]
                   })}
-                style={{height: "100px", width: "100%"}}
+                style={{height: '100px', width: '100%'}}
               />
             </Row>
             <Row>
@@ -193,7 +206,7 @@ export class AdminClientsTable extends EditableTable {
                   handleChange={this.handleChange}
                   data={this.state.data}
                   header={this.header}
-                  style={{overflowX: "scroll"}}
+                  style={{overflowX: 'scroll'}}
                 />
               </div>
             </Row>
@@ -214,7 +227,7 @@ export class AdminProductsTable extends EditableTable {
               <AdminProductsForm onSubmit={submission => this.setState({
                     data: [...this.state.data, submission]
                   })}
-                style={{height: "100px", width: "100%"}}
+                style={{height: '100px', width: '100%'}}
               />
             </Row>
             <Row>
@@ -227,7 +240,7 @@ export class AdminProductsTable extends EditableTable {
                   handleChange={this.handleChange}
                   data={this.state.data}
                   header={this.header}
-                  style={{overflowX: "scroll"}}
+                  style={{overflowX: 'scroll'}}
                 />
               </div>
             </Row>
@@ -248,7 +261,7 @@ export class AdminServicesTable extends EditableTable {
               <AdminServicesForm onSubmit={submission => this.setState({
                     data: [...this.state.data, submission]
                   })}
-                style={{height: "100px", width: "100%"}}
+                style={{height: '100px', width: '100%'}}
               />
             </Row>
             <Row>
@@ -261,7 +274,7 @@ export class AdminServicesTable extends EditableTable {
                   handleChange={this.handleChange}
                   data={this.state.data}
                   header={this.header}
-                  style={{overflowX: "scroll"}}
+                  style={{overflowX: 'scroll'}}
                 />
               </div>
             </Row>
@@ -354,7 +367,7 @@ export class ShoppingCartTable extends Component {
                   handleChange={this.handleChange}
                   data={this.state.data}
                   header={this.header}
-                  style={{overflowX: "scroll"}}
+                  style={{overflowX: 'scroll'}}
                 />
               </div>
             </Row>

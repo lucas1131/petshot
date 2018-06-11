@@ -20,50 +20,50 @@ import '../css/userProfile.css'
 class Configs extends Component {
 
 	validateForm = () => {
-		console.log("submitting")
+		console.log('submitting')
 		return true
 	}
 
 	render() {
 		return(
-			<div class="container">
-				<div className="align-content">
-					<h1 className="label">Usuário e Senha</h1>
+			<div class='container'>
+				<div className='align-content'>
+					<h1 className='label'>Usuário e Senha</h1>
 				</div>
 
-				<div className="scaler align-content">
-					<img src="https://www.w3schools.com/howto/img_avatar2.png"
-						className="profile-pic" />
+				<div className='scaler align-content'>
+					<img src='https://www.w3schools.com/howto/img_avatar2.png'
+						className='profile-pic' />
 
-					<div style={{display: "inline-block", marginBottom: "30px"}}>
-						<h4 className="label">Senha atual</h4>
+					<div style={{display: 'inline-block', marginBottom: '30px'}}>
+						<h4 className='label'>Senha atual</h4>
 						<form>
 							<Col>
 								<Row>
-									<input className="settings_input box-shadow" 
-												type="password" 
-												placeholder="Senha Atual" 
-												name="oldpassword"
+									<input className='settings_input box-shadow' 
+												type='password' 
+												placeholder='Senha Atual' 
+												name='oldpassword'
 												required/>
 								</Row>
 								<Row>
-									<p className="text" style={{fontSize: "10px"}}> Sua senha atual é necessária para efetuar qualquer mudança</p>
+									<p className='text' style={{fontSize: '10px'}}> Sua senha atual é necessária para efetuar qualquer mudança</p>
 								</Row>
 								<Row>
-									<h4 className="label">Altere sua Senha</h4>
+									<h4 className='label'>Altere sua Senha</h4>
 								</Row>
 								<Row>
-									<input className="settings_input box-shadow" 
-												type="password" 
-												placeholder="Nova Senha" 
-												name="newpassword"
+									<input className='settings_input box-shadow' 
+												type='password' 
+												placeholder='Nova Senha' 
+												name='newpassword'
 												required/>
 								</Row>
 								<Row>
-									<input className="settings_input box-shadow" 
-												type="password" 
-												placeholder="Confirmar Senha" 
-												name="confpassword"
+									<input className='settings_input box-shadow' 
+												type='password' 
+												placeholder='Confirmar Senha' 
+												name='confpassword'
 												required/>
 								</Row>
 								<Row>
@@ -84,10 +84,10 @@ class Animals extends Component {
     return (
       <div>
         <AnimalTable header={[
-					{ name: "Nome", prop: "name", type: "text", editable: true },
-					{ name: "Raça", prop: "race", type: "text", editable: true },
-					{ name: "Agendamentos", prop: "scheduled", type: "text", editable: true },
-					{ name: "Custo", prop: "cost", type: "number", editable: false }
+					{ name: 'Nome', prop: 'name', type: 'text', editable: true },
+					{ name: 'Raça', prop: 'race', type: 'text', editable: true },
+					{ name: 'Agendamentos', prop: 'scheduled', type: 'text', editable: true },
+					{ name: 'Custo', prop: 'cost', type: 'number', editable: false }
 				]}/>
       </div>
     );
@@ -99,10 +99,10 @@ class Addressess extends Component {
     return (
       <div>
         <AddressessTable header={[
-					{ name: "Nome", prop: "nickname", type: "text", editable: true },
-					{ name: "Rua", prop: "street", type: "text", editable: true },
-					{ name: "N°", prop: "number", type: "number", editable: true },
-					{ name: "Complemento", prop: "compl", type: "text", editable: true }
+					{ name: 'Nome', prop: 'nickname', type: 'text', editable: true },
+					{ name: 'Rua', prop: 'street', type: 'text', editable: true },
+					{ name: 'N°', prop: 'number', type: 'number', editable: true },
+					{ name: 'Complemento', prop: 'compl', type: 'text', editable: true }
 				]}/>
       </div>
     );
@@ -112,17 +112,17 @@ class Addressess extends Component {
 class PerfilUsuario extends Component {
 	render() {
 		return(
-			<div className="container" style={{marginTop: "15px"}}>
+			<div className='container' style={{marginTop: '15px'}}>
 				<Tabs className='z-depth-1'>
-					<Tab title="Configurações" className="tab" active>
+					<Tab title='Configurações' className='tab' active>
 						<Configs />
 					</Tab>
 
-					<Tab title="Animais" className="tab">
+					<Tab title='Animais' className='tab'>
 						<Animals />
 					</Tab>
 
-					<Tab title="Endereços" className="tab">
+					<Tab title='Endereços' className='tab'>
 						<Addressess />
 					</Tab>
 				</Tabs>

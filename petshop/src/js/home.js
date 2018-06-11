@@ -66,13 +66,13 @@ class Home extends Component {
 					  <Slide
 					    src={im3}
 					    title='Traga seu consagrado para um banho'
-					    placement="left">
+					    placement='left'>
 					    Seu dog entra fedido e sai supimpa
 					  </Slide>
 					</Slider>
 				</Row>
 
-				<div className="container">
+				<div className='container'>
 					<Row style={{marginTop: '50px'}}>
 						<h3 class='header0'> Nossos Serviços </h3>
 						<hr class='awesome'/>

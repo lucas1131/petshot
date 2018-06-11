@@ -28,8 +28,8 @@ class Login extends Component {
 		super(props)
 
 		this.state = {
-			username: "", 
-			password: ""
+			username: '', 
+			password: ''
 		}
 	}
 
@@ -64,34 +64,34 @@ class Login extends Component {
 
 	render() {
 		return(
-			<div className="container">
+			<div className='container'>
 				<h1 className='header1 center'>Login</h1>
 				<form>
 					<Col>
-						<Input name="username" 
+						<Input name='username' 
 								className='input box-shadow' 
 								label='Usuário'
-								onChange={ e => {this.handleChange(e, "username")} }
+								onChange={ e => {this.handleChange(e, 'username')} }
 								onKeyDown={this.handleKeyPress}
 								validate 
-								type="text" />
+								type='text' />
 					</Col>
 					<Col>
-						<Input name="pswd" 
+						<Input name='pswd' 
 								className='input box-shadow' 
 								label='Senha'
-								onChange={ e => {this.handleChange(e, "password")} }
+								onChange={ e => {this.handleChange(e, 'password')} }
 								onKeyDown={this.handleKeyPress}
 								validate 
-								type="password" />
+								type='password' />
 					</Col>
 					<Col>
-						<Button className="btn form-btn" 
+						<Button className='btn form-btn' 
 									onClick={(e) => {
 											this.props.handleLogin(this.state.username, this.state.password, false)
 										} 
 									}
-									waves="light">
+									waves='light'>
 						
 							Enviar
 						</Button>

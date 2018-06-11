@@ -19,24 +19,24 @@ function uniq(a) {
 function insert(key, obj, tmp, storage){
 	
 	console.log()
-	console.log("inserting into " + key)
-	console.log("object: ") 
+	console.log('inserting into ' + key)
+	console.log('object: ') 
 	console.log(obj)
-	console.log("tmp: ") 
+	console.log('tmp: ') 
 	console.log(tmp)
 
-	if(!("id" in obj)){ // If id variable has not been defined
-		console.error(`No primary key defined for object ${JSON.stringify(obj)}. Please, define \"object.id\".`)
+	if(obj && !('id' in obj)){ // If id variable has not been defined
+		console.error(`No primary key defined for object ${JSON.stringify(obj)}. Please, define \'object.id\'.`)
 		throw { 
 			code: 1,
 			name: 'UNDEFINED_PRIMARY_KEY',
-			desc: `No primary key defined for object ${JSON.stringify(obj)}. Please, define \"object.id\".`
+			desc: `No primary key defined for object ${JSON.stringify(obj)}. Please, define \'object.id\'.`
 		}
 	}
 
 	// If object already exists, update its value
 	let found = false;
-	for (var index = 0; index < tmp.length; index++){
+	for(var index = 0; index < tmp.length; index++){
 		if(tmp[index].id == obj.id) {
 			found = true;
 			break;
@@ -67,9 +67,9 @@ function store(key, obj, storage){
 	// Key doesnt exists
 	} else {
 		console.log()
-		console.log("key not found, creating it")
-		console.log("inserting into " + key)
-		console.log("object: ")
+		console.log('key not found, creating it')
+		console.log('inserting into ' + key)
+		console.log('object: ')
 		console.log(obj)
 
 		let finalObj;
@@ -104,39 +104,22 @@ export default function populateDB(){
 	let id = 0
 	let qtd = 2
 
-
-	let cartItem1 = {
-		id: id,
-		product_id: id,
-		type: 'cart',
-	  product: ProductInfo[id].name,
-		quantity: qtd,
-		cost: ProductInfo[id].price,
-		totalCost: ProductInfo[id].price*qtd
-	}
-
-	id = 1
-	qtd = 1
-	let cartItem2 = {
-		id: id,
-		product_id: id,
-		type: 'cart',
-	  product: ProductInfo[id].name,
-		quantity: qtd,
-		cost: ProductInfo[id].price,
-		totalCost: ProductInfo[id].price*qtd
-	}
-
 	/* Users */
 	let usersList = []
 
 	id = 'jureg'
+
+	
 	let user1 = {
 		id: id,
 		username: id,
 		password: 'lorotabraba',
 		type: 'user',
-		name: 'Rafael do Fake News',
+		name: 'Rafael',
+		surname: 'do Fake News',
+		address: ['Rua Dr Carlos de Camargo Salles 306 ap 2'],
+		animals: [],
+		services: [],
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',
 		email: 'jureg@fake.nilc.usp.br'
@@ -148,7 +131,11 @@ export default function populateDB(){
 		username: id,
 		password: 'col s={12}',
 		type: 'user',
-		name: 'GiGi',
+		name: 'GiovaNNa',
+		surname: 'Guimarães',
+		address: ['Rua Achile Bassi 2686 ap 25'],
+		animals: [],
+		services: [],
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',
 		email: 'giovanna@trevas.com'
@@ -161,6 +148,10 @@ export default function populateDB(){
 		password: 'omedefero',
 		type: 'user',
 		name: 'Airo',
+		surname: 'Soar',
+		address: ['Rua Jacinto Favorett 301 ap 44'],
+		animals: [],
+		services: [],
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',
 		email: 'airo@usp.br'
@@ -172,7 +163,11 @@ export default function populateDB(){
 		username: id,
 		password: 'admin',
 		type: 'user',
-		name: 'Ade Ministrador',
+		name: 'Ade',
+		surname: 'Ministrador',
+		address: ['Rua Dos Bobos 0'],
+		animals: [],
+		services: [],
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',
 		email: 'ade.ministrador@admin.petshop.com'
@@ -183,16 +178,8 @@ export default function populateDB(){
 	usersList.push(user2)
 	usersList.push(user3)
 	usersList.push(admin)
-	
-	cart.push(cartItem1)
-	cart.push(cartItem2)
-
-	console.log("Cart")
-	console.log(cart)
 
 	/* Insert them in db */
-	if(!getFromSessionStorage("cart"))
-		storeInSessionStorage("cart", cart)
 	if(!getFromLocalStorage('user-info')) 
 		storeInLocalStorage('user-info', usersList)
 	if(!getFromLocalStorage('products-info')) 
@@ -201,4 +188,4 @@ export default function populateDB(){
 		storeInLocalStorage('services-info', ServiceInfo)
 }
 
-populateDB()
+populateDB()	

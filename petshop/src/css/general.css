@@ -151,7 +151,7 @@ input:-ms-input-placeholder {
 }
 
 
-[type="checkbox"]:checked+label:before{
+[type='checkbox']:checked+label:before{
      border-right: 2px solid var(--custom-orange);
      border-bottom: 2px solid var(--custom-orange);
 }

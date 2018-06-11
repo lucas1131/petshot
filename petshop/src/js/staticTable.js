@@ -7,7 +7,7 @@
  *
  */
 
-import React from "react";
+import React from 'react';
 import { Input } from 'react-materialize';
 import {
   Table,
@@ -16,14 +16,14 @@ import {
   TableHeaderColumn,
   TableRow,
   TableRowColumn
-} from "material-ui/Table";
+} from 'material-ui/Table';
 
-import EditIcon from "material-ui/svg-icons/image/edit";
-import TrashIcon from "material-ui/svg-icons/action/delete";
-import CheckIcon from "material-ui/svg-icons/navigation/check";
+import EditIcon from 'material-ui/svg-icons/image/edit';
+import TrashIcon from 'material-ui/svg-icons/action/delete';
+import CheckIcon from 'material-ui/svg-icons/navigation/check';
 
-import "../css/general.css"
-import "../css/table.css"
+import '../css/general.css'
+import '../css/table.css'
 
 const row = (
   x,
@@ -37,9 +37,9 @@ const row = (
 ) => {
   const currentlyEditing = editIdx === i;
   return (
-    <TableRow key={`tr-${i}`} selectable={false} className="scroll-x">
+    <TableRow key={`tr-${i}`} selectable={false} className='scroll-x'>
       {header.map((y, k) => (
-        <TableRowColumn key={`trc-${k}`} className="table-col">
+        <TableRowColumn key={`trc-${k}`} className='table-col'>
           { y.editable ? (
             <Input
               name={y.prop}
@@ -55,7 +55,7 @@ const row = (
           ) : ( x[y.prop] )}
         </TableRowColumn>
       ))}
-      <TableRowColumn className="table-col">
+      <TableRowColumn className='table-col'>
         <TrashIcon onClick={() => handleRemove(i)} />
       </TableRowColumn>
     </TableRow>
@@ -75,9 +75,9 @@ export default ({
     <TableHeader>
       <TableRow>
         {header.map((x, i) => (
-          <TableHeaderColumn key={`thc-${i}`} className="table-col fit-content">{x.name}</TableHeaderColumn>
+          <TableHeaderColumn key={`thc-${i}`} className='table-col fit-content'>{x.name}</TableHeaderColumn>
         ))}
-        <TableHeaderColumn className="table-col fit-content">Excluir</TableHeaderColumn>
+        <TableHeaderColumn className='table-col fit-content'>Excluir</TableHeaderColumn>
       </TableRow>
     </TableHeader>
     <TableBody>

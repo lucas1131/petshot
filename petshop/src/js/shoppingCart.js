@@ -41,7 +41,7 @@ export default class ShoppingCart extends Component {
 	}
 
 	onInit = (value) => {
-		console.log("Init cart")
+		console.log('Init cart')
 		console.log(value)
 		this.setState(state => ({
 			children: value
@@ -56,9 +56,9 @@ export default class ShoppingCart extends Component {
 			if(index !== i) newAr.push(ar[index])
 		}
 
-		console.log("this.state.children")
+		console.log('this.state.children')
 		console.log(this.state.children)
-		console.log("removed line " + i)
+		console.log('removed line ' + i)
 		console.log(newAr)
 		
 		this.setState(state => ({
@@ -67,9 +67,9 @@ export default class ShoppingCart extends Component {
 		
 		
 		this.updateCost(newAr)
-		sessionStorage.setItem("cart", JSON.stringify(newAr))
-		// sessionStorage.removeItem("cart")
-		// storeInSessionStorage("cart", newAr)
+		sessionStorage.setItem('cart', JSON.stringify(newAr))
+		// sessionStorage.removeItem('cart')
+		// storeInSessionStorage('cart', newAr)
 	}
 
 	onChange = (i, name, qtd, total) => {
@@ -81,43 +81,43 @@ export default class ShoppingCart extends Component {
 			children: ar
 		}));
 
-		console.log("this.state.children")
+		console.log('this.state.children')
 		console.log(this.state.children)
-		console.log("changeling line " + i)
+		console.log('changeling line ' + i)
 		console.log(ar)
 		
 		this.updateCost(this.state.children);
-		storeInSessionStorage("cart", ar)
+		storeInSessionStorage('cart', ar)
 	}
 
 	render() {
 		return(
-			<div className="container" style={{marginTop: "15px"}}>
-				<Row className="center">
-					<h1 className="header1">Carrinho</h1>
-					<hr className="awesome" />
+			<div className='container' style={{marginTop: '15px'}}>
+				<Row className='center'>
+					<h1 className='header1'>Carrinho</h1>
+					<hr className='awesome' />
 
 					<ShoppingCartTable header={[
-							{ name: "Produto", prop: "product", type: "text" },
-							{ name: "Quantidade", prop: "quantity", type: "number", editable: true },
-							{ name: "Valor Un.", prop: "cost", type: "number" },
-							{ name: "Valor Total", prop: "totalCost", type: "number" }
+							{ name: 'Produto', prop: 'product', type: 'text' },
+							{ name: 'Quantidade', prop: 'quantity', type: 'number', editable: true },
+							{ name: 'Valor Un.', prop: 'cost', type: 'number' },
+							{ name: 'Valor Total', prop: 'totalCost', type: 'number' }
 						]}
-						data={getFromSessionStorage("cart")}
+						data={getFromSessionStorage('cart')}
 						onInit={this.onInit}
 						onChange={this.onChange}
 						onRemove={this.onRemove}
 					/>
 
 				</Row>
-				<Row className="valign-wrapper">
+				<Row className='valign-wrapper'>
 					<Col offset={'l9', 'm7', 's5'}>
-						<Card className="center text">
+						<Card className='center text'>
 							Valor total da compra: <b>R$ {this.state.totalCost}</b>
 						</Card>
 					</Col>
-					<Col className="valign">
-						<Button className="">Comprar</Button>
+					<Col className='valign'>
+						<Button className=''>Comprar</Button>
 					</Col>
 				</Row>
 			</div>
