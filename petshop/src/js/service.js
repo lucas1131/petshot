@@ -19,14 +19,12 @@ import ServiceInfo from './serviceInfo';
 
 
 class Service extends Component {
-
+	
 	constructor(props) {
 		super(props)
-
-		let activeUser = getFromSessionStorage('user')[0]
-		console.log(activeUser);
 		
-		let users = getFromLocalStorage('user-info')
+		let activeUser = getFromSessionStorage('user')[0];
+		let users = getFromLocalStorage('user-info');
 		for(let i in users) {
 			if(users[i].username === activeUser.username){
 				activeUser = users[i]
@@ -34,8 +32,17 @@ class Service extends Component {
 			}
 		}
 
-		console.log(users)
-		console.log(activeUser);
+		let animals = [];
+
+		for(let i in activeUser.animals) {
+			animals.push(activeUser.animals[i].name);
+		}
+
+		console.log(animals);	
+
+		this.state = {
+			animals: animals
+		};
 
 		// service Id. Use this to fetch correct service from db
 		let services = getFromLocalStorage('services-info')
@@ -64,9 +71,15 @@ class Service extends Component {
 				<Row> <p className='default'> {this.service.desc} </p> </Row>
 				<Row> <hr class='awesome'/> </Row>
 				<Row> <h3 className='header0'> <strong>R$ {this.service.price}</strong> </h3> </Row>
-				<div className='center align-content'> 
-					<Input
-								 type='select'/>
+				<div className='center align-content'>
+					<Input type='select'>
+						{
+							() => {
+								for(let i in this.state.animals)
+									<option> {this.state.animals[i]} </option>
+							}
+						}
+					</Input>
 				</div>
 				<div className='center align-content'> <Input label='Data' type='date'/> </div>
 				<div className='center align-content'> <Input label='Hora' type='time'/> </div>
