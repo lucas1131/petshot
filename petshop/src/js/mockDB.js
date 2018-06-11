@@ -118,7 +118,21 @@ export default function populateDB(){
 		name: 'Rafael',
 		surname: 'do Fake News',
 		address: ['Rua Dr Carlos de Camargo Salles 306 ap 2'],
-		animals: [],
+		animals: [ 
+					{
+						name: 'Ogrinho',
+						age: '200',
+						class: 'ogre',
+						race: 'ogro'
+					},
+
+					{
+						name: 'Jeogs',
+						age: '6',
+						class: 'hooman',
+						race: 'ogromano'
+					}
+				],
 		services: [],
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',
@@ -134,7 +148,21 @@ export default function populateDB(){
 		name: 'GiovaNNa',
 		surname: 'Guimarães',
 		address: ['Rua Achile Bassi 2686 ap 25'],
-		animals: [],
+		animals: [ 
+					{
+						name: 'Birb',
+						age: '2',
+						class: 'ave',
+						race: 'cacatua'
+					},
+
+					{
+						name: 'BigBirb',
+						age: '3',
+						class: 'ave',
+						race: 'arara'
+					}
+				],
 		services: [],
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',
@@ -150,7 +178,21 @@ export default function populateDB(){
 		name: 'Airo',
 		surname: 'Soar',
 		address: ['Rua Jacinto Favorett 301 ap 44'],
-		animals: [],
+		animals: [ 
+					{
+						name: 'Ferruge',
+						age: '5',
+						class: 'arame',
+						race: 'metal'
+					},
+
+					{
+						name: 'Mello',
+						age: '50',
+						class: 'torturador',
+						race: 'professor'
+					}
+				],
 		services: [],
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',
@@ -166,7 +208,21 @@ export default function populateDB(){
 		name: 'Ade',
 		surname: 'Ministrador',
 		address: ['Rua Dos Bobos 0'],
-		animals: [],
+		animals: [ 
+					{
+						name: 'Animol',
+						age: '2',
+						class: 'animolz',
+						race: 'animolz'
+					},
+
+					{
+						name: 'Animol2',
+						age: '3',
+						class: 'animolz2',
+						race: 'animolz2'
+					}
+				],
 		services: [],
 		image: 'resources/avatar.png',
 		background: 'resources/Dog-with-goggles-in-car.jpg',

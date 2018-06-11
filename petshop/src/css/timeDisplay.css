@@ -23,3 +23,8 @@ line {
 .clockpicker-canvas-bearing {
 	fill: var(--custom-green) !important;	
 }
+
+.clockpicker-tick:hover	 {
+	background-color: var(--custom-green); 
+	opacity: 0.5;
+}

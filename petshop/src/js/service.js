@@ -23,23 +23,37 @@ class Service extends Component {
 	constructor(props) {
 		super(props)
 
-		let products = getFromLocalStorage('services-info')
-		for(let i in products) {
-			if(products[i].type === 'service' && products[i].id == this.props.match.params.serviceId){
-				this.service = products[i];
+		let activeUser = getFromSessionStorage('user')[0]
+		console.log(activeUser);
+		
+		let users = getFromLocalStorage('user-info')
+		for(let i in users) {
+			if(users[i].username === activeUser.username){
+				activeUser = users[i]
+				break
+			}
+		}
+
+		console.log(users)
+		console.log(activeUser);
+
+		// service Id. Use this to fetch correct service from db
+		let services = getFromLocalStorage('services-info')
+		for(let i in services) {
+			if(services[i].type === 'service' && services[i].id == this.props.match.params.serviceId){
+				this.service = services[i]
 			}
 		}
 
 	}
 
 	render(){
-		// service Id. Use this to fetch correct service from db
 		let serviceId = this.props.match.params.serviceId;
 
 		return(
 			<div className='center container' style={{marginTop: '50px'}}>
 				<div>
-					<h3 className='header0'>{this.service.name}</h3>
+					<h3 className='header0'> {this.service.name} </h3>
 					<hr className='awesome'/>
 				</div>
 				<Row>
@@ -47,9 +61,13 @@ class Service extends Component {
 						<MediaBox src={this.service.image} id='productPhoto' alt='service'/>
 					</Col>
 				</Row>
-				<Row> <p className='default'>{this.service.desc}</p> </Row>
+				<Row> <p className='default'> {this.service.desc} </p> </Row>
 				<Row> <hr class='awesome'/> </Row>
-				<Row> <h3 className='header0'><strong>R$ {this.service.price}</strong></h3> </Row>
+				<Row> <h3 className='header0'> <strong>R$ {this.service.price}</strong> </h3> </Row>
+				<div className='center align-content'> 
+					<Input
+								 type='select'/>
+				</div>
 				<div className='center align-content'> <Input label='Data' type='date'/> </div>
 				<div className='center align-content'> <Input label='Hora' type='time'/> </div>
 
