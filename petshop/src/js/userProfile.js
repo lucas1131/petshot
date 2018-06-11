@@ -162,27 +162,17 @@ class Configs extends Component {
 
   changePassword = (e) => {
 
-    // if(!this.validate(e)) 
-    //   return false
+    if(!this.validate(e)) 
+      return false
   
     let currentUser = this.state.user;
     currentUser.password = this.state.new_pswd;
 
+    // Update user password in db
     storeInLocalStorage("user-info", currentUser)
 
-    console.log(this.state)
-
-    // let newState = {
-    //   user: currentUser.user,
-    //   username: currentUser.user.username,
-    //   old_pswd: '',
-    //   new_pswd: '',
-    //   conf_pswd: '',
-    //   wrong_psd: "none",
-    //   psd_no_match: "none",
-    //   form_not_filled: "none",
-    //   form_ok: "none"
-    // }
+    // Update object state
+    this.setState({user: currentUser})
 
     return true;
   }

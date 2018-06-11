@@ -47,6 +47,8 @@ class Service extends Component {
 
 	}
 
+  animolz = ["jeogs", "birb", "shrek"]
+
 	render(){
 		let serviceId = this.props.match.params.serviceId;
 
@@ -62,11 +64,12 @@ class Service extends Component {
 					</Col>
 				</Row>
 				<Row> <p className='default'> {this.service.desc} </p> </Row>
-				<Row> <hr class='awesome'/> </Row>
+				<Row> <hr className='awesome'/> </Row>
 				<Row> <h3 className='header0'> <strong>R$ {this.service.price}</strong> </h3> </Row>
 				<div className='center align-content'> 
-					<Input
-								 type='select'/>
+					<Input type='select'>
+            { this.animolz.map((name) => <option key={name}>{name}</option>) }
+					</Input>
 				</div>
 				<div className='center align-content'> <Input label='Data' type='date'/> </div>
 				<div className='center align-content'> <Input label='Hora' type='time'/> </div>
