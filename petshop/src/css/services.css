@@ -1,0 +1,14 @@
+/* Petshop Services stylesheet
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
+@import 'general.css';
+
+.dropdown-content li > span {
+	color: var(--custom-green) !important;
+}
