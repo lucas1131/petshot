@@ -53,6 +53,7 @@ class Product extends Component {
       totalCost: qtd*this.product.price
     }
 
+    window.Materialize.toast(`${cartItem.product} x${qtd} adicionado ao carrinho!`, 1500)
     storeInSessionStorage('cart', cartItem)
   }
 

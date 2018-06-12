@@ -10,6 +10,7 @@ import React, { Component } from 'react'
 import { Tabs, Tab } from 'react-materialize';
 import { Row, Col } from 'react-materialize';
 import { Input, Button } from 'react-materialize';
+import { Toast } from 'react-materialize';
 
 import EditableTable, { AnimalTable, AddressessTable } from './editableTable'
 import { getFromSessionStorage, getFromLocalStorage } from './mockDB'
@@ -135,26 +136,51 @@ class Configs extends Component {
 
     // If a field is empty
     if(!old_pswd || !new_pswd || !conf_pswd){
-      display.form_not_filled = "block"
+      
+      // Update state error
       this.setState(display)
+      
+      // Display a permanent error message
+      display.form_not_filled = "block"
+
+      // Display a cute toast :3
+      window.Materialize.toast('Todos os campos precisam ser preenchidos', 1500)
+
       return false
     }
     
     // Wrong password
     if(old_pswd !== userPassword){
-      display.wrong_psd = "block"
+
+      // Update state error
       this.setState(display)
+      
+      // Display a permanent error message
+      display.wrong_psd = "block"
+
+      // Display a cute toast :3
+      window.Materialize.toast('Senha atual errada', 1500)
+
       return false
     }
 
     // New password and confirm password does not match
     if(new_pswd !== conf_pswd){
-      display.psd_no_match = "block"
+
+      // Update state error
       this.setState(display)
+      
+      // Display a permanent error message
+      display.psd_no_match = "block"
+
+      // Display a cute toast :3
+      window.Materialize.toast('Novas senhas não são iguais', 1500)
+
       return false
     }
 
     // Everything is ok, show success text and update password
+    window.Materialize.toast('Senha alterada com sucesso!', 1500)
     display.form_ok = "block"
     this.setState(display)
     return true
@@ -226,17 +252,18 @@ class Configs extends Component {
               </Row>
 
               <div className="text" style={{marginTop: "-20px", marginBottom: "20px"}}>
-                <span className="h1" style={{display: this.state.wrong_psd}}>Senha atual errada</span>
-                <span className="h1" style={{display: this.state.psd_no_match}}>Novas senhas não são iguais</span>
-                <span className="h1" style={{display: this.state.form_not_filled}}>Todos os campos precisam ser preenchidos</span>
-                <span className="h1" style={{display: this.state.form_ok}}>Senha alterada com sucesso!</span>
+                <span className="h1 error-text" style={{display: this.state.wrong_psd}}>Senha atual errada</span>
+                <span className="h1 error-text" style={{display: this.state.psd_no_match}}>Novas senhas não são iguais</span>
+                <span className="h1 error-text" style={{display: this.state.form_not_filled}}>Todos os campos precisam ser preenchidos</span>
+                <span className="h1 error-text" style={{display: this.state.form_ok}}>Senha alterada com sucesso!</span>
                 <br/>
               </div>
 
               <Row>
                 <Button waves='light' 
-                      className='btn'
-                      onClick={this.changePassword}>Confirmar Alterações</Button>
+                  className='btn'
+                  onClick={this.changePassword}>Confirmar Alterações</Button>
+
               </Row>
             </Col>
           </div>
