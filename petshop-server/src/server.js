@@ -22,6 +22,7 @@ var user = {
 }
 
 /* Users API */
+// TODO: probably move this to another file
 // List users in system
 app.get('/listUsers', (req, res) => {
 	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
@@ -31,18 +32,20 @@ app.get('/listUsers', (req, res) => {
 })
 
 // Get info from single user
-app.get('/:id', function (req, res) {
+app.get('/:id', (req, res) => {
 	// First read existing users.
-	fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-		var users = JSON.parse( data );
+	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
+		var users = JSON.parse(data);
 		var user = users["user" + req.params.id] 
-		console.log( user );
-		res.end( JSON.stringify(user));
+		console.log(user);
+		res.end(JSON.stringify(user));
 	});
 })
 
 // CREATE new user
 app.post('/addUser', (req, res) => {
+	
+	// TODO: Read user info from database to create new user
 	// First read existing users.
 	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
 		data = JSON.parse(data);
@@ -54,6 +57,8 @@ app.post('/addUser', (req, res) => {
 
 // UPDATE user
 app.put('/updateUser', (req, res) => {
+	
+	// TODO: Read user info from request to know which user to update
 	// First read existing users.
 	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
 		data = JSON.parse(data);
@@ -64,14 +69,15 @@ app.put('/updateUser', (req, res) => {
 })
 
 // Delete user
-app.delete('/deleteUser', function (req, res) {
+app.delete('/deleteUser', (req, res) => {
 
+	// TODO: Read user info from request to know which user to delete
 	// First read existing users.
-	fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-		data = JSON.parse( data );
+	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
+		data = JSON.parse(data);
 		delete data["user" + 2];
-		console.log( data );
-		res.end( JSON.stringify(data));
+		console.log(data);
+		res.end(JSON.stringify(data));
 	});
 })
 
