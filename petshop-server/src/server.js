@@ -1,3 +1,11 @@
+/* Simples RESTful server for Petshop application
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
 
 // Tutorial: https://www.tutorialspoint.com/nodejs/nodejs_restful_api.htm
 // RESTful API
@@ -12,14 +20,6 @@ let fs = require("fs");
 
 let app = express();
 
-let user = {
-	"user4" : {
-		"name" : "mohit",
-		"password" : "password4",
-		"profession" : "teacher",
-		"id": 4
-	}
-}
 
 /* Users API */
 // TODO: probably move this to another file
@@ -43,10 +43,10 @@ app.get('/:id', (req, res) => {
 		if (user){
 			console.log("[Info] GET: Getting user: " + req.params.id);
 			console.log(user);
-			res.end(JSON.stringify(user));
+			res.end(JSON.stringify(user, null, 4));
 		} else {
 			console.log("[Info] GET: Unknown user '" + req.params.id + "'");
-			res.end(JSON.stringify(user));
+			res.end(JSON.stringify(user, null, 4));
 		}
 	});
 })
@@ -65,7 +65,7 @@ app.post('/addUser/:id', (req, res) => {
 		console.log("[Info] TODO!");
 		console.log("[Info] POST: Creating user '" + req.params.id + "'");
 		console.log(data);
-		res.end(JSON.stringify(data));
+		res.end(JSON.stringify(data, null, 4));
 	});
 })
 
@@ -83,7 +83,7 @@ app.put('/updateUser/:id', (req, res) => {
 		console.log("[Info] TODO!");
 		console.log("[Info] PUT: Updating user '" + req.params.id + "'");
 		console.log(data);
-		res.end(JSON.stringify(data));
+		res.end(JSON.stringify(data, null, 4));
 	});
 })
 
@@ -103,7 +103,7 @@ app.delete('/deleteUser/:id', (req, res) => {
 		console.log("[Info] TODO!");
 		console.log("[Info] DELETE: DELETING user '" + req.params.id + "'");
 		console.log(data);
-		res.end(JSON.stringify(data));
+		res.end(JSON.stringify(data, null, 4));
 	});
 })
 
