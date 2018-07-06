@@ -7,12 +7,12 @@
 // POST − Used to update an existing resource or create a new resource.
 // OPTIONS − Used to get the supported operations on a resource.
 
-var express = require('express');
-var fs = require("fs");
+let express = require('express');
+let fs = require("fs");
 
-var app = express();
+let app = express();
 
-var user = {
+let user = {
 	"user4" : {
 		"name" : "mohit",
 		"password" : "password4",
@@ -26,6 +26,7 @@ var user = {
 // List users in system
 app.get('/listUsers', (req, res) => {
 	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
+		console.log("[Info] GET: Listing all existing users");
 		console.log(data);
 		res.end(data);
 	});
@@ -35,10 +36,18 @@ app.get('/listUsers', (req, res) => {
 app.get('/:id', (req, res) => {
 	// First read existing users.
 	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
-		var users = JSON.parse(data);
-		var user = users["user" + req.params.id] 
-		console.log(user);
-		res.end(JSON.stringify(user));
+		
+		let users = JSON.parse(data);
+		let user = users[req.params.id]
+		
+		if (user){
+			console.log("[Info] GET: Getting user: " + req.params.id);
+			console.log(user);
+			res.end(JSON.stringify(user));
+		} else {
+			console.log("[Info] GET: Unknown user '" + req.params.id + "'");
+			res.end(JSON.stringify(user));
+		}
 	});
 })
 
@@ -46,10 +55,15 @@ app.get('/:id', (req, res) => {
 app.post('/addUser', (req, res) => {
 	
 	// TODO: Read user info from database to create new user
+		// Example: let user = users[req.params.id]
+
 	// First read existing users.
 	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
 		data = JSON.parse(data);
 		data["user4"] = user["user4"];
+		
+		console.log("[Info] TODO!");
+		console.log("[Info] POST: Creating user '" + req.params.id + "'");
 		console.log(data);
 		res.end(JSON.stringify(data));
 	});
@@ -59,10 +73,15 @@ app.post('/addUser', (req, res) => {
 app.put('/updateUser', (req, res) => {
 	
 	// TODO: Read user info from request to know which user to update
+		// Example: let user = users[req.params.id]
+		
 	// First read existing users.
 	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
 		data = JSON.parse(data);
+
 		data["user4"] = user["user4"];
+		console.log("[Info] TODO!");
+		console.log("[Info] PUT: Updating user '" + req.params.id + "'");
 		console.log(data);
 		res.end(JSON.stringify(data));
 	});
@@ -72,10 +91,17 @@ app.put('/updateUser', (req, res) => {
 app.delete('/deleteUser', (req, res) => {
 
 	// TODO: Read user info from request to know which user to delete
+		// Example: let user = users[req.params.id]
+		
+	// IMPORTANT: Check who is deleting users (only admins can delete)
+
 	// First read existing users.
 	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
 		data = JSON.parse(data);
 		delete data["user" + 2];
+		
+		console.log("[Info] TODO!");
+		console.log("[Info] DELETE: DELETING user '" + req.params.id + "'");
 		console.log(data);
 		res.end(JSON.stringify(data));
 	});
@@ -83,8 +109,8 @@ app.delete('/deleteUser', (req, res) => {
 
 /* END USER API */
 
-var server = app.listen(8080, () => {
-	var host = server.address().address
-	var port = server.address().port
+let server = app.listen(8080, () => {
+	let host = server.address().address
+	let port = server.address().port
 	console.log("Petshop server running @ http://%s:%s", host, port)
 })
