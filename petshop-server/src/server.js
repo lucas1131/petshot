@@ -15,11 +15,42 @@
 // POST − Used to update an existing resource or create a new resource.
 // OPTIONS − Used to get the supported operations on a resource.
 
+var print = console.log
+
 let express = require('express');
 let fs = require("fs");
 
+// Super safe and secure credentials c:
+let super_secure_and_safe_credentials = {
+	user: "admin",
+	password: "admin"
+}
+let u = super_secure_and_safe_credentials.user
+let p = super_secure_and_safe_credentials.password
+let nano = require("nano")("http://"+u+":"+p+"@localhost:5984");
+let db = nano.use("petshop") // Load Petshop database for use
+
 let app = express();
 
+
+var user_rev = null
+var foo = null
+db.fetch({keys: ["users"]}, callback=(err, body) => {
+	if(err) print(err)
+	else {
+		try {
+			print(body)
+			print()
+			print(body.rows[0])
+			print()
+			user_rev = body.rows[0].doc._rev
+			print(user_rev)
+			print()
+		} catch {
+
+		}
+	}
+})
 
 /* Users API */
 // TODO: probably move this to another file
@@ -33,40 +64,68 @@ app.get('/listUsers', (req, res) => {
 })
 
 // Get info from single user
-app.get('/:id', (req, res) => {
-	// First read existing users.
-	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
-		
-		let users = JSON.parse(data);
-		let user = users[req.params.id]
-		
-		if (user){
-			console.log("[Info] GET: Getting user: " + req.params.id);
-			console.log(user);
-			res.end(JSON.stringify(user, null, 4));
-		} else {
-			console.log("[Info] GET: Unknown user '" + req.params.id + "'");
-			res.end(JSON.stringify(user, null, 4));
-		}
-	});
+app.get('/user/:id', (req, res) => {
+	let users = db.get("users", (err, body) => {
+		if(err) print(err)
+		else print(body)
+	})
+
+	res.end(users[req.params.id])
 })
 
 // CREATE new user
 app.post('/addUser/:id', (req, res) => {
 	
+/*
+	Request example:
+	some useful variables
+
+	               id   parameters
+	URL: /addUser/test?user=test&username=test&password=test
+
+	// references /:id
+	params: { id: 'test' } 
+
+	// URL parameters after '?' mark
+	query:  { 
+		user: 'test', 
+		username: 'test', 
+		password: 'test' 
+	} 
+
+*/	
+	print("[Info] POST '" + req.originalUrl + "'")
+	let user = {
+		_id: "users",
+		_rev: user_rev
+	}
+	user[req.params.id] = req.query
+	
+	print(user)
+	res.end("" + req)
+	// print(req)
+
+	db.insert(user, "users", (err, body) => {
+		if(err) print(err)
+		else {
+			print(body)
+			user_rev = body.rev
+		}
+	})
+
 	// TODO: Read user info from database to create new user
 		// Example: let user = users[req.params.id]
 
-	// First read existing users.
-	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
-		data = JSON.parse(data);
-		data["user4"] = user["user4"];
+	// // First read existing users.
+	// fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
+	// 	data = JSON.parse(data);
+	// 	data["user4"] = user["user4"];
 		
-		console.log("[Info] TODO!");
-		console.log("[Info] POST: Creating user '" + req.params.id + "'");
-		console.log(data);
-		res.end(JSON.stringify(data, null, 4));
-	});
+	// 	console.log("[Info] TODO!");
+	// 	console.log("[Info] POST: Creating user '" + req.params.id + "'");
+	// 	console.log(data);
+	// 	res.end(JSON.stringify(data, null, 4));
+	// });
 })
 
 // UPDATE user
