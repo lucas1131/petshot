@@ -52,7 +52,7 @@ app.get('/:id', (req, res) => {
 })
 
 // CREATE new user
-app.post('/addUser', (req, res) => {
+app.post('/addUser/:id', (req, res) => {
 	
 	// TODO: Read user info from database to create new user
 		// Example: let user = users[req.params.id]
@@ -70,7 +70,7 @@ app.post('/addUser', (req, res) => {
 })
 
 // UPDATE user
-app.put('/updateUser', (req, res) => {
+app.put('/updateUser/:id', (req, res) => {
 	
 	// TODO: Read user info from request to know which user to update
 		// Example: let user = users[req.params.id]
@@ -88,7 +88,7 @@ app.put('/updateUser', (req, res) => {
 })
 
 // Delete user
-app.delete('/deleteUser', (req, res) => {
+app.delete('/deleteUser/:id', (req, res) => {
 
 	// TODO: Read user info from request to know which user to delete
 		// Example: let user = users[req.params.id]
