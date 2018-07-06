@@ -20,29 +20,11 @@ import ServiceInfo from './serviceInfo';
 
 class Service extends Component {
 	
+	logged = false;
+	activeUser = null;
+
 	constructor(props) {
 		super(props)
-		
-		let activeUser = getFromSessionStorage('user')[0];
-		let users = getFromLocalStorage('user-info');
-		for(let i in users) {
-			if(users[i].username === activeUser.username){
-				activeUser = users[i]
-				break
-			}
-		}
-
-		let animals = [];
-
-		for(let i in activeUser.animals) {
-			animals.push(activeUser.animals[i].name);
-		}
-
-		console.log(animals);	
-
-		this.state = {
-			animals: animals
-		};
 
 		// service Id. Use this to fetch correct service from db
 		let services = getFromLocalStorage('services-info')
@@ -51,10 +33,63 @@ class Service extends Component {
 				this.service = services[i]
 			}
 		}
+		
+		this.activeUser = getFromSessionStorage('user');
+		let animals = [];
 
+		this.state = {
+			animals: []
+		};
+
+		if(!this.activeUser) return 
+
+		this.logged = true;
+		this.activeUser = this.activeUser[0];
+
+		let users = getFromLocalStorage('user-info');
+		for(let i in users) {
+			if(users[i].username === this.activeUser.username){
+				this.activeUser = users[i]
+				break
+			}
+		}
+
+		for(let i in this.activeUser.animals) {
+			animals.push(this.activeUser.animals[i].name);
+		}	
+
+		this.state = {
+			animals: animals,
+			date: undefined,
+			time: undefined,
+			activeAnimal: undefined
+		};
 	}
 
-  animolz = ["jeogs", "birb", "shrek"]
+	handleChangeAnimal = (event) => {
+		console.log(event.target)
+    this.setState({activeAnimal: event.target.value}) 
+	}
+
+	handleChangeDate = (event) => {
+    this.setState({date: event.target.value}) 
+	}
+
+	handleChangeTime = (event) => {
+    this.setState({time: event.target.value}) 
+	}
+
+	handleClick = (event) => {
+		let newService = {
+			animal: this.state.activeAnimal,
+			date  :	this.state.date,
+			time  :	this.state.time
+		}
+		
+		this.activeUser.services.push(newService);
+		storeInLocalStorage('user-info', this.activeUser);
+		console.log(this.activeUser)
+	}
 
 	render(){
 		let serviceId = this.props.match.params.serviceId;
@@ -62,8 +97,7 @@ class Service extends Component {
 		return(
 			<div className='center container' style={{marginTop: '50px'}}>
 				<div>
-					<h3 className='header0'> {this.service.name} </h3>
-					<hr className='awesome'/>
+					<h3 className='header0' style={{marginBottom: '30px'}}> {this.service.name} </h3>
 				</div>
 				<Row>
 					<Col s={12} l={12} m={12} className='center align-content'>
@@ -74,15 +108,19 @@ class Service extends Component {
 				<Row> <hr className='awesome'/> </Row>
 				<Row> <h3 className='header0'> <strong>R$ {this.service.price}</strong> </h3> </Row>
 				<div className='center align-content'> 
-					<Input label='Animal' type='select'>
-            { this.animolz.map((name) => <option key={name}>{name}</option>) }
+					<Input label='Animal' type='select' onChange={(e) => {this.handleChangeAnimal(e)}}>
+            { this.state.animals.map((name) => <option key={name} value={name}>{name}</option>) }
 					</Input>
 				</div>
-				<div className='center align-content'> <Input label='Data' type='date'/> </div>
-				<div className='center align-content'> <Input label='Hora' type='time'/> </div>
+				<div className='center align-content'>
+					<Input label='Data' type='date' onChange={(e) => {this.handleChangeDate(e)}}/>
+				</div>
+				<div className='center align-content'>
+					<Input label='Hora' type='time' onChange={(e) => {this.handleChangeTime(e)}}/>
+				</div>
 
 				<Row>
-					<Button waves='light' className='btn'>
+					<Button waves='light' className='btn' onClick={(e) => {this.handleClick(e)}}>
 						<Icon left>class</Icon>
 						Agendar
 					</Button>

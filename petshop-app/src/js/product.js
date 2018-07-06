@@ -62,8 +62,7 @@ class Product extends Component {
     return(
       <div className='center' style={{margin: '50px 0 50px 0'}}>
         <div>
-          <h3 className='header0'>{this.product.name}</h3>
-          <hr className='awesome'/>
+          <h3 className='header0' style={{marginBottom: '30px'}}>{this.product.name}</h3>
         </div>
         <Row>
           <Col s={12} l={12} m={12} className='center align-content'>
