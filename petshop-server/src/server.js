@@ -72,12 +72,31 @@ app.get('/listUsers', (req, res) => {
 
 // Get info from single user
 app.get('/user/:id', (req, res) => {
-	let users = db.get("users", (err, body) => {
-		if(err) print(err)
-		else print(body)
-	})
+	
+	let id = req.params.id
+	pdb.get(id).then((doc) => {
 
-	res.end(users[req.params.id])
+		// Remove db properties
+		delete doc._id
+		delete doc._rev
+
+		print(doc)
+		// Send object to resquester
+		res.end(JSON.stringify({
+			ok: true, 
+			msg: "SUCCESS",
+			got: doc
+		}, null, 4))
+
+	}).catch((err) =>{
+		print(err)
+		// Send error msg
+		res.end(JSON.stringify({
+			ok: false, 
+			msg: "NO DOC FOUND WITH ID '" + id + "'",
+			got: doc
+		}, null, 4))
+	})
 })
 
 /*
@@ -113,11 +132,23 @@ app.post('/addUser/:id', (req, res) => {
 		// Copy query attributes to user object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
 		// user["animolz"] = query["animolz"], we will lose all previous animolz
-		for(let attr in req.query)
-			user[attr] = req.query[attr]
+		for(let attr in req.query){
+			
+			print(req.query[attr])
+			
+			// Try to parse objects parameters to interpret arrays as real 
+			// arrays, not strings
+			try { 
+				let obj = JSON.parse(req.query[attr])
+				print(obj)
+				user[attr] = obj
+			
+			// If parsing failed, its not an object, just read it
+			} catch { user[attr] = req.query[attr] }
+
+		}
 
 		print("[Info] Inserting user: " + JSON.stringify(user, null, 4))
-
 		db.insert(user, id, (err, body) => {
 			if(err) {
 				print(err)
@@ -154,11 +185,22 @@ app.put('/updateUser/:id', (req, res) => {
 		// Copy query attributes to user object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
 		// user["animolz"] = query["animolz"], we will lose all previous animolz
-		for(let attr in req.query)
-			user[attr] = req.query[attr]
+		for(let attr in req.query){
+			
+			print(req.query[attr])
+			
+			// Try to parse objects parameters to interpret arrays as real 
+			// arrays, not strings
+			try { 
+				let obj = JSON.parse(req.query[attr])
+				print(obj)
+				user[attr] = obj
+			
+			// If parsing failed, its not an object, just read it
+			} catch { user[attr] = req.query[attr] }
+		}
 
 		print("[Info] Inserting user: " + JSON.stringify(user, null, 4))
-
 		db.insert(user, id, (err, body) => {
 			if(err) {
 				print(err)
