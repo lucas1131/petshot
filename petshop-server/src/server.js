@@ -10,9 +10,9 @@
 // Tutorial: https://www.tutorialspoint.com/nodejs/nodejs_restful_api.htm
 // RESTful API
 // GET − Provides a read only access to a resource.
-// PUT − Used to create a new resource.
+// PUT − Used to update an existing resource or create a new resource.
+// POST − Used to create a new resource.
 // DELETE − Used to remove a resource.
-// POST − Used to update an existing resource or create a new resource.
 // OPTIONS − Used to get the supported operations on a resource.
 
 var print = console.log
@@ -32,35 +32,22 @@ let db = nano.use("petshop") // Load Petshop database for use
 
 let app = express();
 
-
-var user_rev = null
-var foo = null
-db.fetch({keys: ["users"]}, callback=(err, body) => {
-	if(err) print(err)
-	else {
-		try {
+function getRev(id){
+	db.get(id, (err, body) => {
+		if(err){
+			print(err)
+			return undefined
+		} else {
 			print(body)
-			print()
-			print(body.rows[0])
-			print()
-			user_rev = body.rows[0].doc._rev
-			print(user_rev)
-			print()
-		} catch {
-
+			return body[0].doc._rev
 		}
-	}
-})
+	})
+}
 
 /* Users API */
 // TODO: probably move this to another file
 // List users in system
 app.get('/listUsers', (req, res) => {
-	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
-		console.log("[Info] GET: Listing all existing users");
-		console.log(data);
-		res.end(data);
-	});
 })
 
 // Get info from single user
@@ -73,9 +60,6 @@ app.get('/user/:id', (req, res) => {
 	res.end(users[req.params.id])
 })
 
-// CREATE new user
-app.post('/addUser/:id', (req, res) => {
-	
 /*
 	Request example:
 	some useful variables
@@ -92,12 +76,41 @@ app.post('/addUser/:id', (req, res) => {
 		username: 'test', 
 		password: 'test' 
 	} 
-
 */	
+// CREATE new user
+app.post('/addUser/:id', (req, res) => {
+
 	print("[Info] POST '" + req.originalUrl + "'")
+
+	let id = req.params.id
+	let rev = getRev(id)
+	let user = { _id: id }
+
+	// If no revision, ignore it (will create the document now)
+	if(rev != undefined) user["_rev"] = rev;
+
+	// Copy query attributes to user object
+	for(let attr in req.query)
+		user[attr] = req.query[attr]
+	
+	db.insert(user, id, (err, body) => {
+		if(err) {
+			print(err)
+			res.end(JSON.stringify(err))
+		} else {
+			print(body)
+			res.end("SUCCESS")
+		}
+	})
+})
+
+// UPDATE user
+app.put('/updateUser/:id', (req, res) => {
+
+	print("[Info] PUT '" + req.originalUrl + "'")
 	let user = {
-		_id: "users",
-		_rev: user_rev
+		_id: req.params.id
+		// _rev: user_rev
 	}
 	user[req.params.id] = req.query
 	
@@ -105,45 +118,13 @@ app.post('/addUser/:id', (req, res) => {
 	res.end("" + req)
 	// print(req)
 
-	db.insert(user, "users", (err, body) => {
+	db.insert(user, req.params.id, (err, body) => {
 		if(err) print(err)
 		else {
 			print(body)
 			user_rev = body.rev
 		}
 	})
-
-	// TODO: Read user info from database to create new user
-		// Example: let user = users[req.params.id]
-
-	// // First read existing users.
-	// fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
-	// 	data = JSON.parse(data);
-	// 	data["user4"] = user["user4"];
-		
-	// 	console.log("[Info] TODO!");
-	// 	console.log("[Info] POST: Creating user '" + req.params.id + "'");
-	// 	console.log(data);
-	// 	res.end(JSON.stringify(data, null, 4));
-	// });
-})
-
-// UPDATE user
-app.put('/updateUser/:id', (req, res) => {
-	
-	// TODO: Read user info from request to know which user to update
-		// Example: let user = users[req.params.id]
-		
-	// First read existing users.
-	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
-		data = JSON.parse(data);
-
-		data["user4"] = user["user4"];
-		console.log("[Info] TODO!");
-		console.log("[Info] PUT: Updating user '" + req.params.id + "'");
-		console.log(data);
-		res.end(JSON.stringify(data, null, 4));
-	});
 })
 
 // Delete user
