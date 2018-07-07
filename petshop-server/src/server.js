@@ -22,7 +22,6 @@ let express = require('express');
 let fs = require("fs");
 let prom_nano = require('nano-promises');
 let nano = require("nano")("http://localhost:5984");
-
 let db = null
 let pdb = null
 
