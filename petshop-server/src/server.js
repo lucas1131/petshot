@@ -20,22 +20,26 @@ var print = console.log
 
 let express = require('express');
 let fs = require("fs");
-
-// Super safe and secure credentials c:
-let super_secure_and_safe_credentials = {
-	user: "admin",
-	password: "admin"
-}
-let u = super_secure_and_safe_credentials.user
-let p = super_secure_and_safe_credentials.password
 let prom_nano = require('nano-promises');
-let nano = require("nano")("http://"+u+":"+p+"@localhost:5984");
-nano.db.create("petshop") // Creating the database
-let db = nano.use("petshop") // Load Petshop database for use
-let pdb = prom_nano(nano).db.use("petshop") // Load Petshop database (promisified) for use
+let nano = require("nano")("http://localhost:5984");
+let db = null
+let pdb = null
+
+// Try to create db, if it doesnt exists
+nano.db.create("petshop", (err, bode) => {
+	
+	// Database exists probably
+	if(err) print(err)
+	
+	// Load Petshop database for use
+	db = nano.use("petshop") 
+	// Load Petshop database (promisified) for use
+	pdb = prom_nano(nano).db.use("petshop") 
+})
 
 let app = express();
 /* END Aliases, libraries and globals */
+
 
 /* CouchDB synchronized utilities*/
 async function getRev(id){
@@ -260,8 +264,12 @@ app.put('/updateUser/:id', (req, res) => {
 // Delete user
 app.delete('/deleteUser/:id', (req, res) => {
 
+	print("[Info] DELETE '" + req.originalUrl + "'")
+	
 	let user = req.params.id;
-	getRev(user).then(rev => { 
+	getRev(user).then((rev) => {
+
+		print("[Info] Found rev = '" + req.originalUrl + "' for user '" + user + "'")
 		db.destroy(user, rev, function(err, body) {
 			if (!err)
 	    		console.log(body);
@@ -270,8 +278,8 @@ app.delete('/deleteUser/:id', (req, res) => {
 	    		res.end(JSON.stringify(err));
 	    	}
 		});
-	});
-});
+	})
+})
 /* END USER API */
 
 let server = app.listen(8080, () => {
