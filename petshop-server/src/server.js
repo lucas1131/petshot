@@ -146,6 +146,7 @@ app.put('/updateUser/:id', (req, res) => {
 				ok: false, 
 				msg: "NO DOCUMENT WITH ID '" + id +"'"
 			}, null, 4))
+			return
 		}
 
 		user["_rev"] = doc._rev;
