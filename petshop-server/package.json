@@ -12,6 +12,10 @@
   "dependencies": {
     "express": "^4.16.3",
     "jquery": "^3.3.1",
+<<<<<<< HEAD
     "nano": "^6.4.4"
+=======
+    "nano-promises": "^1.2.0"
+>>>>>>> 40fa32d4e1d4968efdc50b198957b66b860d9831
   }
 }

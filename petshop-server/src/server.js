@@ -10,10 +10,10 @@
 // Tutorial: https://www.tutorialspoint.com/nodejs/nodejs_restful_api.htm
 // RESTful API
 // GET − Provides a read only access to a resource.
-// OPTIONS − Used to create a new resource.
+// PUT − Used to update an existing resource or create a new resource.
+// POST − Used to create a new resource.
 // DELETE − Used to remove a resource.
-// POST − Used to update an existing resource or create a new resource.
-// PUT − Used to get the supported operations on a resource.
+// OPTIONS − Used to get the supported operations on a resource.
 
 var print = console.log
 
@@ -27,55 +27,78 @@ let super_secure_and_safe_credentials = {
 }
 let u = super_secure_and_safe_credentials.user
 let p = super_secure_and_safe_credentials.password
+
+let prom_nano = require('nano-promises');
 let nano = require("nano")("http://"+u+":"+p+"@localhost:5984");
 let db = nano.use("petshop") // Load Petshop database for use
+let pdb = prom_nano(nano).db.use("petshop") // Load Petshop database (promisified) for use
 
 let app = express();
 
-
-var user_rev = null
-var foo = null
-db.fetch({keys: ["users"]}, callback=(err, body) => {
-	if(err) print(err)
-	else {
-		try {
-			print(body)
-			print()
-			print(body.rows[0])
-			print()
-			user_rev = body.rows[0].doc._rev
-			print(user_rev)
-			print()
-		} catch {
-
-		}
+async function getRev(id){
+	
+	let rev = null
+	try {
+		
+		let [doc] = await pdb.get(id)
+		rev = doc._rev
+		
+	} catch(err) {
+		print(err)
+		print("[Info] No rev for doc '" + id + "'")
+		rev = undefined
 	}
-})
+	return rev
+}
+
+async function getDoc(id){
+	
+	let doc = null
+	try { [doc] = await pdb.get(id) } 
+
+	catch(err) {
+		print(err)
+		print("[Info] No doc with id = '" + id + "'")
+		doc = undefined
+	}
+	return doc
+}
 
 /* Users API */
 // TODO: probably move this to another file
 // List users in system
 app.get('/listUsers', (req, res) => {
-	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
-		console.log("[Info] GET: Listing all existing users");
-		console.log(data);
-		res.end(data);
-	});
 })
 
 // Get info from single user
 app.get('/user/:id', (req, res) => {
-	let users = db.get("users", (err, body) => {
-		if(err) print(err)
-		else print(body)
-	})
+	
+	let id = req.params.id
+	pdb.get(id).then((doc) => {
 
-	res.end(users[req.params.id])
+		// Remove db properties
+		delete doc._id
+		delete doc._rev
+
+		print(doc)
+		// Send object to resquester
+		res.end(JSON.stringify({
+			ok: true, 
+			msg: "SUCCESS",
+			got: doc
+		}, null, 4))
+
+	}).catch((err) =>{
+		print(err)
+		// Send error msg
+		res.end(JSON.stringify({
+			ok: false, 
+			msg: "NO DOC FOUND WITH ID '" + id + "'",
+			got: doc
+		}, null, 4))
+	})
 })
 
-// CREATE new user
-app.post('/addUser/:id', (req, res) => {
-	
 /*
 	Request example:
 	some useful variables
@@ -92,58 +115,102 @@ app.post('/addUser/:id', (req, res) => {
 		username: 'test', 
 		password: 'test' 
 	} 
-
 */	
+// CREATE new user
+app.post('/addUser/:id', (req, res) => {
+
 	print("[Info] POST '" + req.originalUrl + "'")
-	let user = {
-		_id: "users",
-		_rev: user_rev
-	}
-	user[req.params.id] = req.query
-	
-	print(user)
-	res.end("" + req)
-	// print(req)
-
-	db.insert(user, "users", (err, body) => {
-		if(err) print(err)
-		else {
-			print(body)
-			user_rev = body.rev
-		}
-	})
-
-	// TODO: Read user info from database to create new user
-		// Example: let user = users[req.params.id]
-
-	// // First read existing users.
-	// fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
-	// 	data = JSON.parse(data);
-	// 	data["user4"] = user["user4"];
+	let id = req.params.id
+	getDoc(id).then((doc) => {
 		
-	// 	console.log("[Info] TODO!");
-	// 	console.log("[Info] POST: Creating user '" + req.params.id + "'");
-	// 	console.log(data);
-	// 	res.end(JSON.stringify(data, null, 4));
-	// });
+		let user = doc
+		print(doc)
+
+		// Only get revision if doc exists
+		if(doc != undefined) user["_rev"] = doc._rev;
+
+		// Copy query attributes to user object
+		// TODO: use deepcopy - when updating animolz (an array) we cant just do
+		// user["animolz"] = query["animolz"], we will lose all previous animolz
+		for(let attr in req.query){
+			
+			print(req.query[attr])
+			
+			// Try to parse objects parameters to interpret arrays as real 
+			// arrays, not strings
+			try { 
+				let obj = JSON.parse(req.query[attr])
+				print(obj)
+				user[attr] = obj
+			
+			// If parsing failed, its not an object, just read it
+			} catch { user[attr] = req.query[attr] }
+
+		}
+
+		print("[Info] Inserting user: " + JSON.stringify(user, null, 4))
+		db.insert(user, id, (err, body) => {
+			if(err) {
+				print(err)
+				res.end(JSON.stringify(err))
+			} else {
+				print(body)
+				res.end(JSON.stringify({ok: true, msg: "SUCCESS"}, null, 4))
+			}
+		})
+	}).catch((err) => { print(err) })
 })
 
 // UPDATE user
 app.put('/updateUser/:id', (req, res) => {
-	
-	// TODO: Read user info from request to know which user to update
-		// Example: let user = users[req.params.id]
-		
-	// First read existing users.
-	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
-		data = JSON.parse(data);
 
-		data["user4"] = user["user4"];
-		console.log("[Info] TODO!");
-		console.log("[Info] PUT: Updating user '" + req.params.id + "'");
-		console.log(data);
-		res.end(JSON.stringify(data, null, 4));
-	});
+	print("[Info] PUT '" + req.originalUrl + "'")
+	let id = req.params.id
+	getDoc(id).then((doc) => {
+		
+		let user = doc
+		print(doc)
+
+		// If doc doesnt exists, return error - PUT is only for updating.
+		if(!doc) {
+			res.end(JSON.stringify({
+				ok: false, 
+				msg: "NO DOCUMENT WITH ID '" + id +"'"
+			}, null, 4))
+			return
+		}
+
+		user["_rev"] = doc._rev;
+
+		// Copy query attributes to user object
+		// TODO: use deepcopy - when updating animolz (an array) we cant just do
+		// user["animolz"] = query["animolz"], we will lose all previous animolz
+		for(let attr in req.query){
+			
+			print(req.query[attr])
+			
+			// Try to parse objects parameters to interpret arrays as real 
+			// arrays, not strings
+			try { 
+				let obj = JSON.parse(req.query[attr])
+				print(obj)
+				user[attr] = obj
+			
+			// If parsing failed, its not an object, just read it
+			} catch { user[attr] = req.query[attr] }
+		}
+
+		print("[Info] Inserting user: " + JSON.stringify(user, null, 4))
+		db.insert(user, id, (err, body) => {
+			if(err) {
+				print(err)
+				res.end(JSON.stringify(err))
+			} else {
+				print(body)
+				res.end(JSON.stringify({ok: true, msg: "SUCCESS"}, null, 4))
+			}
+		})
+	}).catch((err) => { print(err) })
 })
 
 // Delete user
