@@ -29,13 +29,27 @@ let pdb = null
 // Try to create db, if it doesnt exists
 nano.db.create("petshop", (err, bode) => {
 	
-	// Database exists probably
-	if(err) print(err)
-	
-	// Load Petshop database for use
+	if(err){
+		// Error 412 - Database exists
+		if(err.statusCode == 412){
+			print("[Info] Found database for 'petshop'.")
+			// Load Petshop database and promisified db
+			db = nano.use("petshop") 
+			pdb = prom_nano(nano).db.use("petshop") 
+			return
+
+		} else if(err.statusCode != 412){
+			print("[Error] Unknown error occured.")
+			print(err)
+			throw err.Error
+		}
+	} 
+
+	print("[Info] Created database for 'petshop'.")
+	// Load Petshop database and promisified db
 	db = nano.use("petshop") 
-	// Load Petshop database (promisified) for use
 	pdb = prom_nano(nano).db.use("petshop") 
+	
 })
 
 let app = express();
@@ -170,12 +184,20 @@ app.post('/addUser/:id', (req, res) => {
 	let id = req.params.id
 	getDoc(id).then((doc) => {
 		
-		let user = doc
-		user["dbtype"] = "user"
-		print(doc)
+		let user = {}
 
 		// Only get revision if doc exists
-		if(doc != undefined) user["_rev"] = doc._rev;
+		if(doc != undefined) {
+			
+			print(doc)
+			user = doc
+			user["_rev"] = doc._rev;
+			user["dbtype"] = "user"
+
+		} else {
+			user["_id"] = id
+			print("[Info] No doc with id '" + id + "'")
+		}
 
 		// Copy query attributes to user object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
@@ -186,13 +208,9 @@ app.post('/addUser/:id', (req, res) => {
 			
 			// Try to parse objects parameters to interpret arrays as real 
 			// arrays, not strings
-			try { 
-				let obj = JSON.parse(req.query[attr])
-				print(obj)
-				user[attr] = obj
-			
+			try { user[attr] = JSON.parse(req.query[attr]) }
 			// If parsing failed, its not an object, just read it
-			} catch { user[attr] = req.query[attr] }
+			catch { user[attr] = req.query[attr] }
 
 		}
 
@@ -215,10 +233,6 @@ app.put('/updateUser/:id', (req, res) => {
 	print("[Info] PUT '" + req.originalUrl + "'")
 	let id = req.params.id
 	getDoc(id).then((doc) => {
-		
-		let user = doc
-		user["dbtype"] = "user"
-		print(doc)
 
 		// If doc doesnt exists, return error - PUT is only for updating.
 		if(!doc) {
@@ -228,6 +242,10 @@ app.put('/updateUser/:id', (req, res) => {
 			}, null, 4))
 			return
 		}
+		
+		let user = doc
+		user["dbtype"] = "user"
+		print(doc)
 
 		user["_rev"] = doc._rev;
 
