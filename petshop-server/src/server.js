@@ -218,20 +218,16 @@ app.put('/updateUser/:id', (req, res) => {
 // Delete user
 app.delete('/deleteUser/:id', (req, res) => {
 
-	// TODO: Read user info from request to know which user to delete
-		// Example: let user = users[req.params.id]
-		
-	// IMPORTANT: Check who is deleting users (only admins can delete)
-
-	// First read existing users.
-	fs.readFile(__dirname + "/" + "users.json", 'utf8', (err, data) => {
-		data = JSON.parse(data);
-		delete data["user" + 2];
-		
-		console.log("[Info] TODO!");
-		console.log("[Info] DELETE: DELETING user '" + req.params.id + "'");
-		console.log(data);
-		res.end(JSON.stringify(data, null, 4));
+	let user = req.params.id;
+	let _rev = getRev(user);
+	
+	db.destroy(user, _rev, function(err, body) {
+		if (!err)
+    		console.log(body);
+    	else {
+    		print(err);
+    		res.end(JSON.stringify(err));
+    	}
 	});
 })
 
