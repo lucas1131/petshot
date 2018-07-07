@@ -15,6 +15,7 @@
 // DELETE − Used to remove a resource.
 // OPTIONS − Used to get the supported operations on a resource.
 
+/* Aliases, libraries and globals */
 var print = console.log
 
 let express = require('express');
@@ -34,7 +35,9 @@ let db = nano.use("petshop") // Load Petshop database for use
 let pdb = prom_nano(nano).db.use("petshop") // Load Petshop database (promisified) for use
 
 let app = express();
+/* END Aliases, libraries and globals */
 
+/* CouchDB synchronized utilities*/
 async function getRev(id){
 	
 	let rev = null
@@ -65,6 +68,25 @@ async function getDoc(id){
 }
 
 /* Users API */
+
+/*
+	Request example:
+	some useful variables
+
+	               id   parameters
+	URL: /addUser/test?user=test&username=test&password=test
+
+	// references /:id
+	params: { id: 'test' } 
+
+	// URL parameters after '?' mark
+	query:  { 
+		user: 'test', 
+		username: 'test', 
+		password: 'test' 
+	} 
+*/	
+
 // TODO: probably move this to another file
 // List users in system
 app.get('/listUsers', (req, res) => {
@@ -136,23 +158,6 @@ app.get('/user/:id', (req, res) => {
 	})
 })
 
-/*
-	Request example:
-	some useful variables
-
-	               id   parameters
-	URL: /addUser/test?user=test&username=test&password=test
-
-	// references /:id
-	params: { id: 'test' } 
-
-	// URL parameters after '?' mark
-	query:  { 
-		user: 'test', 
-		username: 'test', 
-		password: 'test' 
-	} 
-*/	
 // CREATE new user
 app.post('/addUser/:id', (req, res) => {
 
@@ -271,7 +276,6 @@ app.delete('/deleteUser/:id', (req, res) => {
 		res.end(JSON.stringify(data, null, 4));
 	});
 })
-
 /* END USER API */
 
 let server = app.listen(8080, () => {
