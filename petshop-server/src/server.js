@@ -37,27 +37,32 @@ let app = express();
 
 async function getRev(id){
 	
-	print("[Info] Getting rev")
-	
 	let rev = null
 	try {
 		
 		let [doc] = await pdb.get(id)
-		print(doc)
 		rev = doc._rev
-
-		print("[Info] Found rev = " + JSON.stringify(rev))
 		
 	} catch(err) {
 		print(err)
 		print("[Info] No rev for doc '" + id + "'")
 		rev = undefined
 	}
-
-	print("[Info] End Getting rev")
 	return rev
 }
 
+async function getDoc(id){
+	
+	let doc = null
+	try { [doc] = await pdb.get(id) } 
+
+	catch(err) {
+		print(err)
+		print("[Info] No doc with id = '" + id + "'")
+		doc = undefined
+	}
+	return doc
+}
 
 /* Users API */
 // TODO: probably move this to another file
@@ -97,19 +102,21 @@ app.post('/addUser/:id', (req, res) => {
 
 	print("[Info] POST '" + req.originalUrl + "'")
 	let id = req.params.id
-	getRev(id).then((rev) => {
+	getDoc(id).then((doc) => {
 		
-		let user = { _id: id }
-		print(rev)
+		let user = doc
+		print(doc)
 
-		// If no revision, ignore it (will create the document now)
-		if(rev != undefined) user["_rev"] = rev;
+		// Only get revision if doc exists
+		if(doc != undefined) user["_rev"] = doc._rev;
 
 		// Copy query attributes to user object
+		// TODO: use deepcopy - when updating animolz (an array) we cant just do
+		// user["animolz"] = query["animolz"], we will lose all previous animolz
 		for(let attr in req.query)
 			user[attr] = req.query[attr]
 
-		print("[Info] Inserting user : " + JSON.stringify(user, null, 4))
+		print("[Info] Inserting user: " + JSON.stringify(user, null, 4))
 
 		db.insert(user, id, (err, body) => {
 			if(err) {
@@ -117,7 +124,7 @@ app.post('/addUser/:id', (req, res) => {
 				res.end(JSON.stringify(err))
 			} else {
 				print(body)
-				res.end("SUCCESS")
+				res.end(JSON.stringify({ok: true, msg: "SUCCESS"}, null, 4))
 			}
 		})
 	}).catch((err) => { print(err) })
@@ -127,23 +134,40 @@ app.post('/addUser/:id', (req, res) => {
 app.put('/updateUser/:id', (req, res) => {
 
 	print("[Info] PUT '" + req.originalUrl + "'")
-	let user = {
-		_id: req.params.id
-		// _rev: user_rev
-	}
-	user[req.params.id] = req.query
-	
-	print(user)
-	res.end("" + req)
-	// print(req)
+	let id = req.params.id
+	getDoc(id).then((doc) => {
+		
+		let user = doc
+		print(doc)
 
-	db.insert(user, req.params.id, (err, body) => {
-		if(err) print(err)
-		else {
-			print(body)
-			user_rev = body.rev
+		// If doc doesnt exists, return error - PUT is only for updating.
+		if(!doc) {
+			res.end(JSON.stringify({
+				ok: false, 
+				msg: "NO DOCUMENT WITH ID '" + id +"'"
+			}, null, 4))
 		}
-	})
+
+		user["_rev"] = doc._rev;
+
+		// Copy query attributes to user object
+		// TODO: use deepcopy - when updating animolz (an array) we cant just do
+		// user["animolz"] = query["animolz"], we will lose all previous animolz
+		for(let attr in req.query)
+			user[attr] = req.query[attr]
+
+		print("[Info] Inserting user: " + JSON.stringify(user, null, 4))
+
+		db.insert(user, id, (err, body) => {
+			if(err) {
+				print(err)
+				res.end(JSON.stringify(err))
+			} else {
+				print(body)
+				res.end(JSON.stringify({ok: true, msg: "SUCCESS"}, null, 4))
+			}
+		})
+	}).catch((err) => { print(err) })
 })
 
 // Delete user
