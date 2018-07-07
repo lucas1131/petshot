@@ -27,22 +27,37 @@ let super_secure_and_safe_credentials = {
 }
 let u = super_secure_and_safe_credentials.user
 let p = super_secure_and_safe_credentials.password
+
+let prom_nano = require('nano-promises');
 let nano = require("nano")("http://"+u+":"+p+"@localhost:5984");
 let db = nano.use("petshop") // Load Petshop database for use
+let pdb = prom_nano(nano).db.use("petshop") // Load Petshop database (promisified) for use
 
 let app = express();
 
-function getRev(id){
-	db.get(id, (err, body) => {
-		if(err){
-			print(err)
-			return undefined
-		} else {
-			print(body)
-			return body[0].doc._rev
-		}
-	})
+async function getRev(id){
+	
+	print("[Info] Getting rev")
+	
+	let rev = null
+	try {
+		
+		let [doc] = await pdb.get(id)
+		print(doc)
+		rev = doc._rev
+
+		print("[Info] Found rev = " + JSON.stringify(rev))
+		
+	} catch(err) {
+		print(err)
+		print("[Info] No rev for doc '" + id + "'")
+		rev = undefined
+	}
+
+	print("[Info] End Getting rev")
+	return rev
 }
+
 
 /* Users API */
 // TODO: probably move this to another file
@@ -81,27 +96,31 @@ app.get('/user/:id', (req, res) => {
 app.post('/addUser/:id', (req, res) => {
 
 	print("[Info] POST '" + req.originalUrl + "'")
-
 	let id = req.params.id
-	let rev = getRev(id)
-	let user = { _id: id }
+	getRev(id).then((rev) => {
+		
+		let user = { _id: id }
+		print(rev)
 
-	// If no revision, ignore it (will create the document now)
-	if(rev != undefined) user["_rev"] = rev;
+		// If no revision, ignore it (will create the document now)
+		if(rev != undefined) user["_rev"] = rev;
 
-	// Copy query attributes to user object
-	for(let attr in req.query)
-		user[attr] = req.query[attr]
-	
-	db.insert(user, id, (err, body) => {
-		if(err) {
-			print(err)
-			res.end(JSON.stringify(err))
-		} else {
-			print(body)
-			res.end("SUCCESS")
-		}
-	})
+		// Copy query attributes to user object
+		for(let attr in req.query)
+			user[attr] = req.query[attr]
+
+		print("[Info] Inserting user : " + JSON.stringify(user, null, 4))
+
+		db.insert(user, id, (err, body) => {
+			if(err) {
+				print(err)
+				res.end(JSON.stringify(err))
+			} else {
+				print(body)
+				res.end("SUCCESS")
+			}
+		})
+	}).catch((err) => { print(err) })
 })
 
 // UPDATE user
