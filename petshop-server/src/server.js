@@ -76,6 +76,8 @@ app.get('/user/:id', (req, res) => {
 	let id = req.params.id
 	pdb.get(id).then((doc) => {
 
+		doc = doc[0]
+
 		// Remove db properties
 		delete doc._id
 		delete doc._rev
