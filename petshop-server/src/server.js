@@ -15,6 +15,7 @@
 // DELETE − Used to remove a resource.
 // OPTIONS − Used to get the supported operations on a resource.
 
+/* Aliases, libraries and globals */
 var print = console.log
 
 let express = require('express');
@@ -34,7 +35,9 @@ let db = nano.use("petshop") // Load Petshop database for use
 let pdb = prom_nano(nano).db.use("petshop") // Load Petshop database (promisified) for use
 
 let app = express();
+/* END Aliases, libraries and globals */
 
+/* CouchDB synchronized utilities*/
 async function getRev(id){
 	
 	let rev = null
@@ -65,9 +68,64 @@ async function getDoc(id){
 }
 
 /* Users API */
+
+/*
+	Request example:
+	some useful variables
+
+	               id   parameters
+	URL: /addUser/test?user=test&username=test&password=test
+
+	// references /:id
+	params: { id: 'test' } 
+
+	// URL parameters after '?' mark
+	query:  { 
+		user: 'test', 
+		username: 'test', 
+		password: 'test' 
+	} 
+*/	
+
 // TODO: probably move this to another file
 // List users in system
 app.get('/listUsers', (req, res) => {
+	
+	let id = req.params.id
+	let users = []
+	db.fetch({include_docs: true}, (err, bode) => {
+
+		if(err){
+			print(err)
+			// Send error msg
+			res.end(JSON.stringify({
+				ok: false, 
+				msg: "UNKNOWN ERROR",
+			}, null, 4))
+
+			return
+		}
+
+		// No error
+		print(bode)
+		bode.rows.forEach((row) => {
+			print(row)
+			print(row.doc)
+			if(row.doc.dbtype == "user"){
+				
+				users.push(row.id)
+				print(row.id)
+			}
+		})
+
+		// Send object to resquester
+		res.end(JSON.stringify({
+			ok: true, 
+			msg: "SUCCESS",
+			got: users
+		}, null, 4))
+
+	})
 })
 
 // Get info from single user
@@ -95,29 +153,11 @@ app.get('/user/:id', (req, res) => {
 		// Send error msg
 		res.end(JSON.stringify({
 			ok: false, 
-			msg: "NO DOC FOUND WITH ID '" + id + "'",
-			got: doc
+			msg: "NO DOC FOUND WITH ID '" + id + "'"
 		}, null, 4))
 	})
 })
 
-/*
-	Request example:
-	some useful variables
-
-	               id   parameters
-	URL: /addUser/test?user=test&username=test&password=test
-
-	// references /:id
-	params: { id: 'test' } 
-
-	// URL parameters after '?' mark
-	query:  { 
-		user: 'test', 
-		username: 'test', 
-		password: 'test' 
-	} 
-*/	
 // CREATE new user
 app.post('/addUser/:id', (req, res) => {
 
@@ -126,6 +166,7 @@ app.post('/addUser/:id', (req, res) => {
 	getDoc(id).then((doc) => {
 		
 		let user = doc
+		user["dbtype"] = "user"
 		print(doc)
 
 		// Only get revision if doc exists
@@ -171,6 +212,7 @@ app.put('/updateUser/:id', (req, res) => {
 	getDoc(id).then((doc) => {
 		
 		let user = doc
+		user["dbtype"] = "user"
 		print(doc)
 
 		// If doc doesnt exists, return error - PUT is only for updating.
@@ -230,7 +272,6 @@ app.delete('/deleteUser/:id', (req, res) => {
     	}
 	});
 })
-
 /* END USER API */
 
 let server = app.listen(8080, () => {
