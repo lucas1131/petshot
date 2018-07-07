@@ -28,9 +28,9 @@ let super_secure_and_safe_credentials = {
 }
 let u = super_secure_and_safe_credentials.user
 let p = super_secure_and_safe_credentials.password
-
 let prom_nano = require('nano-promises');
 let nano = require("nano")("http://"+u+":"+p+"@localhost:5984");
+nano.db.create("petshop") // Creating the database
 let db = nano.use("petshop") // Load Petshop database for use
 let pdb = prom_nano(nano).db.use("petshop") // Load Petshop database (promisified) for use
 
@@ -261,17 +261,17 @@ app.put('/updateUser/:id', (req, res) => {
 app.delete('/deleteUser/:id', (req, res) => {
 
 	let user = req.params.id;
-	let _rev = getRev(user);
-	
-	db.destroy(user, _rev, function(err, body) {
-		if (!err)
-    		console.log(body);
-    	else {
-    		print(err);
-    		res.end(JSON.stringify(err));
-    	}
+	getRev(user).then(rev => { 
+		db.destroy(user, rev, function(err, body) {
+			if (!err)
+	    		console.log(body);
+	    	else {
+	    		print(err);
+	    		res.end(JSON.stringify(err));
+	    	}
+		});
 	});
-})
+});
 /* END USER API */
 
 let server = app.listen(8080, () => {
