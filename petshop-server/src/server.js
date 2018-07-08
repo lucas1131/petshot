@@ -20,6 +20,7 @@ let express = require('express')
 let prom_nano = require('nano-promises')
 let nano = require("nano")("http://localhost:5984")
 let cors = require("cors")
+let bodyParser = require("body-parser")
 let usersApi = require("./users")
 let servicesApi = require("./services")
 let productsApi = require("./products")
@@ -55,6 +56,7 @@ nano.db.create("petshop", (err, bode) => {
 
 let app = express()
 app.use(cors())
+app.use(bodyParser.json())
 /* END Aliases, libraries and globals */
 
 

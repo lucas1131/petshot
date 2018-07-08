@@ -93,7 +93,7 @@ class Home extends Component {
             <Card header={<CardTitle image={"" + service.doc.image}/>}
             actions={[<Link to={'/servicos/' + index}>Agendar</Link>]}>
               <h6 className='customGreen'>{service.doc.name}</h6>
-              <p className='default'>{service.doc.price}</p>
+              <p className='default'>R$ {service.doc.price}</p>
             </Card>
           </Col>)
       })
@@ -106,7 +106,7 @@ class Home extends Component {
             <Card header={<CardTitle image={"" + product.doc.image}/>}
             actions={[<Link to={'/produtos/' + index}>Comprar</Link>]}>
               <h6 className='customGreen'>{product.doc.name}</h6>
-              <p className='default'>{product.doc.price}</p>
+              <p className='default'>R$ {product.doc.price}</p>
             </Card>
           </Col>)
       })

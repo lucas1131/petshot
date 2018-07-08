@@ -76,6 +76,7 @@ function CreateService(req, res){
 
 	print("[Info] POST '" + req.originalUrl + "'")
 	let id = req.params.id
+	print(req.body)
 	server.getDoc(id).then((doc) => {
 		
 		let service = {}
@@ -96,15 +97,16 @@ function CreateService(req, res){
 		// Copy query attributes to service object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
 		// service["animolz"] = query["animolz"], we will lose all previous animolz
-		for(let attr in req.query){
+		print("[IMPORTANT] Req.body: " + JSON.stringify(req.body), null, 4)
+		for(let attr in req.body){
 			
-			print(req.query[attr])
+			print(req.body[attr])
 			
 			// Try to parse objects parameters to interpret arrays as real 
 			// arrays, not strings
-			try { service[attr] = JSON.parse(req.query[attr]) }
+			try { service[attr] = JSON.parse(req.body[attr]) }
 			// If parsing failed, its not an object, just read it
-			catch { service[attr] = req.query[attr] }
+			catch { service[attr] = req.body[attr] }
 
 		}
 
