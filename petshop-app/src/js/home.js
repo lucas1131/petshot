@@ -40,9 +40,7 @@ class Home extends Component {
     // Get services list
     axios.get("http://localhost:8080/services")
       .then((res) => {
-        console.log(res.data)
-        let tmp = res.data.got
-        this.setState({services: tmp})
+        this.setState({services: res.data.got})
       })
       .catch((err) => {
         console.log("[Error] Error getting services.")
@@ -52,9 +50,7 @@ class Home extends Component {
     // Get products list
     axios.get("http://localhost:8080/products")
       .then((res) => {
-        console.log(res.data)
-        let tmp = res.data.got
-        this.setState({products: tmp})
+        this.setState({products: res.data.got})
       })
       .catch((err) => {
         console.log("[Error] Error getting products.")
@@ -63,25 +59,6 @@ class Home extends Component {
   }
 
   render() {
-    /*let services = ServiceInfo.map((service, index) => {
-          return (
-            <Col s={12} m={6} l={3} >
-              <Card header={<CardTitle image={service.image}/>}
-              actions={[<Link to={'/servicos/' + index}>Agendar</Link>]}>
-                <h6 className='customGreen'>{service.name}</h6>
-                <p className='default'>{service.price}</p>
-              </Card>
-            </Col> ) } )
-
-    let products = ProductInfo.map((product, index) => {
-          return (
-            <Col s={12} m={6} l={3} >
-              <Card header={<CardTitle image={product.image}/>}
-              actions={[<Link to={'/produtos/' + index}>Comprar</Link>]}>
-                <h6 className='customGreen'>{product.name}</h6>
-                <p className='default'>{product.price}</p>
-              </Card>
-            </Col> ) } )*/
 
     let services
     let products
@@ -91,7 +68,7 @@ class Home extends Component {
         return (
           <Col s={12} m={6} l={3} >
             <Card header={<CardTitle image={"" + service.doc.image}/>}
-            actions={[<Link to={'/servicos/' + index}>Agendar</Link>]}>
+            actions={[<Link to={'/servicos/' + service.doc.id}>Agendar</Link>]}>
               <h6 className='customGreen'>{service.doc.name}</h6>
               <p className='default'>R$ {service.doc.price}</p>
             </Card>
@@ -104,7 +81,7 @@ class Home extends Component {
         return (
           <Col s={12} m={6} l={3} >
             <Card header={<CardTitle image={"" + product.doc.image}/>}
-            actions={[<Link to={'/produtos/' + index}>Comprar</Link>]}>
+            actions={[<Link to={'/produtos/' + product.doc.id}>Comprar</Link>]}>
               <h6 className='customGreen'>{product.doc.name}</h6>
               <p className='default'>R$ {product.doc.price}</p>
             </Card>

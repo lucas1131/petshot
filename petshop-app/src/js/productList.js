@@ -20,11 +20,9 @@ class ProductList extends Component {
       products: null
     };
 
-    axios.get("http://localhost:8080/products")
+    axios.get("http://localhost:8080/products" )
       .then((res) => {
-        console.log(res.data)
-        let tmp = res.data.got
-        this.setState({products: tmp})
+        this.setState({products: res.data.got})
       })
       .catch((err) => {
         console.log("[Error] Error getting products.")
@@ -33,10 +31,13 @@ class ProductList extends Component {
   }
 
   render() {
+    
+    let products
+
     if(this.state.products) {  
-      let products = this.state.products.map((product, index) => {
+      products = this.state.products.map((product, index) => {
         
-        let str = product.name.toLowerCase();
+        let str = product.doc.name.toLowerCase();
         str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
         if(str.indexOf(this.state.query) > -1) {
@@ -51,25 +52,25 @@ class ProductList extends Component {
           )
         }
       });
-
-      return(
-        <div className='container' style={{marginTop: '50px'}}>
-          <h3 class='header0'> Produtos </h3>
-          <hr class='awesome'/>
-          <div className='center align-content'>
-            <Input className='input box-shadow' style={{width: '317px'}} label='Busque um produto'
-              onChange = { (e) => { 
-                let str = e.target.value.toLowerCase();
-                this.setState( {
-                  query: str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-                } ) } }/>
-          </div>
-          <Row style={{marginTop: '50px'}}>
-            {products}
-          </Row>
-        </div>
-      );
     }
+
+    return(
+      <div className='container' style={{marginTop: '50px'}}>
+        <h3 class='header0'> Produtos </h3>
+        <hr class='awesome'/>
+        <div className='center align-content'>
+          <Input className='input box-shadow' style={{width: '317px'}} label='Busque um produto'
+            onChange = { (e) => { 
+              let str = e.target.value.toLowerCase();
+              this.setState( {
+                query: str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+              } ) } }/>
+        </div>
+        <Row style={{marginTop: '50px'}}>
+          {products}
+        </Row>
+      </div>
+    );
   }
 }
 

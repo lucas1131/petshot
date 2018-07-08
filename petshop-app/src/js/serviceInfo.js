@@ -9,7 +9,7 @@ let axios = require("axios")
 const ServiceInfo = [
 
 	{
-		id: 7,
+		id: 0,
 		type: 'service',
 		desc: 'Vamos deixar seu pet cheirosinho!',
 		image: "https://imgur.com/nE1NHgCl.png",
@@ -46,14 +46,13 @@ const ServiceInfo = [
 
 ];
 
+// Auto populate db
 ServiceInfo.forEach((s) => {
 	axios({
 		method: 'post',
 		url: 'http://localhost:8080/addService/' + s.name,
 		data: s,
 		contentType: "application/json"
-	}).then((req) => {
-		console.log(req)
 	}).catch((err) => {
 		console.log(err)
 	})

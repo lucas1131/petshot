@@ -19,21 +19,28 @@ import '../css/product.css';
 
 import item from '../resources/racao2.jpg';
 
+let axios = require("axios")
+
 class Product extends Component {
 
   constructor(props) {
     super(props)
 
-    let products = getFromLocalStorage('products-info')
-    for(let i in products) {
-      if(products[i].type === 'product' && products[i].id == this.props.match.params.productId){
-        this.product = products[i];
-      }
+    this.state = {
+      qtd: 1,
+      products: null
     }
 
-    this.state = {
-      qtd: 1
-    }
+    let productId = this.props.match.params.productId
+
+    // Get product information from server
+    axios.get("http://localhost:8080/products?id=" + productId)
+      .then((req) => {
+        this.setState({product: req.data.got[0]})
+      }).catch((err) => {
+        console.log(err)
+        this.setState({product: "fail"})
+      })
   }
 
   handleChange = (e) => {
@@ -42,15 +49,19 @@ class Product extends Component {
 
   addToCart = (e) => {
     
+    // Wait until product promisse finish - if some error occurred, rip.
+    while(!this.state.product);
+    if(this.state.product === "fail") throw Error
+
     let qtd = parseInt(this.state.qtd)
     let cartItem = {
-      id: this.product.id,
-      product_id: this.product.id,
+      id: this.state.product.id,
+      product_id: this.state.product.id,
       type: 'cart',
-      product: this.product.name,
+      product: this.state.product.name,
       quantity: qtd,
-      cost: this.product.price,
-      totalCost: qtd*this.product.price
+      cost: this.state.product.price,
+      totalCost: qtd*this.state.product.price
     }
 
     window.Materialize.toast(`${cartItem.product} x${qtd} adicionado ao carrinho!`, 1500)
@@ -58,18 +69,20 @@ class Product extends Component {
   }
 
   render() {
-
+    if(!this.state.product) return null
+    if(this.state.product === "fail") return null
+    
     return(
       <div className='center' style={{margin: '50px 0 50px 0'}}>
         <div>
-          <h3 className='header0' style={{marginBottom: '30px'}}>{this.product.name}</h3>
+          <h3 className='header0' style={{marginBottom: '30px'}}>{this.state.product.doc.name}</h3>
         </div>
         <Row>
           <Col s={12} l={12} m={12} className='center align-content'>
-            <MediaBox src={this.product.image} id='productPhoto' alt='food for doggos here'/>
+            <MediaBox src={this.state.product.doc.image} id='productPhoto' alt='food for doggos here'/>
           </Col>
         </Row>
-          <p className='default'>{this.product.desc}</p>
+          <p className='default'>{this.state.product.doc.desc}</p>
           <hr class='awesome'/>
           <Row className='center align-content valign-wrapper'>
             
@@ -81,7 +94,7 @@ class Product extends Component {
                   step={1} 
                   style={{width: '50px'}}/>
 
-            <span className='header0 valign'><strong>R$ {this.product.price*this.state.qtd}</strong></span>
+            <span className='header0 valign'><strong>R$ {this.state.product.doc.price*this.state.qtd}</strong></span>
           </Row>
           <Button waves='light' className='btn' onClick={this.addToCart}>
             <Icon left>shopping_cart</Icon>

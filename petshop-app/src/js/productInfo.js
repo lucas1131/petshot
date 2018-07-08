@@ -33,14 +33,6 @@ const ProductInfo = [
 		price: 10.00
 	},
 
-	{
-		id: 12,
-		type: 'product',
-		desc: 'Bola quadrada',
-		image: "https://imgur.com/S0hskK8l.png",
-		name: 'Pelota Quadrada',
-		price: 100.00
-	},
 	
 	{
 		id: 3,
@@ -58,9 +50,19 @@ const ProductInfo = [
 		image: "https://imgur.com/977ThZFl.png",
 		name: 'Coleira Especial',
 		price: 30.00
-	}
+	},
+
+	{
+		id: 5,
+		type: 'product',
+		desc: 'Bola quadrada',
+		image: "https://imgur.com/S0hskK8l.png",
+		name: 'Pelota Quadrada',
+		price: 100.00
+	},
 ];
 
+// Auto populate db
 ProductInfo.forEach((s) => {
 	console.log(s)
 	axios({
@@ -68,8 +70,6 @@ ProductInfo.forEach((s) => {
 		url: 'http://localhost:8080/addProduct/' + s.name,
 		data: s,
 		contentType: "application/json"
-	}).then((req) => {
-		console.log(req)
 	}).catch((err) => {
 		console.log(err)
 	})

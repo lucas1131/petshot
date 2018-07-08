@@ -17,117 +17,125 @@ import '../css/timeDisplay.css';
 
 import ServiceInfo from './serviceInfo';
 
+let axios = require("axios")
 
 class Service extends Component {
-	
-	logged = false;
-	activeUser = null;
+  
+  logged = false;
+  activeUser = null;
 
-	constructor(props) {
-		super(props)
+  constructor(props) {
+    super(props)
+    
+    let serviceId = this.props.match.params.serviceId
 
-		// service Id. Use this to fetch correct service from db
-		let services = getFromLocalStorage('services-info')
-		for(let i in services) {
-			if(services[i].type === 'service' && services[i].id == this.props.match.params.serviceId){
-				this.service = services[i]
-			}
-		}
-		
-		this.activeUser = getFromSessionStorage('user');
-		let animals = [];
+    // Get service information from server
+    axios.get("http://localhost:8080/services?id=" + serviceId)
+      .then((req) => {
+        console.log(req.data.got[0])
+        this.setState({service: req.data.got[0]})
+      }).catch((err) => {
+        console.log(err)
+        this.setState({service: "fail"})
+      })
 
-		this.state = {
-			animals: []
-		};
+    this.activeUser = getFromSessionStorage('user');
+    let animals = [];
 
-		if(!this.activeUser) return 
+    this.state = {
+      animals: []
+    };
 
-		this.logged = true;
-		this.activeUser = this.activeUser[0];
+    if(!this.activeUser) return 
 
-		let users = getFromLocalStorage('user-info');
-		for(let i in users) {
-			if(users[i].username === this.activeUser.username){
-				this.activeUser = users[i]
-				break
-			}
-		}
+    this.logged = true;
+    this.activeUser = this.activeUser[0];
 
-		for(let i in this.activeUser.animals) {
-			animals.push(this.activeUser.animals[i].name);
-		}	
+    let users = getFromLocalStorage('user-info');
+    for(let i in users) {
+      if(users[i].username === this.activeUser.username){
+        this.activeUser = users[i]
+        break
+      }
+    }
 
-		this.state = {
-			animals: animals,
-			date: undefined,
-			time: undefined,
-			activeAnimal: undefined
-		};
-	}
+    for(let i in this.activeUser.animals) {
+      animals.push(this.activeUser.animals[i].name);
+    } 
 
-	handleChangeAnimal = (event) => {
-		console.log(event.target)
+    this.state = {
+      animals: animals,
+      date: undefined,
+      time: undefined,
+      activeAnimal: undefined
+    };
+  }
+
+  handleChangeAnimal = (event) => {
+    console.log(event.target)
     this.setState({activeAnimal: event.target.value}) 
-	}
+  }
 
-	handleChangeDate = (event) => {
+  handleChangeDate = (event) => {
     this.setState({date: event.target.value}) 
-	}
+  }
 
-	handleChangeTime = (event) => {
+  handleChangeTime = (event) => {
     this.setState({time: event.target.value}) 
-	}
+  }
 
-	handleClick = (event) => {
-		let newService = {
-			animal: this.state.activeAnimal,
-			date  :	this.state.date,
-			time  :	this.state.time
-		}
-		
-		this.activeUser.services.push(newService);
-		storeInLocalStorage('user-info', this.activeUser);
-		console.log(this.activeUser)
-	}
+  handleClick = (event) => {
+    let newService = {
+      animal: this.state.activeAnimal,
+      date  : this.state.date,
+      time  : this.state.time
+    }
+    
+    this.activeUser.services.push(newService);
+    storeInLocalStorage('user-info', this.activeUser);
+    console.log(this.activeUser)
+  }
 
-	render(){
-		let serviceId = this.props.match.params.serviceId;
+  render(){
+    if(!this.state.product) return null
+    if(this.state.product === "fail") return null
+    
+    let serviceId = this.props.match.params.serviceId;
 
-		return(
-			<div className='center container' style={{marginTop: '50px'}}>
-				<div>
-					<h3 className='header0' style={{marginBottom: '30px'}}> {this.service.name} </h3>
-				</div>
-				<Row>
-					<Col s={12} l={12} m={12} className='center align-content'>
-						<MediaBox src={this.service.image} id='productPhoto' alt='service'/>
-					</Col>
-				</Row>
-				<Row> <p className='default'> {this.service.desc} </p> </Row>
-				<Row> <hr className='awesome'/> </Row>
-				<Row> <h3 className='header0'> <strong>R$ {this.service.price}</strong> </h3> </Row>
-				<div className='center align-content'> 
-					<Input label='Animal' type='select' onChange={(e) => {this.handleChangeAnimal(e)}}>
+    return(
+      <div className='center container' style={{marginTop: '50px'}}>
+        <div>
+          <h3 className='header0' style={{marginBottom: '30px'}}> {this.state.service.doc.name} </h3>
+        </div>
+        <Row>
+          <Col s={12} l={12} m={12} className='center align-content'>
+            <MediaBox src={this.state.service.doc.image} id='productPhoto' alt='service'/>
+          </Col>
+        </Row>
+        <Row> <p className='default'> {this.state.service.doc.desc} </p> </Row>
+        <Row> <hr className='awesome'/> </Row>
+        <Row> <h3 className='header0'> <strong>R$ {this.state.service.doc.price}</strong> </h3> </Row>
+        <div className='center align-content'> 
+          <Input label='Animal' type='select' onChange={(e) => {this.handleChangeAnimal(e)}}>
             { this.state.animals.map((name) => <option key={name} value={name}>{name}</option>) }
-					</Input>
-				</div>
-				<div className='center align-content'>
-					<Input label='Data' type='date' onChange={(e) => {this.handleChangeDate(e)}}/>
-				</div>
-				<div className='center align-content'>
-					<Input label='Hora' type='time' onChange={(e) => {this.handleChangeTime(e)}}/>
-				</div>
+          </Input>
+        </div>
+        <div className='center align-content'>
+          <Input label='Data' type='date' onChange={(e) => {this.handleChangeDate(e)}}/>
+        </div>
+        <div className='center align-content'>
+          <Input label='Hora' type='time' onChange={(e) => {this.handleChangeTime(e)}}/>
+        </div>
 
-				<Row>
-					<Button waves='light' className='btn' onClick={(e) => {this.handleClick(e)}}>
-						<Icon left>class</Icon>
-						Agendar
-					</Button>
-				</Row>
-			</div>
-		);
-	}
+        <Row>
+          <Button waves='light' className='btn' onClick={(e) => {this.handleClick(e)}}>
+            <Icon left>class</Icon>
+            Agendar
+          </Button>
+        </Row>
+      </div>
+    );
+  }
 }
 
 export default Service;
