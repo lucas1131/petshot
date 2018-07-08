@@ -1,4 +1,4 @@
-/* User RESTful API for Petshop application
+/* Product RESTful API for Petshop application
  *
  * Giovanna Oliveira Guimarães 9293693
  * Lucas Alexandre Soares 9293265
@@ -10,28 +10,10 @@
 
 let server = require('./server')
 
-/*
-	Request example:
-	some useful variables
-
-	               id   parameters
-	URL: /addUser/test?user=test&username=test&password=test
-
-	// references /:id
-	params: { id: 'test' } 
-
-	// URL parameters after '?' mark
-	query:  { 
-		user: 'test', 
-		username: 'test', 
-		password: 'test' 
-	} 
-*/
-
-function ListUsers(req, res) {
+function ListProducts(req, res) {
 	
 	let id = req.params.id
-	let users = []
+	let products = []
 	db.fetch({include_docs: true}, (err, bode) => {
 
 		if(err){
@@ -50,9 +32,9 @@ function ListUsers(req, res) {
 		bode.rows.forEach((row) => {
 			print(row)
 			print(row.doc)
-			if(row.doc.dbtype == "user"){
+			if(row.doc.dbtype == "product"){
 				
-				users.push(row.id)
+				products.push(row.id)
 				print(row.id)
 			}
 		})
@@ -61,12 +43,12 @@ function ListUsers(req, res) {
 		res.end(JSON.stringify({
 			ok: true, 
 			msg: "SUCCESS",
-			got: users
+			got: products
 		}, null, 4))
 	})
 }
 
-function GetUser(req, res) {
+function GetProduct(req, res) {
 	
 	let id = req.params.id
 	pdb.get(id).then((doc) => {
@@ -95,44 +77,44 @@ function GetUser(req, res) {
 	})
 }
 
-function CreateUser(req, res){
+function CreateProduct(req, res){
 
 	print("[Info] POST '" + req.originalUrl + "'")
 	let id = req.params.id
 	server.getDoc(id).then((doc) => {
 		
-		let user = {}
+		let product = {}
 
 		// Only get revision if doc exists
 		if(doc != undefined) {
 			
 			print(doc)
-			user = doc
-			user["_rev"] = doc._rev;
-			user["dbtype"] = "user"
+			product = doc
+			product["_rev"] = doc._rev;
+			product["dbtype"] = "product"
 
 		} else {
-			user["_id"] = id
+			product["_id"] = id
 			print("[Info] No doc with id '" + id + "'")
 		}
 
-		// Copy query attributes to user object
+		// Copy query attributes to product object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
-		// user["animolz"] = query["animolz"], we will lose all previous animolz
+		// product["animolz"] = query["animolz"], we will lose all previous animolz
 		for(let attr in req.query){
 			
 			print(req.query[attr])
 			
 			// Try to parse objects parameters to interpret arrays as real 
 			// arrays, not strings
-			try { user[attr] = JSON.parse(req.query[attr]) }
+			try { product[attr] = JSON.parse(req.query[attr]) }
 			// If parsing failed, its not an object, just read it
-			catch { user[attr] = req.query[attr] }
+			catch { product[attr] = req.query[attr] }
 
 		}
 
-		print("[Info] Inserting user: " + JSON.stringify(user, null, 4))
-		db.insert(user, id, (err, body) => {
+		print("[Info] Inserting product: " + JSON.stringify(product, null, 4))
+		db.insert(product, id, (err, body) => {
 			if(err) {
 				print(err)
 				res.end(JSON.stringify(err))
@@ -144,7 +126,7 @@ function CreateUser(req, res){
 	}).catch((err) => { print(err) })
 }
 
-function UpdateUser(req, res) {
+function UpdateProduct(req, res) {
 
 	print("[Info] PUT '" + req.originalUrl + "'")
 	let id = req.params.id
@@ -159,15 +141,15 @@ function UpdateUser(req, res) {
 			return
 		}
 		
-		let user = doc
-		user["dbtype"] = "user"
+		let product = doc
+		product["dbtype"] = "product"
 		print(doc)
 
-		user["_rev"] = doc._rev;
+		product["_rev"] = doc._rev;
 
-		// Copy query attributes to user object
+		// Copy query attributes to product object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
-		// user["animolz"] = query["animolz"], we will lose all previous animolz
+		// product["animolz"] = query["animolz"], we will lose all previous animolz
 		for(let attr in req.query){
 			
 			print(req.query[attr])
@@ -177,14 +159,14 @@ function UpdateUser(req, res) {
 			try { 
 				let obj = JSON.parse(req.query[attr])
 				print(obj)
-				user[attr] = obj
+				product[attr] = obj
 			
 			// If parsing failed, its not an object, just read it
-			} catch { user[attr] = req.query[attr] }
+			} catch { product[attr] = req.query[attr] }
 		}
 
-		print("[Info] Inserting user: " + JSON.stringify(user, null, 4))
-		db.insert(user, id, (err, body) => {
+		print("[Info] Inserting product: " + JSON.stringify(product, null, 4))
+		db.insert(product, id, (err, body) => {
 			if(err) {
 				print(err)
 				res.end(JSON.stringify(err))
@@ -196,15 +178,15 @@ function UpdateUser(req, res) {
 	}).catch((err) => { print(err) })
 }
 
-function DeleteUser(req, res) {
+function DeleteProduct(req, res) {
 
 	print("[Info] DELETE '" + req.originalUrl + "'")
 	
-	let user = req.params.id;
-	getRev(user).then((rev) => {
+	let product = req.params.id;
+	getRev(product).then((rev) => {
 
-		print("[Info] Found rev = '" + req.originalUrl + "' for user '" + user + "'")
-		db.destroy(user, rev, function(err, body) {
+		print("[Info] Found rev = '" + req.originalUrl + "' for product '" + product + "'")
+		db.destroy(product, rev, function(err, body) {
 			if (!err) {
 	    		print(body)
 	    		res.end(JSON.stringify({ok: true, msg: "SUCCESS"}, null, 4))
@@ -219,6 +201,8 @@ function DeleteUser(req, res) {
 }
 
 /* Export API functions */
-exports.ListUsers = ListUsers
-exports.GetUser = GetUser
-exports.CreateUser = CreateUser
+exports.ListProducts = ListProducts
+exports.GetProduct = GetProduct
+exports.CreateProduct = CreateProduct
+exports.UpdateProduct = UpdateProduct
+exports.DeleteProduct = DeleteProduct

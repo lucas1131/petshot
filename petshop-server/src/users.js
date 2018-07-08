@@ -208,11 +208,13 @@ function DeleteUser(req, res) {
 			if (!err) {
 	    		print(body)
 	    		res.end(JSON.stringify({ok: true, msg: "SUCCESS"}, null, 4))
-	    	}
-	    	else {
+	    	} else {
 	    		print(err);
-	    		res.end(JSON.stringify(err))
-	    		throw err.Error
+	    		res.end(JSON.stringify({
+	    			ok: false, 
+	    			msg: "FAILURE", 
+	    			statusCode: err.statusCode 
+	    		}, null, 4))
 	    	}
 		});
 	})

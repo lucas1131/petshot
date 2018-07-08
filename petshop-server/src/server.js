@@ -20,6 +20,8 @@ let express = require('express');
 let prom_nano = require('nano-promises');
 let nano = require("nano")("http://localhost:5984");
 let usersApi = require("./users")
+let servicesApi = require("./services")
+let productsApi = require("./products")
 
 db = null
 pdb = null
@@ -97,6 +99,22 @@ app.post('/addUser/:id', usersApi.CreateUser)       // CREATE new user
 app.put('/updateUser/:id', usersApi.UpdateUser)     // UPDATE user
 app.delete('/deleteUser/:id', usersApi.DeleteUser)  // Delete user
 /* END USER API */
+
+/* SERVICES API*/
+app.get('/services', servicesApi.ListServices)   // List services in system
+app.get('/services/:id', servicesApi.GetService) // Get info from single service
+app.post('/addService/:id', servicesApi.CreateService)     // CREATE new service
+app.put('/updateService/:id', servicesApi.UpdateService)   // UPDATE service
+app.delete('/deleteService/:id', servicesApi.DeleteService)// Delete service
+/* END SERVICES API */
+
+/* PRODUCTS API*/
+app.get('/products', productsApi.ListProducts)   // List products in system
+app.get('/products/:id', productsApi.GetProduct) // Get info from single product
+app.post('/addProduct/:id', productsApi.CreateProduct)     // CREATE new product
+app.put('/updateProduct/:id', productsApi.UpdateProduct)   // UPDATE product
+app.delete('/deleteProduct/:id', productsApi.DeleteProduct)// Delete product
+/* END PRODUCTS API */
 
 let server = app.listen(8080, () => {
 	let host = server.address().address
