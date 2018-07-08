@@ -1,3 +1,7 @@
+let server = require('./server')
+
+// let db = server.db
+// let pdb = server.pdb
 
 function ListUsers(req, res) {
 	
@@ -70,7 +74,7 @@ function CreateUser(req, res){
 
 	print("[Info] POST '" + req.originalUrl + "'")
 	let id = req.params.id
-	getDoc(id).then((doc) => {
+	server.getDoc(id).then((doc) => {
 		
 		let user = {}
 
@@ -114,3 +118,8 @@ function CreateUser(req, res){
 		})
 	}).catch((err) => { print(err) })
 }
+
+/* Export API functions */
+exports.ListUsers = ListUsers
+exports.GetUser = GetUser
+exports.CreateUser = CreateUser
