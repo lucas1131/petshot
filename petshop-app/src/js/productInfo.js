@@ -32,6 +32,15 @@ const ProductInfo = [
 		name: 'Bolinha',
 		price: 10.00
 	},
+
+	{
+		id: 12,
+		type: 'product',
+		desc: 'Bola quadrada',
+		image: "https://imgur.com/S0hskK8l.png",
+		name: 'Pelota Quadrada',
+		price: 100.00
+	},
 	
 	{
 		id: 3,
@@ -47,12 +56,13 @@ const ProductInfo = [
 		type: 'product',
 		desc: 'Outra coleira topper',
 		image: "https://imgur.com/977ThZFl.png",
-		name: 'Coleira',
+		name: 'Coleira Especial',
 		price: 30.00
 	}
 ];
 
 ProductInfo.forEach((s) => {
+	console.log(s)
 	axios({
 		method: 'post',
 		url: 'http://localhost:8080/addProduct/' + s.name,

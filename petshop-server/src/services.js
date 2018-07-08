@@ -12,6 +12,8 @@ let server = require('./server')
 
 function ListServices(req, res) {
 	
+	print("[Info] GET '" + req.originalUrl + "'")
+
 	let id = req.params.id
 	let services = []
 	db.fetch({include_docs: true}, (err, bode) => {
@@ -30,8 +32,18 @@ function ListServices(req, res) {
 		// No error
 		print(bode)
 		bode.rows.forEach((row) => {
-			if(row.doc.dbtype == "service")
-				services.push(row.id)
+			if(row.doc.dbtype == "service"){
+				
+				// Iterate through query parameters to search for given parameters
+				let ok = true
+				for(let attr in req.query){
+					if(row.doc[attr] != req.query[attr])
+						ok = false
+				}
+
+				// Only add row if matches given parameters
+				if(ok) services.push(row)
+			}
 		})
 
 		// Send object to resquester
@@ -45,6 +57,8 @@ function ListServices(req, res) {
 
 function GetService(req, res) {
 	
+	print("[Info] GET '" + req.originalUrl + "'")
+
 	let id = req.params.id
 	pdb.get(id).then((doc) => {
 
@@ -97,7 +111,6 @@ function CreateService(req, res){
 		// Copy query attributes to service object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
 		// service["animolz"] = query["animolz"], we will lose all previous animolz
-		print("[IMPORTANT] Req.body: " + JSON.stringify(req.body), null, 4)
 		for(let attr in req.body){
 			
 			print(req.body[attr])
@@ -107,7 +120,6 @@ function CreateService(req, res){
 			try { service[attr] = JSON.parse(req.body[attr]) }
 			// If parsing failed, its not an object, just read it
 			catch { service[attr] = req.body[attr] }
-
 		}
 
 		print("[Info] Inserting service: " + JSON.stringify(service, null, 4))
@@ -147,19 +159,15 @@ function UpdateService(req, res) {
 		// Copy query attributes to service object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
 		// service["animolz"] = query["animolz"], we will lose all previous animolz
-		for(let attr in req.query){
+		for(let attr in req.body){
 			
-			print(req.query[attr])
+			print(req.body[attr])
 			
 			// Try to parse objects parameters to interpret arrays as real 
 			// arrays, not strings
-			try { 
-				let obj = JSON.parse(req.query[attr])
-				print(obj)
-				service[attr] = obj
-			
+			try { service[attr] = JSON.parse(req.body[attr]) }
 			// If parsing failed, its not an object, just read it
-			} catch { service[attr] = req.query[attr] }
+			catch { service[attr] = req.body[attr] }
 		}
 
 		print("[Info] Inserting service: " + JSON.stringify(service, null, 4))

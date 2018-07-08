@@ -30,6 +30,8 @@ let server = require('./server')
 
 function ListUsers(req, res) {
 	
+	print("[Info] GET '" + req.originalUrl + "'")
+
 	let id = req.params.id
 	let users = []
 	db.fetch({include_docs: true}, (err, bode) => {
@@ -48,8 +50,18 @@ function ListUsers(req, res) {
 		// No error
 		print(bode)
 		bode.rows.forEach((row) => {
-			if(row.doc.dbtype == "user")
-				users.push(row)
+			if(row.doc.dbtype == "user"){
+				
+				// Iterate through query parameters to search for given parameters
+				let ok = true
+				for(let attr in req.query){
+					if(row.doc[attr] != req.query[attr])
+						ok = false
+				}
+
+				// Only add row if matches given parameters
+				if(ok) users.push(row)
+			}
 		})
 
 		// Send object to resquester
@@ -63,6 +75,8 @@ function ListUsers(req, res) {
 
 function GetUser(req, res) {
 	
+	print("[Info] GET '" + req.originalUrl + "'")
+
 	let id = req.params.id
 	pdb.get(id).then((doc) => {
 
