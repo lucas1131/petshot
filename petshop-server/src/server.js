@@ -14,18 +14,18 @@
 // DELETE − Used to remove a resource.
 
 /* Aliases, libraries and globals */
-print = console.log
-db = null
-pdb = null
+var print = console.log
 
 let express = require('express');
+let fs = require("fs");
 let prom_nano = require('nano-promises');
 let nano = require("nano")("http://localhost:5984");
-
-let usersApi =  require('./users')
+let db = null
+let pdb = null
 
 // Try to create db, if it doesnt exists
 nano.db.create("petshop", (err, bode) => {
+	
 	if(err){
 		// Error 412 - Database exists
 		if(err.statusCode == 412){
@@ -46,6 +46,7 @@ nano.db.create("petshop", (err, bode) => {
 	// Load Petshop database and promisified db
 	db = nano.use("petshop") 
 	pdb = prom_nano(nano).db.use("petshop") 
+	
 })
 
 let app = express();
