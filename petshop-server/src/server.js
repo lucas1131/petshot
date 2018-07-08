@@ -14,14 +14,15 @@
 // DELETE − Used to remove a resource.
 
 /* Aliases, libraries and globals */
-var print = console.log
+print = console.log
 
 let express = require('express');
-let fs = require("fs");
 let prom_nano = require('nano-promises');
 let nano = require("nano")("http://localhost:5984");
-let db = null
-let pdb = null
+let usersApi = require("./users")
+
+db = null
+pdb = null
 
 // Try to create db, if it doesnt exists
 nano.db.create("petshop", (err, bode) => {
@@ -46,7 +47,6 @@ nano.db.create("petshop", (err, bode) => {
 	// Load Petshop database and promisified db
 	db = nano.use("petshop") 
 	pdb = prom_nano(nano).db.use("petshop") 
-	
 })
 
 let app = express();
@@ -91,11 +91,11 @@ exports.getDoc = getDoc
 
 
 /* USER API*/
-app.get('/users', usersApi.ListUsers)         // List users in system
-app.get('/users/:id', usersApi.GetUser)       // Get info from single user
-app.post('/addUser/:id', usersApi.CreateUser) // CREATE new user
-app.put('/updateUser/:id', UpdateUser)        // UPDATE user
-app.delete('/deleteUser/:id', DeleteUser)     // Delete user
+app.get('/users', usersApi.ListUsers)     // List users in system
+app.get('/users/:id', usersApi.GetUser)   // Get info from single user
+app.post('/addUser/:id', usersApi.CreateUser)       // CREATE new user
+app.put('/updateUser/:id', usersApi.UpdateUser)     // UPDATE user
+app.delete('/deleteUser/:id', usersApi.DeleteUser)  // Delete user
 /* END USER API */
 
 let server = app.listen(8080, () => {

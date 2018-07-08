@@ -148,7 +148,7 @@ function UpdateUser(req, res) {
 
 	print("[Info] PUT '" + req.originalUrl + "'")
 	let id = req.params.id
-	getDoc(id).then((doc) => {
+	server.getDoc(id).then((doc) => {
 
 		// If doc doesnt exists, return error - PUT is only for updating.
 		if(!doc) {
@@ -201,7 +201,7 @@ function DeleteUser(req, res) {
 	print("[Info] DELETE '" + req.originalUrl + "'")
 	
 	let user = req.params.id;
-	getRev(user).then((rev) => {
+	server.getRev(user).then((rev) => {
 
 		print("[Info] Found rev = '" + req.originalUrl + "' for user '" + user + "'")
 		db.destroy(user, rev, function(err, body) {
@@ -222,3 +222,5 @@ function DeleteUser(req, res) {
 exports.ListUsers = ListUsers
 exports.GetUser = GetUser
 exports.CreateUser = CreateUser
+exports.UpdateUser = UpdateUser
+exports.DeleteUser = DeleteUser
