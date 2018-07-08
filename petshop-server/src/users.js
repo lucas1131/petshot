@@ -1,7 +1,32 @@
+/* User RESTful API for Petshop application
+ *
+ * Giovanna Oliveira Guimarães 9293693
+ * Lucas Alexandre Soares 9293265
+ * Luca Gomes Urssi 10425396
+ * Rafael do Fake News 9293095
+ *
+ */
+
+
 let server = require('./server')
 
-// let db = server.db
-// let pdb = server.pdb
+/*
+	Request example:
+	some useful variables
+
+	               id   parameters
+	URL: /addUser/test?user=test&username=test&password=test
+
+	// references /:id
+	params: { id: 'test' } 
+
+	// URL parameters after '?' mark
+	query:  { 
+		user: 'test', 
+		username: 'test', 
+		password: 'test' 
+	} 
+*/
 
 function ListUsers(req, res) {
 	
