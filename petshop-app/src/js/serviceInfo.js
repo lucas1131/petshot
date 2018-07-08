@@ -9,10 +9,10 @@ let axios = require("axios")
 const ServiceInfo = [
 
 	{
-		id: 0,
+		id: 7,
 		type: 'service',
 		desc: 'Vamos deixar seu pet cheirosinho!',
-		image: "https://imgur.com/wzJWArzl.png",
+		image: "https://imgur.com/nE1NHgCl.png",
 		name: 'Banho',
 		price: '40.00'
 	},

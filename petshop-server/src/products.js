@@ -12,6 +12,8 @@ let server = require('./server')
 
 function ListProducts(req, res) {
 	
+	print("[Info] GET '" + req.originalUrl + "'")
+
 	let id = req.params.id
 	let products = []
 	db.fetch({include_docs: true}, (err, bode) => {
@@ -30,8 +32,17 @@ function ListProducts(req, res) {
 		// No error
 		print(bode)
 		bode.rows.forEach((row) => {
-			if(row.doc.dbtype == "product")
-				products.push(row)
+			if(row.doc.dbtype == "product"){
+				// Iterate through query parameters to search for given parameters
+				let ok = true
+				for(let attr in req.query){
+					if(row.doc[attr] != req.query[attr])
+						ok = false
+				}
+
+				// Only add row if matches given parameters
+				if(ok) products.push(row)
+			}
 		})
 
 		// Send object to resquester
@@ -45,6 +56,8 @@ function ListProducts(req, res) {
 
 function GetProduct(req, res) {
 	
+	print("[Info] GET '" + req.originalUrl + "'")
+
 	let id = req.params.id
 	pdb.get(id).then((doc) => {
 
@@ -96,16 +109,15 @@ function CreateProduct(req, res){
 		// Copy query attributes to product object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
 		// product["animolz"] = query["animolz"], we will lose all previous animolz
-		for(let attr in req.query){
+		for(let attr in req.body){
 			
-			print(req.query[attr])
+			print(req.body[attr])
 			
 			// Try to parse objects parameters to interpret arrays as real 
 			// arrays, not strings
-			try { product[attr] = JSON.parse(req.query[attr]) }
+			try { product[attr] = JSON.parse(req.body[attr]) }
 			// If parsing failed, its not an object, just read it
-			catch { product[attr] = req.query[attr] }
-
+			catch { product[attr] = req.body[attr] }
 		}
 
 		print("[Info] Inserting product: " + JSON.stringify(product, null, 4))
@@ -145,19 +157,15 @@ function UpdateProduct(req, res) {
 		// Copy query attributes to product object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
 		// product["animolz"] = query["animolz"], we will lose all previous animolz
-		for(let attr in req.query){
+		for(let attr in req.body){
 			
-			print(req.query[attr])
+			print(req.body[attr])
 			
 			// Try to parse objects parameters to interpret arrays as real 
 			// arrays, not strings
-			try { 
-				let obj = JSON.parse(req.query[attr])
-				print(obj)
-				product[attr] = obj
-			
+			try { product[attr] = JSON.parse(req.body[attr]) }
 			// If parsing failed, its not an object, just read it
-			} catch { product[attr] = req.query[attr] }
+			catch { product[attr] = req.body[attr] }
 		}
 
 		print("[Info] Inserting product: " + JSON.stringify(product, null, 4))
