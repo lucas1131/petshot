@@ -22,9 +22,7 @@ class ServiceList extends Component {
     // Get services list
     axios.get("http://localhost:8080/services")
       .then((res) => {
-        console.log(res.data)
-        let tmp = res.data.got
-        this.setState({services: tmp})
+        this.setState({services: res.data.got})
       })
       .catch((err) => {
         console.log("[Error] Error getting services.")
@@ -35,7 +33,7 @@ class ServiceList extends Component {
   render() {
       
     let services
-    
+
     if(this.state.services) {
       services = this.state.services.map((service, index) => {
 

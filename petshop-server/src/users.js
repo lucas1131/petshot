@@ -128,15 +128,15 @@ function CreateUser(req, res){
 		// Copy query attributes to user object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
 		// user["animolz"] = query["animolz"], we will lose all previous animolz
-		for(let attr in req.query){
+		for(let attr in req.body){
 			
-			print(req.query[attr])
+			print(req.body[attr])
 			
 			// Try to parse objects parameters to interpret arrays as real 
 			// arrays, not strings
-			try { user[attr] = JSON.parse(req.query[attr]) }
+			try { user[attr] = JSON.parse(req.body[attr]) }
 			// If parsing failed, its not an object, just read it
-			catch { user[attr] = req.query[attr] }
+			catch { user[attr] = req.body[attr] }
 
 		}
 
@@ -177,22 +177,22 @@ function UpdateUser(req, res) {
 		// Copy query attributes to user object
 		// TODO: use deepcopy - when updating animolz (an array) we cant just do
 		// user["animolz"] = query["animolz"], we will lose all previous animolz
-		for(let attr in req.query){
+		for(let attr in req.body){
 			
-			print(req.query[attr])
+			print(req.body[attr])
 			
 			// Try to parse objects parameters to interpret arrays as real 
 			// arrays, not strings
 			try { 
-				let obj = JSON.parse(req.query[attr])
+				let obj = JSON.parse(req.body[attr])
 				print(obj)
 				user[attr] = obj
 			
 			// If parsing failed, its not an object, just read it
-			} catch { user[attr] = req.query[attr] }
+			} catch { user[attr] = req.body[attr] }
 		}
 
-		print("[Info] Inserting user: " + JSON.stringify(user, null, 4))
+		print("[Info] Updating user: " + JSON.stringify(user, null, 4))
 		db.insert(user, id, (err, body) => {
 			if(err) {
 				print(err)

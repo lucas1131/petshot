@@ -64,7 +64,6 @@ const ProductInfo = [
 
 // Auto populate db
 ProductInfo.forEach((s) => {
-	console.log(s)
 	axios({
 		method: 'post',
 		url: 'http://localhost:8080/addProduct/' + s.name,

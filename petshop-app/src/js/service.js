@@ -6,16 +6,16 @@
  *
  */
  
-import React, { Component } from 'react';
-import {Row, Col, Button, MediaBox, Icon, Input} from 'react-materialize';
+import React, { Component } from 'react'
+import {Row, Col, Button, MediaBox, Icon, Input} from 'react-materialize'
 
 import { getFromLocalStorage, getFromSessionStorage } from './mockDB'
 import { storeInLocalStorage, storeInSessionStorage } from './mockDB'
 
-import '../css/general.css';
-import '../css/timeDisplay.css';
+import '../css/general.css'
+import '../css/timeDisplay.css'
 
-import ServiceInfo from './serviceInfo';
+import ServiceInfo from './serviceInfo'
 
 let axios = require("axios")
 
@@ -32,47 +32,53 @@ class Service extends Component {
     // Get service information from server
     axios.get("http://localhost:8080/services?id=" + serviceId)
       .then((req) => {
-        console.log(req.data.got[0])
-        this.setState({service: req.data.got[0]})
+        this.setState({service: req.data.got[0].doc})
       }).catch((err) => {
         console.log(err)
         this.setState({service: "fail"})
       })
 
-    this.activeUser = getFromSessionStorage('user');
-    let animals = [];
+    this.activeUser = getFromSessionStorage('user')
+    let animals = []
 
     this.state = {
       animals: []
-    };
+    }
 
     if(!this.activeUser) return 
 
-    this.logged = true;
-    this.activeUser = this.activeUser[0];
+    this.logged = true
+    this.activeUser = this.activeUser[0]
 
-    let users = getFromLocalStorage('user-info');
-    for(let i in users) {
-      if(users[i].username === this.activeUser.username){
-        this.activeUser = users[i]
-        break
-      }
-    }
+    let user
+    let url = "http://localhost:8080/users?username=" + this.activeUser.username
+    axios.get(url).then((res) => {
 
-    for(let i in this.activeUser.animals) {
-      animals.push(this.activeUser.animals[i].name);
-    } 
+      user = res.data.got[0].doc
+      this._server_user = user
 
-    this.state = {
-      animals: animals,
-      date: undefined,
-      time: undefined,
-      activeAnimal: undefined
-    };
+      // Get current user animals
+      for(let i in user.animals)
+        animals.push(user.animals[i].name)
+
+      
+      this.setState({
+        animals: animals,
+        date: undefined,
+        time: undefined,
+        activeAnimal: user.animals[0].name // First animal by default
+      })
+    }).catch(err => {
+      console.log("Could not find user '" + this.activeUser.name + "'")
+      this.setState({
+        animals: "fail",
+        activeAnimal: "fail" // First animal by default
+      })
+      // throw Error
+    })
   }
 
   handleChangeAnimal = (event) => {
-    console.log(event.target)
     this.setState({activeAnimal: event.target.value}) 
   }
 
@@ -91,30 +97,56 @@ class Service extends Component {
       time  : this.state.time
     }
     
-    this.activeUser.services.push(newService);
-    storeInLocalStorage('user-info', this.activeUser);
-    console.log(this.activeUser)
+    // Create empty service array if doesnt exists
+    if(!this.activeUser.services) 
+      this.activeUser.services = []
+
+    // Push new service
+    this.activeUser.services.push(newService) 
+    this._server_user.services = this.activeUser.services
+    this._server_user.surname = "Zuar"
+    console.log()
+    console.log()
+    console.log()
+    console.log("clicked")
+    console.log()
+    console.log(this._server_user)
+    console.log(this._server_user.services)
+    console.log()
+    console.log()
+    console.log()
+    // Update user info in server
+    axios({
+      method: 'put',
+      url: 'http://localhost:8080/updateUser/' + this._server_user.username,
+      data: this._server_user,
+      contentType: "application/json"
+    }).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   render(){
-    if(!this.state.product) return null
-    if(this.state.product === "fail") return null
+    if(!this.state.service || !this.state.animals) return null
+    if(this.state.service === "fail" || this.state.animals == "fail")return null
     
-    let serviceId = this.props.match.params.serviceId;
+    let serviceId = this.props.match.params.serviceId
 
     return(
       <div className='center container' style={{marginTop: '50px'}}>
         <div>
-          <h3 className='header0' style={{marginBottom: '30px'}}> {this.state.service.doc.name} </h3>
+          <h3 className='header0' style={{marginBottom: '30px'}}> {this.state.service.name} </h3>
         </div>
         <Row>
           <Col s={12} l={12} m={12} className='center align-content'>
-            <MediaBox src={this.state.service.doc.image} id='productPhoto' alt='service'/>
+            <MediaBox src={this.state.service.image} id='productPhoto' alt='service'/>
           </Col>
         </Row>
-        <Row> <p className='default'> {this.state.service.doc.desc} </p> </Row>
+        <Row> <p className='default'> {this.state.service.desc} </p> </Row>
         <Row> <hr className='awesome'/> </Row>
-        <Row> <h3 className='header0'> <strong>R$ {this.state.service.doc.price}</strong> </h3> </Row>
+        <Row> <h3 className='header0'> <strong>R$ {this.state.service.price}</strong> </h3> </Row>
         <div className='center align-content'> 
           <Input label='Animal' type='select' onChange={(e) => {this.handleChangeAnimal(e)}}>
             { this.state.animals.map((name) => <option key={name} value={name}>{name}</option>) }
@@ -134,8 +166,8 @@ class Service extends Component {
           </Button>
         </Row>
       </div>
-    );
+    )
   }
 }
 
-export default Service;
+export default Service
