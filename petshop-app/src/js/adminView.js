@@ -39,6 +39,9 @@ class Animals extends Component {
 }
 
 class AdminClientsView extends Component {
+
+
+
   render() {
     return (
       <div>

@@ -25,16 +25,7 @@ import CheckIcon from 'material-ui/svg-icons/navigation/check';
 import '../css/general.css'
 import '../css/table.css'
 
-const row = (
-  x,
-  i,
-  header,
-  handleRemove,
-  startEditing,
-  editIdx,
-  handleChange,
-  stopEditing
-) => {
+const row = (x, i, header, handleRemove, startEditing, editIdx, handleChange, stopEditing) => {
   const currentlyEditing = editIdx === i;
   return (
     <TableRow key={`tr-${i}`} selectable={false} className='scroll-x'>
