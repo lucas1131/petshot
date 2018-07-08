@@ -16,12 +16,14 @@
 /* Aliases, libraries and globals */
 print = console.log
 
-let express = require('express');
-let prom_nano = require('nano-promises');
-let nano = require("nano")("http://localhost:5984");
+let express = require('express')
+let prom_nano = require('nano-promises')
+let nano = require("nano")("http://localhost:5984")
+let cors = require("cors")
 let usersApi = require("./users")
 let servicesApi = require("./services")
 let productsApi = require("./products")
+
 
 db = null
 pdb = null
@@ -51,7 +53,8 @@ nano.db.create("petshop", (err, bode) => {
 	pdb = prom_nano(nano).db.use("petshop") 
 })
 
-let app = express();
+let app = express()
+app.use(cors())
 /* END Aliases, libraries and globals */
 
 

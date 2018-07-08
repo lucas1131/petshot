@@ -30,13 +30,8 @@ function ListProducts(req, res) {
 		// No error
 		print(bode)
 		bode.rows.forEach((row) => {
-			print(row)
-			print(row.doc)
-			if(row.doc.dbtype == "product"){
-				
-				products.push(row.id)
-				print(row.id)
-			}
+			if(row.doc.dbtype == "product")
+				products.push(row)
 		})
 
 		// Send object to resquester

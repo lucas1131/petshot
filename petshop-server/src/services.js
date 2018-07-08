@@ -30,13 +30,8 @@ function ListServices(req, res) {
 		// No error
 		print(bode)
 		bode.rows.forEach((row) => {
-			print(row)
-			print(row.doc)
-			if(row.doc.dbtype == "service"){
-				
+			if(row.doc.dbtype == "service")
 				services.push(row.id)
-				print(row.id)
-			}
 		})
 
 		// Send object to resquester
