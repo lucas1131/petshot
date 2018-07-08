@@ -230,18 +230,34 @@ export default function populateDB(){
 	}
 
 	/* Populate list */
+
+	let axios = require("axios")
+
 	usersList.push(user1)
 	usersList.push(user2)
 	usersList.push(user3)
 	usersList.push(admin)
+	
+	// Auto populate server db for testing (default values)
+	for(let user of usersList){
+		axios({
+			method: 'post',
+			url: 'http://localhost:8080/addUser/' + user.username,
+			data: user,
+			contentType: "application/json"
+		}).catch((err) => {
+			console.log(err)
+		})
+	}
+
 
 	/* Insert them in db */
-	if(!getFromLocalStorage('user-info')) 
-		storeInLocalStorage('user-info', usersList)
-	if(!getFromLocalStorage('products-info')) 
-		storeInLocalStorage('products-info', ProductInfo)
-	if(!getFromLocalStorage('services-info')) 
-		storeInLocalStorage('services-info', ServiceInfo)
+	// if(!getFromLocalStorage('user-info')) 
+	// 	storeInLocalStorage('user-info', usersList)
+	// if(!getFromLocalStorage('products-info')) 
+	// 	storeInLocalStorage('products-info', ProductInfo)
+	// if(!getFromLocalStorage('services-info')) 
+	// 	storeInLocalStorage('services-info', ServiceInfo)
 }
 
 populateDB()	
