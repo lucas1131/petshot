@@ -136,7 +136,7 @@ function CreateUser(req, res){
 			// arrays, not strings
 			try { user[attr] = JSON.parse(req.body[attr]) }
 			// If parsing failed, its not an object, just read it
-			catch { user[attr] = req.body[attr] }
+			catch(err) { user[attr] = req.body[attr] }
 
 		}
 
@@ -189,7 +189,7 @@ function UpdateUser(req, res) {
 				user[attr] = obj
 			
 			// If parsing failed, its not an object, just read it
-			} catch { user[attr] = req.body[attr] }
+			} catch(err) { user[attr] = req.body[attr] }
 		}
 
 		print("[Info] Updating user: " + JSON.stringify(user, null, 4))

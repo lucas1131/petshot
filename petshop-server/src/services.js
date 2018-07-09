@@ -119,7 +119,7 @@ function CreateService(req, res){
 			// arrays, not strings
 			try { service[attr] = JSON.parse(req.body[attr]) }
 			// If parsing failed, its not an object, just read it
-			catch { service[attr] = req.body[attr] }
+			catch(err){ service[attr] = req.body[attr] }
 		}
 
 		print("[Info] Inserting service: " + JSON.stringify(service, null, 4))
@@ -167,7 +167,7 @@ function UpdateService(req, res) {
 			// arrays, not strings
 			try { service[attr] = JSON.parse(req.body[attr]) }
 			// If parsing failed, its not an object, just read it
-			catch { service[attr] = req.body[attr] }
+			catch(err){ service[attr] = req.body[attr] }
 		}
 
 		print("[Info] Inserting service: " + JSON.stringify(service, null, 4))

@@ -117,7 +117,7 @@ function CreateProduct(req, res){
 			// arrays, not strings
 			try { product[attr] = JSON.parse(req.body[attr]) }
 			// If parsing failed, its not an object, just read it
-			catch { product[attr] = req.body[attr] }
+			catch(err){ product[attr] = req.body[attr] }
 		}
 
 		print("[Info] Inserting product: " + JSON.stringify(product, null, 4))
@@ -165,7 +165,7 @@ function UpdateProduct(req, res) {
 			// arrays, not strings
 			try { product[attr] = JSON.parse(req.body[attr]) }
 			// If parsing failed, its not an object, just read it
-			catch { product[attr] = req.body[attr] }
+			catch(err){ product[attr] = req.body[attr] }
 		}
 
 		print("[Info] Inserting product: " + JSON.stringify(product, null, 4))
