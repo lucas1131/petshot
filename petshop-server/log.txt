@@ -1,6 +1,0 @@
-
-> petshop-server@1.0.0 start /home/iron/workspace/web/petshop-part3/petshop-server
-> node src/server.js
-
-Petshop server running @ http://:::8080
-[Info] Found database for 'petshop'.
